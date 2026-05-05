@@ -31,6 +31,36 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-05 — First reusable pattern library created
+
+Type: setup / pattern
+
+Summary:
+
+Created CodeMike's first reusable pattern library. These patterns cover the initial working pipeline from data cleaning and exploratory analysis through research summary, recommendation scoring, optimisation framing, model evaluation, dashboard KPI design, and project transfer planning.
+
+Files changed:
+
+- `patterns/data-cleaning-checklist.md`
+- `patterns/eda-notebook-template.md`
+- `patterns/research-paper-summary-template.md`
+- `patterns/recommendation-scoring-pattern.md`
+- `patterns/optimisation-problem-template.md`
+- `patterns/model-evaluation-template.md`
+- `patterns/dashboard-kpi-pattern.md`
+- `patterns/transfer-plan-template.md`
+- `patterns/README.md`
+
+Evidence produced:
+
+- first reusable method library
+- pattern index
+- future candidate pattern list
+
+Next action:
+
+Create first capability cards that reference the pattern library.
+
 ## 2026-05-05 — Orientation induction pack created
 
 Type: setup / orientation
