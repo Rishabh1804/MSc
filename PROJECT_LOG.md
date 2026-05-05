@@ -31,6 +31,36 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-05 — First capability cards created
+
+Type: setup / capability
+
+Summary:
+
+Created CodeMike's first eight capability cards and linked them to the reusable pattern library. Each card starts at maturity Level 1 because the method exists but evidence has not yet been produced.
+
+Files changed:
+
+- `capabilities/data-cleaning.md`
+- `capabilities/exploratory-analysis.md`
+- `capabilities/research-synthesis.md`
+- `capabilities/recommendation-scoring.md`
+- `capabilities/optimisation-modelling.md`
+- `capabilities/model-evaluation.md`
+- `capabilities/dashboard-insight-design.md`
+- `capabilities/project-transfer.md`
+- `capabilities/README.md`
+
+Evidence produced:
+
+- first capability catalogue
+- pattern-to-capability mapping
+- maturity and evidence requirements for each capability
+
+Next action:
+
+Produce the first evidence artifact using a synthetic dataset and update capability maturity where justified.
+
 ## 2026-05-05 — First reusable pattern library created
 
 Type: setup / pattern
