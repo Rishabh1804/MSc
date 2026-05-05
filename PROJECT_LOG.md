@@ -31,6 +31,36 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-05 — First synthetic evidence path set up
+
+Type: setup / evidence
+
+Summary:
+
+Created the first concrete evidence path for CodeMike using a synthetic Planner-style trip options dataset. This path is designed to exercise data cleaning, exploratory analysis, recommendation scoring readiness, and dashboard KPI thinking.
+
+Files changed:
+
+- `datasets/synthetic/README.md`
+- `datasets/synthetic/trip_options_sample.csv`
+- `synthetic-data/trip_options_generator.py`
+- `notebooks/00-foundations/README.md`
+- `notebooks/00-foundations/trip-options-eda.md`
+- `DATASETS.md`
+- `EVIDENCE.md`
+
+Evidence produced:
+
+- synthetic dataset generator
+- synthetic CSV sample
+- EDA scaffold
+- dataset registry entry
+- evidence register entry
+
+Next action:
+
+Run or write the first computed EDA and cleaning analysis, then update capability maturity where justified.
+
 ## 2026-05-05 — First capability cards created
 
 Type: setup / capability
