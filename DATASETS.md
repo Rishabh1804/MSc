@@ -1,35 +1,43 @@
-# DATASETS.md — CodeMike Dataset Registry
+# DATASETS.md — Dataset Registry
 
-Datasets are assets. They must be named, classified, documented, and linked to evidence.
+This file records datasets used by CodeMike.
+
+## Dataset Rules
+
+- Do not commit private, sensitive, or confidential raw data without explicit approval.
+- Prefer synthetic datasets for learning and reproducible experiments.
+- Record source, privacy level, purpose, and limitations.
+- Every dataset used for evidence should be traceable.
 
 ## Privacy Levels
 
-| Level | Meaning |
-|---|---|
-| Public | Publicly shareable data |
-| Synthetic | Generated data with no real personal/business records |
-| Internal | Non-public but low-risk working data |
-| Confidential | Business-sensitive or private operational data |
-| Sensitive | Health, finance, identity, family, customer, or high-risk data |
-| Restricted | Data requiring explicit permission, legal review, or special handling |
+| Level | Meaning | Default Handling |
+|---|---|---|
+| Public | Publicly available data | Cite source and licence |
+| Synthetic | Artificially generated data | Safe for learning, still document assumptions |
+| Internal | Business/project data not public | Do not commit raw data without approval |
+| Confidential | Sensitive organisational data | Avoid committing; use summaries or synthetic substitutes |
+| Sensitive | Personal, health, financial, legal, or vulnerable-user data | Avoid unless explicitly approved and protected |
+| Restricted | Credentials, secrets, highly regulated data | Never commit |
+
+## Registered Datasets
+
+| Dataset | Path | Type | Source | Purpose | Limitations |
+|---|---|---|---|---|---|
+| Planner trip options sample | `datasets/synthetic/trip_options_sample.csv` | Synthetic | `synthetic-data/trip_options_generator.py` | First evidence path for data cleaning, EDA, recommendation scoring, and dashboard KPI thinking | Fictional values; intentionally includes invalid/suspicious rows; not suitable for real travel pricing or booking decisions |
 
 ## Dataset Entry Template
 
 ```md
-## Dataset: <name>
+## Dataset Name
 
-Status: proposed / active / archived
-Privacy level:
+Path:
+Type:
 Source:
-Synthetic or real:
-Schema path:
-Used in:
-Known limitations:
-Allowed uses:
-Storage path:
-Owner/approval:
+Privacy level:
+Purpose:
+Fields:
+Limitations:
+Allowed use:
+Evidence linked:
 ```
-
-## Dataset Register
-
-No datasets registered yet.
