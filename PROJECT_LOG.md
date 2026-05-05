@@ -31,6 +31,38 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-05 — Orientation induction pack created
+
+Type: setup / orientation
+
+Summary:
+
+Created CodeMike's student-life and university induction layer. This gives the AI Postgraduate a non-technical foundation covering academic culture, integrity, conduct, legal/compliance awareness, wellbeing, employability, international context, inclusion, research ethics, professional behaviour, HR readiness, and city/culture awareness.
+
+Files changed:
+
+- `orientation/university-life.md`
+- `orientation/academic-integrity.md`
+- `orientation/student-conduct.md`
+- `orientation/legal-and-compliance.md`
+- `orientation/wellbeing-and-support.md`
+- `orientation/careers-and-employability.md`
+- `orientation/international-student-context.md`
+- `orientation/equality-diversity-inclusion.md`
+- `orientation/research-ethics.md`
+- `orientation/professional-behaviour.md`
+- `orientation/hr-and-workplace-readiness.md`
+- `orientation/city-and-culture.md`
+
+Evidence produced:
+
+- complete first-pass orientation framework
+- cross-links to policy, evidence, responsible AI, supervision, QA, portfolio, and transfer files
+
+Next action:
+
+Begin first capability cards or first reusable patterns.
+
 ## 2026-05-05 — Milestone 0 started
 
 Type: setup
