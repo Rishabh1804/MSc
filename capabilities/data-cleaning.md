@@ -36,26 +36,34 @@ Core steps:
 
 ## Current maturity
 
-Level 1 — Draft method.
+Level 2 — Example reproduced / applied on synthetic data.
 
-The checklist exists, but CodeMike has not yet applied it to a real or synthetic dataset.
+CodeMike applied the data cleaning checklist to a synthetic Planner-style trip options dataset and produced explicit data-quality flags.
 
 ## Evidence
 
-No evidence yet.
+Primary evidence:
 
-First evidence target:
+- `reports/evidence/trip-options-eda-report.md`
+- `datasets/processed/trip_options_flagged.csv`
+- `datasets/synthetic/trip_options_sample.csv`
+- `EVIDENCE.md` entry: `2026-05-05 — Synthetic trip options computed EDA`
 
-- Apply the checklist to a synthetic dataset.
-- Record findings in an EDA notebook.
-- Update `DATASETS.md` and `EVIDENCE.md`.
+What was proven:
+
+- Dataset shape was inspected.
+- Missingness and duplicates were checked.
+- Invalid/suspicious rows were identified.
+- Quality flags were preserved in a processed dataset.
+- Scoreability was separated from raw inclusion.
 
 ## Limitations
 
-- No real dataset tested yet.
-- No automated cleaning functions yet.
+- Only synthetic data has been tested.
+- No reusable Python cleaning module yet.
+- No automated validation tests yet.
 - No data dictionary pattern yet.
-- No edge-case library yet.
+- No real-world messy dataset has been processed.
 
 ## Reusable in
 
@@ -73,4 +81,4 @@ No transfers yet.
 
 ## Next action
 
-Create or select a small synthetic dataset and run a first data cleaning exercise.
+Extract the repeated validation logic into a small reusable Python function or validation checklist for future datasets.
