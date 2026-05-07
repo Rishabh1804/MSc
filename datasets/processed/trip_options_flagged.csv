@@ -1,0 +1,25 @@
+option_id,destination,experience_tier,estimated_cost_inr,flight_hours,layovers,visa_complexity,infant_friendliness_score,comfort_score,weather_risk_score,novelty_score,planning_confidence_score,notes,data_quality_flag,is_scoreable,travel_fatigue_score,risk_adjusted_comfort_score,value_score
+TRIP-001,Vietnam,comfort,193112,9.8,0,easy,58,97,23,78,55,shortlisted for family comfort,,True,41.2,75.4,39.04
+TRIP-002,Singapore,comfort,388496,2.3,0,easy,59,82,13,70,94,shortlisted for family comfort,,True,86.2,72.6,18.69
+TRIP-003,Vietnam,comfort,521425,9.4,0,easy,82,67,29,48,63,good backup option,,True,43.6,74.6,14.31
+TRIP-004,Bali,comfort,308393,9.3,0,easy,93,71,29,62,71,budget pressure visible,,True,44.2,80.9,26.23
+TRIP-005,Mauritius,comfort,373061,3.1,1,easy,67,59,58,47,0,good food and logistics,suspicious_zero_confidence;,False,69.4,59.2,15.87
+TRIP-006,Dubai,high_quality,493420,11.6,1,easy,68,55,68,59,56,shortlisted for family comfort,,True,18.4,56.2,11.39
+TRIP-007,Maldives,premium,816210,8.8,1,easy,75,90,63,49,64,premium option with low friction,,True,35.2,72.6,8.89
+TRIP-008,Phuket,comfort,266997,4.7,0,easy,84,66,24,91,87,strong resort availability,,True,71.8,76.1,28.5
+TRIP-009,Sri Lanka,comfort,243310,3.5,0,easy,88,76,105,51,83,weather needs checking,invalid_weather_risk_score;,False,79.0,,
+TRIP-010,Dubai,premium,753980,6.8,1,moderate,62,91,33,84,78,premium option with low friction,,True,47.2,73.2,9.71
+TRIP-011,Langkawi,high_quality,573804,5.6,1,easy,77,73,41,80,71,good food and logistics,,True,54.4,72.0,12.55
+TRIP-012,Kuala Lumpur,comfort,224900,4.1,0,easy,79,69,28,60,86,good backup option,,True,75.4,74.1,32.95
+TRIP-013,Andaman,high_quality,431595,-1.0,0,moderate,90,72,47,66,74,higher transit fatigue,invalid_flight_hours;,False,,76.3,17.68
+TRIP-014,Goa,comfort,198400,2.2,0,easy,92,71,30,44,88,good backup option,,True,86.8,80.2,40.42
+TRIP-015,Maldives,high_quality,685125,7.5,1,moderate,81,96,39,83,79,strong resort availability,,True,43.0,82.2,12.0
+TRIP-016,Bali,high_quality,612900,8.6,1,moderate,70,88,61,91,73,weather needs checking,,True,36.4,70.1,11.44
+TRIP-017,Phuket,high_quality,451440,5.8,1,easy,86,82,35,76,81,shortlisted for family comfort,,True,53.2,80.4,17.81
+TRIP-018,Singapore,premium,701820,2.6,0,easy,95,93,22,63,92,good food and logistics,,True,84.4,90.9,12.95
+TRIP-019,Dubai,comfort,359760,4.3,0,easy,73,84,20,70,85,premium option with low friction,,True,74.2,78.2,21.74
+TRIP-020,Mauritius,premium,928260,11.2,1,moderate,78,94,46,87,76,premium option with low friction,,True,20.8,78.8,8.49
+TRIP-021,Sri Lanka,high_quality,367875,3.8,0,easy,83,74,55,72,80,weather needs checking,,True,77.2,72.2,19.63
+TRIP-022,Vietnam,high_quality,529470,8.9,1,moderate,64,79,58,94,67,budget pressure visible,,True,34.6,64.9,12.26
+TRIP-023,Langkawi,comfort,302150,5.2,1,easy,80,77,37,73,82,strong resort availability,,True,56.8,75.6,25.02
+TRIP-024,Andaman,comfort,286600,3.1,0,moderate,91,70,44,65,75,higher transit fatigue,,True,81.4,76.6,26.73
