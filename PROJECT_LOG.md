@@ -31,6 +31,34 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-05 — Computed trip-options EDA completed
+
+Type: evidence / capability
+
+Summary:
+
+Completed the first computed evidence pass on the synthetic Planner-style trip options dataset. Created a processed flagged dataset, an evidence report, updated the evidence register, and moved Data Cleaning plus Exploratory Analysis from Level 1 to Level 2.
+
+Files changed:
+
+- `datasets/processed/README.md`
+- `datasets/processed/trip_options_flagged.csv`
+- `reports/evidence/trip-options-eda-report.md`
+- `EVIDENCE.md`
+- `capabilities/data-cleaning.md`
+- `capabilities/exploratory-analysis.md`
+
+Evidence produced:
+
+- computed data quality checks
+- processed flagged dataset
+- EDA evidence report
+- capability maturity update to Level 2 for Data Cleaning and Exploratory Analysis
+
+Next action:
+
+Create the first recommendation scoring experiment using the scoreable trip options.
+
 ## 2026-05-05 — First synthetic evidence path set up
 
 Type: setup / evidence
