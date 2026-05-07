@@ -14,9 +14,9 @@ Uses structured exploratory data analysis to understand dataset quality, distrib
 
 ## Outputs
 
-- EDA notebook
+- EDA notebook or report
 - Key findings
-- Visual summaries
+- Visual or tabular summaries
 - Data quality observations
 - Limitations
 - Next action recommendation
@@ -40,25 +40,33 @@ Core sections:
 
 ## Current maturity
 
-Level 1 — Draft method.
+Level 2 — Example reproduced / applied on synthetic data.
 
-The notebook structure exists, but it has not yet been applied to a dataset.
+CodeMike produced a first computed EDA report from a synthetic Planner-style trip options dataset.
 
 ## Evidence
 
-No evidence yet.
+Primary evidence:
 
-First evidence target:
+- `reports/evidence/trip-options-eda-report.md`
+- `notebooks/00-foundations/trip-options-eda.md`
+- `datasets/processed/trip_options_flagged.csv`
+- `EVIDENCE.md` entry: `2026-05-05 — Synthetic trip options computed EDA`
 
-- Build first EDA notebook using synthetic data.
-- Include at least three decision-relevant findings.
-- Record limitations and next action.
+What was proven:
+
+- Dataset composition was summarised.
+- Tier and visa distributions were interpreted.
+- Data quality issues were connected to scoring readiness.
+- Early decision-support findings were generated.
+- Dashboard KPI candidates were identified.
 
 ## Limitations
 
-- No completed EDA notebook yet.
-- No standard visual style guide yet.
-- No automated data profiling helper yet.
+- No visual charts have been committed yet.
+- EDA was performed on a small synthetic dataset.
+- No reusable Python EDA helper exists yet.
+- No real-world dataset has been analysed.
 
 ## Reusable in
 
@@ -76,4 +84,4 @@ No transfers yet.
 
 ## Next action
 
-Create first EDA notebook under `notebooks/00-foundations/` or `modules/03-data-mining-visualisation/`.
+Create a first recommendation scoring experiment using the scoreable rows from the processed dataset.
