@@ -31,6 +31,33 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-05 — Recommendation scoring v1 completed
+
+Type: experiment / capability
+
+Summary:
+
+Completed the first recommendation-scoring experiment on the synthetic Planner-style trip options dataset. Produced a scored dataset, experiment report, experiment register entry, evidence register entry, and moved Recommendation Scoring from Level 1 to Level 2.
+
+Files changed:
+
+- `datasets/processed/trip_options_scored_v1.csv`
+- `reports/experiment-reports/trip-options-recommendation-scoring-v1.md`
+- `EXPERIMENTS.md`
+- `EVIDENCE.md`
+- `capabilities/recommendation-scoring.md`
+
+Evidence produced:
+
+- EXP-001 recommendation scoring experiment
+- ranked dataset of 21 scoreable options
+- documented weighted formula and penalty rules
+- capability maturity update to Level 2 for Recommendation Scoring
+
+Next action:
+
+Run sensitivity analysis as v1.1 before considering transfer to Planner.
+
 ## 2026-05-05 — Computed trip-options EDA completed
 
 Type: evidence / capability
