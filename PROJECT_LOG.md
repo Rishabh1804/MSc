@@ -31,6 +31,32 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-05 — Recommendation sensitivity analysis v1.1 completed
+
+Type: experiment / evidence
+
+Summary:
+
+Completed sensitivity analysis for the trip-options recommendation scoring experiment. Tested five priority scenarios and identified stable versus preference-sensitive recommendations.
+
+Files changed:
+
+- `datasets/processed/trip_options_sensitivity_v1_1.csv`
+- `reports/experiment-reports/trip-options-sensitivity-v1-1.md`
+- `EXPERIMENTS.md`
+- `EVIDENCE.md`
+
+Evidence produced:
+
+- EXP-002 sensitivity analysis
+- scenario-ranked dataset
+- stable top recommendation set
+- preference-sensitive premium option insight
+
+Next action:
+
+Create a Planner transfer candidate or convert scoring logic into a reusable module under `src/`.
+
 ## 2026-05-05 — Recommendation scoring v1 completed
 
 Type: experiment / capability
