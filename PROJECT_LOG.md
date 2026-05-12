@@ -31,6 +31,29 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-12 — Destination candidate backlog taxonomy QA created
+
+Type: dataset / QA / taxonomy
+
+Summary:
+
+Created the first taxonomy validation utility and QA report for the 225-row India destination candidate backlog. The pass checks candidate IDs, duplicate name keys, destination types, vibe tags, priority tiers, and verification statuses against Destination Tag Dictionary v2.
+
+Files changed:
+
+- `src/codemike/data/destination_taxonomy_validation.py`
+- `reports/evidence/destination-candidate-backlog-taxonomy-qa-v1.md`
+
+Evidence produced:
+
+- first candidate backlog taxonomy QA report
+- identified tag normalisation issues before master promotion
+- confirmed candidate ID uniqueness and no exact name-country/name-state duplicates in the first pass
+
+Next action:
+
+Create `datasets/reference/destination_expansion_backlog_india_v1_normalized.csv` before building `destinations_master_v2.csv`.
+
 ## 2026-05-12 — Destination tag dictionary v2 and HTML browser created
 
 Type: taxonomy / artifact / interface
