@@ -31,6 +31,30 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-12 — Destination browser v2 and QA report created
+
+Type: artifact / evidence / interface
+
+Summary:
+
+Created a destination database QA report and a GitHub Pages-compatible enriched destination browser v2. Browser v2 loads the 134-row destination seed CSV and applies client-side heuristic enrichment for Planner-style review.
+
+Files changed:
+
+- `reports/evidence/destination-database-qa-v1.md`
+- `docs/destination-browser-v2.html`
+- `docs/index.html`
+
+Evidence produced:
+
+- destination database QA v1 report
+- enriched browser with origin-fit, infant-suitability, fatigue, planning-complexity, medical-access, and Planner-readiness filters
+- Pages landing page updated with v2 link
+
+Next action:
+
+Stabilise enrichment rules into a committed enriched CSV or add destination scoring v1 using the v2 enrichment fields.
+
 ## 2026-05-05 — HTML artifact layer and destination browser created
 
 Type: artifact / interface
@@ -330,7 +354,6 @@ Evidence produced:
 
 - repository identity and operating model
 - six-month roadmap direction
-- student orientation index
 
 Next action:
 
