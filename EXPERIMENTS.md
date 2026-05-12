@@ -27,6 +27,22 @@ Next step:
 
 ## Experiment Register
 
+## Experiment: Trip Options Sensitivity Analysis v1.1
+
+ID: EXP-002  
+Date: 2026-05-05  
+Question: Are the top recommendations from the v1 trip-options scoring experiment robust when user priorities change?  
+Dataset: `datasets/processed/trip_options_scored_v1.csv`  
+Output: `datasets/processed/trip_options_sensitivity_v1_1.csv`  
+Baseline: EXP-001 v1 recommendation ranking.  
+Method: Re-ranked scoreable trip options under five weighting scenarios: family comfort, budget sensitive, premium comfort, low fatigue, and novelty heavy. Penalty rules were held constant.  
+Metric: Scenario ranks, average scenario rank, top-five scenario count, and top-ten scenario count.  
+Result: Goa, Phuket, Singapore comfort, and Dubai comfort appeared in the top five across all five scenarios. Kuala Lumpur appeared in four of five top-fives and remained top-ten across all scenarios.  
+Interpretation: Practical comfort-tier options are stable. Premium Singapore is preference-sensitive: rank 1 under premium comfort but rank 13 under budget-sensitive scoring.  
+Limitations: Synthetic data; hand-authored scenario weights; penalty rules not varied; no live travel validation; no user calibration.  
+Evidence path: `reports/experiment-reports/trip-options-sensitivity-v1-1.md`  
+Next step: Create a Planner transfer candidate or convert scoring logic into a reusable module.
+
 ## Experiment: Trip Options Recommendation Scoring v1
 
 ID: EXP-001  
