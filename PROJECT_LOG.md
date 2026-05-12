@@ -31,6 +31,32 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-12 — Destination database v2 massive expansion setup
+
+Type: dataset / reference / strategy
+
+Summary:
+
+Started the destination database v2 scale-up. Added a strategy document for building a massive Planner-ready destination database, a controlled tag dictionary, and a 225-row India-only expansion backlog. The system now separates seed destinations from candidate backlog entries so the database can grow without contaminating Planner-ready records.
+
+Files changed:
+
+- `datasets/reference/destination_database_v2_strategy.md`
+- `datasets/reference/destination_tag_dictionary.md`
+- `datasets/reference/destination_expansion_backlog_india_v1.csv`
+- `DATASETS.md`
+
+Evidence produced:
+
+- target scale strategy from 250 rows to 5,000+ rows
+- controlled destination vocabulary
+- 225 India expansion candidates
+- dataset registry scale snapshot showing 359 total seed + candidate records
+
+Next action:
+
+Create a QA/deduplication and promotion pipeline that converts selected backlog candidates into enriched destination records.
+
 ## 2026-05-12 — Destination browser v2 and QA report created
 
 Type: artifact / evidence / interface
@@ -348,7 +374,6 @@ Files changed:
 - `CODEMIKE.md`
 - `STUDENT_LIFE.md`
 - `ROADMAP.md`
-- `PROJECT_LOG.md`
 
 Evidence produced:
 
