@@ -1,0 +1,135 @@
+destination_id,name,country,macro_region,state_or_area,location_type,vibe_1,vibe_2,vibe_3,budget_band,family_suitability,access_complexity,best_season_hint,verification_status
+DST-0001,Delhi NCR,India,North India,Delhi NCR,metro_city,culture,food,history,mid,medium,easy,Oct-Mar,seed_unverified
+DST-0002,Agra,India,North India,Uttar Pradesh,heritage_city,heritage,architecture,history,budget_mid,medium,easy,Oct-Mar,seed_unverified
+DST-0003,Jaipur,India,North India,Rajasthan,heritage_city,heritage,palace,shopping,mid,high,easy,Oct-Mar,seed_unverified
+DST-0004,Udaipur,India,North India,Rajasthan,lake_heritage_city,lakes,heritage,luxury,mid_premium,high,moderate,Oct-Mar,seed_unverified
+DST-0005,Jodhpur,India,North India,Rajasthan,heritage_city,forts,desert,heritage,mid,medium,moderate,Oct-Mar,seed_unverified
+DST-0006,Jaisalmer,India,North India,Rajasthan,desert_town,desert,heritage,adventure,mid,medium,moderate,Nov-Feb,seed_unverified
+DST-0007,Pushkar,India,North India,Rajasthan,pilgrim_town,spiritual,culture,slow_travel,budget_mid,medium,moderate,Oct-Mar,seed_unverified
+DST-0008,Ranthambore,India,North India,Rajasthan,wildlife_reserve,wildlife,safari,nature,premium,medium,moderate,Oct-Jun,seed_unverified
+DST-0009,Amritsar,India,North India,Punjab,heritage_city,spiritual,food,history,budget_mid,high,easy,Oct-Mar,seed_unverified
+DST-0010,Chandigarh,India,North India,Chandigarh,planned_city,urban,architecture,gateway,mid,high,easy,Oct-Mar,seed_unverified
+DST-0011,Shimla,India,North India,Himachal Pradesh,hill_station,hills,family,colonial,mid,high,moderate,Mar-Jun;Oct-Dec,seed_unverified
+DST-0012,Manali,India,North India,Himachal Pradesh,hill_station,hills,adventure,snow,mid,medium,moderate,Mar-Jun;Oct-Feb,seed_unverified
+DST-0013,Dharamshala,India,North India,Himachal Pradesh,hill_town,hills,culture,wellness,mid,medium,moderate,Mar-Jun;Sep-Nov,seed_unverified
+DST-0014,Dalhousie,India,North India,Himachal Pradesh,hill_station,hills,family,slow_travel,mid,high,moderate,Mar-Jun;Sep-Nov,seed_unverified
+DST-0015,Leh,India,North India,Ladakh,high_altitude,mountains,adventure,landscape,mid_premium,low,hard,Jun-Sep,seed_unverified
+DST-0016,Srinagar,India,North India,Jammu and Kashmir,lake_valley,lakes,mountains,gardens,mid_premium,medium,moderate,Apr-Oct,seed_unverified
+DST-0017,Gulmarg,India,North India,Jammu and Kashmir,mountain_resort,snow,mountains,ski,premium,medium,moderate,Dec-Mar;Apr-Jun,seed_unverified
+DST-0018,Rishikesh,India,North India,Uttarakhand,river_spiritual_town,spiritual,wellness,adventure,budget_mid,medium,moderate,Oct-Apr,seed_unverified
+DST-0019,Haridwar,India,North India,Uttarakhand,pilgrim_city,spiritual,culture,pilgrimage,budget,medium,easy,Oct-Mar,seed_unverified
+DST-0020,Mussoorie,India,North India,Uttarakhand,hill_station,hills,family,slow_travel,mid,high,moderate,Mar-Jun;Sep-Nov,seed_unverified
+DST-0021,Nainital,India,North India,Uttarakhand,lake_hill_station,lakes,hills,family,mid,high,moderate,Mar-Jun;Sep-Nov,seed_unverified
+DST-0022,Jim Corbett,India,North India,Uttarakhand,wildlife_reserve,wildlife,nature,family,mid_premium,medium,moderate,Nov-Jun,seed_unverified
+DST-0023,Varanasi,India,North India,Uttar Pradesh,spiritual_city,spiritual,culture,history,budget_mid,low_medium,easy,Oct-Mar,seed_unverified
+DST-0024,Lucknow,India,North India,Uttar Pradesh,heritage_city,food,heritage,culture,budget_mid,high,easy,Oct-Mar,seed_unverified
+DST-0025,Bhopal,India,Central India,Madhya Pradesh,lake_city,lakes,history,gateway,budget_mid,high,easy,Oct-Mar,seed_unverified
+DST-0026,Sanchi,India,Central India,Madhya Pradesh,heritage_site,buddhist,heritage,history,budget_mid,medium,moderate,Oct-Mar,seed_unverified
+DST-0027,Khajuraho,India,Central India,Madhya Pradesh,heritage_town,heritage,architecture,temples,mid,medium,moderate,Oct-Mar,seed_unverified
+DST-0028,Orchha,India,Central India,Madhya Pradesh,heritage_town,heritage,slow_travel,river,budget_mid,medium,moderate,Oct-Mar,seed_unverified
+DST-0029,Pachmarhi,India,Central India,Madhya Pradesh,hill_station,hills,nature,family,mid,high,moderate,Oct-Mar,seed_unverified
+DST-0030,Kanha,India,Central India,Madhya Pradesh,wildlife_reserve,wildlife,safari,nature,premium,medium,hard,Oct-Jun,seed_unverified
+DST-0031,Bandhavgarh,India,Central India,Madhya Pradesh,wildlife_reserve,wildlife,safari,nature,premium,medium,hard,Oct-Jun,seed_unverified
+DST-0032,Mumbai,India,West India,Maharashtra,metro_city,urban,food,culture,mid_premium,medium,easy,Nov-Feb,seed_unverified
+DST-0033,Pune,India,West India,Maharashtra,city,urban,food,gateway,mid,high,easy,Oct-Feb,seed_unverified
+DST-0034,Lonavala,India,West India,Maharashtra,hill_station,hills,weekend,family,mid,high,easy,Jun-Sep;Oct-Feb,seed_unverified
+DST-0035,Mahabaleshwar,India,West India,Maharashtra,hill_station,hills,family,strawberries,mid,high,moderate,Oct-Jun,seed_unverified
+DST-0036,Nashik,India,West India,Maharashtra,wine_heritage_city,wine,heritage,food,mid,medium,easy,Oct-Mar,seed_unverified
+DST-0037,Aurangabad,India,West India,Maharashtra,heritage_gateway,heritage,caves,history,mid,medium,moderate,Oct-Mar,seed_unverified
+DST-0038,Goa,India,West India,Goa,beach_state,beach,food,resort,mid_premium,high,easy,Nov-Mar,seed_unverified
+DST-0039,Diu,India,West India,Daman and Diu,coastal_town,beach,slow_travel,coast,budget_mid,medium,moderate,Oct-Mar,seed_unverified
+DST-0040,Ahmedabad,India,West India,Gujarat,heritage_city,heritage,food,architecture,budget_mid,high,easy,Nov-Feb,seed_unverified
+DST-0041,Kutch,India,West India,Gujarat,desert_region,desert,culture,craft,mid,medium,moderate,Nov-Feb,seed_unverified
+DST-0042,Gir,India,West India,Gujarat,wildlife_reserve,wildlife,safari,nature,mid_premium,medium,moderate,Dec-Mar,seed_unverified
+DST-0043,Dwarka,India,West India,Gujarat,pilgrim_coastal_town,spiritual,coast,pilgrimage,budget_mid,medium,moderate,Oct-Mar,seed_unverified
+DST-0044,Bengaluru,India,South India,Karnataka,metro_city,urban,food,gateway,mid,high,easy,Oct-Feb,seed_unverified
+DST-0045,Mysuru,India,South India,Karnataka,heritage_city,palace,heritage,family,budget_mid,high,easy,Oct-Feb,seed_unverified
+DST-0046,Coorg,India,South India,Karnataka,hill_region,coffee,hills,resort,mid_premium,high,moderate,Oct-Mar,seed_unverified
+DST-0047,Chikmagalur,India,South India,Karnataka,hill_region,coffee,hills,nature,mid,high,moderate,Sep-Mar,seed_unverified
+DST-0048,Hampi,India,South India,Karnataka,heritage_site,heritage,landscape,history,budget_mid,medium,moderate,Oct-Feb,seed_unverified
+DST-0049,Gokarna,India,South India,Karnataka,beach_town,beach,slow_travel,coast,budget_mid,medium,moderate,Oct-Mar,seed_unverified
+DST-0050,Hyderabad,India,South India,Telangana,metro_city,food,heritage,urban,budget_mid,high,easy,Oct-Feb,seed_unverified
+DST-0051,Chennai,India,South India,Tamil Nadu,metro_coastal_city,culture,food,coast,budget_mid,medium,easy,Nov-Feb,seed_unverified
+DST-0052,Pondicherry,India,South India,Puducherry,coastal_town,french_quarter,food,slow_travel,mid,high,easy,Nov-Feb,seed_unverified
+DST-0053,Mahabalipuram,India,South India,Tamil Nadu,coastal_heritage_town,heritage,coast,architecture,mid,high,easy,Nov-Feb,seed_unverified
+DST-0054,Madurai,India,South India,Tamil Nadu,temple_city,spiritual,heritage,food,budget_mid,medium,easy,Oct-Mar,seed_unverified
+DST-0055,Kodaikanal,India,South India,Tamil Nadu,hill_station,hills,family,slow_travel,mid,high,moderate,Apr-Jun;Sep-Feb,seed_unverified
+DST-0056,Ooty,India,South India,Tamil Nadu,hill_station,hills,family,tea,mid,high,moderate,Apr-Jun;Sep-Feb,seed_unverified
+DST-0057,Rameswaram,India,South India,Tamil Nadu,pilgrim_coastal_town,spiritual,coast,pilgrimage,budget_mid,medium,moderate,Oct-Mar,seed_unverified
+DST-0058,Kochi,India,South India,Kerala,coastal_heritage_city,food,heritage,backwaters,mid,high,easy,Oct-Mar,seed_unverified
+DST-0059,Munnar,India,South India,Kerala,hill_station,tea,hills,resort,mid_premium,high,moderate,Sep-Mar,seed_unverified
+DST-0060,Alleppey,India,South India,Kerala,backwater_region,backwaters,slow_travel,family,mid_premium,high,moderate,Oct-Mar,seed_unverified
+DST-0061,Kumarakom,India,South India,Kerala,backwater_resort,backwaters,resort,family,premium,high,moderate,Oct-Mar,seed_unverified
+DST-0062,Thekkady,India,South India,Kerala,wildlife_hill_region,wildlife,spice,nature,mid,medium,moderate,Oct-Mar,seed_unverified
+DST-0063,Varkala,India,South India,Kerala,beach_town,beach,wellness,slow_travel,mid,medium,moderate,Oct-Mar,seed_unverified
+DST-0064,Kovalam,India,South India,Kerala,beach_resort,beach,resort,family,mid_premium,high,easy,Oct-Mar,seed_unverified
+DST-0065,Visakhapatnam,India,East India,Andhra Pradesh,coastal_city,beach,city,family,budget_mid,high,easy,Oct-Mar,seed_unverified
+DST-0066,Araku Valley,India,East India,Andhra Pradesh,hill_valley,hills,coffee,nature,budget_mid,medium,moderate,Oct-Mar,seed_unverified
+DST-0067,Bhubaneswar,India,East India,Odisha,temple_city,temples,heritage,gateway,budget_mid,high,easy,Oct-Mar,seed_unverified
+DST-0068,Puri,India,East India,Odisha,pilgrim_beach_town,spiritual,beach,culture,budget_mid,medium,easy,Oct-Mar,seed_unverified
+DST-0069,Konark,India,East India,Odisha,heritage_site,heritage,architecture,temple,budget_mid,medium,easy,Oct-Mar,seed_unverified
+DST-0070,Kolkata,India,East India,West Bengal,metro_city,culture,food,heritage,budget_mid,high,easy,Nov-Feb,seed_unverified
+DST-0071,Darjeeling,India,East India,West Bengal,hill_station,tea,hills,heritage,mid,medium,moderate,Mar-May;Oct-Dec,seed_unverified
+DST-0072,Kalimpong,India,East India,West Bengal,hill_town,hills,slow_travel,culture,mid,medium,moderate,Mar-May;Oct-Dec,seed_unverified
+DST-0073,Sundarbans,India,East India,West Bengal,mangrove_wildlife_region,wildlife,river,nature,mid,low_medium,hard,Nov-Feb,seed_unverified
+DST-0074,Gangtok,India,North East India,Sikkim,hill_city,mountains,culture,family,mid,medium,moderate,Mar-May;Oct-Dec,seed_unverified
+DST-0075,Pelling,India,North East India,Sikkim,mountain_town,mountains,views,slow_travel,mid,medium,moderate,Mar-May;Oct-Dec,seed_unverified
+DST-0076,Guwahati,India,North East India,Assam,city_gateway,gateway,river,culture,budget_mid,medium,easy,Oct-Apr,seed_unverified
+DST-0077,Kaziranga,India,North East India,Assam,wildlife_reserve,wildlife,safari,nature,mid_premium,medium,moderate,Nov-Apr,seed_unverified
+DST-0078,Shillong,India,North East India,Meghalaya,hill_city,hills,music,nature,mid,medium,moderate,Oct-Apr,seed_unverified
+DST-0079,Cherrapunji,India,North East India,Meghalaya,rainforest_region,waterfalls,nature,rain,mid,medium,moderate,Oct-Apr,seed_unverified
+DST-0080,Tawang,India,North East India,Arunachal Pradesh,mountain_town,monastery,mountains,culture,mid_premium,low_medium,hard,Mar-Jun;Sep-Oct,seed_unverified
+DST-0081,Ziro Valley,India,North East India,Arunachal Pradesh,valley,culture,music,nature,mid,medium,hard,Mar-May;Sep-Oct,seed_unverified
+DST-0082,Kohima,India,North East India,Nagaland,hill_city,culture,history,hills,mid,medium,moderate,Oct-Apr,seed_unverified
+DST-0083,Imphal,India,North East India,Manipur,city_valley,culture,lake,history,mid,medium,moderate,Oct-Apr,seed_unverified
+DST-0084,Aizawl,India,North East India,Mizoram,hill_city,hills,culture,slow_travel,mid,medium,moderate,Oct-Apr,seed_unverified
+DST-0085,Agartala,India,North East India,Tripura,city,palace,culture,history,budget_mid,medium,moderate,Oct-Mar,seed_unverified
+DST-0086,Port Blair,India,Island India,Andaman and Nicobar,island_gateway,islands,beach,history,mid_premium,medium,moderate,Nov-Apr,seed_unverified
+DST-0087,Havelock Island,India,Island India,Andaman and Nicobar,island_beach,beach,diving,resort,premium,medium,hard,Nov-Apr,seed_unverified
+DST-0088,Neil Island,India,Island India,Andaman and Nicobar,island_beach,beach,slow_travel,nature,mid_premium,medium,hard,Nov-Apr,seed_unverified
+DST-0089,Lakshadweep,India,Island India,Lakshadweep,island_region,islands,beach,marine,premium,medium,hard,Oct-Mar,seed_unverified
+DST-0090,Kathmandu,Nepal,Near India,Nepal,heritage_city,culture,mountains,gateway,budget_mid,medium,easy,Oct-Apr,seed_unverified
+DST-0091,Pokhara,Nepal,Near India,Nepal,lake_mountain_city,lakes,mountains,relaxation,mid,high,moderate,Oct-Apr,seed_unverified
+DST-0092,Chitwan,Nepal,Near India,Nepal,wildlife_region,wildlife,nature,safari,mid,medium,moderate,Oct-Mar,seed_unverified
+DST-0093,Thimphu,Bhutan,Near India,Bhutan,mountain_capital,culture,mountains,slow_travel,premium,medium,moderate,Mar-May;Sep-Nov,seed_unverified
+DST-0094,Paro,Bhutan,Near India,Bhutan,mountain_valley,monastery,mountains,culture,premium,medium,moderate,Mar-May;Sep-Nov,seed_unverified
+DST-0095,Colombo,Sri Lanka,Near India,Sri Lanka,coastal_capital,food,culture,coast,mid,high,easy,Dec-Apr;Jul-Sep,seed_unverified
+DST-0096,Kandy,Sri Lanka,Near India,Sri Lanka,hill_heritage_city,culture,hills,heritage,mid,medium,moderate,Dec-Apr,seed_unverified
+DST-0097,Galle,Sri Lanka,Near India,Sri Lanka,coastal_heritage_town,coast,heritage,slow_travel,mid_premium,high,moderate,Dec-Apr,seed_unverified
+DST-0098,Bentota,Sri Lanka,Near India,Sri Lanka,beach_resort,beach,resort,family,mid_premium,high,easy,Dec-Apr,seed_unverified
+DST-0099,Maldives Resort Islands,Maldives,Indian Ocean,Maldives,island_resort,beach,luxury,resort,premium,high,moderate,Nov-Apr,seed_unverified
+DST-0100,Maafushi,Maldives,Indian Ocean,Maldives,local_island,beach,budget,water,mid,medium,moderate,Nov-Apr,seed_unverified
+DST-0101,Mauritius,Mauritius,Indian Ocean,Mauritius,island_resort,beach,resort,family,premium,high,moderate,May-Dec,seed_unverified
+DST-0102,Seychelles,Seychelles,Indian Ocean,Seychelles,island_resort,beach,luxury,nature,premium,medium,hard,Apr-May;Oct-Nov,seed_unverified
+DST-0103,Dubai,United Arab Emirates,Middle East,UAE,global_city,shopping,luxury,family,mid_premium,high,easy,Nov-Mar,seed_unverified
+DST-0104,Abu Dhabi,United Arab Emirates,Middle East,UAE,global_city,culture,theme_parks,luxury,mid_premium,high,easy,Nov-Mar,seed_unverified
+DST-0105,Ras Al Khaimah,United Arab Emirates,Middle East,UAE,desert_beach_emirate,resort,desert,adventure,mid_premium,high,moderate,Nov-Mar,seed_unverified
+DST-0106,Doha,Qatar,Middle East,Qatar,global_city,culture,museums,stopover,mid_premium,high,easy,Nov-Mar,seed_unverified
+DST-0107,Muscat,Oman,Middle East,Oman,coastal_capital,coast,mountains,culture,mid_premium,high,moderate,Nov-Mar,seed_unverified
+DST-0108,Salalah,Oman,Middle East,Oman,coastal_region,monsoon,nature,coast,mid_premium,medium,moderate,Jun-Sep;Nov-Feb,seed_unverified
+DST-0109,Bangkok,Thailand,Southeast Asia,Thailand,global_city,food,shopping,nightlife,mid,medium,easy,Nov-Feb,seed_unverified
+DST-0110,Phuket,Thailand,Southeast Asia,Thailand,island_resort,beach,resort,family,mid_premium,high,easy,Nov-Apr,seed_unverified
+DST-0111,Krabi,Thailand,Southeast Asia,Thailand,beach_region,beach,limestone,relaxation,mid,high,moderate,Nov-Apr,seed_unverified
+DST-0112,Koh Samui,Thailand,Southeast Asia,Thailand,island_resort,beach,resort,wellness,premium,high,moderate,Dec-Aug,seed_unverified
+DST-0113,Chiang Mai,Thailand,Southeast Asia,Thailand,northern_city,culture,food,mountains,mid,medium,moderate,Nov-Feb,seed_unverified
+DST-0114,Singapore,Singapore,Southeast Asia,Singapore,global_city,family,urban,food,premium,high,easy,Feb-Apr;Jul-Sep,seed_unverified
+DST-0115,Sentosa,Singapore,Southeast Asia,Singapore,island_resort_district,theme_parks,family,resort,premium,high,easy,Feb-Apr;Jul-Sep,seed_unverified
+DST-0116,Kuala Lumpur,Malaysia,Southeast Asia,Malaysia,global_city,food,shopping,family,mid,high,easy,May-Jul;Dec-Feb,seed_unverified
+DST-0117,Langkawi,Malaysia,Southeast Asia,Malaysia,island_resort,beach,family,nature,mid,high,moderate,Nov-Mar,seed_unverified
+DST-0118,Penang,Malaysia,Southeast Asia,Malaysia,island_heritage_city,food,heritage,beach,mid,high,moderate,Dec-Mar,seed_unverified
+DST-0119,Bali,Indonesia,Southeast Asia,Indonesia,island_region,beach,culture,villa,mid_premium,high,moderate,Apr-Oct,seed_unverified
+DST-0120,Ubud,Indonesia,Southeast Asia,Indonesia,culture_hill_town,wellness,culture,nature,mid_premium,medium,moderate,Apr-Oct,seed_unverified
+DST-0121,Hanoi,Vietnam,Southeast Asia,Vietnam,heritage_capital,culture,food,heritage,mid,medium,moderate,Oct-Apr,seed_unverified
+DST-0122,Ho Chi Minh City,Vietnam,Southeast Asia,Vietnam,metro_city,food,history,urban,mid,medium,moderate,Dec-Mar,seed_unverified
+DST-0123,Da Nang,Vietnam,Southeast Asia,Vietnam,coastal_city,beach,family,gateway,mid,high,moderate,Feb-Aug,seed_unverified
+DST-0124,Hoi An,Vietnam,Southeast Asia,Vietnam,heritage_town,heritage,food,slow_travel,mid,high,moderate,Feb-Aug,seed_unverified
+DST-0125,Nha Trang,Vietnam,Southeast Asia,Vietnam,beach_city,beach,resort,coast,mid,medium,moderate,Feb-Aug,seed_unverified
+DST-0126,Siem Reap,Cambodia,Southeast Asia,Cambodia,heritage_gateway,temples,heritage,culture,mid,medium,moderate,Nov-Feb,seed_unverified
+DST-0127,Phnom Penh,Cambodia,Southeast Asia,Cambodia,capital_city,history,culture,food,mid,medium,moderate,Nov-Feb,seed_unverified
+DST-0128,Luang Prabang,Laos,Southeast Asia,Laos,heritage_town,slow_travel,culture,river,mid,medium,hard,Nov-Feb,seed_unverified
+DST-0129,Baku,Azerbaijan,West Asia,Azerbaijan,city,city,culture,architecture,mid,medium,moderate,Apr-Jun;Sep-Oct,seed_unverified
+DST-0130,Tbilisi,Georgia,Caucasus,Georgia,city,culture,food,mountains,mid,medium,moderate,May-Jun;Sep-Oct,seed_unverified
+DST-0131,Yerevan,Armenia,Caucasus,Armenia,city,culture,history,mountains,mid,medium,moderate,May-Jun;Sep-Oct,seed_unverified
+DST-0132,Almaty,Kazakhstan,Central Asia,Kazakhstan,mountain_city,mountains,city,nature,mid,medium,moderate,May-Sep;Dec-Feb,seed_unverified
+DST-0133,Tashkent,Uzbekistan,Central Asia,Uzbekistan,city,history,culture,silk_route,mid,medium,moderate,Apr-May;Sep-Oct,seed_unverified
+DST-0134,Samarkand,Uzbekistan,Central Asia,Uzbekistan,heritage_city,heritage,architecture,culture,mid,medium,moderate,Apr-May;Sep-Oct,seed_unverified
