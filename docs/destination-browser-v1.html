@@ -3,22 +3,142 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Destination Browser v1 — CodeMike</title>
+  <title>CodeMike Destination Browser v1</title>
   <style>
-    html, body { margin: 0; height: 100%; background: #f7f7f3; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    .fallback { padding: 24px; max-width: 760px; margin: 0 auto; color: #171717; }
-    .fallback a { color: #2f5d50; font-weight: 700; }
-    iframe { border: 0; width: 100%; height: 100vh; display: block; }
+    :root { --bg:#f7f7f3; --panel:#fff; --text:#171717; --muted:#666; --line:#deded7; --chip:#eeeee7; --accent:#2f5d50; --warn:#8a5a00; --shadow:0 10px 30px rgba(0,0,0,.08); }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--text); }
+    header { padding:28px 24px 18px; border-bottom:1px solid var(--line); background:linear-gradient(135deg,#fff 0%,#f2f1e9 100%); }
+    h1 { margin:0 0 8px; font-size:clamp(26px,4vw,42px); letter-spacing:-.04em; }
+    .subtitle { max-width:960px; color:var(--muted); line-height:1.55; font-size:15px; }
+    .warning { margin-top:14px; padding:12px 14px; background:#fff6df; border:1px solid #ead19c; color:var(--warn); border-radius:14px; max-width:980px; font-size:14px; line-height:1.45; }
+    main { padding:22px 24px 40px; }
+    .summary { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:14px; margin-bottom:18px; }
+    .stat { background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:16px; box-shadow:var(--shadow); }
+    .stat .value { font-size:30px; font-weight:800; letter-spacing:-.04em; }
+    .stat .label { color:var(--muted); font-size:13px; margin-top:2px; }
+    .controls { display:grid; grid-template-columns:1.4fr repeat(4,1fr); gap:12px; background:var(--panel); border:1px solid var(--line); padding:14px; border-radius:20px; box-shadow:var(--shadow); position:sticky; top:0; z-index:2; margin-bottom:18px; }
+    input, select { width:100%; min-height:44px; border:1px solid var(--line); border-radius:14px; padding:0 12px; font-size:14px; background:#fff; color:var(--text); }
+    .layout { display:grid; grid-template-columns:280px 1fr; gap:18px; align-items:start; }
+    aside { background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:16px; box-shadow:var(--shadow); position:sticky; top:88px; }
+    aside h2 { margin:0 0 10px; font-size:16px; }
+    .facet { margin-top:16px; }
+    .facet-title { font-size:13px; color:var(--muted); margin-bottom:8px; }
+    .facet-row { display:flex; justify-content:space-between; gap:8px; padding:7px 0; border-bottom:1px solid #f0f0eb; font-size:13px; }
+    .facet-row:last-child { border-bottom:0; }
+    .count { color:var(--muted); font-variant-numeric:tabular-nums; }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+    .card { background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:16px; box-shadow:var(--shadow); display:flex; flex-direction:column; min-height:240px; }
+    .card h3 { margin:0 0 4px; font-size:18px; letter-spacing:-.02em; }
+    .meta { color:var(--muted); font-size:13px; line-height:1.45; }
+    .chips { display:flex; flex-wrap:wrap; gap:6px; margin:12px 0; }
+    .chip { background:var(--chip); border-radius:999px; padding:5px 8px; font-size:12px; color:#333; }
+    .row { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:auto; }
+    .mini { background:#fafaf6; border:1px solid #ededdf; padding:8px; border-radius:12px; }
+    .mini-label { color:var(--muted); font-size:11px; }
+    .mini-value { font-weight:700; font-size:13px; margin-top:2px; }
+    .footer { margin-top:14px; font-size:12px; color:var(--muted); }
+    .empty,.loading,.error { background:var(--panel); border:1px dashed var(--line); border-radius:20px; padding:28px; color:var(--muted); }
+    .error { color:#8a1f11; background:#fff0ed; border-color:#f0b8ae; }
+    @media (max-width:1100px){ .summary{grid-template-columns:repeat(2,minmax(0,1fr));} .controls{grid-template-columns:1fr 1fr;} .layout{grid-template-columns:1fr;} aside{position:static;} .grid{grid-template-columns:repeat(2,minmax(0,1fr));} }
+    @media (max-width:700px){ main,header{padding-left:14px;padding-right:14px;} .summary,.controls,.grid{grid-template-columns:1fr;} }
   </style>
 </head>
 <body>
-  <iframe src="../artifacts/html/destination-browser-v1.html" title="CodeMike Destination Browser v1"></iframe>
-  <noscript>
-    <main class="fallback">
-      <h1>Destination Browser v1</h1>
-      <p>JavaScript is disabled. Open the source artifact directly:</p>
-      <p><a href="../artifacts/html/destination-browser-v1.html">artifacts/html/destination-browser-v1.html</a></p>
-    </main>
-  </noscript>
+  <header>
+    <h1>CodeMike Destination Browser v1</h1>
+    <div class="subtitle">GitHub Pages-compatible browser for the India + near-India destination seed database. Data is loaded from the repository CSV source of truth.</div>
+    <div class="warning"><strong>Seed-unverified:</strong> this is a prototype reference database. Do not use it for live visa, safety, weather, pricing, permit, flight, medical, or infant-travel decisions without current verification.</div>
+  </header>
+  <main>
+    <section class="summary" id="summary"></section>
+    <section class="controls" aria-label="Destination filters">
+      <input id="search" placeholder="Search destination, country, state, vibe…" />
+      <select id="region"><option value="">All regions</option></select>
+      <select id="budget"><option value="">All budgets</option></select>
+      <select id="family"><option value="">All family suitability</option></select>
+      <select id="access"><option value="">All access levels</option></select>
+    </section>
+    <section class="layout">
+      <aside>
+        <h2>Filtered coverage</h2>
+        <div class="facet"><div class="facet-title">Macro regions</div><div id="regionFacet"></div></div>
+        <div class="facet"><div class="facet-title">Countries</div><div id="countryFacet"></div></div>
+        <div class="facet"><div class="facet-title">Location types</div><div id="typeFacet"></div></div>
+      </aside>
+      <section><div id="cards" class="grid"><div class="loading">Loading destination database…</div></div></section>
+    </section>
+  </main>
+  <script>
+    const CSV_URL = 'https://raw.githubusercontent.com/Rishabh1804/MSc/main/datasets/reference/india_region_destinations_seed.csv';
+    let destinations = [];
+    const els = {
+      summary: document.getElementById('summary'), search: document.getElementById('search'), region: document.getElementById('region'), budget: document.getElementById('budget'), family: document.getElementById('family'), access: document.getElementById('access'), cards: document.getElementById('cards'), regionFacet: document.getElementById('regionFacet'), countryFacet: document.getElementById('countryFacet'), typeFacet: document.getElementById('typeFacet')
+    };
+    const unique = arr => [...new Set(arr.filter(Boolean))].sort();
+    const title = value => String(value || '').replaceAll('_',' ').replace(/\b\w/g,c=>c.toUpperCase());
+    const countBy = (rows,key) => rows.reduce((acc,row)=>{ const v = typeof key === 'function' ? key(row) : row[key]; acc[v]=(acc[v]||0)+1; return acc; },{});
+
+    function parseCsv(text) {
+      const lines = text.trim().split(/\r?\n/);
+      const headers = lines.shift().split(',');
+      return lines.map(line => {
+        const values = line.split(',');
+        return Object.fromEntries(headers.map((h, i) => [h, values[i] || '']));
+      });
+    }
+    function normalise(row) {
+      return {
+        id: row.destination_id, name: row.name, country: row.country, region: row.macro_region, area: row.state_or_area, type: row.location_type,
+        vibes: [row.vibe_1, row.vibe_2, row.vibe_3].filter(Boolean), budget: row.budget_band, family: row.family_suitability, access: row.access_complexity, season: row.best_season_hint, status: row.verification_status
+      };
+    }
+    function fillSelect(select, values) {
+      select.querySelectorAll('option:not(:first-child)').forEach(option => option.remove());
+      values.forEach(value => { const option = document.createElement('option'); option.value = value; option.textContent = title(value); select.appendChild(option); });
+    }
+    function filteredRows() {
+      const q = els.search.value.trim().toLowerCase();
+      return destinations.filter(d => {
+        const haystack = [d.name,d.country,d.region,d.area,d.type,...d.vibes].join(' ').toLowerCase();
+        return (!q || haystack.includes(q)) && (!els.region.value || d.region === els.region.value) && (!els.budget.value || d.budget === els.budget.value) && (!els.family.value || d.family === els.family.value) && (!els.access.value || d.access === els.access.value);
+      });
+    }
+    function renderSummary(rows) {
+      const india = rows.filter(d => d.country === 'India').length;
+      const intl = rows.length - india;
+      const highFamily = rows.filter(d => d.family === 'high').length;
+      const easy = rows.filter(d => d.access === 'easy').length;
+      const stats = [['Showing',rows.length],['India',india],['International / Near India',intl],['High Family Suitability',highFamily],['Easy Access',easy]];
+      els.summary.innerHTML = stats.map(([label,value]) => `<div class="stat"><div class="value">${value}</div><div class="label">${label}</div></div>`).join('');
+    }
+    function renderFacet(target, rows, key, max = 10) {
+      const entries = Object.entries(countBy(rows,key)).sort((a,b)=>b[1]-a[1]).slice(0,max);
+      target.innerHTML = entries.map(([label,count]) => `<div class="facet-row"><span>${title(label)}</span><span class="count">${count}</span></div>`).join('') || '<div class="meta">No matches</div>';
+    }
+    function renderCards(rows) {
+      if (!rows.length) { els.cards.className = ''; els.cards.innerHTML = '<div class="empty">No destinations match the current filters.</div>'; return; }
+      els.cards.className = 'grid';
+      els.cards.innerHTML = rows.map(d => `<article class="card"><h3>${d.name}</h3><div class="meta">${d.area} · ${d.country}<br>${title(d.region)} · ${title(d.type)}</div><div class="chips">${d.vibes.map(v=>`<span class="chip">${title(v)}</span>`).join('')}</div><div class="row"><div class="mini"><div class="mini-label">Budget</div><div class="mini-value">${title(d.budget)}</div></div><div class="mini"><div class="mini-label">Family</div><div class="mini-value">${title(d.family)}</div></div><div class="mini"><div class="mini-label">Access</div><div class="mini-value">${title(d.access)}</div></div><div class="mini"><div class="mini-label">Season hint</div><div class="mini-value">${d.season}</div></div></div><div class="footer">${d.id} · ${d.status}</div></article>`).join('');
+    }
+    function render() { const rows = filteredRows(); renderSummary(rows); renderFacet(els.regionFacet, rows, 'region'); renderFacet(els.countryFacet, rows, 'country'); renderFacet(els.typeFacet, rows, 'type'); renderCards(rows); }
+    async function init() {
+      try {
+        const response = await fetch(CSV_URL);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        destinations = parseCsv(await response.text()).map(normalise);
+        fillSelect(els.region, unique(destinations.map(d=>d.region)));
+        fillSelect(els.budget, unique(destinations.map(d=>d.budget)));
+        fillSelect(els.family, unique(destinations.map(d=>d.family)));
+        fillSelect(els.access, unique(destinations.map(d=>d.access)));
+        [els.search, els.region, els.budget, els.family, els.access].forEach(el => el.addEventListener('input', render));
+        render();
+      } catch (error) {
+        els.cards.className = '';
+        els.cards.innerHTML = `<div class="error"><strong>Could not load CSV.</strong><br>${error.message}<br><br>Open the source CSV: <a href="${CSV_URL}">${CSV_URL}</a></div>`;
+      }
+    }
+    init();
+  </script>
 </body>
 </html>
