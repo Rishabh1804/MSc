@@ -31,6 +31,28 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-12 — Destination backlog normalisation utility created
+
+Type: dataset / QA / normalisation
+
+Summary:
+
+Created the destination backlog normalisation utility for converting the raw 225-row India expansion backlog into a cleaner intermediate file before master promotion. The utility separates true vibes from trip-style tags, context tags, caution tags, and destination-scale hints.
+
+Files changed:
+
+- `src/codemike/data/destination_backlog_normalization.py`
+- `reports/evidence/destination-candidate-backlog-normalisation-v1.md`
+
+Evidence produced:
+
+- normalisation rules for raw candidate values such as `fort`, `temple`, `weekend`, `gateway`, `remote`, and `border`
+- report documenting the expected output and next execution artifact
+
+Next action:
+
+Run the normalisation script and commit `datasets/reference/destination_expansion_backlog_india_v1_normalized.csv`.
+
 ## 2026-05-12 — Destination candidate backlog taxonomy QA created
 
 Type: dataset / QA / taxonomy
