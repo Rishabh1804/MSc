@@ -31,6 +31,32 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-05 — Recommendation scoring source module extracted
+
+Type: productisation / capability
+
+Summary:
+
+Converted the trip-options scoring logic from EXP-001 and EXP-002 into a reusable Python module under `src/codemike/recommendation/`. This begins the productisation path from experiment to reusable source code.
+
+Files changed:
+
+- `src/codemike/__init__.py`
+- `src/codemike/recommendation/__init__.py`
+- `src/codemike/recommendation/trip_scoring.py`
+- `src/codemike/recommendation/README.md`
+- `EVIDENCE.md`
+
+Evidence produced:
+
+- reusable source module for scoring and sensitivity ranking
+- module documentation
+- evidence entry for module extraction
+
+Next action:
+
+Add unit tests and a small CLI/example runner before Planner transfer.
+
 ## 2026-05-05 — Recommendation sensitivity analysis v1.1 completed
 
 Type: experiment / evidence
