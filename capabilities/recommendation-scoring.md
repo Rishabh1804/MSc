@@ -41,26 +41,36 @@ Core steps:
 
 ## Current maturity
 
-Level 1 — Draft method.
+Level 2 — Example reproduced / applied on synthetic data.
 
-The scoring pattern exists, but no working scoring implementation has been built yet.
+CodeMike created a first explainable recommendation-scoring experiment using scoreable rows from the synthetic Planner-style trip options dataset.
 
 ## Evidence
 
-No evidence yet.
+Primary evidence:
 
-First evidence target:
+- `reports/experiment-reports/trip-options-recommendation-scoring-v1.md`
+- `datasets/processed/trip_options_scored_v1.csv`
+- `EXPERIMENTS.md` entry: `EXP-001`
+- `EVIDENCE.md` entry: `2026-05-05 — Trip options recommendation scoring v1`
 
-- Build a small scoring table for Planner-style trip options or vendor/product comparison.
-- Include sensitivity notes.
-- Record result in `EXPERIMENTS.md`.
+What was proven:
+
+- A concrete scoring formula was defined.
+- Criteria and weights were documented.
+- Penalty rules were applied.
+- Scoreable rows were ranked.
+- Top results were interpreted with limitations.
+- The method produced an output suitable for future Planner-style OptionCards or SignalRows.
 
 ## Limitations
 
-- No scoring engine yet.
-- No standard normalisation helpers yet.
-- No sensitivity-analysis notebook yet.
-- Risk of arbitrary weights if user priorities are vague.
+- Dataset is synthetic.
+- Weights are provisional.
+- Penalty thresholds are hand-authored.
+- No sensitivity analysis has been performed yet.
+- No reusable scoring engine module exists yet.
+- No transfer to Planner has occurred yet.
 
 ## Reusable in
 
@@ -78,4 +88,4 @@ No transfers yet.
 
 ## Next action
 
-Create a simple synthetic option table and score it using the pattern.
+Run sensitivity analysis as v1.1 to test whether the top recommendations are robust when weights change.
