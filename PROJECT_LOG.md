@@ -31,6 +31,30 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-12 — Destination tag dictionary v2 and HTML browser created
+
+Type: taxonomy / artifact / interface
+
+Summary:
+
+Expanded the destination tag dictionary into v2 and created a GitHub Pages HTML browser for taxonomy review. The taxonomy now covers destination scale, destination types, vibes, traveller fit, trip styles, caution tags, source confidence, source types, and workflow statuses.
+
+Files changed:
+
+- `datasets/reference/destination_tag_dictionary.md`
+- `docs/destination-tag-dictionary.html`
+- `docs/index.html`
+
+Evidence produced:
+
+- expanded controlled vocabulary for destination database v2
+- interactive taxonomy browser
+- Pages landing page link for tag dictionary review
+
+Next action:
+
+Use the tag dictionary to validate the 225-row India candidate backlog and identify non-standard tags before promotion.
+
 ## 2026-05-12 — Destination database v2 massive expansion setup
 
 Type: dataset / reference / strategy
