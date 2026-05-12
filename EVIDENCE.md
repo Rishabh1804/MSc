@@ -34,6 +34,57 @@ Limitations:
 Next action:
 ```
 
+## 2026-05-05 — Trip options recommendation scoring v1
+
+Capability:
+
+- Recommendation Scoring
+- Model Evaluation, partial
+- Dashboard Insight Design, partial
+
+Artifact:
+
+- `reports/experiment-reports/trip-options-recommendation-scoring-v1.md`
+- `datasets/processed/trip_options_scored_v1.csv`
+- `EXPERIMENTS.md` entry: `EXP-001`
+
+Type:
+
+Recommendation scoring experiment
+
+Status:
+
+Complete first pass.
+
+Summary:
+
+Created the first explainable recommendation-scoring experiment for synthetic Planner-style trip options. The experiment ranked 21 scoreable options using a transparent weighted formula and documented penalty rules.
+
+What it proves:
+
+- CodeMike can convert cleaned data into a first ranking system.
+- CodeMike can define criteria, weights, constraints, penalties, and a final score.
+- CodeMike can produce a ranked dataset and experiment report.
+- CodeMike can explain why top options ranked well and where limitations remain.
+
+Key findings:
+
+- Top five ranked options were `TRIP-014` Goa, `TRIP-008` Phuket, `TRIP-012` Kuala Lumpur, `TRIP-002` Singapore, and `TRIP-019` Dubai.
+- The v1 formula favours practical family travel over pure luxury.
+- Premium comfort leaders can fall lower when cost and friction penalties are applied.
+
+Limitations:
+
+- Dataset is synthetic.
+- Weights are provisional.
+- Penalty thresholds are hand-authored.
+- No sensitivity analysis has been performed yet.
+- Real travel decisions require live validation.
+
+Next action:
+
+Update `capabilities/recommendation-scoring.md` to Level 2 and run sensitivity analysis as v1.1.
+
 ## 2026-05-05 — Synthetic trip options computed EDA
 
 Capability:
