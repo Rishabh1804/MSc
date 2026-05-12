@@ -34,6 +34,51 @@ Limitations:
 Next action:
 ```
 
+## 2026-05-05 — Recommendation scoring source module extraction
+
+Capability:
+
+- Recommendation Scoring
+- Productisation, partial
+- Project Transfer, partial
+
+Artifact:
+
+- `src/codemike/__init__.py`
+- `src/codemike/recommendation/__init__.py`
+- `src/codemike/recommendation/trip_scoring.py`
+- `src/codemike/recommendation/README.md`
+
+Type:
+
+Reusable source module extraction
+
+Status:
+
+Prototype complete.
+
+Summary:
+
+Extracted the scoring logic from EXP-001 and EXP-002 into a reusable Python source module. The module includes default v1 weights, sensitivity scenarios, cost and visa scoring helpers, penalty calculation, row scoring, ranking, and multi-scenario sensitivity ranking.
+
+What it proves:
+
+- CodeMike can move useful experiment logic from report/data artifacts into reusable code.
+- The scoring method is now closer to project transfer readiness.
+- The productisation loop has started: experiment → module.
+
+Limitations:
+
+- No unit tests yet.
+- No CLI runner yet.
+- No schema validation yet.
+- Penalties and scenarios are still hard-coded.
+- The module remains tied to the synthetic Planner trip-options schema.
+
+Next action:
+
+Add unit tests and a small CLI/example runner before Planner transfer.
+
 ## 2026-05-05 — Trip options sensitivity analysis v1.1
 
 Capability:
