@@ -31,6 +31,30 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-05 — HTML artifact layer and destination browser created
+
+Type: artifact / interface
+
+Summary:
+
+Added CodeMike's HTML artifact layer and created the first standalone HTML review artifact: a filterable destination browser for the India and near-India seed database.
+
+Files changed:
+
+- `HTML_ARTIFACTS.md`
+- `artifacts/html/README.md`
+- `artifacts/html/destination-browser-v1.html`
+
+Evidence produced:
+
+- HTML artifact operating guide
+- standalone interactive browser for destination seed review
+- visual inspection layer for region, country, type, budget, family suitability, and access complexity
+
+Next action:
+
+Create an enriched destination dataset and update the browser to use enrichment fields such as origin fit, infant suitability, travel fatigue, and planner use status.
+
 ## 2026-05-05 — Destination reference database seed created
 
 Type: dataset / reference
