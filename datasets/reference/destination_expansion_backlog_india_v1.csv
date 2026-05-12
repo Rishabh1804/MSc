@@ -1,0 +1,226 @@
+candidate_id,name,country,macro_region,state_or_area,district_or_area,proposed_location_type,proposed_vibe_1,proposed_vibe_2,proposed_vibe_3,priority_tier,verification_status,notes
+CAND-0001,Neemrana,India,North India,Rajasthan,Alwar,heritage_town,heritage,fort,weekend,tier_1,candidate,Delhi/NCR weekend heritage candidate
+CAND-0002,Bikaner,India,North India,Rajasthan,Bikaner,heritage_city,heritage,desert,food,tier_1,candidate,Rajasthan heritage expansion
+CAND-0003,Mount Abu,India,North India,Rajasthan,Sirohi,hill_station,hills,spiritual,family,tier_1,candidate,Rajasthan hill station candidate
+CAND-0004,Chittorgarh,India,North India,Rajasthan,Chittorgarh,fort_town,heritage,fort,history,tier_1,candidate,Major fort/heritage destination
+CAND-0005,Kumbhalgarh,India,North India,Rajasthan,Rajsamand,fort_town,heritage,fort,nature,tier_1,candidate,Heritage plus resort candidate
+CAND-0006,Bundi,India,North India,Rajasthan,Bundi,heritage_town,heritage,slow_travel,architecture,tier_2,candidate,Smaller Rajasthan heritage town
+CAND-0007,Sariska,India,North India,Rajasthan,Alwar,wildlife_reserve,wildlife,safari,nature,tier_1,candidate,Wildlife candidate near NCR
+CAND-0008,Alwar,India,North India,Rajasthan,Alwar,heritage_city,heritage,fort,weekend,tier_2,candidate,NCR-accessible heritage candidate
+CAND-0009,Ajmer,India,North India,Rajasthan,Ajmer,pilgrim_city,spiritual,culture,heritage,tier_1,candidate,Pilgrimage and Pushkar circuit candidate
+CAND-0010,Nawalgarh,India,North India,Rajasthan,Jhunjhunu,heritage_town,heritage,architecture,slow_travel,tier_2,candidate,Shekhawati fresco town candidate
+CAND-0011,Mandawa,India,North India,Rajasthan,Jhunjhunu,heritage_town,heritage,architecture,slow_travel,tier_2,candidate,Shekhawati candidate
+CAND-0012,Deeg,India,North India,Rajasthan,Bharatpur,heritage_town,palace,heritage,gardens,tier_2,candidate,Bharatpur/Mathura circuit candidate
+CAND-0013,Bharatpur,India,North India,Rajasthan,Bharatpur,birding_site,wildlife,birding,nature,tier_1,candidate,Bird sanctuary candidate
+CAND-0014,Shekhawati Region,India,North India,Rajasthan,Shekhawati,heritage_region,heritage,architecture,slow_travel,tier_2,candidate,Regional heritage circuit candidate
+CAND-0015,Sawai Madhopur,India,North India,Rajasthan,Sawai Madhopur,gateway_city,wildlife,gateway,family,tier_1,candidate,Ranthambore gateway candidate
+CAND-0016,Mathura,India,North India,Uttar Pradesh,Mathura,pilgrim_city,spiritual,culture,pilgrimage,tier_1,candidate,Major pilgrimage circuit candidate
+CAND-0017,Vrindavan,India,North India,Uttar Pradesh,Mathura,pilgrim_town,spiritual,pilgrimage,culture,tier_1,candidate,Major pilgrimage candidate
+CAND-0018,Ayodhya,India,North India,Uttar Pradesh,Ayodhya,pilgrim_city,spiritual,pilgrimage,culture,tier_1,candidate,Major pilgrimage candidate requiring current crowd/logistics check
+CAND-0019,Prayagraj,India,North India,Uttar Pradesh,Prayagraj,spiritual_city,spiritual,history,culture,tier_1,candidate,Spiritual/heritage city candidate
+CAND-0020,Chitrakoot,India,North India,Uttar Pradesh/MP,Chitrakoot,pilgrim_region,spiritual,nature,slow_travel,tier_2,candidate,UP/MP pilgrimage nature circuit candidate
+CAND-0021,Sarnath,India,North India,Uttar Pradesh,Varanasi,heritage_site,buddhist,heritage,spiritual,tier_1,candidate,Varanasi circuit candidate
+CAND-0022,Kushinagar,India,North India,Uttar Pradesh,Kushinagar,heritage_site,buddhist,spiritual,history,tier_2,candidate,Buddhist circuit candidate
+CAND-0023,Dudhwa,India,North India,Uttar Pradesh,Lakhimpur Kheri,national_park,wildlife,nature,safari,tier_2,candidate,Wildlife candidate
+CAND-0024,Fatehpur Sikri,India,North India,Uttar Pradesh,Agra,heritage_site,heritage,architecture,history,tier_1,candidate,Agra circuit candidate
+CAND-0025,Noida,India,North India,Uttar Pradesh,Gautam Buddha Nagar,city,urban,business,food,tier_3,candidate,NCR urban candidate
+CAND-0026,Kanpur,India,North India,Uttar Pradesh,Kanpur,city,urban,food,history,tier_3,candidate,Urban expansion candidate
+CAND-0027,Moradabad,India,North India,Uttar Pradesh,Moradabad,city,craft,shopping,culture,tier_3,candidate,Craft/industrial city candidate
+CAND-0028,Aligarh,India,North India,Uttar Pradesh,Aligarh,city,history,education,urban,tier_3,candidate,Urban candidate
+CAND-0029,Bareilly,India,North India,Uttar Pradesh,Bareilly,city,food,culture,urban,tier_3,candidate,Urban candidate
+CAND-0030,Meerut,India,North India,Uttar Pradesh,Meerut,city,history,urban,food,tier_3,candidate,NCR expansion candidate
+CAND-0031,Dehradun,India,North India,Uttarakhand,Dehradun,city_gateway,gateway,hills,family,tier_1,candidate,Uttarakhand gateway candidate
+CAND-0032,Auli,India,North India,Uttarakhand,Chamoli,mountain_resort,snow,ski,mountains,tier_1,candidate,Snow/ski candidate
+CAND-0033,Chopta,India,North India,Uttarakhand,Rudraprayag,mountain_region,mountains,trekking,nature,tier_2,candidate,Trek/highland candidate
+CAND-0034,Lansdowne,India,North India,Uttarakhand,Pauri Garhwal,hill_station,hills,slow_travel,family,tier_1,candidate,Family hill station candidate
+CAND-0035,Ranikhet,India,North India,Uttarakhand,Almora,hill_station,hills,family,slow_travel,tier_1,candidate,Kumaon hill station candidate
+CAND-0036,Kausani,India,North India,Uttarakhand,Bageshwar,hill_town,hills,mountains,slow_travel,tier_2,candidate,Mountain view candidate
+CAND-0037,Mukteshwar,India,North India,Uttarakhand,Nainital,hill_town,hills,slow_travel,nature,tier_2,candidate,Kumaon candidate
+CAND-0038,Binsar,India,North India,Uttarakhand,Almora,forest_region,forest,hills,nature,tier_2,candidate,Nature/forest candidate
+CAND-0039,Almora,India,North India,Uttarakhand,Almora,hill_town,hills,culture,slow_travel,tier_2,candidate,Kumaon cultural hill candidate
+CAND-0040,Valley of Flowers,India,North India,Uttarakhand,Chamoli,national_park,trekking,flowers,mountains,tier_2,candidate,Seasonal trek candidate
+CAND-0041,Kedarnath,India,North India,Uttarakhand,Rudraprayag,pilgrim_region,spiritual,mountains,pilgrimage,tier_1,candidate,High-complexity pilgrimage candidate
+CAND-0042,Badrinath,India,North India,Uttarakhand,Chamoli,pilgrim_town,spiritual,mountains,pilgrimage,tier_1,candidate,High-complexity pilgrimage candidate
+CAND-0043,Yamunotri,India,North India,Uttarakhand,Uttarkashi,pilgrim_region,spiritual,mountains,pilgrimage,tier_2,candidate,Char Dham candidate
+CAND-0044,Gangotri,India,North India,Uttarakhand,Uttarkashi,pilgrim_region,spiritual,mountains,pilgrimage,tier_2,candidate,Char Dham candidate
+CAND-0045,Tehri,India,North India,Uttarakhand,Tehri Garhwal,lake_region,lakes,hills,adventure,tier_2,candidate,Lake/adventure candidate
+CAND-0046,Kasol,India,North India,Himachal Pradesh,Kullu,hill_town,hills,slow_travel,trekking,tier_2,candidate,Youth/slow travel candidate
+CAND-0047,Tirthan Valley,India,North India,Himachal Pradesh,Kullu,valley,nature,hills,slow_travel,tier_1,candidate,Family/nature candidate
+CAND-0048,Spiti Valley,India,North India,Himachal Pradesh,Lahaul and Spiti,mountain_region,mountains,adventure,culture,tier_1,candidate,High-altitude road trip candidate
+CAND-0049,Kinnaur,India,North India,Himachal Pradesh,Kinnaur,mountain_region,mountains,culture,nature,tier_2,candidate,Mountain circuit candidate
+CAND-0050,Kasauli,India,North India,Himachal Pradesh,Solan,hill_station,hills,weekend,family,tier_1,candidate,NCR/Punjab weekend hill candidate
+CAND-0051,Chail,India,North India,Himachal Pradesh,Solan,hill_station,hills,slow_travel,family,tier_2,candidate,Shimla alternative candidate
+CAND-0052,Bir Billing,India,North India,Himachal Pradesh,Kangra,hill_town,adventure,hills,wellness,tier_1,candidate,Paragliding/wellness candidate
+CAND-0053,Palampur,India,North India,Himachal Pradesh,Kangra,hill_town,tea,hills,slow_travel,tier_2,candidate,Kangra valley candidate
+CAND-0054,Kangra,India,North India,Himachal Pradesh,Kangra,heritage_region,heritage,hills,culture,tier_2,candidate,Kangra heritage/hill candidate
+CAND-0055,Mandi,India,North India,Himachal Pradesh,Mandi,hill_town,hills,culture,gateway,tier_3,candidate,Transit/gateway candidate
+CAND-0056,Narkanda,India,North India,Himachal Pradesh,Shimla,hill_town,hills,snow,slow_travel,tier_2,candidate,Apple/snow hill candidate
+CAND-0057,McLeod Ganj,India,North India,Himachal Pradesh,Kangra,hill_town,culture,wellness,hills,tier_1,candidate,Dharamshala circuit candidate
+CAND-0058,Patnitop,India,North India,Jammu and Kashmir,Udhampur,hill_station,hills,family,slow_travel,tier_2,candidate,Jammu region hill candidate
+CAND-0059,Sonamarg,India,North India,Jammu and Kashmir,Ganderbal,mountain_town,mountains,snow,nature,tier_1,candidate,Kashmir mountain candidate
+CAND-0060,Pahalgam,India,North India,Jammu and Kashmir,Anantnag,mountain_town,mountains,nature,family,tier_1,candidate,Kashmir family/nature candidate
+CAND-0061,Yusmarg,India,North India,Jammu and Kashmir,Budgam,mountain_region,mountains,slow_travel,nature,tier_2,candidate,Kashmir alternative candidate
+CAND-0062,Doodhpathri,India,North India,Jammu and Kashmir,Budgam,mountain_region,mountains,nature,slow_travel,tier_2,candidate,Kashmir meadow candidate
+CAND-0063,Kargil,India,North India,Ladakh,Kargil,high_altitude,history,mountains,culture,tier_2,candidate,Ladakh route/history candidate
+CAND-0064,Nubra Valley,India,North India,Ladakh,Leh,valley,mountains,desert,adventure,tier_1,candidate,High-altitude permit candidate
+CAND-0065,Pangong Tso,India,North India,Ladakh,Leh,lake_region,lakes,mountains,landscape,tier_1,candidate,High-altitude permit candidate
+CAND-0066,Patiala,India,North India,Punjab,Patiala,heritage_city,heritage,food,culture,tier_2,candidate,Punjab heritage candidate
+CAND-0067,Ludhiana,India,North India,Punjab,Ludhiana,city,urban,food,business,tier_3,candidate,Urban/business candidate
+CAND-0068,Anandpur Sahib,India,North India,Punjab,Rupnagar,pilgrim_town,spiritual,history,culture,tier_2,candidate,Sikh pilgrimage candidate
+CAND-0069,Kurukshetra,India,North India,Haryana,Kurukshetra,spiritual_city,spiritual,history,culture,tier_2,candidate,Heritage/spiritual candidate
+CAND-0070,Sultanpur Bird Sanctuary,India,North India,Haryana,Gurugram,birding_site,wildlife,birding,nature,tier_2,candidate,NCR birding candidate
+CAND-0071,Morni Hills,India,North India,Haryana,Panchkula,hill_region,hills,weekend,nature,tier_3,candidate,Regional weekend candidate
+CAND-0072,Gurugram,India,North India,Haryana,Gurugram,city,urban,food,business,tier_3,candidate,NCR urban candidate
+CAND-0073,Panchkula,India,North India,Haryana,Panchkula,city,hills,gateway,urban,tier_3,candidate,Chandigarh region candidate
+CAND-0074,Indore,India,Central India,Madhya Pradesh,Indore,city,food,urban,gateway,tier_1,candidate,MP urban/food candidate
+CAND-0075,Ujjain,India,Central India,Madhya Pradesh,Ujjain,spiritual_city,spiritual,pilgrimage,culture,tier_1,candidate,Major pilgrimage candidate
+CAND-0076,Maheshwar,India,Central India,Madhya Pradesh,Khargone,heritage_town,heritage,river,slow_travel,tier_1,candidate,Narmada heritage candidate
+CAND-0077,Mandu,India,Central India,Madhya Pradesh,Dhar,heritage_site,heritage,architecture,history,tier_1,candidate,MP heritage candidate
+CAND-0078,Omkareshwar,India,Central India,Madhya Pradesh,Khandwa,pilgrim_town,spiritual,river,pilgrimage,tier_1,candidate,Spiritual/Narmada candidate
+CAND-0079,Satpura,India,Central India,Madhya Pradesh,Narmadapuram,tiger_reserve,wildlife,safari,nature,tier_1,candidate,Wildlife candidate
+CAND-0080,Pench,India,Central India,Madhya Pradesh,Seoni,tiger_reserve,wildlife,safari,nature,tier_1,candidate,Wildlife candidate
+CAND-0081,Jabalpur,India,Central India,Madhya Pradesh,Jabalpur,city_gateway,river,marble,heritage,tier_2,candidate,Bhedaghat/gateway candidate
+CAND-0082,Bhedaghat,India,Central India,Madhya Pradesh,Jabalpur,river_town,river,nature,marble,tier_2,candidate,Narmada/marble rocks candidate
+CAND-0083,Gwalior,India,Central India,Madhya Pradesh,Gwalior,heritage_city,fort,heritage,music,tier_1,candidate,Heritage city candidate
+CAND-0084,Shivpuri,India,Central India,Madhya Pradesh,Shivpuri,heritage_region,nature,heritage,slow_travel,tier_2,candidate,Heritage/nature candidate
+CAND-0085,Raipur,India,Central India,Chhattisgarh,Raipur,city,urban,gateway,food,tier_3,candidate,Chhattisgarh gateway candidate
+CAND-0086,Jagdalpur,India,Central India,Chhattisgarh,Bastar,city_gateway,waterfalls,culture,nature,tier_2,candidate,Bastar gateway candidate
+CAND-0087,Chitrakote Falls,India,Central India,Chhattisgarh,Bastar,waterfall_site,waterfalls,nature,river,tier_1,candidate,Major waterfall candidate
+CAND-0088,Kanger Valley,India,Central India,Chhattisgarh,Bastar,national_park,forest,caves,nature,tier_2,candidate,Forest/cave candidate
+CAND-0089,Bilaspur,India,Central India,Chhattisgarh,Bilaspur,city,urban,gateway,culture,tier_3,candidate,Regional gateway candidate
+CAND-0090,Mainpat,India,Central India,Chhattisgarh,Surguja,hill_region,hills,slow_travel,nature,tier_2,candidate,Chhattisgarh hill candidate
+CAND-0091,Alibaug,India,West India,Maharashtra,Raigad,beach_town,beach,weekend,family,tier_1,candidate,Mumbai weekend coast candidate
+CAND-0092,Matheran,India,West India,Maharashtra,Raigad,hill_station,hills,weekend,family,tier_1,candidate,Mumbai/Pune hill candidate
+CAND-0093,Igatpuri,India,West India,Maharashtra,Nashik,hill_region,hills,weekend,nature,tier_2,candidate,Mumbai/Nashik hill candidate
+CAND-0094,Bhandardara,India,West India,Maharashtra,Ahmednagar,lake_region,lakes,hills,nature,tier_2,candidate,Lake/nature candidate
+CAND-0095,Tadoba,India,West India,Maharashtra,Chandrapur,tiger_reserve,wildlife,safari,nature,tier_1,candidate,Wildlife candidate
+CAND-0096,Tarkarli,India,West India,Maharashtra,Sindhudurg,beach_town,beach,water,slow_travel,tier_1,candidate,Konkan beach candidate
+CAND-0097,Ganpatipule,India,West India,Maharashtra,Ratnagiri,beach_town,beach,spiritual,family,tier_1,candidate,Konkan beach/pilgrim candidate
+CAND-0098,Ratnagiri,India,West India,Maharashtra,Ratnagiri,coastal_town,coast,food,heritage,tier_2,candidate,Konkan coast candidate
+CAND-0099,Kolhapur,India,West India,Maharashtra,Kolhapur,heritage_city,food,spiritual,heritage,tier_1,candidate,Food/heritage candidate
+CAND-0100,Shirdi,India,West India,Maharashtra,Ahmednagar,pilgrim_town,spiritual,pilgrimage,family,tier_1,candidate,Pilgrimage candidate
+CAND-0101,Ajanta Caves,India,West India,Maharashtra,Aurangabad,cave_heritage_site,heritage,caves,buddhist,tier_1,candidate,UNESCO-style heritage candidate
+CAND-0102,Ellora Caves,India,West India,Maharashtra,Aurangabad,cave_heritage_site,heritage,caves,architecture,tier_1,candidate,UNESCO-style heritage candidate
+CAND-0103,Statue of Unity,India,West India,Gujarat,Narmada,heritage_site,architecture,family,weekend,tier_1,candidate,Large family attraction candidate
+CAND-0104,Saputara,India,West India,Gujarat,Dang,hill_station,hills,family,nature,tier_1,candidate,Gujarat hill candidate
+CAND-0105,Somnath,India,West India,Gujarat,Gir Somnath,pilgrim_coastal_town,spiritual,coast,pilgrimage,tier_1,candidate,Pilgrimage/coast candidate
+CAND-0106,Porbandar,India,West India,Gujarat,Porbandar,coastal_town,history,coast,culture,tier_2,candidate,Gujarat coast/history candidate
+CAND-0107,Vadodara,India,West India,Gujarat,Vadodara,heritage_city,palace,culture,food,tier_1,candidate,Urban heritage candidate
+CAND-0108,Champaner-Pavagadh,India,West India,Gujarat,Panchmahal,heritage_site,heritage,architecture,spiritual,tier_1,candidate,Heritage/spiritual candidate
+CAND-0109,Surat,India,West India,Gujarat,Surat,city,food,shopping,urban,tier_2,candidate,Urban/food candidate
+CAND-0110,Junagadh,India,West India,Gujarat,Junagadh,heritage_city,history,spiritual,gateway,tier_2,candidate,Gir/Somnath circuit candidate
+CAND-0111,Panaji,India,West India,Goa,North Goa,city,coast,food,culture,tier_1,candidate,Goa city/culture candidate
+CAND-0112,North Goa Beaches,India,West India,Goa,North Goa,beach_region,beach,nightlife,resort,tier_1,candidate,Goa beach region candidate
+CAND-0113,South Goa Beaches,India,West India,Goa,South Goa,beach_region,beach,resort,family,tier_1,candidate,Family resort beach candidate
+CAND-0114,Old Goa,India,West India,Goa,North Goa,heritage_site,heritage,spiritual,architecture,tier_1,candidate,Goa heritage candidate
+CAND-0115,Hampi-Badami-Aihole-Pattadakal Circuit,India,South India,Karnataka,North Karnataka,heritage_region,heritage,architecture,history,tier_1,candidate,Major heritage circuit candidate
+CAND-0116,Badami,India,South India,Karnataka,Bagalkot,cave_heritage_site,heritage,caves,architecture,tier_1,candidate,Heritage cave candidate
+CAND-0117,Pattadakal,India,South India,Karnataka,Bagalkot,heritage_site,heritage,architecture,temples,tier_1,candidate,Heritage candidate
+CAND-0118,Aihole,India,South India,Karnataka,Bagalkot,heritage_site,heritage,architecture,temples,tier_2,candidate,Heritage candidate
+CAND-0119,Bandipur,India,South India,Karnataka,Chamarajanagar,tiger_reserve,wildlife,safari,nature,tier_1,candidate,Wildlife candidate
+CAND-0120,Nagarhole,India,South India,Karnataka,Kodagu/Mysuru,national_park,wildlife,safari,nature,tier_1,candidate,Wildlife candidate
+CAND-0121,Kabini,India,South India,Karnataka,Mysuru,wildlife_reserve,wildlife,resort,nature,tier_1,candidate,Premium wildlife resort candidate
+CAND-0122,Sakleshpur,India,South India,Karnataka,Hassan,hill_region,coffee,hills,weekend,tier_2,candidate,Bangalore weekend candidate
+CAND-0123,Udupi,India,South India,Karnataka,Udupi,coastal_town,food,spiritual,coast,tier_1,candidate,Coast/food/spiritual candidate
+CAND-0124,Murudeshwar,India,South India,Karnataka,Uttara Kannada,pilgrim_coastal_town,spiritual,coast,beach,tier_1,candidate,Coast/pilgrimage candidate
+CAND-0125,Dandeli,India,South India,Karnataka,Uttara Kannada,forest_region,adventure,river,forest,tier_1,candidate,Adventure/nature candidate
+CAND-0126,Belagavi,India,South India,Karnataka,Belagavi,city,food,heritage,gateway,tier_3,candidate,Regional gateway candidate
+CAND-0127,Warangal,India,South India,Telangana,Warangal,heritage_city,heritage,temples,history,tier_1,candidate,Telangana heritage candidate
+CAND-0128,Nagarjuna Sagar,India,South India,Telangana/Andhra Pradesh,Nalgonda/Guntur,lake_region,lakes,history,nature,tier_2,candidate,Lake/dam/history candidate
+CAND-0129,Papikondalu,India,South India,Andhra Pradesh,Godavari,river_region,river,nature,slow_travel,tier_2,candidate,River cruise/nature candidate
+CAND-0130,Lepakshi,India,South India,Andhra Pradesh,Sri Sathya Sai,heritage_site,temples,architecture,heritage,tier_2,candidate,Temple heritage candidate
+CAND-0131,Tirupati,India,South India,Andhra Pradesh,Tirupati,pilgrim_city,spiritual,pilgrimage,family,tier_1,candidate,Major pilgrimage candidate
+CAND-0132,Vijayawada,India,South India,Andhra Pradesh,NTR,city,river,food,spiritual,tier_2,candidate,Regional city candidate
+CAND-0133,Gandikota,India,South India,Andhra Pradesh,Kadapa,canyon_region,landscape,history,adventure,tier_2,candidate,Landscape/fort candidate
+CAND-0134,Horsley Hills,India,South India,Andhra Pradesh,Annamayya,hill_station,hills,family,slow_travel,tier_3,candidate,Regional hill candidate
+CAND-0135,Yelagiri,India,South India,Tamil Nadu,Tirupattur,hill_station,hills,family,weekend,tier_2,candidate,Chennai/Bangalore weekend hill candidate
+CAND-0136,Yercaud,India,South India,Tamil Nadu,Salem,hill_station,hills,family,coffee,tier_1,candidate,Tamil Nadu hill candidate
+CAND-0137,Coonoor,India,South India,Tamil Nadu,Nilgiris,hill_town,tea,hills,slow_travel,tier_1,candidate,Nilgiris candidate
+CAND-0138,Valparai,India,South India,Tamil Nadu,Coimbatore,tea_region,tea,hills,nature,tier_2,candidate,Tea/nature candidate
+CAND-0139,Thanjavur,India,South India,Tamil Nadu,Thanjavur,heritage_city,temples,heritage,culture,tier_1,candidate,Temple/culture candidate
+CAND-0140,Chettinad,India,South India,Tamil Nadu,Sivaganga,heritage_region,heritage,food,architecture,tier_1,candidate,Food/heritage region candidate
+CAND-0141,Kanyakumari,India,South India,Tamil Nadu,Kanyakumari,coastal_town,coast,spiritual,viewpoint,tier_1,candidate,Coastal/spiritual candidate
+CAND-0142,Trichy,India,South India,Tamil Nadu,Tiruchirappalli,temple_city,temples,heritage,food,tier_1,candidate,Temple city candidate
+CAND-0143,Chidambaram,India,South India,Tamil Nadu,Cuddalore,temple_city,spiritual,temples,culture,tier_2,candidate,Temple/culture candidate
+CAND-0144,Rameswaram-Dhanushkodi Circuit,India,South India,Tamil Nadu,Ramanathapuram,pilgrim_coastal_town,spiritual,coast,history,tier_1,candidate,Coast/pilgrimage circuit candidate
+CAND-0145,Wayanad,India,South India,Kerala,Wayanad,hill_region,hills,nature,resort,tier_1,candidate,Kerala hill/family candidate
+CAND-0146,Bekal,India,South India,Kerala,Kasaragod,beach_resort,beach,fort,resort,tier_1,candidate,North Kerala resort candidate
+CAND-0147,Kozhikode,India,South India,Kerala,Kozhikode,coastal_city,food,coast,history,tier_1,candidate,Food/coast candidate
+CAND-0148,Thrissur,India,South India,Kerala,Thrissur,culture_city,culture,spiritual,food,tier_2,candidate,Culture city candidate
+CAND-0149,Guruvayur,India,South India,Kerala,Thrissur,pilgrim_town,spiritual,pilgrimage,family,tier_1,candidate,Pilgrimage candidate
+CAND-0150,Kollam,India,South India,Kerala,Kollam,coastal_city,backwaters,coast,slow_travel,tier_2,candidate,Backwater/coast candidate
+CAND-0151,Poovar,India,South India,Kerala,Thiruvananthapuram,backwater_resort,backwaters,beach,resort,tier_2,candidate,Resort/backwater candidate
+CAND-0152,Athirappilly,India,South India,Kerala,Thrissur,waterfall_site,waterfalls,nature,forest,tier_1,candidate,Waterfall/nature candidate
+CAND-0153,Marari,India,South India,Kerala,Alappuzha,beach_resort,beach,resort,slow_travel,tier_1,candidate,Kerala beach resort candidate
+CAND-0154,Fort Kochi,India,South India,Kerala,Ernakulam,heritage_town,heritage,food,coast,tier_1,candidate,Kochi heritage subdestination
+CAND-0155,Shantiniketan,India,East India,West Bengal,Birbhum,culture_town,culture,art,slow_travel,tier_1,candidate,Bengal culture candidate
+CAND-0156,Digha,India,East India,West Bengal,Purba Medinipur,beach_town,beach,family,budget,tier_1,candidate,Bengal beach candidate
+CAND-0157,Mandarmani,India,East India,West Bengal,Purba Medinipur,beach_town,beach,resort,family,tier_1,candidate,Bengal resort beach candidate
+CAND-0158,Tajpur,India,East India,West Bengal,Purba Medinipur,beach_town,beach,slow_travel,budget,tier_2,candidate,Bengal beach candidate
+CAND-0159,Dooars,India,East India,West Bengal,Jalpaiguri/Alipurduar,forest_region,forest,wildlife,tea,tier_1,candidate,North Bengal nature candidate
+CAND-0160,Jaldapara,India,East India,West Bengal,Alipurduar,wildlife_reserve,wildlife,forest,nature,tier_1,candidate,Wildlife candidate
+CAND-0161,Gorumara,India,East India,West Bengal,Jalpaiguri,wildlife_reserve,wildlife,forest,nature,tier_1,candidate,Wildlife candidate
+CAND-0162,Mirik,India,East India,West Bengal,Darjeeling,lake_hill_station,lakes,hills,slow_travel,tier_2,candidate,North Bengal hill candidate
+CAND-0163,Lava,India,East India,West Bengal,Kalimpong,hill_town,hills,forest,slow_travel,tier_2,candidate,Kalimpong district candidate
+CAND-0164,Lolegaon,India,East India,West Bengal,Kalimpong,hill_town,hills,forest,slow_travel,tier_2,candidate,Kalimpong district candidate
+CAND-0165,Bishnupur,India,East India,West Bengal,Bankura,heritage_town,temples,heritage,craft,tier_1,candidate,Terracotta temple candidate
+CAND-0166,Mukutmanipur,India,East India,West Bengal,Bankura,lake_region,lakes,nature,weekend,tier_2,candidate,Bengal lake candidate
+CAND-0167,Simlipal,India,East India,Odisha,Mayurbhanj,national_park,wildlife,forest,nature,tier_1,candidate,Wildlife/forest candidate
+CAND-0168,Chilika Lake,India,East India,Odisha,Puri/Khordha/Ganjam,lake_region,lakes,birding,nature,tier_1,candidate,Lake/birding candidate
+CAND-0169,Gopalpur,India,East India,Odisha,Ganjam,beach_town,beach,slow_travel,coast,tier_1,candidate,Odisha beach candidate
+CAND-0170,Satkosia,India,East India,Odisha,Angul,wildlife_reserve,river,wildlife,nature,tier_2,candidate,River/wildlife candidate
+CAND-0171,Daringbadi,India,East India,Odisha,Kandhamal,hill_region,hills,nature,slow_travel,tier_2,candidate,Odisha hill candidate
+CAND-0172,Cuttack,India,East India,Odisha,Cuttack,heritage_city,history,food,culture,tier_2,candidate,Odisha city candidate
+CAND-0173,Raghurajpur,India,East India,Odisha,Puri,craft_village,craft,culture,heritage,tier_2,candidate,Craft village candidate
+CAND-0174,Bhitarkanika,India,East India,Odisha,Kendrapara,mangrove_wildlife_region,wildlife,mangrove,nature,tier_1,candidate,Mangrove/wildlife candidate
+CAND-0175,Ranchi,India,East India,Jharkhand,Ranchi,city_gateway,waterfalls,urban,gateway,tier_1,candidate,Origin/gateway and local destination
+CAND-0176,Netarhat,India,East India,Jharkhand,Latehar,hill_region,hills,slow_travel,nature,tier_1,candidate,Jharkhand hill candidate
+CAND-0177,Betla,India,East India,Jharkhand,Latehar,national_park,wildlife,forest,nature,tier_1,candidate,Wildlife candidate
+CAND-0178,Deoghar,India,East India,Jharkhand,Deoghar,pilgrim_city,spiritual,pilgrimage,family,tier_1,candidate,Major pilgrimage candidate
+CAND-0179,Hazaribagh,India,East India,Jharkhand,Hazaribagh,city,hills,nature,weekend,tier_2,candidate,Jharkhand regional candidate
+CAND-0180,Patratu Valley,India,East India,Jharkhand,Ramgarh,valley,hills,weekend,nature,tier_1,candidate,Ranchi-near weekend candidate
+CAND-0181,Jamshedpur,India,East India,Jharkhand,East Singhbhum,city,urban,parks,food,tier_2,candidate,Industrial city/parks candidate
+CAND-0182,Ghatshila,India,East India,Jharkhand,East Singhbhum,river_town,river,hills,slow_travel,tier_2,candidate,River/forest candidate
+CAND-0183,Parasnath,India,East India,Jharkhand,Giridih,pilgrim_region,spiritual,hills,pilgrimage,tier_1,candidate,Jain pilgrimage/hill candidate
+CAND-0184,McCluskieganj,India,East India,Jharkhand,Ranchi,heritage_town,heritage,slow_travel,weekend,tier_2,candidate,Ranchi-near heritage candidate
+CAND-0185,Patna,India,East India,Bihar,Patna,city,history,food,gateway,tier_1,candidate,Bihar gateway candidate
+CAND-0186,Bodh Gaya,India,East India,Bihar,Gaya,spiritual_city,buddhist,spiritual,heritage,tier_1,candidate,Major Buddhist circuit candidate
+CAND-0187,Rajgir,India,East India,Bihar,Nalanda,heritage_town,buddhist,spiritual,hills,tier_1,candidate,Buddhist/Jain circuit candidate
+CAND-0188,Nalanda,India,East India,Bihar,Nalanda,heritage_site,buddhist,heritage,history,tier_1,candidate,Heritage candidate
+CAND-0189,Vaishali,India,East India,Bihar,Vaishali,heritage_site,buddhist,history,spiritual,tier_2,candidate,Buddhist/Jain heritage candidate
+CAND-0190,Valmiki Tiger Reserve,India,East India,Bihar,West Champaran,tiger_reserve,wildlife,forest,nature,tier_2,candidate,Wildlife candidate
+CAND-0191,Kaziranga Add-on Majuli,India,North East India,Assam,Majuli,river_island,culture,river,slow_travel,tier_1,candidate,Assam culture/river candidate
+CAND-0192,Majuli,India,North East India,Assam,Majuli,river_island,culture,river,slow_travel,tier_1,candidate,River island/culture candidate
+CAND-0193,Sivasagar,India,North East India,Assam,Sivasagar,heritage_town,heritage,culture,history,tier_1,candidate,Ahom heritage candidate
+CAND-0194,Tezpur,India,North East India,Assam,Sonitpur,city,river,culture,gateway,tier_2,candidate,Assam gateway/culture candidate
+CAND-0195,Dibrugarh,India,North East India,Assam,Dibrugarh,city_gateway,tea,river,gateway,tier_2,candidate,Upper Assam gateway candidate
+CAND-0196,Haflong,India,North East India,Assam,Dima Hasao,hill_station,hills,slow_travel,nature,tier_2,candidate,Assam hill candidate
+CAND-0197,Manas,India,North East India,Assam,Baksa,national_park,wildlife,nature,safari,tier_1,candidate,Wildlife candidate
+CAND-0198,Umiam Lake,India,North East India,Meghalaya,Ri Bhoi,lake_region,lakes,hills,weekend,tier_1,candidate,Shillong nearby lake candidate
+CAND-0199,Dawki,India,North East India,Meghalaya,West Jaintia Hills,river_town,river,nature,border,tier_1,candidate,Meghalaya river candidate
+CAND-0200,Mawlynnong,India,North East India,Meghalaya,East Khasi Hills,village,culture,nature,slow_travel,tier_1,candidate,Meghalaya village candidate
+CAND-0201,Mawsynram,India,North East India,Meghalaya,East Khasi Hills,rainforest_region,rain,nature,caves,tier_1,candidate,Rainfall/cave candidate
+CAND-0202,Laitlum,India,North East India,Meghalaya,East Khasi Hills,valley,hills,nature,viewpoint,tier_2,candidate,Shillong viewpoint candidate
+CAND-0203,Jowai,India,North East India,Meghalaya,West Jaintia Hills,hill_town,culture,hills,nature,tier_2,candidate,Jaintia hills candidate
+CAND-0204,Mawphlang,India,North East India,Meghalaya,East Khasi Hills,forest_region,forest,culture,nature,tier_2,candidate,Sacred forest candidate
+CAND-0205,Bomdila,India,North East India,Arunachal Pradesh,West Kameng,mountain_town,mountains,monastery,culture,tier_2,candidate,Tawang route candidate
+CAND-0206,Dirang,India,North East India,Arunachal Pradesh,West Kameng,mountain_town,mountains,culture,nature,tier_1,candidate,Tawang route candidate
+CAND-0207,Mechuka,India,North East India,Arunachal Pradesh,Shi Yomi,valley,mountains,culture,slow_travel,tier_2,candidate,Remote valley candidate
+CAND-0208,Pasighat,India,North East India,Arunachal Pradesh,East Siang,city_gateway,river,culture,nature,tier_2,candidate,Arunachal gateway candidate
+CAND-0209,Itanagar,India,North East India,Arunachal Pradesh,Papum Pare,city_gateway,culture,gateway,hills,tier_2,candidate,State capital/gateway candidate
+CAND-0210,Loktak Lake,India,North East India,Manipur,Bishnupur,lake_region,lakes,nature,culture,tier_1,candidate,Major lake candidate
+CAND-0211,Ukhrul,India,North East India,Manipur,Ukhrul,hill_town,hills,culture,nature,tier_2,candidate,Manipur hill candidate
+CAND-0212,Mokokchung,India,North East India,Nagaland,Mokokchung,hill_town,culture,hills,slow_travel,tier_2,candidate,Nagaland culture candidate
+CAND-0213,Dzukou Valley,India,North East India,Nagaland/Manipur,Kohima/Senapati,valley,trekking,nature,flowers,tier_1,candidate,Trek candidate
+CAND-0214,Phek,India,North East India,Nagaland,Phek,hill_region,culture,nature,slow_travel,tier_3,candidate,Nagaland candidate
+CAND-0215,Champhai,India,North East India,Mizoram,Champhai,hill_town,hills,culture,border,tier_2,candidate,Mizoram candidate
+CAND-0216,Lunglei,India,North East India,Mizoram,Lunglei,hill_town,hills,culture,slow_travel,tier_3,candidate,Mizoram candidate
+CAND-0217,Reiek,India,North East India,Mizoram,Mamit,mountain_region,hills,nature,culture,tier_2,candidate,Aizawl nearby candidate
+CAND-0218,Unakoti,India,North East India,Tripura,Unakoti,heritage_site,heritage,spiritual,rock_carving,tier_1,candidate,Tripura heritage candidate
+CAND-0219,Neermahal,India,North East India,Tripura,Sepahijala,palace_site,palace,lakes,heritage,tier_1,candidate,Tripura lake palace candidate
+CAND-0220,Ujjayanta Palace,India,North East India,Tripura,Agartala,palace_site,palace,heritage,culture,tier_2,candidate,Agartala heritage candidate
+CAND-0221,Neil Island Expanded,India,Island India,Andaman and Nicobar,South Andaman,island_beach,beach,slow_travel,nature,tier_1,candidate,Andaman subdestination candidate
+CAND-0222,Baratang,India,Island India,Andaman and Nicobar,North and Middle Andaman,island_region,nature,caves,mangrove,tier_2,candidate,Andaman nature candidate
+CAND-0223,Ross Island,India,Island India,Andaman and Nicobar,South Andaman,heritage_site,history,islands,heritage,tier_2,candidate,Port Blair circuit candidate
+CAND-0224,Diglipur,India,Island India,Andaman and Nicobar,North Andaman,island_region,beach,nature,remote,tier_2,candidate,North Andaman candidate
+CAND-0225,Minicoy,India,Island India,Lakshadweep,Lakshadweep,island_region,islands,marine,beach,tier_2,candidate,Lakshadweep subdestination candidate
