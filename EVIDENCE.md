@@ -34,6 +34,56 @@ Limitations:
 Next action:
 ```
 
+## 2026-05-05 — Trip options sensitivity analysis v1.1
+
+Capability:
+
+- Recommendation Scoring
+- Model Evaluation, partial
+- Dashboard Insight Design, partial
+
+Artifact:
+
+- `reports/experiment-reports/trip-options-sensitivity-v1-1.md`
+- `datasets/processed/trip_options_sensitivity_v1_1.csv`
+- `EXPERIMENTS.md` entry: `EXP-002`
+
+Type:
+
+Sensitivity analysis experiment
+
+Status:
+
+Complete first pass.
+
+Summary:
+
+Ran a five-scenario sensitivity analysis on the v1 trip-options recommendation ranking. The analysis tested family comfort, budget sensitivity, premium comfort, low fatigue, and novelty-heavy priority profiles.
+
+What it proves:
+
+- CodeMike can test whether recommendations are stable under changing user priorities.
+- CodeMike can distinguish robust recommendations from preference-sensitive recommendations.
+- CodeMike can explain why a premium option may be best for one scenario but not generally recommended.
+
+Key findings:
+
+- `TRIP-014` Goa, `TRIP-008` Phuket, `TRIP-002` Singapore comfort, and `TRIP-019` Dubai comfort appeared in the top five across all five scenarios.
+- `TRIP-012` Kuala Lumpur appeared in four of five top-fives and remained top-ten in every scenario.
+- `TRIP-018` Singapore premium ranked first under premium comfort but fell to rank 13 under budget-sensitive scoring.
+
+Limitations:
+
+- Dataset is synthetic.
+- Scenario weights are hand-authored.
+- Penalty rules were not varied.
+- No user-specific calibration has been performed.
+- No live travel validation exists.
+
+Next action:
+
+Create a Planner transfer candidate or convert scoring logic into a reusable module under `src/`.
+
 ## 2026-05-05 — Trip options recommendation scoring v1
 
 Capability:
