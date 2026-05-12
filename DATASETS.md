@@ -24,6 +24,7 @@ This file records datasets used by CodeMike.
 
 | Dataset | Path | Type | Source | Purpose | Limitations |
 |---|---|---|---|---|---|
+| India and near-India destination seed | `datasets/reference/india_region_destinations_seed.csv` | Reference seed | Curated seed list | Broad location database for Planner-style destination filtering, clustering, scoring, dashboards, and future PWA transfer | Seed-unverified; not suitable for live visa, safety, weather, flight, permit, or pricing decisions without current verification |
 | Planner trip options sample | `datasets/synthetic/trip_options_sample.csv` | Synthetic | `synthetic-data/trip_options_generator.py` | First evidence path for data cleaning, EDA, recommendation scoring, and dashboard KPI thinking | Fictional values; intentionally includes invalid/suspicious rows; not suitable for real travel pricing or booking decisions |
 
 ## Dataset Entry Template
