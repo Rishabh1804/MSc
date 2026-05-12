@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CodeMike Destination Browser v1</title>
+  <style>
+    :root {
+      --bg: #f7f7f3;
+      --panel: #ffffff;
+      --text: #171717;
+      --muted: #666666;
+      --line: #deded7;
+      --chip: #eeeee7;
+      --accent: #2f5d50;
+      --warn: #8a5a00;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header {
+      padding: 28px 24px 18px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, #ffffff 0%, #f2f1e9 100%);
+    }
+    h1 { margin: 0 0 8px; font-size: clamp(26px, 4vw, 42px); letter-spacing: -0.04em; }
+    .subtitle { max-width: 960px; color: var(--muted); line-height: 1.55; font-size: 15px; }
+    .warning {
+      margin-top: 14px;
+      padding: 12px 14px;
+      background: #fff6df;
+      border: 1px solid #ead19c;
+      color: var(--warn);
+      border-radius: 14px;
+      max-width: 980px;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    main { padding: 22px 24px 40px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .stat .value { font-size: 30px; font-weight: 800; letter-spacing: -0.04em; }
+    .stat .label { color: var(--muted); font-size: 13px; margin-top: 2px; }
+    .controls {
+      display: grid;
+      grid-template-columns: 1.4fr repeat(4, 1fr);
+      gap: 12px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 14px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      margin-bottom: 18px;
+    }
+    input, select {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 0 12px;
+      font-size: 14px;
+      background: #fff;
+      color: var(--text);
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    aside {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 88px;
+    }
+    aside h2 { margin: 0 0 10px; font-size: 16px; }
+    .facet { margin-top: 16px; }
+    .facet-title { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+    .facet-row { display: flex; justify-content: space-between; gap: 8px; padding: 7px 0; border-bottom: 1px solid #f0f0eb; font-size: 13px; }
+    .facet-row:last-child { border-bottom: 0; }
+    .count { color: var(--muted); font-variant-numeric: tabular-nums; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      min-height: 240px;
+    }
+    .card h3 { margin: 0 0 4px; font-size: 18px; letter-spacing: -0.02em; }
+    .meta { color: var(--muted); font-size: 13px; line-height: 1.45; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+    .chip { background: var(--chip); border-radius: 999px; padding: 5px 8px; font-size: 12px; color: #333; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
+    .mini { background: #fafaf6; border: 1px solid #ededdf; padding: 8px; border-radius: 12px; }
+    .mini-label { color: var(--muted); font-size: 11px; }
+    .mini-value { font-weight: 700; font-size: 13px; margin-top: 2px; }
+    .footer { margin-top: 14px; font-size: 12px; color: var(--muted); }
+    .empty { background: var(--panel); border: 1px dashed var(--line); border-radius: 20px; padding: 28px; color: var(--muted); }
+    @media (max-width: 1100px) {
+      .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .controls { grid-template-columns: 1fr 1fr; }
+      .layout { grid-template-columns: 1fr; }
+      aside { position: static; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 700px) {
+      main, header { padding-left: 14px; padding-right: 14px; }
+      .summary, .controls, .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CodeMike Destination Browser v1</h1>
+    <div class="subtitle">
+      Interactive review artifact for the India + near-India destination seed database. Use this to inspect coverage, filter destination types, and prepare Planner scoring/enrichment work.
+    </div>
+    <div class="warning">
+      <strong>Seed-unverified:</strong> this is a prototype reference database. Do not use it for live visa, safety, weather, pricing, permit, flight, medical, or infant-travel decisions without current verification.
+    </div>
+  </header>
+
+  <main>
+    <section class="summary" id="summary"></section>
+
+    <section class="controls" aria-label="Destination filters">
+      <input id="search" placeholder="Search destination, country, state, vibe…" />
+      <select id="region"><option value="">All regions</option></select>
+      <select id="budget"><option value="">All budgets</option></select>
+      <select id="family"><option value="">All family suitability</option></select>
+      <select id="access"><option value="">All access levels</option></select>
+    </section>
+
+    <section class="layout">
+      <aside>
+        <h2>Filtered coverage</h2>
+        <div class="facet"><div class="facet-title">Macro regions</div><div id="regionFacet"></div></div>
+        <div class="facet"><div class="facet-title">Countries</div><div id="countryFacet"></div></div>
+        <div class="facet"><div class="facet-title">Location types</div><div id="typeFacet"></div></div>
+      </aside>
+      <section>
+        <div id="cards" class="grid"></div>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    const destinations = [
+      {id:'DST-0001',name:'Delhi NCR',country:'India',region:'North India',area:'Delhi NCR',type:'metro_city',vibes:['culture','food','history'],budget:'mid',family:'medium',access:'easy',season:'Oct-Mar'},
+      {id:'DST-0002',name:'Agra',country:'India',region:'North India',area:'Uttar Pradesh',type:'heritage_city',vibes:['heritage','architecture','history'],budget:'budget_mid',family:'medium',access:'easy',season:'Oct-Mar'},
+      {id:'DST-0003',name:'Jaipur',country:'India',region:'North India',area:'Rajasthan',type:'heritage_city',vibes:['heritage','palace','shopping'],budget:'mid',family:'high',access:'easy',season:'Oct-Mar'},
+      {id:'DST-0004',name:'Udaipur',country:'India',region:'North India',area:'Rajasthan',type:'lake_heritage_city',vibes:['lakes','heritage','luxury'],budget:'mid_premium',family:'high',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0005',name:'Jodhpur',country:'India',region:'North India',area:'Rajasthan',type:'heritage_city',vibes:['forts','desert','heritage'],budget:'mid',family:'medium',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0006',name:'Jaisalmer',country:'India',region:'North India',area:'Rajasthan',type:'desert_town',vibes:['desert','heritage','adventure'],budget:'mid',family:'medium',access:'moderate',season:'Nov-Feb'},
+      {id:'DST-0007',name:'Pushkar',country:'India',region:'North India',area:'Rajasthan',type:'pilgrim_town',vibes:['spiritual','culture','slow_travel'],budget:'budget_mid',family:'medium',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0008',name:'Ranthambore',country:'India',region:'North India',area:'Rajasthan',type:'wildlife_reserve',vibes:['wildlife','safari','nature'],budget:'premium',family:'medium',access:'moderate',season:'Oct-Jun'},
+      {id:'DST-0009',name:'Amritsar',country:'India',region:'North India',area:'Punjab',type:'heritage_city',vibes:['spiritual','food','history'],budget:'budget_mid',family:'high',access:'easy',season:'Oct-Mar'},
+      {id:'DST-0010',name:'Chandigarh',country:'India',region:'North India',area:'Chandigarh',type:'planned_city',vibes:['urban','architecture','gateway'],budget:'mid',family:'high',access:'easy',season:'Oct-Mar'},
+      {id:'DST-0011',name:'Shimla',country:'India',region:'North India',area:'Himachal Pradesh',type:'hill_station',vibes:['hills','family','colonial'],budget:'mid',family:'high',access:'moderate',season:'Mar-Jun;Oct-Dec'},
+      {id:'DST-0012',name:'Manali',country:'India',region:'North India',area:'Himachal Pradesh',type:'hill_station',vibes:['hills','adventure','snow'],budget:'mid',family:'medium',access:'moderate',season:'Mar-Jun;Oct-Feb'},
+      {id:'DST-0013',name:'Dharamshala',country:'India',region:'North India',area:'Himachal Pradesh',type:'hill_town',vibes:['hills','culture','wellness'],budget:'mid',family:'medium',access:'moderate',season:'Mar-Jun;Sep-Nov'},
+      {id:'DST-0014',name:'Dalhousie',country:'India',region:'North India',area:'Himachal Pradesh',type:'hill_station',vibes:['hills','family','slow_travel'],budget:'mid',family:'high',access:'moderate',season:'Mar-Jun;Sep-Nov'},
+      {id:'DST-0015',name:'Leh',country:'India',region:'North India',area:'Ladakh',type:'high_altitude',vibes:['mountains','adventure','landscape'],budget:'mid_premium',family:'low',access:'hard',season:'Jun-Sep'},
+      {id:'DST-0016',name:'Srinagar',country:'India',region:'North India',area:'Jammu and Kashmir',type:'lake_valley',vibes:['lakes','mountains','gardens'],budget:'mid_premium',family:'medium',access:'moderate',season:'Apr-Oct'},
+      {id:'DST-0017',name:'Gulmarg',country:'India',region:'North India',area:'Jammu and Kashmir',type:'mountain_resort',vibes:['snow','mountains','ski'],budget:'premium',family:'medium',access:'moderate',season:'Dec-Mar;Apr-Jun'},
+      {id:'DST-0018',name:'Rishikesh',country:'India',region:'North India',area:'Uttarakhand',type:'river_spiritual_town',vibes:['spiritual','wellness','adventure'],budget:'budget_mid',family:'medium',access:'moderate',season:'Oct-Apr'},
+      {id:'DST-0019',name:'Haridwar',country:'India',region:'North India',area:'Uttarakhand',type:'pilgrim_city',vibes:['spiritual','culture','pilgrimage'],budget:'budget',family:'medium',access:'easy',season:'Oct-Mar'},
+      {id:'DST-0020',name:'Mussoorie',country:'India',region:'North India',area:'Uttarakhand',type:'hill_station',vibes:['hills','family','slow_travel'],budget:'mid',family:'high',access:'moderate',season:'Mar-Jun;Sep-Nov'},
+      {id:'DST-0021',name:'Nainital',country:'India',region:'North India',area:'Uttarakhand',type:'lake_hill_station',vibes:['lakes','hills','family'],budget:'mid',family:'high',access:'moderate',season:'Mar-Jun;Sep-Nov'},
+      {id:'DST-0022',name:'Jim Corbett',country:'India',region:'North India',area:'Uttarakhand',type:'wildlife_reserve',vibes:['wildlife','nature','family'],budget:'mid_premium',family:'medium',access:'moderate',season:'Nov-Jun'},
+      {id:'DST-0023',name:'Varanasi',country:'India',region:'North India',area:'Uttar Pradesh',type:'spiritual_city',vibes:['spiritual','culture','history'],budget:'budget_mid',family:'low_medium',access:'easy',season:'Oct-Mar'},
+      {id:'DST-0024',name:'Lucknow',country:'India',region:'North India',area:'Uttar Pradesh',type:'heritage_city',vibes:['food','heritage','culture'],budget:'budget_mid',family:'high',access:'easy',season:'Oct-Mar'},
+      {id:'DST-0025',name:'Bhopal',country:'India',region:'Central India',area:'Madhya Pradesh',type:'lake_city',vibes:['lakes','history','gateway'],budget:'budget_mid',family:'high',access:'easy',season:'Oct-Mar'},
+      {id:'DST-0026',name:'Sanchi',country:'India',region:'Central India',area:'Madhya Pradesh',type:'heritage_site',vibes:['buddhist','heritage','history'],budget:'budget_mid',family:'medium',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0027',name:'Khajuraho',country:'India',region:'Central India',area:'Madhya Pradesh',type:'heritage_town',vibes:['heritage','architecture','temples'],budget:'mid',family:'medium',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0028',name:'Orchha',country:'India',region:'Central India',area:'Madhya Pradesh',type:'heritage_town',vibes:['heritage','slow_travel','river'],budget:'budget_mid',family:'medium',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0029',name:'Pachmarhi',country:'India',region:'Central India',area:'Madhya Pradesh',type:'hill_station',vibes:['hills','nature','family'],budget:'mid',family:'high',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0030',name:'Kanha',country:'India',region:'Central India',area:'Madhya Pradesh',type:'wildlife_reserve',vibes:['wildlife','safari','nature'],budget:'premium',family:'medium',access:'hard',season:'Oct-Jun'},
+      {id:'DST-0031',name:'Bandhavgarh',country:'India',region:'Central India',area:'Madhya Pradesh',type:'wildlife_reserve',vibes:['wildlife','safari','nature'],budget:'premium',family:'medium',access:'hard',season:'Oct-Jun'},
+      {id:'DST-0032',name:'Mumbai',country:'India',region:'West India',area:'Maharashtra',type:'metro_city',vibes:['urban','food','culture'],budget:'mid_premium',family:'medium',access:'easy',season:'Nov-Feb'},
+      {id:'DST-0033',name:'Pune',country:'India',region:'West India',area:'Maharashtra',type:'city',vibes:['urban','food','gateway'],budget:'mid',family:'high',access:'easy',season:'Oct-Feb'},
+      {id:'DST-0034',name:'Lonavala',country:'India',region:'West India',area:'Maharashtra',type:'hill_station',vibes:['hills','weekend','family'],budget:'mid',family:'high',access:'easy',season:'Jun-Sep;Oct-Feb'},
+      {id:'DST-0035',name:'Mahabaleshwar',country:'India',region:'West India',area:'Maharashtra',type:'hill_station',vibes:['hills','family','strawberries'],budget:'mid',family:'high',access:'moderate',season:'Oct-Jun'},
+      {id:'DST-0036',name:'Nashik',country:'India',region:'West India',area:'Maharashtra',type:'wine_heritage_city',vibes:['wine','heritage','food'],budget:'mid',family:'medium',access:'easy',season:'Oct-Mar'},
+      {id:'DST-0037',name:'Aurangabad',country:'India',region:'West India',area:'Maharashtra',type:'heritage_gateway',vibes:['heritage','caves','history'],budget:'mid',family:'medium',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0038',name:'Goa',country:'India',region:'West India',area:'Goa',type:'beach_state',vibes:['beach','food','resort'],budget:'mid_premium',family:'high',access:'easy',season:'Nov-Mar'},
+      {id:'DST-0039',name:'Diu',country:'India',region:'West India',area:'Daman and Diu',type:'coastal_town',vibes:['beach','slow_travel','coast'],budget:'budget_mid',family:'medium',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0040',name:'Ahmedabad',country:'India',region:'West India',area:'Gujarat',type:'heritage_city',vibes:['heritage','food','architecture'],budget:'budget_mid',family:'high',access:'easy',season:'Nov-Feb'},
+      {id:'DST-0041',name:'Kutch',country:'India',region:'West India',area:'Gujarat',type:'desert_region',vibes:['desert','culture','craft'],budget:'mid',family:'medium',access:'moderate',season:'Nov-Feb'},
+      {id:'DST-0042',name:'Gir',country:'India',region:'West India',area:'Gujarat',type:'wildlife_reserve',vibes:['wildlife','safari','nature'],budget:'mid_premium',family:'medium',access:'moderate',season:'Dec-Mar'},
+      {id:'DST-0043',name:'Dwarka',country:'India',region:'West India',area:'Gujarat',type:'pilgrim_coastal_town',vibes:['spiritual','coast','pilgrimage'],budget:'budget_mid',family:'medium',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0044',name:'Bengaluru',country:'India',region:'South India',area:'Karnataka',type:'metro_city',vibes:['urban','food','gateway'],budget:'mid',family:'high',access:'easy',season:'Oct-Feb'},
+      {id:'DST-0045',name:'Mysuru',country:'India',region:'South India',area:'Karnataka',type:'heritage_city',vibes:['palace','heritage','family'],budget:'budget_mid',family:'high',access:'easy',season:'Oct-Feb'},
+      {id:'DST-0046',name:'Coorg',country:'India',region:'South India',area:'Karnataka',type:'hill_region',vibes:['coffee','hills','resort'],budget:'mid_premium',family:'high',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0047',name:'Chikmagalur',country:'India',region:'South India',area:'Karnataka',type:'hill_region',vibes:['coffee','hills','nature'],budget:'mid',family:'high',access:'moderate',season:'Sep-Mar'},
+      {id:'DST-0048',name:'Hampi',country:'India',region:'South India',area:'Karnataka',type:'heritage_site',vibes:['heritage','landscape','history'],budget:'budget_mid',family:'medium',access:'moderate',season:'Oct-Feb'},
+      {id:'DST-0049',name:'Gokarna',country:'India',region:'South India',area:'Karnataka',type:'beach_town',vibes:['beach','slow_travel','coast'],budget:'budget_mid',family:'medium',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0050',name:'Hyderabad',country:'India',region:'South India',area:'Telangana',type:'metro_city',vibes:['food','heritage','urban'],budget:'budget_mid',family:'high',access:'easy',season:'Oct-Feb'},
+      {id:'DST-0051',name:'Chennai',country:'India',region:'South India',area:'Tamil Nadu',type:'metro_coastal_city',vibes:['culture','food','coast'],budget:'budget_mid',family:'medium',access:'easy',season:'Nov-Feb'},
+      {id:'DST-0052',name:'Pondicherry',country:'India',region:'South India',area:'Puducherry',type:'coastal_town',vibes:['french_quarter','food','slow_travel'],budget:'mid',family:'high',access:'easy',season:'Nov-Feb'},
+      {id:'DST-0053',name:'Mahabalipuram',country:'India',region:'South India',area:'Tamil Nadu',type:'coastal_heritage_town',vibes:['heritage','coast','architecture'],budget:'mid',family:'high',access:'easy',season:'Nov-Feb'},
+      {id:'DST-0054',name:'Madurai',country:'India',region:'South India',area:'Tamil Nadu',type:'temple_city',vibes:['spiritual','heritage','food'],budget:'budget_mid',family:'medium',access:'easy',season:'Oct-Mar'},
+      {id:'DST-0055',name:'Kodaikanal',country:'India',region:'South India',area:'Tamil Nadu',type:'hill_station',vibes:['hills','family','slow_travel'],budget:'mid',family:'high',access:'moderate',season:'Apr-Jun;Sep-Feb'},
+      {id:'DST-0056',name:'Ooty',country:'India',region:'South India',area:'Tamil Nadu',type:'hill_station',vibes:['hills','family','tea'],budget:'mid',family:'high',access:'moderate',season:'Apr-Jun;Sep-Feb'},
+      {id:'DST-0057',name:'Rameswaram',country:'India',region:'South India',area:'Tamil Nadu',type:'pilgrim_coastal_town',vibes:['spiritual','coast','pilgrimage'],budget:'budget_mid',family:'medium',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0058',name:'Kochi',country:'India',region:'South India',area:'Kerala',type:'coastal_heritage_city',vibes:['food','heritage','backwaters'],budget:'mid',family:'high',access:'easy',season:'Oct-Mar'},
+      {id:'DST-0059',name:'Munnar',country:'India',region:'South India',area:'Kerala',type:'hill_station',vibes:['tea','hills','resort'],budget:'mid_premium',family:'high',access:'moderate',season:'Sep-Mar'},
+      {id:'DST-0060',name:'Alleppey',country:'India',region:'South India',area:'Kerala',type:'backwater_region',vibes:['backwaters','slow_travel','family'],budget:'mid_premium',family:'high',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0061',name:'Kumarakom',country:'India',region:'South India',area:'Kerala',type:'backwater_resort',vibes:['backwaters','resort','family'],budget:'premium',family:'high',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0062',name:'Thekkady',country:'India',region:'South India',area:'Kerala',type:'wildlife_hill_region',vibes:['wildlife','spice','nature'],budget:'mid',family:'medium',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0063',name:'Varkala',country:'India',region:'South India',area:'Kerala',type:'beach_town',vibes:['beach','wellness','slow_travel'],budget:'mid',family:'medium',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0064',name:'Kovalam',country:'India',region:'South India',area:'Kerala',type:'beach_resort',vibes:['beach','resort','family'],budget:'mid_premium',family:'high',access:'easy',season:'Oct-Mar'},
+      {id:'DST-0065',name:'Visakhapatnam',country:'India',region:'East India',area:'Andhra Pradesh',type:'coastal_city',vibes:['beach','city','family'],budget:'budget_mid',family:'high',access:'easy',season:'Oct-Mar'},
+      {id:'DST-0066',name:'Araku Valley',country:'India',region:'East India',area:'Andhra Pradesh',type:'hill_valley',vibes:['hills','coffee','nature'],budget:'budget_mid',family:'medium',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0067',name:'Bhubaneswar',country:'India',region:'East India',area:'Odisha',type:'temple_city',vibes:['temples','heritage','gateway'],budget:'budget_mid',family:'high',access:'easy',season:'Oct-Mar'},
+      {id:'DST-0068',name:'Puri',country:'India',region:'East India',area:'Odisha',type:'pilgrim_beach_town',vibes:['spiritual','beach','culture'],budget:'budget_mid',family:'medium',access:'easy',season:'Oct-Mar'},
+      {id:'DST-0069',name:'Konark',country:'India',region:'East India',area:'Odisha',type:'heritage_site',vibes:['heritage','architecture','temple'],budget:'budget_mid',family:'medium',access:'easy',season:'Oct-Mar'},
+      {id:'DST-0070',name:'Kolkata',country:'India',region:'East India',area:'West Bengal',type:'metro_city',vibes:['culture','food','heritage'],budget:'budget_mid',family:'high',access:'easy',season:'Nov-Feb'},
+      {id:'DST-0071',name:'Darjeeling',country:'India',region:'East India',area:'West Bengal',type:'hill_station',vibes:['tea','hills','heritage'],budget:'mid',family:'medium',access:'moderate',season:'Mar-May;Oct-Dec'},
+      {id:'DST-0072',name:'Kalimpong',country:'India',region:'East India',area:'West Bengal',type:'hill_town',vibes:['hills','slow_travel','culture'],budget:'mid',family:'medium',access:'moderate',season:'Mar-May;Oct-Dec'},
+      {id:'DST-0073',name:'Sundarbans',country:'India',region:'East India',area:'West Bengal',type:'mangrove_wildlife_region',vibes:['wildlife','river','nature'],budget:'mid',family:'low_medium',access:'hard',season:'Nov-Feb'},
+      {id:'DST-0074',name:'Gangtok',country:'India',region:'North East India',area:'Sikkim',type:'hill_city',vibes:['mountains','culture','family'],budget:'mid',family:'medium',access:'moderate',season:'Mar-May;Oct-Dec'},
+      {id:'DST-0075',name:'Pelling',country:'India',region:'North East India',area:'Sikkim',type:'mountain_town',vibes:['mountains','views','slow_travel'],budget:'mid',family:'medium',access:'moderate',season:'Mar-May;Oct-Dec'},
+      {id:'DST-0076',name:'Guwahati',country:'India',region:'North East India',area:'Assam',type:'city_gateway',vibes:['gateway','river','culture'],budget:'budget_mid',family:'medium',access:'easy',season:'Oct-Apr'},
+      {id:'DST-0077',name:'Kaziranga',country:'India',region:'North East India',area:'Assam',type:'wildlife_reserve',vibes:['wildlife','safari','nature'],budget:'mid_premium',family:'medium',access:'moderate',season:'Nov-Apr'},
+      {id:'DST-0078',name:'Shillong',country:'India',region:'North East India',area:'Meghalaya',type:'hill_city',vibes:['hills','music','nature'],budget:'mid',family:'medium',access:'moderate',season:'Oct-Apr'},
+      {id:'DST-0079',name:'Cherrapunji',country:'India',region:'North East India',area:'Meghalaya',type:'rainforest_region',vibes:['waterfalls','nature','rain'],budget:'mid',family:'medium',access:'moderate',season:'Oct-Apr'},
+      {id:'DST-0080',name:'Tawang',country:'India',region:'North East India',area:'Arunachal Pradesh',type:'mountain_town',vibes:['monastery','mountains','culture'],budget:'mid_premium',family:'low_medium',access:'hard',season:'Mar-Jun;Sep-Oct'},
+      {id:'DST-0081',name:'Ziro Valley',country:'India',region:'North East India',area:'Arunachal Pradesh',type:'valley',vibes:['culture','music','nature'],budget:'mid',family:'medium',access:'hard',season:'Mar-May;Sep-Oct'},
+      {id:'DST-0082',name:'Kohima',country:'India',region:'North East India',area:'Nagaland',type:'hill_city',vibes:['culture','history','hills'],budget:'mid',family:'medium',access:'moderate',season:'Oct-Apr'},
+      {id:'DST-0083',name:'Imphal',country:'India',region:'North East India',area:'Manipur',type:'city_valley',vibes:['culture','lake','history'],budget:'mid',family:'medium',access:'moderate',season:'Oct-Apr'},
+      {id:'DST-0084',name:'Aizawl',country:'India',region:'North East India',area:'Mizoram',type:'hill_city',vibes:['hills','culture','slow_travel'],budget:'mid',family:'medium',access:'moderate',season:'Oct-Apr'},
+      {id:'DST-0085',name:'Agartala',country:'India',region:'North East India',area:'Tripura',type:'city',vibes:['palace','culture','history'],budget:'budget_mid',family:'medium',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0086',name:'Port Blair',country:'India',region:'Island India',area:'Andaman and Nicobar',type:'island_gateway',vibes:['islands','beach','history'],budget:'mid_premium',family:'medium',access:'moderate',season:'Nov-Apr'},
+      {id:'DST-0087',name:'Havelock Island',country:'India',region:'Island India',area:'Andaman and Nicobar',type:'island_beach',vibes:['beach','diving','resort'],budget:'premium',family:'medium',access:'hard',season:'Nov-Apr'},
+      {id:'DST-0088',name:'Neil Island',country:'India',region:'Island India',area:'Andaman and Nicobar',type:'island_beach',vibes:['beach','slow_travel','nature'],budget:'mid_premium',family:'medium',access:'hard',season:'Nov-Apr'},
+      {id:'DST-0089',name:'Lakshadweep',country:'India',region:'Island India',area:'Lakshadweep',type:'island_region',vibes:['islands','beach','marine'],budget:'premium',family:'medium',access:'hard',season:'Oct-Mar'},
+      {id:'DST-0090',name:'Kathmandu',country:'Nepal',region:'Near India',area:'Nepal',type:'heritage_city',vibes:['culture','mountains','gateway'],budget:'budget_mid',family:'medium',access:'easy',season:'Oct-Apr'},
+      {id:'DST-0091',name:'Pokhara',country:'Nepal',region:'Near India',area:'Nepal',type:'lake_mountain_city',vibes:['lakes','mountains','relaxation'],budget:'mid',family:'high',access:'moderate',season:'Oct-Apr'},
+      {id:'DST-0092',name:'Chitwan',country:'Nepal',region:'Near India',area:'Nepal',type:'wildlife_region',vibes:['wildlife','nature','safari'],budget:'mid',family:'medium',access:'moderate',season:'Oct-Mar'},
+      {id:'DST-0093',name:'Thimphu',country:'Bhutan',region:'Near India',area:'Bhutan',type:'mountain_capital',vibes:['culture','mountains','slow_travel'],budget:'premium',family:'medium',access:'moderate',season:'Mar-May;Sep-Nov'},
+      {id:'DST-0094',name:'Paro',country:'Bhutan',region:'Near India',area:'Bhutan',type:'mountain_valley',vibes:['monastery','mountains','culture'],budget:'premium',family:'medium',access:'moderate',season:'Mar-May;Sep-Nov'},
+      {id:'DST-0095',name:'Colombo',country:'Sri Lanka',region:'Near India',area:'Sri Lanka',type:'coastal_capital',vibes:['food','culture','coast'],budget:'mid',family:'high',access:'easy',season:'Dec-Apr;Jul-Sep'},
+      {id:'DST-0096',name:'Kandy',country:'Sri Lanka',region:'Near India',area:'Sri Lanka',type:'hill_heritage_city',vibes:['culture','hills','heritage'],budget:'mid',family:'medium',access:'moderate',season:'Dec-Apr'},
+      {id:'DST-0097',name:'Galle',country:'Sri Lanka',region:'Near India',area:'Sri Lanka',type:'coastal_heritage_town',vibes:['coast','heritage','slow_travel'],budget:'mid_premium',family:'high',access:'moderate',season:'Dec-Apr'},
+      {id:'DST-0098',name:'Bentota',country:'Sri Lanka',region:'Near India',area:'Sri Lanka',type:'beach_resort',vibes:['beach','resort','family'],budget:'mid_premium',family:'high',access:'easy',season:'Dec-Apr'},
+      {id:'DST-0099',name:'Maldives Resort Islands',country:'Maldives',region:'Indian Ocean',area:'Maldives',type:'island_resort',vibes:['beach','luxury','resort'],budget:'premium',family:'high',access:'moderate',season:'Nov-Apr'},
+      {id:'DST-0100',name:'Maafushi',country:'Maldives',region:'Indian Ocean',area:'Maldives',type:'local_island',vibes:['beach','budget','water'],budget:'mid',family:'medium',access:'moderate',season:'Nov-Apr'},
+      {id:'DST-0101',name:'Mauritius',country:'Mauritius',region:'Indian Ocean',area:'Mauritius',type:'island_resort',vibes:['beach','resort','family'],budget:'premium',family:'high',access:'moderate',season:'May-Dec'},
+      {id:'DST-0102',name:'Seychelles',country:'Seychelles',region:'Indian Ocean',area:'Seychelles',type:'island_resort',vibes:['beach','luxury','nature'],budget:'premium',family:'medium',access:'hard',season:'Apr-May;Oct-Nov'},
+      {id:'DST-0103',name:'Dubai',country:'United Arab Emirates',region:'Middle East',area:'UAE',type:'global_city',vibes:['shopping','luxury','family'],budget:'mid_premium',family:'high',access:'easy',season:'Nov-Mar'},
+      {id:'DST-0104',name:'Abu Dhabi',country:'United Arab Emirates',region:'Middle East',area:'UAE',type:'global_city',vibes:['culture','theme_parks','luxury'],budget:'mid_premium',family:'high',access:'easy',season:'Nov-Mar'},
+      {id:'DST-0105',name:'Ras Al Khaimah',country:'United Arab Emirates',region:'Middle East',area:'UAE',type:'desert_beach_emirate',vibes:['resort','desert','adventure'],budget:'mid_premium',family:'high',access:'moderate',season:'Nov-Mar'},
+      {id:'DST-0106',name:'Doha',country:'Qatar',region:'Middle East',area:'Qatar',type:'global_city',vibes:['culture','museums','stopover'],budget:'mid_premium',family:'high',access:'easy',season:'Nov-Mar'},
+      {id:'DST-0107',name:'Muscat',country:'Oman',region:'Middle East',area:'Oman',type:'coastal_capital',vibes:['coast','mountains','culture'],budget:'mid_premium',family:'high',access:'moderate',season:'Nov-Mar'},
+      {id:'DST-0108',name:'Salalah',country:'Oman',region:'Middle East',area:'Oman',type:'coastal_region',vibes:['monsoon','nature','coast'],budget:'mid_premium',family:'medium',access:'moderate',season:'Jun-Sep;Nov-Feb'},
+      {id:'DST-0109',name:'Bangkok',country:'Thailand',region:'Southeast Asia',area:'Thailand',type:'global_city',vibes:['food','shopping','nightlife'],budget:'mid',family:'medium',access:'easy',season:'Nov-Feb'},
+      {id:'DST-0110',name:'Phuket',country:'Thailand',region:'Southeast Asia',area:'Thailand',type:'island_resort',vibes:['beach','resort','family'],budget:'mid_premium',family:'high',access:'easy',season:'Nov-Apr'},
+      {id:'DST-0111',name:'Krabi',country:'Thailand',region:'Southeast Asia',area:'Thailand',type:'beach_region',vibes:['beach','limestone','relaxation'],budget:'mid',family:'high',access:'moderate',season:'Nov-Apr'},
+      {id:'DST-0112',name:'Koh Samui',country:'Thailand',region:'Southeast Asia',area:'Thailand',type:'island_resort',vibes:['beach','resort','wellness'],budget:'premium',family:'high',access:'moderate',season:'Dec-Aug'},
+      {id:'DST-0113',name:'Chiang Mai',country:'Thailand',region:'Southeast Asia',area:'Thailand',type:'northern_city',vibes:['culture','food','mountains'],budget:'mid',family:'medium',access:'moderate',season:'Nov-Feb'},
+      {id:'DST-0114',name:'Singapore',country:'Singapore',region:'Southeast Asia',area:'Singapore',type:'global_city',vibes:['family','urban','food'],budget:'premium',family:'high',access:'easy',season:'Feb-Apr;Jul-Sep'},
+      {id:'DST-0115',name:'Sentosa',country:'Singapore',region:'Southeast Asia',area:'Singapore',type:'island_resort_district',vibes:['theme_parks','family','resort'],budget:'premium',family:'high',access:'easy',season:'Feb-Apr;Jul-Sep'},
+      {id:'DST-0116',name:'Kuala Lumpur',country:'Malaysia',region:'Southeast Asia',area:'Malaysia',type:'global_city',vibes:['food','shopping','family'],budget:'mid',family:'high',access:'easy',season:'May-Jul;Dec-Feb'},
+      {id:'DST-0117',name:'Langkawi',country:'Malaysia',region:'Southeast Asia',area:'Malaysia',type:'island_resort',vibes:['beach','family','nature'],budget:'mid',family:'high',access:'moderate',season:'Nov-Mar'},
+      {id:'DST-0118',name:'Penang',country:'Malaysia',region:'Southeast Asia',area:'Malaysia',type:'island_heritage_city',vibes:['food','heritage','beach'],budget:'mid',family:'high',access:'moderate',season:'Dec-Mar'},
+      {id:'DST-0119',name:'Bali',country:'Indonesia',region:'Southeast Asia',area:'Indonesia',type:'island_region',vibes:['beach','culture','villa'],budget:'mid_premium',family:'high',access:'moderate',season:'Apr-Oct'},
+      {id:'DST-0120',name:'Ubud',country:'Indonesia',region:'Southeast Asia',area:'Indonesia',type:'culture_hill_town',vibes:['wellness','culture','nature'],budget:'mid_premium',family:'medium',access:'moderate',season:'Apr-Oct'},
+      {id:'DST-0121',name:'Hanoi',country:'Vietnam',region:'Southeast Asia',area:'Vietnam',type:'heritage_capital',vibes:['culture','food','heritage'],budget:'mid',family:'medium',access:'moderate',season:'Oct-Apr'},
+      {id:'DST-0122',name:'Ho Chi Minh City',country:'Vietnam',region:'Southeast Asia',area:'Vietnam',type:'metro_city',vibes:['food','history','urban'],budget:'mid',family:'medium',access:'moderate',season:'Dec-Mar'},
+      {id:'DST-0123',name:'Da Nang',country:'Vietnam',region:'Southeast Asia',area:'Vietnam',type:'coastal_city',vibes:['beach','family','gateway'],budget:'mid',family:'high',access:'moderate',season:'Feb-Aug'},
+      {id:'DST-0124',name:'Hoi An',country:'Vietnam',region:'Southeast Asia',area:'Vietnam',type:'heritage_town',vibes:['heritage','food','slow_travel'],budget:'mid',family:'high',access:'moderate',season:'Feb-Aug'},
+      {id:'DST-0125',name:'Nha Trang',country:'Vietnam',region:'Southeast Asia',area:'Vietnam',type:'beach_city',vibes:['beach','resort','coast'],budget:'mid',family:'medium',access:'moderate',season:'Feb-Aug'},
+      {id:'DST-0126',name:'Siem Reap',country:'Cambodia',region:'Southeast Asia',area:'Cambodia',type:'heritage_gateway',vibes:['temples','heritage','culture'],budget:'mid',family:'medium',access:'moderate',season:'Nov-Feb'},
+      {id:'DST-0127',name:'Phnom Penh',country:'Cambodia',region:'Southeast Asia',area:'Cambodia',type:'capital_city',vibes:['history','culture','food'],budget:'mid',family:'medium',access:'moderate',season:'Nov-Feb'},
+      {id:'DST-0128',name:'Luang Prabang',country:'Laos',region:'Southeast Asia',area:'Laos',type:'heritage_town',vibes:['slow_travel','culture','river'],budget:'mid',family:'medium',access:'hard',season:'Nov-Feb'},
+      {id:'DST-0129',name:'Baku',country:'Azerbaijan',region:'West Asia',area:'Azerbaijan',type:'city',vibes:['city','culture','architecture'],budget:'mid',family:'medium',access:'moderate',season:'Apr-Jun;Sep-Oct'},
+      {id:'DST-0130',name:'Tbilisi',country:'Georgia',region:'Caucasus',area:'Georgia',type:'city',vibes:['culture','food','mountains'],budget:'mid',family:'medium',access:'moderate',season:'May-Jun;Sep-Oct'},
+      {id:'DST-0131',name:'Yerevan',country:'Armenia',region:'Caucasus',area:'Armenia',type:'city',vibes:['culture','history','mountains'],budget:'mid',family:'medium',access:'moderate',season:'May-Jun;Sep-Oct'},
+      {id:'DST-0132',name:'Almaty',country:'Kazakhstan',region:'Central Asia',area:'Kazakhstan',type:'mountain_city',vibes:['mountains','city','nature'],budget:'mid',family:'medium',access:'moderate',season:'May-Sep;Dec-Feb'},
+      {id:'DST-0133',name:'Tashkent',country:'Uzbekistan',region:'Central Asia',area:'Uzbekistan',type:'city',vibes:['history','culture','silk_route'],budget:'mid',family:'medium',access:'moderate',season:'Apr-May;Sep-Oct'},
+      {id:'DST-0134',name:'Samarkand',country:'Uzbekistan',region:'Central Asia',area:'Uzbekistan',type:'heritage_city',vibes:['heritage','architecture','culture'],budget:'mid',family:'medium',access:'moderate',season:'Apr-May;Sep-Oct'}
+    ];
+
+    const els = {
+      summary: document.getElementById('summary'),
+      search: document.getElementById('search'),
+      region: document.getElementById('region'),
+      budget: document.getElementById('budget'),
+      family: document.getElementById('family'),
+      access: document.getElementById('access'),
+      cards: document.getElementById('cards'),
+      regionFacet: document.getElementById('regionFacet'),
+      countryFacet: document.getElementById('countryFacet'),
+      typeFacet: document.getElementById('typeFacet')
+    };
+
+    const unique = (arr) => [...new Set(arr)].sort();
+    const countBy = (rows, key) => rows.reduce((acc, row) => {
+      const value = typeof key === 'function' ? key(row) : row[key];
+      acc[value] = (acc[value] || 0) + 1;
+      return acc;
+    }, {});
+    const title = (value) => value.replaceAll('_', ' ').replace(/\b\w/g, c => c.toUpperCase());
+
+    function fillSelect(select, values) {
+      values.forEach(value => {
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = title(value);
+        select.appendChild(option);
+      });
+    }
+
+    fillSelect(els.region, unique(destinations.map(d => d.region)));
+    fillSelect(els.budget, unique(destinations.map(d => d.budget)));
+    fillSelect(els.family, unique(destinations.map(d => d.family)));
+    fillSelect(els.access, unique(destinations.map(d => d.access)));
+
+    function filteredRows() {
+      const q = els.search.value.trim().toLowerCase();
+      return destinations.filter(d => {
+        const haystack = [d.name, d.country, d.region, d.area, d.type, ...d.vibes].join(' ').toLowerCase();
+        return (!q || haystack.includes(q))
+          && (!els.region.value || d.region === els.region.value)
+          && (!els.budget.value || d.budget === els.budget.value)
+          && (!els.family.value || d.family === els.family.value)
+          && (!els.access.value || d.access === els.access.value);
+      });
+    }
+
+    function renderSummary(rows) {
+      const indiaCount = rows.filter(d => d.country === 'India').length;
+      const internationalCount = rows.length - indiaCount;
+      const highFamily = rows.filter(d => d.family === 'high').length;
+      const easyAccess = rows.filter(d => d.access === 'easy').length;
+      const stats = [
+        ['Showing', rows.length],
+        ['India destinations', indiaCount],
+        ['International/near India', internationalCount],
+        ['High family suitability', highFamily],
+        ['Easy access', easyAccess]
+      ];
+      els.summary.innerHTML = stats.map(([label, value]) => `
+        <div class="stat"><div class="value">${value}</div><div class="label">${label}</div></div>
+      `).join('');
+    }
+
+    function renderFacet(target, rows, key, max = 10) {
+      const counts = countBy(rows, key);
+      const entries = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, max);
+      target.innerHTML = entries.map(([label, count]) => `
+        <div class="facet-row"><span>${title(label)}</span><span class="count">${count}</span></div>
+      `).join('') || '<div class="meta">No matches</div>';
+    }
+
+    function renderCards(rows) {
+      if (!rows.length) {
+        els.cards.className = '';
+        els.cards.innerHTML = '<div class="empty">No destinations match the current filters.</div>';
+        return;
+      }
+      els.cards.className = 'grid';
+      els.cards.innerHTML = rows.map(d => `
+        <article class="card">
+          <h3>${d.name}</h3>
+          <div class="meta">${d.area} · ${d.country}<br>${title(d.region)} · ${title(d.type)}</div>
+          <div class="chips">
+            ${d.vibes.map(v => `<span class="chip">${title(v)}</span>`).join('')}
+          </div>
+          <div class="row">
+            <div class="mini"><div class="mini-label">Budget</div><div class="mini-value">${title(d.budget)}</div></div>
+            <div class="mini"><div class="mini-label">Family</div><div class="mini-value">${title(d.family)}</div></div>
+            <div class="mini"><div class="mini-label">Access</div><div class="mini-value">${title(d.access)}</div></div>
+            <div class="mini"><div class="mini-label">Season hint</div><div class="mini-value">${d.season}</div></div>
+          </div>
+          <div class="footer">${d.id} · seed_unverified</div>
+        </article>
+      `).join('');
+    }
+
+    function render() {
+      const rows = filteredRows();
+      renderSummary(rows);
+      renderFacet(els.regionFacet, rows, 'region');
+      renderFacet(els.countryFacet, rows, 'country');
+      renderFacet(els.typeFacet, rows, 'type');
+      renderCards(rows);
+    }
+
+    [els.search, els.region, els.budget, els.family, els.access].forEach(el => el.addEventListener('input', render));
+    render();
+  </script>
+</body>
+</html>
