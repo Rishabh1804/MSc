@@ -1,0 +1,13 @@
+option_id,destination,tier,v1_score,avg_scenario_rank,top5_scenario_count,top10_scenario_count,family_comfort_rank,budget_sensitive_rank,premium_comfort_rank,low_fatigue_rank,novelty_heavy_rank
+TRIP-014,Goa,comfort,84.48,2.0,5,5,1,1,2,1,5
+TRIP-008,Phuket,comfort,82.97,2.2,5,5,2,2,3,3,1
+TRIP-002,Singapore,comfort,80.10,3.0,5,5,3,4,4,2,2
+TRIP-012,Kuala Lumpur,comfort,81.05,4.2,4,5,4,3,6,4,4
+TRIP-019,Dubai,comfort,79.26,4.6,5,5,5,5,5,5,3
+TRIP-021,Sri Lanka,high_quality,77.54,6.6,0,5,6,7,8,6,6
+TRIP-018,Singapore,premium,72.81,7.6,1,4,7,13,1,7,10
+TRIP-023,Langkawi,comfort,76.58,7.8,0,5,8,6,9,9,7
+TRIP-024,Andaman,comfort,74.72,8.8,0,5,9,8,10,8,9
+TRIP-017,Phuket,high_quality,73.44,9.0,0,5,10,10,7,10,8
+TRIP-011,Langkawi,high_quality,67.22,11.4,0,0,12,12,11,11,11
+TRIP-004,Bali,comfort,68.27,12.0,0,0,11,11,13,12,13
