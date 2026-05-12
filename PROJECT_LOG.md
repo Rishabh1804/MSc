@@ -31,6 +31,31 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-05 — Destination reference database seed created
+
+Type: dataset / reference
+
+Summary:
+
+Started expanding CodeMike's destination database beyond the synthetic trip-options experiment. Added a reference dataset area, schema, and a 134-row seed database covering India and nearby/regionally relevant international destinations.
+
+Files changed:
+
+- `datasets/reference/README.md`
+- `datasets/reference/india_region_destinations_schema.md`
+- `datasets/reference/india_region_destinations_seed.csv`
+- `DATASETS.md`
+
+Evidence produced:
+
+- reference destination schema
+- 134-row India and near-India destination seed dataset
+- dataset registry entry
+
+Next action:
+
+Create a destination database QA/enrichment pass: region coverage check, duplicate check, schema validation, and fields for nearest airport, origin fit, infant suitability, and verification sources.
+
 ## 2026-05-05 — Recommendation scoring source module extracted
 
 Type: productisation / capability
