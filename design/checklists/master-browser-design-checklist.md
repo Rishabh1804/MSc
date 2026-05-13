@@ -32,7 +32,22 @@ The interface should help the user:
 - identify records that need enrichment or verification
 - avoid over-trusting unverified travel data
 
-## 3. Hierarchy Checklist
+## 3. UI vs UX Gate
+
+Source topic: DES-001 Topic 1 — UI vs UX.
+
+Every UI change must be justified by the UX task it improves. Visual polish is not a sufficient reason for a component, layout, colour, animation, or interaction.
+
+| Check | Pass criteria |
+|---|---|
+| UI element has UX purpose | Every new visible element maps to search, filter, sort, inspect, compare, reset, understand status, or avoid over-trust |
+| Visual polish is not decorative-only | Styling improves hierarchy, readability, affordance, trust signalling, or task completion |
+| UX scope is larger than screen design | The redesign considers the whole review workflow, not only cards and colours |
+| Data-trust UX remains explicit | Interface changes do not imply that structurally valid records are source-verified or Planner-ready |
+| Reviewer journey is measurable | The user can understand status, narrow records, inspect details, and recover from empty/error states |
+| UI and UX vocabulary is separated | UI notes identify controls/components/states; UX notes identify task flow, risk, friction, and confidence |
+
+## 4. Hierarchy Checklist
 
 | Check | Pass criteria |
 |---|---|
@@ -43,7 +58,7 @@ The interface should help the user:
 | Record hierarchy clear | Name, place, type, scale, and status are easier to scan than raw metadata |
 | Warnings visible | Warnings are stronger than ordinary metadata |
 
-## 4. Progressive Disclosure Checklist
+## 5. Progressive Disclosure Checklist
 
 | Check | Pass criteria |
 |---|---|
@@ -53,7 +68,7 @@ The interface should help the user:
 | Table mode available | QA users can switch to dense table view when needed |
 | No field dumping | The same page does not show every field everywhere |
 
-## 5. Consistency Checklist
+## 6. Consistency Checklist
 
 | Check | Pass criteria |
 |---|---|
@@ -63,7 +78,7 @@ The interface should help the user:
 | Filters consistent | Similar filters behave the same way |
 | Labels consistent | Field labels use the same naming across card/table/drawer |
 
-## 6. Contrast Checklist
+## 7. Contrast Checklist
 
 | Check | Pass criteria |
 |---|---|
@@ -73,7 +88,7 @@ The interface should help the user:
 | Focus contrast | Focus states are visible |
 | No colour overload | Too many colours are not competing for attention |
 
-## 7. Accessibility Checklist
+## 8. Accessibility Checklist
 
 | Check | Pass criteria |
 |---|---|
@@ -84,7 +99,7 @@ The interface should help the user:
 | Responsive cards | Cards collapse cleanly on narrow screens |
 | Empty/error states | Loading and error states are readable and actionable |
 
-## 8. Proximity and Grouping Checklist
+## 9. Proximity and Grouping Checklist
 
 | Check | Pass criteria |
 |---|---|
@@ -94,7 +109,7 @@ The interface should help the user:
 | Lineage grouped | Source layer/source ID/source file are grouped together |
 | Risk grouped | Caution tags and not-ready warnings are separate from positive tags |
 
-## 9. Alignment and Layout Checklist
+## 10. Alignment and Layout Checklist
 
 | Check | Pass criteria |
 |---|---|
@@ -104,7 +119,7 @@ The interface should help the user:
 | Table alignment | Table columns are scannable and not chaotic |
 | Side panel alignment | Summary panel has clear rows and labels |
 
-## 10. Interaction Design Checklist
+## 11. Interaction Design Checklist
 
 | Check | Pass criteria |
 |---|---|
@@ -116,7 +131,7 @@ The interface should help the user:
 | Inspect available | User can open full record details |
 | Close available | Drawer/modal can be closed clearly |
 
-## 11. Data Trust Checklist
+## 12. Data Trust Checklist
 
 | Check | Pass criteria |
 |---|---|
@@ -127,7 +142,7 @@ The interface should help the user:
 | Live-truth limitation stated | Page says travel facts are not verified |
 | No unsafe claims | Interface does not claim route/visa/weather/safety accuracy |
 
-## 12. Mobile Checklist
+## 13. Mobile Checklist
 
 | Check | Pass criteria |
 |---|---|
@@ -137,7 +152,7 @@ The interface should help the user:
 | Drawer usable | Detail drawer/modal fits phone screens |
 | Table fallback | Table mode has horizontal scroll or mobile-safe columns |
 
-## 13. v1 Current Audit
+## 14. v1 Current Audit
 
 Initial status based on the current functional browser:
 
@@ -146,6 +161,7 @@ Initial status based on the current functional browser:
 | Data loading | pass | CSV loads from raw GitHub URL |
 | Search | pass | Basic search works |
 | Filters | partial | Filters exist but are not grouped/collapsible |
+| UI vs UX discipline | partial | UI controls exist, but redesign gate now requires each UI change to map to reviewer UX task and data-trust risk reduction |
 | Hierarchy | partial | Page has title and warning, but cards remain generic |
 | Progressive disclosure | fail | No detail drawer or table/card toggle yet |
 | Consistency | partial | Cards are consistent, but status semantics can improve |
@@ -153,7 +169,7 @@ Initial status based on the current functional browser:
 | Data trust | pass/partial | Warning exists; should be repeated in drawer/table context |
 | QA efficiency | partial | Needs sort, quick chips, table mode, and inspection drawer |
 
-## 14. Required v1.1 Changes
+## 15. Required v1.1 Changes
 
 Minimum principle-aware upgrade:
 
@@ -168,9 +184,10 @@ Minimum principle-aware upgrade:
 8. Improve warning/status visual hierarchy
 9. Improve mobile handling
 10. Improve empty/error/loading states
+11. For each new UI element, record the UX task and data-trust risk it improves
 ```
 
-## 15. Definition of Done for v1.1
+## 16. Definition of Done for v1.1
 
 Browser v1.1 is acceptable when:
 
@@ -183,15 +200,17 @@ Browser v1.1 is acceptable when:
 - the not-Planner-ready warning remains unmistakable
 - mobile layout does not break basic use
 - no redesign hides source/verification uncertainty
+- every new UI element has a named UX purpose
 
-## 16. Design Decision Gate
+## 17. Design Decision Gate
 
 Before implementing any change, answer:
 
 ```text
 Which user task does this improve?
+Which UI element/component/state delivers it?
 Which design principle supports it?
-What risk does it reduce?
+Which data-trust or workflow risk does it reduce?
 ```
 
 Changes that cannot answer those questions should be deferred.
