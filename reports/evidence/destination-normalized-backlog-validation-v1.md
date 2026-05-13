@@ -19,8 +19,8 @@ Validate the normalised 225-row India destination backlog before designing `dest
 | Duplicate candidate IDs | 0 |
 | Duplicate name-country keys | 0 |
 | Duplicate name-state keys | 0 |
-| Invalid normalized destination types | 3 |
-| Invalid normalized vibe tags | 3 |
+| Invalid normalized destination types | 0 |
+| Invalid normalized vibe tags | 0 |
 | Invalid trip-style tags | 0 |
 | Invalid context tags | 0 |
 | Invalid caution tags | 0 |
@@ -29,7 +29,7 @@ Validate the normalised 225-row India destination backlog before designing `dest
 Readiness:
 
 ```text
-needs_followup_before_master_promotion
+clean_enough_for_master_promotion_design
 ```
 
 ## 3. Normalisation Effect
@@ -59,16 +59,12 @@ needs_followup_before_master_promotion
 
 ## 6. Invalid Normalized Destination Types
 
-- `culture_town`: ['CAND-0155']
-- `lake_hill_station`: ['CAND-0162']
-- `mountain_resort`: ['CAND-0032']
+- None
 
 
 ## 7. Invalid Normalized Vibe Tags
 
-- `monastery`: ['CAND-0205']
-- `rain`: ['CAND-0201']
-- `rock_carving`: ['CAND-0218']
+- None
 
 
 ## 8. Invalid Trip-Style Tags
