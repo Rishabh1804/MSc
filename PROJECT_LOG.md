@@ -31,6 +31,32 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-12 — Destinations master v2 validation utility created
+
+Type: dataset / validation / QA
+
+Summary:
+
+Created the master validation utility for `destinations_master_v2.csv`. The validator checks row count, required columns, unique master IDs, source lineage keys, duplicate name keys, critical blanks, controlled statuses, destination scales, location types, vibe tags, trip-style tags, context tags, caution tags, and source-confidence values.
+
+Files changed:
+
+- `src/codemike/data/destination_master_validation.py`
+- `reports/evidence/destination-master-v2-validation-report.md`
+- `ARTIFACT_INDEX.md`
+- `NEXT_ACTIONS.md`
+- `trackers/destination-database-build-tracker.md`
+
+Evidence produced:
+
+- reusable master validation script
+- validation report scaffold
+- Termux command path for computed validation
+
+Next action:
+
+Run the master validation script in Termux and commit the computed validation report. If structurally clean, create a master HTML browser.
+
 ## 2026-05-12 — Destinations master v2 promotion script created
 
 Type: dataset / script / promotion
