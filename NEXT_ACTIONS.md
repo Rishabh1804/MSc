@@ -16,35 +16,20 @@ This file tracks the current operational queue for CodeMike. It is intentionally
 
 | Priority | Action | Owner/Mode | Status | Notes |
 |---:|---|---|---|---|
-| 1 | Pull latest repo in Termux | User / Termux | done | Completed for clean validation |
-| 2 | Run normalized backlog validator | User / Termux | done | Clean report produced |
-| 3 | Commit regenerated validation report | User / Termux | done | Clean validation pushed |
-| 4 | Verify clean validation report from GitHub | Assistant / GitHub connector | done | Invalid counts are zero |
-| 5 | Create master schema | Assistant / GitHub connector | done | `datasets/reference/destinations_master_v2_schema.md` |
-| 6 | Create master promotion script | Assistant / GitHub connector | done | `src/codemike/data/destination_master_promotion.py` |
-| 7 | Generate master dataset | User / Termux | done | `datasets/reference/destinations_master_v2.csv` generated and verified |
-| 8 | Create master validation utility | Assistant / GitHub connector | done | `src/codemike/data/destination_master_validation.py` |
-| 9 | Run master validation report | User / Termux | todo | Generate computed report |
-| 10 | Create master HTML browser | Assistant / GitHub connector | todo | GitHub Pages review layer |
-| 11 | Start destination scoring v1 | Assistant / GitHub connector | deferred | After master browser exists |
+| 1 | Pull latest repo in Termux | User / Termux | todo | Needed after seed compatibility cleanup |
+| 2 | Run master validation report | User / Termux | todo | Regenerate computed report |
+| 3 | Commit regenerated master validation report | User / Termux | todo | Should show clean structural readiness |
+| 4 | Verify clean master validation from GitHub | Assistant / GitHub connector | todo | Confirm invalid counts are zero |
+| 5 | Create master HTML browser | Assistant / GitHub connector | todo | GitHub Pages review layer |
+| 6 | Start destination scoring v1 | Assistant / GitHub connector | deferred | After master browser exists |
 
 ## Current Blocking Item
 
 ```text
-Run destination_master_validation.py in Termux
+Regenerate destination-master-v2-validation-report.md after seed compatibility cleanup
 ```
 
-The master validation script now exists:
-
-```text
-src/codemike/data/destination_master_validation.py
-```
-
-It should generate:
-
-```text
-reports/evidence/destination-master-v2-validation-report.md
-```
+The master validator and tag dictionary now accept the legacy seed concepts that appeared in the original seed dataset.
 
 ## Next Termux Command Block
 
@@ -56,7 +41,7 @@ git pull
 python src/codemike/data/destination_master_validation.py
 git status
 git add reports/evidence/destination-master-v2-validation-report.md
-git commit -m "Generate destinations master v2 validation report"
+git commit -m "Regenerate clean destinations master v2 validation report"
 git push
 ```
 
@@ -64,6 +49,13 @@ Expected clean readiness:
 
 ```text
 master_structurally_valid_not_planner_ready
+```
+
+Expected invalid counts:
+
+```text
+Invalid location types: 0
+Invalid vibe tags: 0
 ```
 
 ## Current Master Dataset Summary
