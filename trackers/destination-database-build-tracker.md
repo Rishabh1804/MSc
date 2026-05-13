@@ -5,8 +5,8 @@ This tracker records the build state of CodeMike's destination database system.
 ## Current Status Summary
 
 ```text
-Current phase: normalized backlog validation cleanup
-Next major phase: destinations_master_v2 schema design
+Current phase: master promotion script design
+Next major phase: destinations_master_v2 CSV generation
 Current structured coverage: 134 seed rows + 225 candidate rows = 359 rows
 Planner-ready rows: 0
 ```
@@ -28,8 +28,8 @@ Planner-ready rows: 0
 | Backlog normaliser | `src/codemike/data/destination_backlog_normalization.py` | done | Assistant | Normalises raw backlog |
 | Normalised backlog | `datasets/reference/destination_expansion_backlog_india_v1_normalized.csv` | done | User / Termux | Generated and pushed |
 | Normalised backlog validator | `src/codemike/data/destination_normalized_validation.py` | done | Assistant | Updated for final six concepts |
-| Clean normalised validation report | `reports/evidence/destination-normalized-backlog-validation-v1.md` | todo | User / Termux | Needs rerun after taxonomy cleanup |
-| Master schema | `datasets/reference/destinations_master_v2_schema.md` | todo | Assistant | Next design step |
+| Clean normalised validation report | `reports/evidence/destination-normalized-backlog-validation-v1.md` | done | User / Termux | Clean enough for master promotion design |
+| Master schema | `datasets/reference/destinations_master_v2_schema.md` | done | Assistant | Canonical schema and mapping rules created |
 | Master promotion script | `src/codemike/data/destination_master_promotion.py` | todo | Assistant | Will generate master CSV |
 | Master dataset | `datasets/reference/destinations_master_v2.csv` | todo | User / Termux | Not created yet |
 | Master QA report | TBD | todo | Assistant/User | After master CSV exists |
@@ -57,43 +57,42 @@ A row should not move to Planner-ready without:
 - infant/family suitability review
 - scoring evidence
 
-## Current Clean-Up Requirement
+## Current Build Requirement
 
-The last computed validation report showed:
-
-```text
-Invalid normalized destination types: 3
-Invalid normalized vibe tags: 3
-```
-
-The taxonomy and validator have now been updated to accept:
+Create:
 
 ```text
-culture_town
-lake_hill_station
-mountain_resort
-monastery
-rain
-rock_carving
+src/codemike/data/destination_master_promotion.py
 ```
 
-Expected next validation result:
+The script should generate:
 
 ```text
-Invalid normalized destination types: 0
-Invalid normalized vibe tags: 0
-Readiness: clean_enough_for_master_promotion_design
+datasets/reference/destinations_master_v2.csv
+reports/evidence/destination-master-v2-promotion-report.md
 ```
+
+Expected first master output scale:
+
+```text
+134 seed rows + 225 normalized candidate rows = 359 rows
+```
+
+unless exact duplicate suppression is explicitly added later.
 
 ## Next Termux Command
+
+No command until the promotion script exists.
+
+Expected future command:
 
 ```bash
 cd ~/projects/MSc
 git pull
-python src/codemike/data/destination_normalized_validation.py
+python src/codemike/data/destination_master_promotion.py
 git status
-git add reports/evidence/destination-normalized-backlog-validation-v1.md
-git commit -m "Regenerate clean normalized destination backlog validation report"
+git add datasets/reference/destinations_master_v2.csv reports/evidence/destination-master-v2-promotion-report.md
+git commit -m "Generate destinations master v2 dataset"
 git push
 ```
 
@@ -105,6 +104,8 @@ git push
 - master schema is documented
 - promotion mapping is clear
 
+Status: done.
+
 ### Master Dataset Ready
 
 - master CSV generated
@@ -112,9 +113,13 @@ git push
 - exact duplicates checked
 - statuses clear
 
+Status: pending.
+
 ### Planner Candidate Ready
 
 - enriched fields exist
 - scoring module exists
 - evidence report exists
 - unverified rows remain blocked from live/travel-truth use
+
+Status: deferred.
