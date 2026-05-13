@@ -21,7 +21,7 @@ This file tracks the current operational queue for CodeMike. It is intentionally
 | 3 | Commit regenerated validation report | User / Termux | done | Clean validation pushed |
 | 4 | Verify clean validation report from GitHub | Assistant / GitHub connector | done | Invalid counts are zero |
 | 5 | Create master schema | Assistant / GitHub connector | done | `datasets/reference/destinations_master_v2_schema.md` |
-| 6 | Create master promotion script | Assistant / GitHub connector | todo | `src/codemike/data/destination_master_promotion.py` |
+| 6 | Create master promotion script | Assistant / GitHub connector | done | `src/codemike/data/destination_master_promotion.py` |
 | 7 | Generate master dataset | User / Termux | todo | `datasets/reference/destinations_master_v2.csv` |
 | 8 | Validate master dataset | Assistant + User | todo | Add validator/report |
 | 9 | Create master HTML browser | Assistant / GitHub connector | todo | GitHub Pages review layer |
@@ -30,10 +30,10 @@ This file tracks the current operational queue for CodeMike. It is intentionally
 ## Current Blocking Item
 
 ```text
-Master promotion script
+Generate destinations_master_v2.csv in Termux
 ```
 
-The normalized backlog is clean and the master schema exists. The next blocker is creating:
+The promotion script now exists:
 
 ```text
 src/codemike/data/destination_master_promotion.py
@@ -48,9 +48,7 @@ reports/evidence/destination-master-v2-promotion-report.md
 
 ## Next Termux Command Block
 
-No command yet. First create the promotion script.
-
-After the script exists, expected command will be:
+Run:
 
 ```bash
 cd ~/projects/MSc
@@ -60,6 +58,16 @@ git status
 git add datasets/reference/destinations_master_v2.csv reports/evidence/destination-master-v2-promotion-report.md
 git commit -m "Generate destinations master v2 dataset"
 git push
+```
+
+Expected output:
+
+```text
+Seed rows read: 134
+Normalized candidate rows read: 225
+Master rows written: 359
+Wrote datasets/reference/destinations_master_v2.csv
+Wrote reports/evidence/destination-master-v2-promotion-report.md
 ```
 
 ## Master Schema Summary
