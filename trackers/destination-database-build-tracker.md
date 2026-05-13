@@ -5,7 +5,7 @@ This tracker records the build state of CodeMike's destination database system.
 ## Current Status Summary
 
 ```text
-Current phase: master validation
+Current phase: master validation rerun after seed compatibility cleanup
 Next major phase: master HTML browser
 Current structured coverage: 359 master rows
 Planner-ready rows: 0
@@ -20,7 +20,7 @@ Planner-ready rows: 0
 | Browser v2 | `docs/destination-browser-v2.html` | done | Assistant | Client-side heuristic enrichment |
 | QA report for seed | `reports/evidence/destination-database-qa-v1.md` | done | Assistant | Documents limitations and enrichment strategy |
 | V2 strategy | `datasets/reference/destination_database_v2_strategy.md` | done | Assistant | Scale-up architecture |
-| Tag dictionary v2 | `datasets/reference/destination_tag_dictionary.md` | done | Assistant | Expanded taxonomy |
+| Tag dictionary v2 | `datasets/reference/destination_tag_dictionary.md` | done | Assistant | Expanded taxonomy with seed compatibility vocabulary |
 | Tag dictionary browser | `docs/destination-tag-dictionary.html` | done | Assistant | HTML review artifact |
 | India candidate backlog | `datasets/reference/destination_expansion_backlog_india_v1.csv` | done | Assistant | 225 candidate rows |
 | Raw backlog taxonomy validator | `src/codemike/data/destination_taxonomy_validation.py` | done | Assistant | Validates raw candidate backlog |
@@ -33,8 +33,8 @@ Planner-ready rows: 0
 | Master promotion script | `src/codemike/data/destination_master_promotion.py` | done | Assistant | Ready for Termux generation |
 | Master dataset | `datasets/reference/destinations_master_v2.csv` | done | User / Termux | 359 rows generated and pushed |
 | Master promotion report | `reports/evidence/destination-master-v2-promotion-report.md` | done | User / Termux | Confirms 359 rows, no exact duplicate name keys |
-| Master validation script | `src/codemike/data/destination_master_validation.py` | done | Assistant | Ready for Termux validation |
-| Master validation report | `reports/evidence/destination-master-v2-validation-report.md` | todo | User / Termux | Needs computed run |
+| Master validation script | `src/codemike/data/destination_master_validation.py` | done | Assistant | Seed compatibility values accepted |
+| Master validation report | `reports/evidence/destination-master-v2-validation-report.md` | todo | User / Termux | Needs computed rerun after compatibility cleanup |
 | Master HTML browser | TBD | todo | Assistant | Review layer for master dataset |
 | Destination scoring v1 | `src/codemike/recommendation/destination_scoring.py` | deferred | Assistant | After master browser exists |
 | Planner transfer report | TBD | deferred | Assistant | After scoring evidence |
@@ -67,7 +67,7 @@ Run:
 src/codemike/data/destination_master_validation.py
 ```
 
-The script should generate:
+The script should regenerate:
 
 ```text
 reports/evidence/destination-master-v2-validation-report.md
@@ -87,7 +87,7 @@ git pull
 python src/codemike/data/destination_master_validation.py
 git status
 git add reports/evidence/destination-master-v2-validation-report.md
-git commit -m "Generate destinations master v2 validation report"
+git commit -m "Regenerate clean destinations master v2 validation report"
 git push
 ```
 
