@@ -5,8 +5,8 @@ This tracker records the build state of CodeMike's destination database system.
 ## Current Status Summary
 
 ```text
-Current phase: master validation rerun after seed compatibility cleanup
-Next major phase: master HTML browser
+Current phase: master browser verification
+Next major phase: master enrichment strategy
 Current structured coverage: 359 master rows
 Planner-ready rows: 0
 ```
@@ -34,9 +34,11 @@ Planner-ready rows: 0
 | Master dataset | `datasets/reference/destinations_master_v2.csv` | done | User / Termux | 359 rows generated and pushed |
 | Master promotion report | `reports/evidence/destination-master-v2-promotion-report.md` | done | User / Termux | Confirms 359 rows, no exact duplicate name keys |
 | Master validation script | `src/codemike/data/destination_master_validation.py` | done | Assistant | Seed compatibility values accepted |
-| Master validation report | `reports/evidence/destination-master-v2-validation-report.md` | todo | User / Termux | Needs computed rerun after compatibility cleanup |
-| Master HTML browser | TBD | todo | Assistant | Review layer for master dataset |
-| Destination scoring v1 | `src/codemike/recommendation/destination_scoring.py` | deferred | Assistant | After master browser exists |
+| Master validation report | `reports/evidence/destination-master-v2-validation-report.md` | done | User / Termux | Clean structural validation |
+| Master HTML browser | `docs/destination-master-browser-v1.html` | done | Assistant | Review layer for master dataset |
+| Pages index link | `docs/index.html` | done | Assistant | Master browser linked |
+| Master enrichment strategy | `datasets/reference/destination_master_enrichment_strategy.md` | todo | Assistant | Next design step |
+| Destination scoring v1 | `src/codemike/recommendation/destination_scoring.py` | deferred | Assistant | After enrichment strategy exists |
 | Planner transfer report | TBD | deferred | Assistant | After scoring evidence |
 
 ## Data Quality Gates
@@ -61,34 +63,16 @@ A row should not move to Planner-ready without:
 
 ## Current Build Requirement
 
-Run:
+Verify the GitHub Pages browser:
 
 ```text
-src/codemike/data/destination_master_validation.py
+https://rishabh1804.github.io/MSc/destination-master-browser-v1.html
 ```
 
-The script should regenerate:
+Then create:
 
 ```text
-reports/evidence/destination-master-v2-validation-report.md
-```
-
-Expected readiness if clean:
-
-```text
-master_structurally_valid_not_planner_ready
-```
-
-## Next Termux Command
-
-```bash
-cd ~/projects/MSc
-git pull
-python src/codemike/data/destination_master_validation.py
-git status
-git add reports/evidence/destination-master-v2-validation-report.md
-git commit -m "Regenerate clean destinations master v2 validation report"
-git push
+datasets/reference/destination_master_enrichment_strategy.md
 ```
 
 ## Milestone Criteria
@@ -116,7 +100,7 @@ Status: done.
 - HTML browser created
 - Pages index updated
 
-Status: pending.
+Status: done.
 
 ### Planner Candidate Ready
 
