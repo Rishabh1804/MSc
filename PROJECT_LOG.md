@@ -31,6 +31,28 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-12 — Remaining destination taxonomy cleanup completed
+
+Type: taxonomy / validation / QA
+
+Summary:
+
+Added the six remaining normalized backlog concepts to the destination taxonomy and normalized backlog validator so the next validation run can reach zero invalid destination types and zero invalid vibe tags.
+
+Files changed:
+
+- `datasets/reference/destination_tag_dictionary.md`
+- `src/codemike/data/destination_normalized_validation.py`
+
+Evidence produced:
+
+- accepted destination types: `culture_town`, `lake_hill_station`, `mountain_resort`
+- accepted vibe tags: `monastery`, `rain`, `rock_carving`
+
+Next action:
+
+Run `python src/codemike/data/destination_normalized_validation.py` and commit the regenerated computed validation report. If clean, proceed to `datasets/reference/destinations_master_v2_schema.md`.
+
 ## 2026-05-12 — Normalized destination backlog validation utility created
 
 Type: dataset / QA / validation
