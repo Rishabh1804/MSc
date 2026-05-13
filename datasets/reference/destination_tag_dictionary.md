@@ -46,24 +46,32 @@ Use this to clarify whether a row is a single place, city, circuit, region, or p
 - `pilgrim_city`
 - `planned_city`
 - `coastal_city`
+- `beach_city`
 - `hill_city`
+- `hill_heritage_city`
 - `mountain_city`
+- `mountain_capital`
+- `lake_mountain_city`
 - `gateway_city`
 - `city_gateway`
+- `northern_city`
 - `business_city`
 - `education_city`
 - `food_city`
 - `craft_city`
+- `heritage_capital`
 
 ### Nature and Landscapes
 
 - `hill_station`
 - `lake_hill_station`
 - `hill_town`
+- `culture_hill_town`
 - `hill_region`
 - `mountain_town`
 - `mountain_region`
 - `mountain_resort`
+- `mountain_valley`
 - `high_altitude`
 - `valley`
 - `lake_city`
@@ -90,10 +98,13 @@ Use this to clarify whether a row is a single place, city, circuit, region, or p
 - `coastal_town`
 - `coastal_region`
 - `coastal_capital`
+- `desert_beach_emirate`
 - `island_gateway`
 - `island_beach`
 - `island_region`
 - `island_resort`
+- `island_resort_district`
+- `island_heritage_city`
 - `local_island`
 - `river_island`
 - `marine_region`
@@ -101,6 +112,7 @@ Use this to clarify whether a row is a single place, city, circuit, region, or p
 ### Wildlife and Protected Areas
 
 - `wildlife_reserve`
+- `wildlife_region`
 - `national_park`
 - `tiger_reserve`
 - `birding_site`
@@ -165,6 +177,7 @@ Use these in `vibe_1`, `vibe_2`, `vibe_3`, and future multi-tag fields.
 - `food`
 - `shopping`
 - `urban`
+- `city`
 - `architecture`
 - `history`
 - `spiritual`
@@ -175,6 +188,7 @@ Use these in `vibe_1`, `vibe_2`, `vibe_3`, and future multi-tag fields.
 - `budget`
 - `wellness`
 - `romantic`
+- `relaxation`
 - `nightlife`
 - `business`
 - `education`
@@ -185,6 +199,8 @@ Use these in `vibe_1`, `vibe_2`, `vibe_3`, and future multi-tag fields.
 - `photography`
 - `viewpoint`
 - `local_life`
+- `museums`
+- `stopover`
 
 ### Nature Vibes
 
@@ -197,6 +213,7 @@ Use these in `vibe_1`, `vibe_2`, `vibe_3`, and future multi-tag fields.
 - `forest`
 - `rainforest`
 - `rain`
+- `monsoon`
 - `desert`
 - `snow`
 - `tea`
@@ -206,6 +223,7 @@ Use these in `vibe_1`, `vibe_2`, `vibe_3`, and future multi-tag fields.
 - `gardens`
 - `meadows`
 - `caves`
+- `limestone`
 - `mangrove`
 - `wetland`
 - `birding`
@@ -224,6 +242,7 @@ Use these in `vibe_1`, `vibe_2`, `vibe_3`, and future multi-tag fields.
 - `snorkelling`
 - `water`
 - `resort`
+- `villa`
 - `lagoon`
 - `coral`
 - `cruise`
@@ -267,6 +286,35 @@ Use these in `vibe_1`, `vibe_2`, `vibe_3`, and future multi-tag fields.
 - `colonial`
 - `french_quarter`
 - `silk_route`
+
+## Seed Compatibility Vocabulary
+
+These values are accepted because they exist in the original seed dataset. They are structurally valid for master ingestion, but should be reviewed during future enrichment and normalisation.
+
+### Seed-Compatible Location Types
+
+- `beach_city`
+- `culture_hill_town`
+- `desert_beach_emirate`
+- `heritage_capital`
+- `hill_heritage_city`
+- `island_heritage_city`
+- `island_resort_district`
+- `lake_mountain_city`
+- `mountain_capital`
+- `mountain_valley`
+- `northern_city`
+- `wildlife_region`
+
+### Seed-Compatible Vibe Tags
+
+- `city`
+- `limestone`
+- `monsoon`
+- `museums`
+- `relaxation`
+- `stopover`
+- `villa`
 
 ## Traveller Fit Tags
 
