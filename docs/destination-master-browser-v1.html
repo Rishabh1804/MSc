@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CodeMike — Destinations Master v2 Browser</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --panel-soft: #1f2937;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --line: rgba(255,255,255,0.12);
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.14);
+      --warning: #fbbf24;
+      --good: #34d399;
+      --danger: #fb7185;
+      --chip: rgba(255,255,255,0.08);
+      --shadow: 0 16px 40px rgba(0,0,0,0.35);
+      --radius: 18px;
+      --radius-sm: 12px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.18), transparent 34rem), var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    header {
+      padding: 28px 22px 20px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(15,23,42,0.78);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .wrap {
+      width: min(1240px, calc(100vw - 32px));
+      margin: 0 auto;
+    }
+
+    .topline {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #bae6fd;
+      border: 1px solid rgba(56,189,248,0.26);
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
+
+    .badge.warning {
+      background: rgba(251,191,36,0.12);
+      color: #fde68a;
+      border-color: rgba(251,191,36,0.28);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 46px);
+      letter-spacing: -0.045em;
+      line-height: 1.02;
+    }
+
+    .subtitle {
+      max-width: 920px;
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .toolbar {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1.7fr repeat(5, minmax(130px, 1fr));
+      gap: 10px;
+    }
+
+    input, select, button {
+      width: 100%;
+      min-height: 44px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(17,24,39,0.88);
+      color: var(--text);
+      padding: 10px 12px;
+      font: inherit;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: rgba(56,189,248,0.65);
+      box-shadow: 0 0 0 3px rgba(56,189,248,0.13);
+    }
+
+    main { padding: 22px 0 48px; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.035));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat .label {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+
+    .stat .value {
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .notice {
+      border: 1px solid rgba(251,191,36,0.32);
+      background: rgba(251,191,36,0.09);
+      color: #fde68a;
+      border-radius: var(--radius-sm);
+      padding: 13px 14px;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    aside {
+      position: sticky;
+      top: 180px;
+      background: rgba(17,24,39,0.82);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    aside h2 {
+      margin: 0 0 12px;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+    }
+
+    .side-section { margin-top: 16px; }
+    .side-section:first-of-type { margin-top: 0; }
+
+    .mini-list {
+      display: grid;
+      gap: 7px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .mini-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .mini-row:last-child { border-bottom: 0; }
+    .mini-row strong { color: var(--text); }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: rgba(17,24,39,0.78);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .title-group { min-width: 0; }
+
+    .id {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .name {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      overflow-wrap: anywhere;
+    }
+
+    .place {
+      color: var(--muted);
+      margin-top: 4px;
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .status-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 6px 9px;
+      font-size: 11px;
+      font-weight: 700;
+      border: 1px solid rgba(251,191,36,0.28);
+      background: rgba(251,191,36,0.1);
+      color: #fde68a;
+      max-width: 160px;
+      text-align: center;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    .meta {
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.075);
+      border-radius: 12px;
+      padding: 10px;
+      min-width: 0;
+    }
+
+    .meta-label {
+      color: var(--muted);
+      font-size: 11px;
+      margin-bottom: 3px;
+    }
+
+    .meta-value {
+      font-size: 13px;
+      font-weight: 650;
+      overflow-wrap: anywhere;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .chip {
+      display: inline-flex;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: var(--chip);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #d1d5db;
+      font-size: 12px;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+
+    .chip.warn {
+      background: rgba(251,191,36,0.1);
+      border-color: rgba(251,191,36,0.24);
+      color: #fde68a;
+    }
+
+    .chip.good {
+      background: rgba(52,211,153,0.10);
+      border-color: rgba(52,211,153,0.22);
+      color: #bbf7d0;
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      padding: 30px;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    a { color: #7dd3fc; }
+
+    @media (max-width: 1040px) {
+      .toolbar { grid-template-columns: 1fr 1fr; }
+      .stats { grid-template-columns: repeat(3, 1fr); }
+      .layout { grid-template-columns: 1fr; }
+      aside { position: static; }
+    }
+
+    @media (max-width: 720px) {
+      header { position: static; }
+      .toolbar { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .cards { grid-template-columns: 1fr; }
+      .meta-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="topline">
+        <span class="badge">CodeMike Destination System</span>
+        <span class="badge warning">Structurally valid · not Planner-ready</span>
+      </div>
+      <h1>Destinations Master v2 Browser</h1>
+      <p class="subtitle">
+        Review the 359-row canonical master reference layer generated from the seed database and normalized India candidate backlog. This browser is a QA/review surface only; records still require enrichment and source verification before travel recommendation use.
+      </p>
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Search name, state, country, type, vibe, tags…" />
+        <select id="sourceLayer"><option value="">All source layers</option></select>
+        <select id="macroRegion"><option value="">All macro regions</option></select>
+        <select id="scale"><option value="">All scales</option></select>
+        <select id="plannerStatus"><option value="">All planner statuses</option></select>
+        <select id="verification"><option value="">All verification statuses</option></select>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="notice">
+      <strong>QA note:</strong> this data is structurally valid, but not live travel truth. Visa, route, permit, weather, safety, medical-access, and family/infant suitability claims still need source verification.
+    </div>
+
+    <section class="stats" id="stats"></section>
+
+    <section class="layout">
+      <aside>
+        <div class="side-section">
+          <h2>Dataset snapshot</h2>
+          <div class="mini-list" id="snapshot"></div>
+        </div>
+        <div class="side-section">
+          <h2>Top destination scales</h2>
+          <div class="mini-list" id="scaleList"></div>
+        </div>
+        <div class="side-section">
+          <h2>Source files</h2>
+          <div class="mini-list">
+            <div class="mini-row"><span>Seed</span><strong>134</strong></div>
+            <div class="mini-row"><span>Normalized candidates</span><strong>225</strong></div>
+          </div>
+        </div>
+        <p class="footer-note">
+          Source: <code>datasets/reference/destinations_master_v2.csv</code><br />
+          Validation: <code>master_structurally_valid_not_planner_ready</code>
+        </p>
+      </aside>
+
+      <section class="cards" id="cards">
+        <div class="empty">Loading master destination records…</div>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    const CSV_URL = '../datasets/reference/destinations_master_v2.csv';
+    const state = { rows: [], filtered: [] };
+
+    const els = {
+      search: document.getElementById('search'),
+      sourceLayer: document.getElementById('sourceLayer'),
+      macroRegion: document.getElementById('macroRegion'),
+      scale: document.getElementById('scale'),
+      plannerStatus: document.getElementById('plannerStatus'),
+      verification: document.getElementById('verification'),
+      stats: document.getElementById('stats'),
+      snapshot: document.getElementById('snapshot'),
+      scaleList: document.getElementById('scaleList'),
+      cards: document.getElementById('cards')
+    };
+
+    function parseCSV(text) {
+      const rows = [];
+      let row = [];
+      let value = '';
+      let inQuotes = false;
+
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const next = text[i + 1];
+
+        if (char === '"' && inQuotes && next === '"') {
+          value += '"';
+          i++;
+        } else if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+          row.push(value);
+          value = '';
+        } else if ((char === '\n' || char === '\r') && !inQuotes) {
+          if (char === '\r' && next === '\n') i++;
+          row.push(value);
+          if (row.some(cell => cell.length > 0)) rows.push(row);
+          row = [];
+          value = '';
+        } else {
+          value += char;
+        }
+      }
+
+      if (value || row.length) {
+        row.push(value);
+        rows.push(row);
+      }
+
+      const headers = rows.shift() || [];
+      return rows.map(values => Object.fromEntries(headers.map((h, i) => [h, values[i] || ''])));
+    }
+
+    function countBy(rows, key) {
+      return rows.reduce((acc, row) => {
+        const value = row[key] || 'blank';
+        acc[value] = (acc[value] || 0) + 1;
+        return acc;
+      }, {});
+    }
+
+    function uniqueValues(rows, key) {
+      return [...new Set(rows.map(row => row[key]).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+    }
+
+    function fillSelect(select, values) {
+      values.forEach(value => {
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = value;
+        select.appendChild(option);
+      });
+    }
+
+    function searchableText(row) {
+      return [
+        row.destination_master_id,
+        row.canonical_name,
+        row.country,
+        row.macro_region,
+        row.state_or_area,
+        row.district_or_area,
+        row.destination_scale,
+        row.location_type,
+        row.vibe_1,
+        row.vibe_2,
+        row.vibe_3,
+        row.trip_style_tags,
+        row.context_tags,
+        row.caution_tags,
+        row.source_layer,
+        row.source_id
+      ].join(' ').toLowerCase();
+    }
+
+    function applyFilters() {
+      const query = els.search.value.trim().toLowerCase();
+      const source = els.sourceLayer.value;
+      const region = els.macroRegion.value;
+      const scale = els.scale.value;
+      const planner = els.plannerStatus.value;
+      const verification = els.verification.value;
+
+      state.filtered = state.rows.filter(row => {
+        if (query && !searchableText(row).includes(query)) return false;
+        if (source && row.source_layer !== source) return false;
+        if (region && row.macro_region !== region) return false;
+        if (scale && row.destination_scale !== scale) return false;
+        if (planner && row.planner_use_status !== planner) return false;
+        if (verification && row.verification_status !== verification) return false;
+        return true;
+      });
+
+      render();
+    }
+
+    function statCard(label, value) {
+      return `<div class="stat"><div class="label">${escapeHtml(label)}</div><div class="value">${escapeHtml(String(value))}</div></div>`;
+    }
+
+    function renderStats() {
+      const rows = state.filtered;
+      const all = state.rows;
+      const plannerReady = rows.filter(r => r.planner_use_status === 'planner_ready').length;
+      const needsVerification = rows.filter(r => r.planner_use_status === 'needs_verification').length;
+      const seed = rows.filter(r => r.source_layer === 'seed').length;
+      const candidates = rows.filter(r => r.source_layer === 'normalized_candidate').length;
+
+      els.stats.innerHTML = [
+        statCard('Showing', rows.length),
+        statCard('Total master rows', all.length),
+        statCard('Seed rows', seed),
+        statCard('Candidate rows', candidates),
+        statCard('Needs verification', needsVerification),
+        statCard('Planner-ready', plannerReady)
+      ].join('');
+    }
+
+    function renderSnapshot() {
+      const rows = state.filtered;
+      const sourceCounts = countBy(rows, 'source_layer');
+      const verificationCounts = countBy(rows, 'verification_status');
+      const plannerCounts = countBy(rows, 'planner_use_status');
+
+      els.snapshot.innerHTML = [
+        miniRow('Filtered rows', rows.length),
+        miniRow('Seed', sourceCounts.seed || 0),
+        miniRow('Normalized candidate', sourceCounts.normalized_candidate || 0),
+        miniRow('Candidate status', verificationCounts.candidate || 0),
+        miniRow('Seed unverified', verificationCounts.seed_unverified || 0),
+        miniRow('Needs verification', plannerCounts.needs_verification || 0)
+      ].join('');
+
+      const scaleCounts = Object.entries(countBy(rows, 'destination_scale'))
+        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+        .slice(0, 9);
+      els.scaleList.innerHTML = scaleCounts.map(([key, value]) => miniRow(key, value)).join('') || miniRow('No records', 0);
+    }
+
+    function miniRow(label, value) {
+      return `<div class="mini-row"><span>${escapeHtml(label)}</span><strong>${escapeHtml(String(value))}</strong></div>`;
+    }
+
+    function chip(value, cls = '') {
+      if (!value) return '';
+      return `<span class="chip ${cls}">${escapeHtml(value)}</span>`;
+    }
+
+    function chipsFrom(value, cls = '') {
+      return (value || '').split(';').map(v => v.trim()).filter(Boolean).map(v => chip(v, cls)).join('');
+    }
+
+    function renderCards() {
+      const rows = state.filtered;
+      if (!rows.length) {
+        els.cards.innerHTML = '<div class="empty">No records match the current filters.</div>';
+        return;
+      }
+
+      els.cards.innerHTML = rows.map(row => {
+        const vibes = [row.vibe_1, row.vibe_2, row.vibe_3].filter(Boolean).map(v => chip(v)).join('');
+        const trip = chipsFrom(row.trip_style_tags, 'good');
+        const caution = chipsFrom(row.caution_tags, 'warn');
+        const context = chipsFrom(row.context_tags);
+        return `
+          <article class="card">
+            <div class="card-head">
+              <div class="title-group">
+                <div class="id">${escapeHtml(row.destination_master_id)} · ${escapeHtml(row.source_layer)}</div>
+                <div class="name">${escapeHtml(row.canonical_name)}</div>
+                <div class="place">${escapeHtml([row.district_or_area, row.state_or_area, row.country].filter(Boolean).join(', '))}</div>
+              </div>
+              <div class="status-pill">${escapeHtml(row.planner_use_status)}</div>
+            </div>
+
+            <div class="meta-grid">
+              ${meta('Location type', row.location_type)}
+              ${meta('Scale', row.destination_scale)}
+              ${meta('Macro region', row.macro_region)}
+              ${meta('Verification', row.verification_status)}
+              ${meta('Promotion', row.promotion_status)}
+              ${meta('Source ID', row.source_id)}
+            </div>
+
+            <div class="chips">
+              ${vibes || chip('no vibes')}
+              ${trip}
+              ${context}
+              ${caution}
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function meta(label, value) {
+      return `<div class="meta"><div class="meta-label">${escapeHtml(label)}</div><div class="meta-value">${escapeHtml(value || 'blank')}</div></div>`;
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    function render() {
+      renderStats();
+      renderSnapshot();
+      renderCards();
+    }
+
+    async function init() {
+      try {
+        const res = await fetch(CSV_URL);
+        if (!res.ok) throw new Error(`Could not load CSV: ${res.status}`);
+        const text = await res.text();
+        state.rows = parseCSV(text);
+        state.filtered = state.rows;
+
+        fillSelect(els.sourceLayer, uniqueValues(state.rows, 'source_layer'));
+        fillSelect(els.macroRegion, uniqueValues(state.rows, 'macro_region'));
+        fillSelect(els.scale, uniqueValues(state.rows, 'destination_scale'));
+        fillSelect(els.plannerStatus, uniqueValues(state.rows, 'planner_use_status'));
+        fillSelect(els.verification, uniqueValues(state.rows, 'verification_status'));
+
+        [els.search, els.sourceLayer, els.macroRegion, els.scale, els.plannerStatus, els.verification]
+          .forEach(el => el.addEventListener('input', applyFilters));
+
+        render();
+      } catch (err) {
+        els.cards.innerHTML = `<div class="empty">Failed to load master CSV. ${escapeHtml(err.message)}</div>`;
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>
