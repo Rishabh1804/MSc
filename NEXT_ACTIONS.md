@@ -16,11 +16,11 @@ This file tracks the current operational queue for CodeMike. It is intentionally
 
 | Priority | Action | Owner/Mode | Status | Notes |
 |---:|---|---|---|---|
-| 1 | Pull latest repo in Termux | User / Termux | todo | Needed after taxonomy cleanup commits |
-| 2 | Run normalized backlog validator | User / Termux | todo | `python src/codemike/data/destination_normalized_validation.py` |
-| 3 | Commit regenerated validation report | User / Termux | todo | Expected clean result after taxonomy update |
-| 4 | Verify clean validation report from GitHub | Assistant / GitHub connector | todo | Confirm invalid counts are zero |
-| 5 | Create master schema | Assistant / GitHub connector | todo | `datasets/reference/destinations_master_v2_schema.md` |
+| 1 | Pull latest repo in Termux | User / Termux | done | Completed for clean validation |
+| 2 | Run normalized backlog validator | User / Termux | done | Clean report produced |
+| 3 | Commit regenerated validation report | User / Termux | done | Clean validation pushed |
+| 4 | Verify clean validation report from GitHub | Assistant / GitHub connector | done | Invalid counts are zero |
+| 5 | Create master schema | Assistant / GitHub connector | done | `datasets/reference/destinations_master_v2_schema.md` |
 | 6 | Create master promotion script | Assistant / GitHub connector | todo | `src/codemike/data/destination_master_promotion.py` |
 | 7 | Generate master dataset | User / Termux | todo | `datasets/reference/destinations_master_v2.csv` |
 | 8 | Validate master dataset | Assistant + User | todo | Add validator/report |
@@ -30,57 +30,52 @@ This file tracks the current operational queue for CodeMike. It is intentionally
 ## Current Blocking Item
 
 ```text
-Clean normalized backlog validation report
+Master promotion script
 ```
 
-The taxonomy and validator have been updated to accept the final six concepts:
+The normalized backlog is clean and the master schema exists. The next blocker is creating:
 
 ```text
-culture_town
-lake_hill_station
-mountain_resort
-monastery
-rain
-rock_carving
+src/codemike/data/destination_master_promotion.py
 ```
 
-A rerun should produce:
+It should generate:
 
 ```text
-Invalid normalized destination types: 0
-Invalid normalized vibe tags: 0
-Readiness: clean_enough_for_master_promotion_design
+datasets/reference/destinations_master_v2.csv
+reports/evidence/destination-master-v2-promotion-report.md
 ```
 
-## Termux Command Block
+## Next Termux Command Block
 
-Run from repo root:
+No command yet. First create the promotion script.
+
+After the script exists, expected command will be:
 
 ```bash
 cd ~/projects/MSc
 git pull
-python src/codemike/data/destination_normalized_validation.py
+python src/codemike/data/destination_master_promotion.py
 git status
-git add reports/evidence/destination-normalized-backlog-validation-v1.md
-git commit -m "Regenerate clean normalized destination backlog validation report"
+git add datasets/reference/destinations_master_v2.csv reports/evidence/destination-master-v2-promotion-report.md
+git commit -m "Generate destinations master v2 dataset"
 git push
 ```
 
-If `git commit` says there is nothing to commit, run `git push` anyway and report the output.
+## Master Schema Summary
 
-## Next Design Step After Clean Validation
-
-Create:
+Created:
 
 ```text
 datasets/reference/destinations_master_v2_schema.md
 ```
 
-The master schema should unify:
+The master schema unifies:
 
 - 134 seed rows
 - 225 normalized candidate rows
-- stable destination IDs
+- stable `DST2-*` IDs
+- source lineage
 - destination scale
 - type/vibe/trip-style/context/caution fields
 - promotion status
