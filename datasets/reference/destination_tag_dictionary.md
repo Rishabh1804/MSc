@@ -40,6 +40,7 @@ Use this to clarify whether a row is a single place, city, circuit, region, or p
 - `capital_city`
 - `heritage_city`
 - `culture_city`
+- `culture_town`
 - `spiritual_city`
 - `temple_city`
 - `pilgrim_city`
@@ -57,10 +58,12 @@ Use this to clarify whether a row is a single place, city, circuit, region, or p
 ### Nature and Landscapes
 
 - `hill_station`
+- `lake_hill_station`
 - `hill_town`
 - `hill_region`
 - `mountain_town`
 - `mountain_region`
+- `mountain_resort`
 - `high_altitude`
 - `valley`
 - `lake_city`
@@ -193,6 +196,7 @@ Use these in `vibe_1`, `vibe_2`, `vibe_3`, and future multi-tag fields.
 - `waterfalls`
 - `forest`
 - `rainforest`
+- `rain`
 - `desert`
 - `snow`
 - `tea`
@@ -246,10 +250,12 @@ Use these in `vibe_1`, `vibe_2`, `vibe_3`, and future multi-tag fields.
 - `buddhist`
 - `jain`
 - `sikh`
+- `monastery`
 - `temples`
 - `forts`
 - `palace`
 - `caves`
+- `rock_carving`
 - `wine`
 - `textiles`
 - `handicrafts`
