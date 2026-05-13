@@ -31,6 +31,31 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-12 — Destinations master v2 promotion script created
+
+Type: dataset / script / promotion
+
+Summary:
+
+Created the master promotion utility that will combine the 134-row seed dataset and 225-row clean normalized candidate backlog into `destinations_master_v2.csv`. The script maps both sources into the master schema, assigns stable `DST2-*` IDs, preserves source lineage, infers destination scale, and writes a promotion report.
+
+Files changed:
+
+- `src/codemike/data/destination_master_promotion.py`
+- `ARTIFACT_INDEX.md`
+- `NEXT_ACTIONS.md`
+- `trackers/destination-database-build-tracker.md`
+
+Evidence produced:
+
+- reusable master promotion script
+- generated-output plan for `datasets/reference/destinations_master_v2.csv`
+- generated-output plan for `reports/evidence/destination-master-v2-promotion-report.md`
+
+Next action:
+
+Run the master promotion script in Termux and commit the generated master CSV and promotion report.
+
 ## 2026-05-12 — Destinations master v2 schema created
 
 Type: dataset / schema / promotion
