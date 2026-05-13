@@ -3,46 +3,31 @@
 Date: 2026-05-12  
 Author: CodeMike  
 Input: `datasets/reference/destination_expansion_backlog_india_v1.csv`  
-Target output: `datasets/reference/destination_expansion_backlog_india_v1_normalized.csv`  
+Output: `datasets/reference/destination_expansion_backlog_india_v1_normalized.csv`  
 Normaliser: `src/codemike/data/destination_backlog_normalization.py`
 
 ## 1. Objective
 
 Create a normalised candidate backlog that is cleaner than the raw 225-row India expansion backlog and safer to use for future promotion into `destinations_master_v2.csv`.
 
-## 2. Status
+## 2. Summary
 
-The normalisation utility has been created and committed.
+| Metric | Value |
+|---|---:|
+| Rows processed | 225 |
+| Rows with normalisation notes | 40 |
+| Rows with trip-style tags created | 15 |
+| Rows with context tags created | 17 |
+| Rows with caution tags created | 3 |
+| Rows with destination-scale hint | 1 |
 
-The generated normalised CSV is the next execution artifact. It should be produced by running:
-
-```bash
-python src/codemike/data/destination_backlog_normalization.py
-```
-
-Expected output:
-
-```text
-datasets/reference/destination_expansion_backlog_india_v1_normalized.csv
-```
-
-## 3. Normalisation Rules Implemented
+## 3. Normalisation Rules Applied
 
 | Raw value | Action |
 |---|---|
 | `fort` | `forts` |
 | `temple` | `temples` |
 | `crafts` | `handicrafts` |
-| `falls` | `waterfalls` |
-| `lake` | `lakes` |
-| `hill` | `hills` |
-| `mountain` | `mountains` |
-| `historical` | `history` |
-| `historic` | `history` |
-| `religious` | `spiritual` |
-| `handloom` | `textiles` |
-| `jungle` | `forest` |
-| `riverside` | `river` |
 | `weekend` | moved to `trip_style_tags = weekend_getaway` |
 | `gateway` | moved to `context_tags = gateway_context` |
 | `remote` | moved to `context_tags = remote_context` and `caution_tags = route_verification_check` |
@@ -51,7 +36,7 @@ datasets/reference/destination_expansion_backlog_india_v1_normalized.csv
 | `marble` | removed from vibe and marked for review |
 | `parks` | removed from vibe and marked for review |
 
-## 4. Output Columns Added by the Script
+## 4. Output Columns Added
 
 - `normalized_location_type`
 - `normalized_vibe_1`
@@ -64,39 +49,20 @@ datasets/reference/destination_expansion_backlog_india_v1_normalized.csv
 - `normalisation_notes`
 - `promotion_status`
 
-## 5. Why This Matters
+## 5. Interpretation
 
-The raw backlog was useful for scale, but some values in `proposed_vibe_*` were not true vibes. They were actually:
+This pass separates clean descriptive vibe tags from trip-style, context, and caution concepts. That reduces taxonomy contamination before master promotion.
 
-- trip-style information
-- route/access context
-- caution flags
-- destination scale hints
-- review-only values
+The normalised backlog should still not be considered Planner-ready. It is one stage cleaner than candidate data, but it still needs:
 
-This utility separates those dimensions before we create `destinations_master_v2.csv`.
+1. deduplication against seed records
+2. destination scale review
+3. enrichment fields
+4. verification source tracking
+5. human review before Planner use
 
-## 6. Current Pipeline Position
+## 6. Next Actions
 
-```text
-candidate backlog
-→ taxonomy QA ✅
-→ normalisation utility ✅
-→ generated normalised backlog ⬅ next execution artifact
-→ destinations_master_v2.csv
-→ enriched master
-→ scoring
-→ Planner transfer
-```
-
-## 7. Next Actions
-
-1. Run `src/codemike/data/destination_backlog_normalization.py`.
-2. Commit `datasets/reference/destination_expansion_backlog_india_v1_normalized.csv`.
-3. Run taxonomy validation against the normalised fields.
-4. Create a backlog QA HTML browser.
-5. Promote selected clean records into `destinations_master_v2.csv`.
-
-## 8. Limitation
-
-This report documents the utility and expected normalisation logic. It is not yet a computed run report because the generated CSV has not been committed in this turn.
+1. Run taxonomy validation on the normalised backlog.
+2. Create a backlog QA HTML browser.
+3. Promote selected clean records into `destinations_master_v2.csv`.
