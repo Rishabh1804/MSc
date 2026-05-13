@@ -26,8 +26,8 @@ This validation checks structural integrity only. It does not verify live travel
 | Critical fields with blanks | 0 |
 | Invalid source layers | 0 |
 | Invalid destination scales | 0 |
-| Invalid location types | 12 |
-| Invalid vibe tags | 7 |
+| Invalid location types | 0 |
+| Invalid vibe tags | 0 |
 | Invalid trip-style tags | 0 |
 | Invalid context tags | 0 |
 | Invalid caution tags | 0 |
@@ -39,7 +39,7 @@ This validation checks structural integrity only. It does not verify live travel
 Readiness:
 
 ```text
-master_needs_structural_cleanup
+master_structurally_valid_not_planner_ready
 ```
 
 ## 3. Source Layer Counts
@@ -80,29 +80,12 @@ master_needs_structural_cleanup
 
 ## 8. Invalid Location Types
 
-- `beach_city`: ['DST2-000125']
-- `culture_hill_town`: ['DST2-000120']
-- `desert_beach_emirate`: ['DST2-000105']
-- `heritage_capital`: ['DST2-000121']
-- `hill_heritage_city`: ['DST2-000096']
-- `island_heritage_city`: ['DST2-000118']
-- `island_resort_district`: ['DST2-000115']
-- `lake_mountain_city`: ['DST2-000091']
-- `mountain_capital`: ['DST2-000093']
-- `mountain_valley`: ['DST2-000094']
-- `northern_city`: ['DST2-000113']
-- `wildlife_region`: ['DST2-000092']
+- None
 
 
 ## 9. Invalid Vibe Tags
 
-- `city`: ['DST2-000065', 'DST2-000129', 'DST2-000132']
-- `limestone`: ['DST2-000111']
-- `monsoon`: ['DST2-000108']
-- `museums`: ['DST2-000106']
-- `relaxation`: ['DST2-000091', 'DST2-000111']
-- `stopover`: ['DST2-000106']
-- `villa`: ['DST2-000119']
+- None
 
 
 ## 10. Duplicate Name-Country Keys
