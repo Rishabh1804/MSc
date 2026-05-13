@@ -31,6 +31,28 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-12 — Normalized destination backlog validation utility created
+
+Type: dataset / QA / validation
+
+Summary:
+
+Created a validation utility for the normalized 225-row India destination backlog. The validator checks required columns, duplicate keys, normalized destination types, normalized vibes, trip-style tags, context tags, caution tags, and promotion statuses before master schema design.
+
+Files changed:
+
+- `src/codemike/data/destination_normalized_validation.py`
+- `reports/evidence/destination-normalized-backlog-validation-v1.md`
+
+Evidence produced:
+
+- normalized backlog validation readiness rule
+- report scaffold for computed validation output
+
+Next action:
+
+Run the validator and commit the regenerated computed report if it changes. Then create `datasets/reference/destinations_master_v2_schema.md`.
+
 ## 2026-05-12 — Destination backlog normalisation utility created
 
 Type: dataset / QA / normalisation
