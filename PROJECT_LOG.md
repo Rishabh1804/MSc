@@ -31,6 +31,33 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-12 — Destinations master v2 schema created
+
+Type: dataset / schema / promotion
+
+Summary:
+
+Created the canonical master schema for consolidating the 134-row seed dataset and 225-row clean normalized candidate backlog into `destinations_master_v2.csv`. The schema defines stable master IDs, lineage fields, destination scale, taxonomy fields, workflow statuses, verification placeholders, Planner-use status, and promotion rules.
+
+Files changed:
+
+- `datasets/reference/destinations_master_v2_schema.md`
+- `ARTIFACT_INDEX.md`
+- `NEXT_ACTIONS.md`
+- `trackers/destination-database-build-tracker.md`
+
+Evidence produced:
+
+- master field definition
+- seed-to-master mapping
+- normalized-candidate-to-master mapping
+- initial deduplication and safety rules
+- promotion script requirements
+
+Next action:
+
+Create `src/codemike/data/destination_master_promotion.py`, then generate `datasets/reference/destinations_master_v2.csv` from Termux.
+
 ## 2026-05-12 — Artifact-management layer created
 
 Type: artifact / tracker / governance
