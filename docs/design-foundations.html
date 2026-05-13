@@ -36,11 +36,7 @@
       line-height: 1.55;
     }
 
-    .wrap {
-      width: min(1220px, calc(100vw - 32px));
-      margin: 0 auto;
-    }
-
+    .wrap { width: min(1220px, calc(100vw - 32px)); margin: 0 auto; }
     header { padding: 44px 0 24px; }
 
     .eyebrow {
@@ -56,294 +52,65 @@
       margin-bottom: 14px;
     }
 
-    h1 {
-      margin: 0;
-      font-size: clamp(32px, 5vw, 58px);
-      line-height: .98;
-      letter-spacing: -0.055em;
-      max-width: 950px;
-    }
+    h1 { margin: 0; font-size: clamp(32px, 5vw, 58px); line-height: .98; letter-spacing: -0.055em; max-width: 950px; }
+    .lead { color: var(--muted); max-width: 900px; margin: 18px 0 0; font-size: 17px; }
+    .notice { margin-top: 22px; padding: 16px 18px; background: var(--warn-soft); color: #78350f; border: 1px solid #fde68a; border-radius: 16px; font-size: 14px; }
 
-    .lead {
-      color: var(--muted);
-      max-width: 900px;
-      margin: 18px 0 0;
-      font-size: 17px;
-    }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 22px 0; }
+    .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px; box-shadow: var(--shadow); }
+    .stat small { display: block; color: var(--muted); margin-bottom: 6px; font-weight: 700; }
+    .stat strong { font-size: 28px; letter-spacing: -0.04em; }
 
-    .notice {
-      margin-top: 22px;
-      padding: 16px 18px;
-      background: var(--warn-soft);
-      color: #78350f;
-      border: 1px solid #fde68a;
-      border-radius: 16px;
-      font-size: 14px;
-    }
+    .section-title { margin: 34px 0 14px; display: flex; justify-content: space-between; gap: 16px; align-items: end; }
+    .section-title h2 { margin: 0; font-size: 26px; letter-spacing: -0.04em; }
+    .section-title p { margin: 0; color: var(--muted); max-width: 650px; font-size: 14px; }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin: 22px 0;
-    }
-
-    .stat {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 16px;
-      box-shadow: var(--shadow);
-    }
-
-    .stat small {
-      display: block;
-      color: var(--muted);
-      margin-bottom: 6px;
-      font-weight: 700;
-    }
-
-    .stat strong {
-      font-size: 28px;
-      letter-spacing: -0.04em;
-    }
-
-    .section-title {
-      margin: 34px 0 14px;
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: end;
-    }
-
-    .section-title h2 {
-      margin: 0;
-      font-size: 26px;
-      letter-spacing: -0.04em;
-    }
-
-    .section-title p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 650px;
-      font-size: 14px;
-    }
-
-    .workflow {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    .step {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 14px;
-      box-shadow: var(--shadow);
-    }
-
+    .workflow, .rule-grid { display: grid; gap: 12px; }
+    .workflow { grid-template-columns: repeat(5, 1fr); margin-bottom: 24px; }
+    .rule-grid { grid-template-columns: 1fr 1fr; margin: 24px 0; }
+    .step, .rule, .module { background: var(--panel); border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .step { border-radius: 16px; padding: 14px; }
     .step strong { display: block; margin-bottom: 5px; }
     .step span { color: var(--muted); font-size: 13px; }
-
-    .rule-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin: 24px 0;
-    }
-
-    .rule {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
-
+    .rule { border-radius: var(--radius); padding: 18px; }
     .rule h3 { margin: 0 0 10px; letter-spacing: -0.03em; }
     .rule ul { margin: 10px 0 0; padding-left: 20px; color: #334155; }
     .rule li { margin: 5px 0; }
 
-    .module-list {
-      display: grid;
-      gap: 16px;
-    }
-
-    .module {
-      background: rgba(255, 255, 255, 0.92);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: var(--shadow);
-      min-width: 0;
-    }
-
-    .module-head {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 12px;
-      align-items: start;
-      margin-bottom: 14px;
-    }
-
-    .num {
-      width: 38px;
-      height: 38px;
-      border-radius: 13px;
-      display: grid;
-      place-items: center;
-      background: var(--soft);
-      color: var(--muted);
-      font-weight: 900;
-      flex: 0 0 auto;
-    }
-
-    .status {
-      display: inline-flex;
-      align-items: center;
-      min-height: 30px;
-      border-radius: 999px;
-      padding: 5px 10px;
-      font-size: 11px;
-      font-weight: 850;
-      white-space: nowrap;
-      border: 1px solid transparent;
-    }
-
+    .module-list { display: grid; gap: 16px; }
+    .module { background: rgba(255, 255, 255, 0.94); border-radius: var(--radius); padding: 18px; min-width: 0; }
+    .module-head { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: start; margin-bottom: 14px; }
+    .num { width: 38px; height: 38px; border-radius: 13px; display: grid; place-items: center; background: var(--soft); color: var(--muted); font-weight: 900; }
+    .status { display: inline-flex; align-items: center; min-height: 30px; border-radius: 999px; padding: 5px 10px; font-size: 11px; font-weight: 850; white-space: nowrap; border: 1px solid transparent; }
     .status.done { background: var(--good-soft); color: var(--good); border-color: #a7f3d0; }
     .status.partial { background: var(--warn-soft); color: var(--warn); border-color: #fde68a; }
     .status.todo { background: var(--todo-soft); color: var(--todo); border-color: #ddd6fe; }
+    .module h3 { margin: 0 0 5px; font-size: 24px; line-height: 1.1; letter-spacing: -0.04em; }
+    .module .summary { margin: 0; color: var(--muted); font-size: 14px; max-width: 900px; }
 
-    .module h3 {
-      margin: 0 0 5px;
-      font-size: 24px;
-      line-height: 1.1;
-      letter-spacing: -0.04em;
-    }
-
-    .module .summary {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      max-width: 880px;
-    }
-
-    .module-grid {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 16px;
-      align-items: start;
-    }
-
-    .panel {
-      background: var(--soft);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 14px;
-      min-width: 0;
-    }
-
-    .panel h4 {
-      margin: 0 0 8px;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-      color: #475569;
-    }
-
-    .panel p, .panel li {
-      color: #334155;
-      font-size: 13px;
-    }
-
+    .module-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 16px; align-items: start; }
+    .panel { background: var(--soft); border: 1px solid var(--line); border-radius: 16px; padding: 14px; min-width: 0; margin-bottom: 12px; }
+    .panel h4 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: #475569; }
+    .panel p, .panel li { color: #334155; font-size: 13px; }
     .panel p { margin: 0; }
     .panel ul { margin: 8px 0 0; padding-left: 20px; }
 
-    .source-list {
-      display: grid;
-      gap: 8px;
-    }
-
-    .source-row {
-      display: grid;
-      grid-template-columns: 88px 1fr;
-      gap: 8px;
-      align-items: start;
-      padding: 9px;
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-    }
-
-    .source-type {
-      display: inline-flex;
-      justify-content: center;
-      border-radius: 999px;
-      padding: 4px 7px;
-      font-size: 10px;
-      font-weight: 900;
-      text-transform: uppercase;
-      background: #e0f2fe;
-      color: #0369a1;
-    }
-
+    .source-list { display: grid; gap: 8px; }
+    .source-row { display: grid; grid-template-columns: 96px 1fr; gap: 8px; align-items: start; padding: 9px; background: white; border: 1px solid var(--line); border-radius: 12px; }
+    .source-type { display: inline-flex; justify-content: center; border-radius: 999px; padding: 4px 7px; font-size: 10px; font-weight: 900; text-transform: uppercase; background: #e0f2fe; color: #0369a1; }
     .source-type.applied { background: #dcfce7; color: #166534; }
     .source-type.cross { background: #f3e8ff; color: #7e22ce; }
-    .source-type.academic { background: #fee2e2; color: #991b1b; }
-
-    .source-row a {
-      color: #1d4ed8;
-      font-weight: 800;
-      text-decoration: none;
-      font-size: 13px;
-    }
-
+    .source-type.authority { background: #fee2e2; color: #991b1b; }
+    .source-row a { color: #1d4ed8; font-weight: 800; text-decoration: none; font-size: 13px; }
     .source-row a:hover { text-decoration: underline; }
     .source-row small { display: block; color: var(--muted); margin-top: 2px; }
 
-    .output-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .output-item {
-      border: 1px dashed #cbd5e1;
-      border-radius: 12px;
-      padding: 10px;
-      background: rgba(255,255,255,0.7);
-      color: #334155;
-      font-size: 13px;
-    }
-
-    .output-item strong {
-      display: block;
-      color: var(--ink);
-      margin-bottom: 4px;
-    }
-
-    .further {
-      margin-top: 12px;
-      background: #fff7ed;
-      border: 1px solid #fed7aa;
-      border-radius: 14px;
-      padding: 12px;
-    }
-
+    .note-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .note { border: 1px dashed #cbd5e1; border-radius: 12px; padding: 10px; background: rgba(255,255,255,0.72); color: #334155; font-size: 13px; }
+    .note strong { display: block; color: var(--ink); margin-bottom: 4px; }
+    .further { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 14px; padding: 12px; }
     .further h4 { color: #9a3412; }
-
-    .decision {
-      background: #0f172a;
-      color: #e2e8f0;
-      border-radius: 24px;
-      padding: 22px;
-      margin: 30px 0 44px;
-      box-shadow: var(--shadow);
-    }
-
+    .decision { background: #0f172a; color: #e2e8f0; border-radius: 24px; padding: 22px; margin: 30px 0 44px; box-shadow: var(--shadow); }
     .decision h2 { margin-top: 0; letter-spacing: -0.03em; }
     .decision code { color: #bfdbfe; }
     .decision p { color: #cbd5e1; }
@@ -355,12 +122,10 @@
       .section-title p { margin-top: 8px; }
       .rule-grid, .module-grid { grid-template-columns: 1fr; }
     }
-
     @media (max-width: 640px) {
-      .workflow, .stats { grid-template-columns: 1fr; }
+      .workflow, .stats, .note-grid { grid-template-columns: 1fr; }
       .module-head { grid-template-columns: auto 1fr; }
       .module-head .status { grid-column: 1 / -1; width: fit-content; }
-      .output-grid { grid-template-columns: 1fr; }
       .source-row { grid-template-columns: 1fr; }
       header { padding-top: 28px; }
     }
@@ -368,18 +133,18 @@
 </head>
 <body>
   <header class="wrap">
-    <div class="eyebrow">CodeMike Design Foundation</div>
+    <div class="eyebrow">CodeMike Design Foundation · DES-001</div>
     <h1>Design Foundations Study Dashboard</h1>
-    <p class="lead">A single learning dashboard for the UI/UX foundations CodeMike must digest before upgrading the destination master browser. Every deep reading now requires multiple sources, notes, source comparison, further reading, and implementation implications.</p>
+    <p class="lead">A single learning dashboard for the UI/UX foundations CodeMike must digest before upgrading the destination master browser. Every deep reading requires multiple sources, source comparison, further reading, and implementation implications.</p>
     <div class="notice"><strong>Rule:</strong> No topic is fully digested from one source. A full digest needs at least three sources: one high-authority/primary source, one practical/applied source, and one cross-checking or alternative framing source.</div>
   </header>
 
   <main class="wrap">
     <section class="stats">
       <div class="stat"><small>Total modules</small><strong>12</strong></div>
+      <div class="stat"><small>Digested modules</small><strong>1</strong></div>
       <div class="stat"><small>Minimum sources/module</small><strong>3</strong></div>
-      <div class="stat"><small>Required outputs/module</small><strong>8</strong></div>
-      <div class="stat"><small>Output target</small><strong>v1.1</strong></div>
+      <div class="stat"><small>Current artifact</small><strong>v1.1</strong></div>
     </section>
 
     <section class="workflow">
@@ -416,164 +181,132 @@
 
     <div class="section-title">
       <h2>12-topic curriculum</h2>
-      <p>Each module now contains multiple source slots, required notes, browser application, and further-reading suggestions.</p>
+      <p>Topic 1 is now fully digested. Remaining topics keep their source scaffolds until they receive the same deep-reading treatment.</p>
     </div>
 
     <section class="module-list" id="modules"></section>
 
     <section class="decision">
-      <h2>Recommended structure</h2>
-      <p><strong>Use this HTML dashboard as the main learning surface.</strong> Keep Markdown for concise source-of-truth notes and checklists only. Avoid 12 separate Markdown files unless a topic becomes large enough to justify its own deep note.</p>
-      <p>Current compact structure:</p>
-      <p><code>docs/design-foundations.html</code><br><code>design/foundations/figma-design-basics-digest.md</code><br><code>design/foundations/code-mike-ui-learning-map.md</code><br><code>design/checklists/master-browser-design-checklist.md</code></p>
+      <h2>Current synthesis after Topic 1</h2>
+      <p><strong>UI vs UX changes the redesign gate:</strong> the destination master browser cannot be judged by visual polish alone. UI quality covers visible controls, layout, states, hierarchy, and affordances. UX quality covers whether the reviewer can complete the full inspection journey safely: understand dataset status, filter, inspect, compare, detect uncertainty, and avoid mistaking structural validity for Planner-readiness.</p>
+      <p>Before editing <code>docs/destination-master-browser-v1.html</code>, every proposed change must answer: <code>Which reviewer task improves? Which interface element supports it? Which trust or workflow risk is reduced?</code></p>
     </section>
   </main>
 
   <script>
+    const pendingNotes = {
+      summary: 'Pending deep reading. Source scaffold is present, but the topic is not yet considered digested.',
+      principles: ['Read all listed sources before extracting principles.'],
+      comparison: 'Pending source comparison.',
+      disagreements: 'Pending disagreement and emphasis analysis.',
+      interpretation: 'Pending CodeMike interpretation.',
+      application: 'Pending browser-specific application.',
+      antiPatterns: ['Do not implement this topic before the deep-reading notes exist.'],
+      implementation: ['No implementation implications accepted yet.'],
+      checklist: ['No checklist update yet.']
+    };
+
     const modules = [
       {
         title: 'UI vs UX',
-        status: 'todo',
-        summary: 'Distinguishes interface layer, usability, and the broader end-to-end experience.',
-        application: 'Prevents the destination browser redesign from becoming visual styling without improving the review workflow.',
+        status: 'done',
+        summary: 'Distinguishes the interface layer from the wider end-to-end experience, then translates that distinction into reviewer workflow criteria for the destination master browser.',
         sources: [
-          ['Primary', 'Figma — Difference between UI and UX', 'https://www.figma.com/resource-library/difference-between-ui-and-ux/', 'Product-design framing from the same source family as the initial curriculum.'],
-          ['Applied', 'Nielsen Norman Group — UX Basics', 'https://www.nngroup.com/articles/definition-user-experience/', 'Practical usability framing from a recognised UX research organisation.'],
-          ['Cross', 'Interaction Design Foundation — UI vs UX', 'https://www.interaction-design.org/literature/topics/ui-design', 'Alternative framing around interface design and user interaction.']
+          ['Primary', 'Figma — Difference between UI and UX', 'https://www.figma.com/resource-library/difference-between-ui-and-ux/', 'Defines UI as interactivity/look/feel of product screens and UX as the broader product or website experience; useful because it matches the design-tool curriculum.'],
+          ['Authority', 'NN/g / Don Norman — Definition of User Experience', 'https://www.nngroup.com/articles/definition-user-experience/', 'High-authority framing: UX covers all aspects of the end-user interaction with the company, services, and products.'],
+          ['Cross', 'Interaction Design Foundation — UX vs UI', 'https://www.interaction-design.org/literature/article/ux-vs-ui-what-s-the-difference', 'Alternative educational framing that separates UX research/task flow from UI elements such as buttons, icons, lists, and text fields.'],
+          ['Applied', 'UXDT Government Guidelines — Differences Between UI and UX', 'https://www.uxdt.nic.in/guidelines/understanding-ux/differences-between-ui-and-ux/', 'Practical public-service framing: UI covers visual/interactive elements; UX covers usability, accessibility, intuitiveness, and user response.']
         ],
-        further: ['User journeys', 'Usability testing', 'Information architecture basics']
+        notes: {
+          summary: 'UI is the user-facing interaction surface: screens, controls, layout, labels, visual hierarchy, feedback, affordance, and component states. UX is the broader experience of accomplishing a goal through the product or service: user needs, information architecture, task flow, trust, accessibility, error recovery, efficiency, and emotional confidence. UI strongly affects UX, but UI is not the same as UX. For CodeMike, this means a redesigned browser is not successful merely because it looks cleaner; it is successful only if the reviewer can complete the inspection workflow with lower cognitive load and lower risk of over-trusting unverified data.',
+          principles: [
+            'Treat UI as the concrete interface layer: layout, controls, components, labels, states, contrast, typography, and interaction feedback.',
+            'Treat UX as the full task journey: why the user is here, what they need to decide, what can go wrong, and how the interface helps them recover.',
+            'Do not equate visual polish with usability, trust, accessibility, or task success.',
+            'Good UI should make the intended UX possible; good UX should define what the UI must prioritize.',
+            'For data-review tools, UX includes data-trust signalling, source uncertainty, verification status, and safe interpretation of the dataset.'
+          ],
+          comparison: 'All sources agree that UI and UX overlap but are not interchangeable. Figma frames UI as a specialized subset of UX and emphasizes product screens, interactive elements, visual choices, wireframes, prototypes, and iterative updates. NN/g/Don Norman gives the broadest authority frame: UX covers the whole end-user relationship with the company, service, and product, which makes it stronger for scope control. IxDF explains the discipline split through roles, research, psychology, task completion, and visible interface elements. UXDT gives the most practical checklist-like split for implementation: UI is what users see and interact with; UX is whether the platform is usable, accessible, intuitive, efficient, and emotionally coherent.',
+          disagreements: 'The sources mostly differ by emphasis rather than direct contradiction. Figma is product-tool oriented and naturally highlights design collaboration, prototypes, and Figma-enabled workflows. NN/g is broader and more strategic; it makes UX larger than screen design. IxDF is educational and role-oriented, so it is useful for vocabulary but can become broad. UXDT is implementation-friendly but simpler than NN/g and does not go as deep into organisational or service-level UX. The practical takeaway is to use Figma for screen/component thinking, NN/g for scope discipline, IxDF for role clarity, and UXDT for applied UI/UX audit language.',
+          interpretation: 'CodeMike should use UI vs UX as a design decision gate. UI work answers: what component, label, state, grouping, or layout is visible? UX work answers: does this help the reviewer inspect, filter, compare, verify, and avoid unsafe assumptions? In this repository, UI implementation must remain subordinate to the reviewer journey and data-trust problem.',
+          application: 'For the destination master browser, UI includes the search box, filter selects, warning badges, stats cards, destination cards, chips, metadata groups, table/card mode, reset control, sort control, and future detail drawer. UX includes the complete review flow: understand that 359 rows are structurally valid but unverified; identify the row set; filter by source/status/region/scale; inspect a full record; distinguish seed rows from normalized candidates; understand Planner-readiness; and leave with a correct sense of what still needs verification.',
+          antiPatterns: [
+            'Making the browser prettier while leaving the review task unchanged.',
+            'Adding decorative colours, cards, gradients, or animation that do not improve inspection, filtering, trust, or comprehension.',
+            'Hiding the not-Planner-ready warning below visually attractive content.',
+            'Treating UI polish as evidence that the underlying destination data is source-verified.',
+            'Using ambiguous badges or colour-only status indicators without text labels.',
+            'Optimising for a screenshot instead of a repeatable QA workflow.'
+          ],
+          implementation: [
+            'Keep the not-Planner-ready and verification warning visible before records and repeated inside detail/table contexts where needed.',
+            'Add reset, sort, card/table view toggle, quick filters, and detail inspection only where each maps to a user task.',
+            'Group controls by task: search, narrow, sort, switch view, inspect, reset.',
+            'Make UI states explicit: selected filters, active view, empty results, loading failure, disabled/unavailable actions.',
+            'Evaluate redesign success by reviewer task completion and data-trust clarity, not by visual novelty.'
+          ],
+          checklist: [
+            'Add a UI-vs-UX gate to the master browser checklist: every UI change must identify the UX task it supports.',
+            'Add a visual-polish anti-pattern check: no component should exist only because it looks impressive.',
+            'Add a data-trust UX check: interface changes must not imply Planner-readiness or source verification.'
+          ]
+        },
+        further: ['Nielsen Norman Group — usability heuristics', 'Peter Morville — UX honeycomb', 'Information architecture for data-heavy review tools', 'Task analysis for QA/review workflows']
       },
       {
-        title: 'What is UI design',
-        status: 'todo',
-        summary: 'Defines interface elements, controls, navigation, feedback, visual hierarchy, and interaction surfaces.',
-        application: 'Turns browser parts into deliberate components: filters, quick chips, table rows, drawers, status tokens, and empty states.',
-        sources: [
-          ['Primary', 'Figma — What is UI design?', 'https://www.figma.com/resource-library/what-is-ui-design/', 'Primary design-tool explanation of UI practice.'],
-          ['Applied', 'Material Design — Foundations', 'https://m3.material.io/foundations', 'Practical component and system guidance.'],
-          ['Cross', 'Apple HIG — Foundations', 'https://developer.apple.com/design/human-interface-guidelines/foundations', 'Platform-oriented interface principles for comparison.']
-        ],
-        further: ['Navigation patterns', 'Input controls', 'Status and feedback patterns']
+        title: 'What is UI design', status: 'todo', summary: 'Defines interface elements, controls, navigation, feedback, visual hierarchy, and interaction surfaces.',
+        sources: [['Primary', 'Figma — What is UI design?', 'https://www.figma.com/resource-library/what-is-ui-design/', 'Primary design-tool explanation of UI practice.'], ['Applied', 'Material Design — Foundations', 'https://m3.material.io/foundations', 'Practical component and system guidance.'], ['Cross', 'Apple HIG — Foundations', 'https://developer.apple.com/design/human-interface-guidelines/foundations', 'Platform-oriented interface principles for comparison.']],
+        notes: pendingNotes, further: ['Navigation patterns', 'Input controls', 'Status and feedback patterns']
       },
       {
-        title: 'UX design',
-        status: 'todo',
-        summary: 'Frames product design around user goals, journeys, research, friction, prototypes, and validation.',
-        application: 'Defines the browser as a QA journey: understand status, search, filter, inspect, and avoid over-trusting unverified rows.',
-        sources: [
-          ['Primary', 'Figma — What is UX design?', 'https://www.figma.com/resource-library/what-is-ux-design/', 'Primary curriculum source.'],
-          ['Applied', 'Nielsen Norman Group — UX Definition', 'https://www.nngroup.com/articles/definition-user-experience/', 'Research-backed UX definition and scope.'],
-          ['Cross', 'Interaction Design Foundation — UX Design', 'https://www.interaction-design.org/literature/topics/ux-design', 'Broader educational framing of UX practice.']
-        ],
-        further: ['Task analysis', 'Journey mapping', 'Usability heuristics']
+        title: 'UX design', status: 'todo', summary: 'Frames product design around user goals, journeys, research, friction, prototypes, and validation.',
+        sources: [['Primary', 'Figma — What is UX design?', 'https://www.figma.com/resource-library/what-is-ux-design/', 'Primary curriculum source.'], ['Applied', 'Nielsen Norman Group — UX Definition', 'https://www.nngroup.com/articles/definition-user-experience/', 'Research-backed UX definition and scope.'], ['Cross', 'Interaction Design Foundation — UX Design', 'https://www.interaction-design.org/literature/topics/ux-design', 'Broader educational framing of UX practice.']],
+        notes: pendingNotes, further: ['Task analysis', 'Journey mapping', 'Usability heuristics']
       },
       {
-        title: 'Design thinking',
-        status: 'partial',
-        summary: 'A human-centred, iterative problem-solving process using empathy, definition, ideation, prototyping, and testing.',
-        application: 'Requires browser v1.1 to solve a user review problem, remain feasible in static HTML, and scale to later enrichment work.',
-        sources: [
-          ['Primary', 'Figma — What is design thinking?', 'https://www.figma.com/resource-library/what-is-design-thinking/', 'Primary curriculum source.'],
-          ['Applied', 'IDEO Design Thinking', 'https://designthinking.ideo.com/', 'Practitioner-origin framing for design thinking.'],
-          ['Cross', 'Stanford d.school — Design Thinking', 'https://dschool.stanford.edu/resources', 'Education-oriented methodology and toolkit perspective.']
-        ],
-        further: ['Prototype testing', 'Problem framing', 'Desirability/feasibility/viability']
+        title: 'Design thinking', status: 'partial', summary: 'A human-centred, iterative problem-solving process using empathy, definition, ideation, prototyping, and testing.',
+        sources: [['Primary', 'Figma — What is design thinking?', 'https://www.figma.com/resource-library/what-is-design-thinking/', 'Primary curriculum source.'], ['Applied', 'IDEO Design Thinking', 'https://designthinking.ideo.com/', 'Practitioner-origin framing for design thinking.'], ['Cross', 'Stanford d.school — Design Thinking', 'https://dschool.stanford.edu/resources', 'Education-oriented methodology and toolkit perspective.']],
+        notes: pendingNotes, further: ['Prototype testing', 'Problem framing', 'Desirability/feasibility/viability']
       },
       {
-        title: 'Human-centered design',
-        status: 'todo',
-        summary: 'Puts user needs, constraints, environment, and behaviour at the centre of design decisions.',
-        application: 'Makes the reviewer’s actual task more important than dashboard decoration or clever UI.',
-        sources: [
-          ['Primary', 'Figma — Human-centered design', 'https://www.figma.com/resource-library/human-centered-design/', 'Primary curriculum source.'],
-          ['Applied', 'IDEO.org — Field Guide to Human-Centered Design', 'https://www.designkit.org/', 'Applied human-centred design toolkit.'],
-          ['Cross', 'ISO 9241-210 overview', 'https://www.iso.org/standard/77520.html', 'Standards-oriented framing for human-centred design.']
-        ],
-        further: ['User interviews', 'Context of use', 'Participatory design']
+        title: 'Human-centered design', status: 'todo', summary: 'Puts user needs, constraints, environment, and behaviour at the centre of design decisions.',
+        sources: [['Primary', 'Figma — Human-centered design', 'https://www.figma.com/resource-library/human-centered-design/', 'Primary curriculum source.'], ['Applied', 'IDEO.org — Field Guide to Human-Centered Design', 'https://www.designkit.org/', 'Applied human-centred design toolkit.'], ['Cross', 'ISO 9241-210 overview', 'https://www.iso.org/standard/77520.html', 'Standards-oriented framing for human-centred design.']],
+        notes: pendingNotes, further: ['User interviews', 'Context of use', 'Participatory design']
       },
       {
-        title: 'Gestalt principles',
-        status: 'partial',
-        summary: 'Explains how people group visual information through proximity, similarity, continuity, closure, figure-ground, and related laws.',
-        application: 'Guides grouping of geography, taxonomy, workflow status, lineage, and risk fields in the browser.',
-        sources: [
-          ['Primary', 'Figma — Gestalt principles', 'https://www.figma.com/resource-library/gestalt-principles/', 'Primary curriculum source.'],
-          ['Applied', 'Nielsen Norman Group — Gestalt Principles', 'https://www.nngroup.com/articles/principles-visual-design/', 'Usability-oriented visual design principles.'],
-          ['Cross', 'Interaction Design Foundation — Gestalt Principles', 'https://www.interaction-design.org/literature/topics/gestalt-principles', 'Educational comparison source.']
-        ],
-        further: ['Visual perception', 'Grouping in data cards', 'Figure-ground in dashboards']
+        title: 'Gestalt principles', status: 'partial', summary: 'Explains how people group visual information through proximity, similarity, continuity, closure, figure-ground, and related laws.',
+        sources: [['Primary', 'Figma — Gestalt principles', 'https://www.figma.com/resource-library/gestalt-principles/', 'Primary curriculum source.'], ['Applied', 'Nielsen Norman Group — Gestalt Principles', 'https://www.nngroup.com/articles/principles-visual-design/', 'Usability-oriented visual design principles.'], ['Cross', 'Interaction Design Foundation — Gestalt Principles', 'https://www.interaction-design.org/literature/topics/gestalt-principles', 'Educational comparison source.']],
+        notes: pendingNotes, further: ['Visual perception', 'Grouping in data cards', 'Figure-ground in dashboards']
       },
       {
-        title: 'Fitts’ law',
-        status: 'todo',
-        summary: 'Closer and larger targets are faster and easier to select.',
-        application: 'Supports 44px controls, reachable filters, tap-friendly chips, and reset/view-toggle placement.',
-        sources: [
-          ['Primary', 'Figma — Fitts’ law', 'https://www.figma.com/resource-library/fitts-law/', 'Primary curriculum source.'],
-          ['Applied', 'Nielsen Norman Group — Fitts’ Law', 'https://www.nngroup.com/articles/fitts-law/', 'UX-focused application of target size and distance.'],
-          ['Cross', 'Interaction Design Foundation — Fitts’s Law', 'https://www.interaction-design.org/literature/topics/fitts-law', 'Alternative educational framing and examples.']
-        ],
-        further: ['Touch target sizing', 'Mobile ergonomics', 'Control placement']
+        title: "Fitts' law", status: 'todo', summary: 'Closer and larger targets are faster and easier to select.',
+        sources: [['Primary', "Figma — Fitts' law", 'https://www.figma.com/resource-library/fitts-law/', 'Primary curriculum source.'], ['Applied', "Nielsen Norman Group — Fitts' Law", 'https://www.nngroup.com/articles/fitts-law/', 'UX-focused application of target size and distance.'], ['Cross', "Interaction Design Foundation — Fitts's Law", 'https://www.interaction-design.org/literature/topics/fitts-law', 'Alternative educational framing and examples.']],
+        notes: pendingNotes, further: ['Touch target sizing', 'Mobile ergonomics', 'Control placement']
       },
       {
-        title: 'Button states',
-        status: 'todo',
-        summary: 'Documents default, hover, active, focus, disabled, loading, selected, success, and error states.',
-        application: 'Improves quick chips, reset button, view switch, and drawer close controls.',
-        sources: [
-          ['Primary', 'Figma — Button states', 'https://www.figma.com/resource-library/button-states/', 'Primary curriculum source.'],
-          ['Applied', 'Material Design — Buttons', 'https://m3.material.io/components/buttons/overview', 'Practical button component state guidance.'],
-          ['Cross', 'W3C WAI — Button Pattern', 'https://www.w3.org/WAI/ARIA/apg/patterns/button/', 'Accessibility framing for button interaction.']
-        ],
-        further: ['Focus states', 'ARIA patterns', 'Toggle buttons']
+        title: 'Button states', status: 'todo', summary: 'Documents default, hover, active, focus, disabled, loading, selected, success, and error states.',
+        sources: [['Primary', 'Figma — Button states', 'https://www.figma.com/resource-library/button-states/', 'Primary curriculum source.'], ['Applied', 'Material Design — Buttons', 'https://m3.material.io/components/buttons/overview', 'Practical button component state guidance.'], ['Cross', 'W3C WAI — Button Pattern', 'https://www.w3.org/WAI/ARIA/apg/patterns/button/', 'Accessibility framing for button interaction.']],
+        notes: pendingNotes, further: ['Focus states', 'ARIA patterns', 'Toggle buttons']
       },
       {
-        title: 'Typography',
-        status: 'todo',
-        summary: 'Covers typeface selection, hierarchy, alignment, spacing, leading, readability, and scanning.',
-        application: 'Improves destination-card scanning, table readability, labels, warnings, and mobile text hierarchy.',
-        sources: [
-          ['Primary', 'Figma — Typography in design', 'https://www.figma.com/resource-library/typography-in-design/', 'Primary curriculum source.'],
-          ['Applied', 'Material Design — Typography', 'https://m3.material.io/styles/typography/overview', 'Practical type scale and hierarchy guidance.'],
-          ['Cross', 'Butterick’s Practical Typography', 'https://practicaltypography.com/', 'Independent typography guidance for readability and discipline.']
-        ],
-        further: ['Type scale', 'Line length', 'Table readability']
+        title: 'Typography', status: 'todo', summary: 'Covers typeface selection, hierarchy, alignment, spacing, leading, readability, and scanning.',
+        sources: [['Primary', 'Figma — Typography in design', 'https://www.figma.com/resource-library/typography-in-design/', 'Primary curriculum source.'], ['Applied', 'Material Design — Typography', 'https://m3.material.io/styles/typography/overview', 'Practical type scale and hierarchy guidance.'], ['Cross', 'Butterick’s Practical Typography', 'https://practicaltypography.com/', 'Independent typography guidance for readability and discipline.']],
+        notes: pendingNotes, further: ['Type scale', 'Line length', 'Table readability']
       },
       {
-        title: 'Color theory',
-        status: 'todo',
-        summary: 'Explains hue, value, saturation, harmony, contrast, temperature, and colour meaning.',
-        application: 'Creates semantic colours for warning, neutral, active, source, and status states without colour-only meaning.',
-        sources: [
-          ['Primary', 'Figma — What is color theory?', 'https://www.figma.com/resource-library/what-is-color-theory/', 'Primary curriculum source.'],
-          ['Applied', 'Material Design — Color', 'https://m3.material.io/styles/color/overview', 'Practical colour system and token guidance.'],
-          ['Cross', 'W3C WCAG — Contrast Minimum', 'https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html', 'Accessibility contrast standard.']
-        ],
-        further: ['Semantic colour tokens', 'Accessible contrast', 'Colour-blind safe status design']
+        title: 'Color theory', status: 'todo', summary: 'Explains hue, value, saturation, harmony, contrast, temperature, and colour meaning.',
+        sources: [['Primary', 'Figma — What is color theory?', 'https://www.figma.com/resource-library/what-is-color-theory/', 'Primary curriculum source.'], ['Applied', 'Material Design — Color', 'https://m3.material.io/styles/color/overview', 'Practical colour system and token guidance.'], ['Cross', 'W3C WCAG — Contrast Minimum', 'https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html', 'Accessibility contrast standard.']],
+        notes: pendingNotes, further: ['Semantic colour tokens', 'Accessible contrast', 'Colour-blind safe status design']
       },
       {
-        title: 'Web design / grid layout',
-        status: 'todo',
-        summary: 'Uses grids, rows, columns, margins, gutters, modules, and breakpoints to organise responsive content.',
-        application: 'Guides browser layout: header, filters, stats, side summary, card grid, table mode, and mobile collapse.',
-        sources: [
-          ['Primary', 'Figma — Web design grid layout examples', 'https://www.figma.com/resource-library/web-design-grid-layout-examples/', 'Primary curriculum source.'],
-          ['Applied', 'MDN — CSS Grid Layout', 'https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout', 'Implementation source for real HTML/CSS.'],
-          ['Cross', 'Material Design — Layout', 'https://m3.material.io/foundations/layout/understanding-layout/overview', 'Design-system view of responsive layout.']
-        ],
-        further: ['Responsive breakpoints', 'Dashboard layout', 'Table overflow on mobile']
+        title: 'Web design / grid layout', status: 'todo', summary: 'Uses grids, rows, columns, margins, gutters, modules, and breakpoints to organise responsive content.',
+        sources: [['Primary', 'Figma — Web design grid layout examples', 'https://www.figma.com/resource-library/web-design-grid-layout-examples/', 'Primary curriculum source.'], ['Applied', 'MDN — CSS Grid Layout', 'https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout', 'Implementation source for real HTML/CSS.'], ['Cross', 'Material Design — Layout', 'https://m3.material.io/foundations/layout/understanding-layout/overview', 'Design-system view of responsive layout.']],
+        notes: pendingNotes, further: ['Responsive breakpoints', 'Dashboard layout', 'Table overflow on mobile']
       },
       {
-        title: 'Design systems',
-        status: 'todo',
-        summary: 'Explains reusable components, design tokens, patterns, UI kits, governance, and documentation.',
-        application: 'Turns browser elements into reusable components: badges, chips, cards, table rows, modals, filters, and status tokens.',
-        sources: [
-          ['Primary', 'Figma — Design system examples', 'https://www.figma.com/resource-library/design-system-examples/', 'Primary curriculum source.'],
-          ['Applied', 'Material Design', 'https://m3.material.io/', 'Large mature design system for applied comparison.'],
-          ['Cross', 'Carbon Design System', 'https://carbondesignsystem.com/', 'Enterprise design system comparison, useful for data-heavy UI.']
-        ],
-        further: ['Design tokens', 'Component documentation', 'Status-chip governance']
+        title: 'Design systems', status: 'todo', summary: 'Explains reusable components, design tokens, patterns, UI kits, governance, and documentation.',
+        sources: [['Primary', 'Figma — Design system examples', 'https://www.figma.com/resource-library/design-system-examples/', 'Primary curriculum source.'], ['Applied', 'Material Design', 'https://m3.material.io/', 'Large mature design system for applied comparison.'], ['Cross', 'Carbon Design System', 'https://carbondesignsystem.com/', 'Enterprise design system comparison, useful for data-heavy UI.']],
+        notes: pendingNotes, further: ['Design tokens', 'Component documentation', 'Status-chip governance']
       }
     ];
 
@@ -589,8 +322,12 @@
       const lower = type.toLowerCase();
       if (lower.includes('applied')) return 'applied';
       if (lower.includes('cross')) return 'cross';
-      if (lower.includes('academic')) return 'academic';
+      if (lower.includes('authority')) return 'authority';
       return '';
+    }
+
+    function list(items) {
+      return `<ul>${items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
     }
 
     container.innerHTML = modules.map((module, index) => `
@@ -605,40 +342,63 @@
         </div>
 
         <div class="module-grid">
-          <div class="panel">
-            <h4>Sources to compare</h4>
-            <div class="source-list">
-              ${module.sources.map(([type, label, href, why]) => `
-                <div class="source-row">
-                  <span class="source-type ${sourceClass(type)}">${escapeHtml(type)}</span>
-                  <div>
-                    <a href="${href}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a>
-                    <small>${escapeHtml(why)}</small>
+          <div>
+            <div class="panel">
+              <h4>Sources consulted / queued</h4>
+              <div class="source-list">
+                ${module.sources.map(([type, label, href, why]) => `
+                  <div class="source-row">
+                    <span class="source-type ${sourceClass(type)}">${escapeHtml(type)}</span>
+                    <div>
+                      <a href="${href}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a>
+                      <small>${escapeHtml(why)}</small>
+                    </div>
                   </div>
-                </div>
-              `).join('')}
+                `).join('')}
+              </div>
+            </div>
+            <div class="panel">
+              <h4>Topic summary</h4>
+              <p>${escapeHtml(module.notes.summary)}</p>
+            </div>
+            <div class="panel">
+              <h4>Key principles</h4>
+              ${list(module.notes.principles)}
+            </div>
+            <div class="panel">
+              <h4>Source comparison</h4>
+              <p>${escapeHtml(module.notes.comparison)}</p>
+            </div>
+            <div class="panel">
+              <h4>Disagreements / emphasis differences</h4>
+              <p>${escapeHtml(module.notes.disagreements)}</p>
             </div>
           </div>
 
           <div>
             <div class="panel">
-              <h4>Application to browser</h4>
-              <p>${escapeHtml(module.application)}</p>
+              <h4>CodeMike interpretation</h4>
+              <p>${escapeHtml(module.notes.interpretation)}</p>
             </div>
-            <div class="panel" style="margin-top:12px;">
-              <h4>Required notes output</h4>
-              <div class="output-grid">
-                <div class="output-item"><strong>Summary</strong>Topic definition and key principles.</div>
-                <div class="output-item"><strong>Comparison</strong>Where sources agree, differ, or omit.</div>
-                <div class="output-item"><strong>Interpretation</strong>CodeMike's project-specific reading.</div>
-                <div class="output-item"><strong>Implementation</strong>Changes implied for browser v1.1.</div>
-              </div>
+            <div class="panel">
+              <h4>Application to destination master browser</h4>
+              <p>${escapeHtml(module.notes.application)}</p>
+            </div>
+            <div class="panel">
+              <h4>Anti-patterns</h4>
+              ${list(module.notes.antiPatterns)}
+            </div>
+            <div class="panel">
+              <h4>Implementation implications</h4>
+              ${list(module.notes.implementation)}
+            </div>
+            <div class="panel">
+              <h4>Checklist updates</h4>
+              ${list(module.notes.checklist)}
             </div>
             <div class="further">
               <h4>Further reading suggestions</h4>
-              <ul>
-                ${module.further.map(item => `<li>${escapeHtml(item)}</li>`).join('')}
-              </ul>
+              ${list(module.further)}
             </div>
           </div>
         </div>
