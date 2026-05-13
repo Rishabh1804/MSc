@@ -31,6 +31,33 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-12 — Artifact-management layer created
+
+Type: artifact / tracker / governance
+
+Summary:
+
+Created a lightweight artifact-management layer for the CodeMike destination database work. This adds a central artifact index, operational next-actions tracker, decision log, destination database build tracker, and a work-done checkpoint report.
+
+Files changed:
+
+- `ARTIFACT_INDEX.md`
+- `NEXT_ACTIONS.md`
+- `DECISIONS.md`
+- `trackers/destination-database-build-tracker.md`
+- `reports/work-done/code-mike-destination-database-work-done-v1.md`
+
+Evidence produced:
+
+- central map of source data, generated data, scripts, reports, trackers, and HTML review artifacts
+- decision rationale for layered data architecture, taxonomy-first build, unverified-data handling, and Termux execution
+- operational queue for the next validation and master-schema steps
+- checkpoint report summarising the destination database work completed so far
+
+Next action:
+
+Run the clean normalized backlog validation in Termux, then proceed to `datasets/reference/destinations_master_v2_schema.md`.
+
 ## 2026-05-12 — Remaining destination taxonomy cleanup completed
 
 Type: taxonomy / validation / QA
