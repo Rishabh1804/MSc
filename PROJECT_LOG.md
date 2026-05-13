@@ -31,6 +31,30 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-12 — Seed compatibility cleanup completed
+
+Type: taxonomy / validation / QA
+
+Summary:
+
+Updated the destination tag dictionary and master validator to accept legitimate legacy seed concepts found in the original 134-row seed dataset. These values are now treated as seed-compatible vocabulary: structurally valid for master ingestion, but still subject to future enrichment and normalization review.
+
+Files changed:
+
+- `datasets/reference/destination_tag_dictionary.md`
+- `src/codemike/data/destination_master_validation.py`
+- `NEXT_ACTIONS.md`
+- `trackers/destination-database-build-tracker.md`
+
+Evidence produced:
+
+- accepted seed-compatible location types including `beach_city`, `culture_hill_town`, `desert_beach_emirate`, `heritage_capital`, `hill_heritage_city`, `island_heritage_city`, `island_resort_district`, `lake_mountain_city`, `mountain_capital`, `mountain_valley`, `northern_city`, and `wildlife_region`
+- accepted seed-compatible vibe tags including `city`, `limestone`, `monsoon`, `museums`, `relaxation`, `stopover`, and `villa`
+
+Next action:
+
+Rerun `python src/codemike/data/destination_master_validation.py` in Termux and commit the regenerated clean validation report.
+
 ## 2026-05-12 — Destinations master v2 validation utility created
 
 Type: dataset / validation / QA
