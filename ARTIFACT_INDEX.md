@@ -13,6 +13,8 @@ This file indexes important CodeMike artifacts so the workspace remains navigabl
 | Script | Reusable code utility |
 | Evidence report | QA, analysis, or validation output |
 | HTML artifact | Browser/review interface served through GitHub Pages |
+| Design foundation | UI/UX learning and design criteria artifact |
+| Checklist | Operational or design review checklist |
 | Tracker | Operational progress tracker |
 | Decision log | Rationale for project design decisions |
 
@@ -25,6 +27,14 @@ This file indexes important CodeMike artifacts so the workspace remains navigabl
 | Destination Browser v1 | `https://rishabh1804.github.io/MSc/destination-browser-v1.html` | `docs/destination-browser-v1.html` | Active, basic |
 | Destination Browser v2 | `https://rishabh1804.github.io/MSc/destination-browser-v2.html` | `docs/destination-browser-v2.html` | Active, enriched prototype |
 | Destination Tag Dictionary Browser | `https://rishabh1804.github.io/MSc/destination-tag-dictionary.html` | `docs/destination-tag-dictionary.html` | Active, taxonomy review |
+
+## Design Foundation Artifacts
+
+| Artifact | Path | Type | Status | Notes |
+|---|---|---|---|---|
+| Figma design basics digest | `design/foundations/figma-design-basics-digest.md` | Design foundation | Active | Captures UI principles, Gestalt, design thinking, and browser translation |
+| CodeMike UI learning map | `design/foundations/code-mike-ui-learning-map.md` | Design foundation | Active | Defines design-learning sequence and competency ladder |
+| Master browser design checklist | `design/checklists/master-browser-design-checklist.md` | Checklist | Active | Defines criteria for browser v1.1 redesign |
 
 ## Destination Database Data Artifacts
 
@@ -74,6 +84,7 @@ This file indexes important CodeMike artifacts so the workspace remains navigabl
 
 - Markdown strategy and taxonomy files define intent and vocabulary.
 - Markdown schema files define canonical data shape.
+- Design foundation files define UI/UX criteria before redesign.
 - CSV files define data layers.
 - Python scripts define repeatable transformations and validation.
 - Evidence reports document observed results.
@@ -82,6 +93,7 @@ This file indexes important CodeMike artifacts so the workspace remains navigabl
 
 ## Immediate Gaps
 
+- Current master browser has not yet been upgraded against the design checklist.
 - Destination enrichment strategy for master records does not exist yet.
 - Scoring module for destination selection does not exist yet.
 - Planner transfer report does not exist yet.
