@@ -14,6 +14,8 @@ This file indexes important CodeMike artifacts so the workspace remains navigabl
 | Evidence report | QA, analysis, or validation output |
 | HTML artifact | Browser/review interface served through GitHub Pages |
 | Design foundation | UI/UX learning and design criteria artifact |
+| Assignment | Formal CodeMike learning/evidence assignment |
+| Rubric | Marking criteria for an assignment |
 | Checklist | Operational or design review checklist |
 | Tracker | Operational progress tracker |
 | Decision log | Rationale for project design decisions |
@@ -23,10 +25,20 @@ This file indexes important CodeMike artifacts so the workspace remains navigabl
 | Artifact | URL | Source file | Status |
 |---|---|---|---|
 | CodeMike artifact landing page | `https://rishabh1804.github.io/MSc/` | `docs/index.html` | Active |
+| Design Foundations Study Dashboard | `https://rishabh1804.github.io/MSc/design-foundations.html` | `docs/design-foundations.html` | Active, assignment artifact for DES-001 |
 | Destinations Master v2 Browser | `https://rishabh1804.github.io/MSc/destination-master-browser-v1.html` | `docs/destination-master-browser-v1.html` | Active, 359-row master review |
 | Destination Browser v1 | `https://rishabh1804.github.io/MSc/destination-browser-v1.html` | `docs/destination-browser-v1.html` | Active, basic |
 | Destination Browser v2 | `https://rishabh1804.github.io/MSc/destination-browser-v2.html` | `docs/destination-browser-v2.html` | Active, enriched prototype |
 | Destination Tag Dictionary Browser | `https://rishabh1804.github.io/MSc/destination-tag-dictionary.html` | `docs/destination-tag-dictionary.html` | Active, taxonomy review |
+
+## Assignment Artifacts
+
+| Artifact | Path | Type | Status | Notes |
+|---|---|---|---|---|
+| DES-001 assignment brief | `assignments/DES-001-design-foundations-study-dashboard.md` | Assignment | Assigned | Formalises design foundations dashboard as first graded CodeMike assignment |
+| DES-001 marking rubric | `assignments/rubrics/design-foundations-rubric.md` | Rubric | Active | 100-mark rubric with resubmission and benchmark rules |
+| DES-001 submission v1 | `assignments/submissions/DES-001/submission-v1.md` | Assignment submission | Pending | To be created after deep-reading completion |
+| DES-001 review v1 | `assignments/reviews/DES-001/review-v1.md` | Assignment review | Pending | To be created after submission |
 
 ## Design Foundation Artifacts
 
@@ -82,6 +94,8 @@ This file indexes important CodeMike artifacts so the workspace remains navigabl
 
 ## Current Source-of-Truth Rules
 
+- Assignment briefs define learning tasks and expected outputs.
+- Rubrics define assessment and benchmark promotion standards.
 - Markdown strategy and taxonomy files define intent and vocabulary.
 - Markdown schema files define canonical data shape.
 - Design foundation files define UI/UX criteria before redesign.
@@ -93,6 +107,8 @@ This file indexes important CodeMike artifacts so the workspace remains navigabl
 
 ## Immediate Gaps
 
+- DES-001 deep reading is not complete yet.
+- DES-001 submission and review files do not exist yet.
 - Current master browser has not yet been upgraded against the design checklist.
 - Destination enrichment strategy for master records does not exist yet.
 - Scoring module for destination selection does not exist yet.
