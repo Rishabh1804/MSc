@@ -31,6 +31,33 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-12 — DES-001 assignment and rubric created
+
+Type: learning / assignment / assessment
+
+Summary:
+
+Formalised the Design Foundations Study Dashboard as CodeMike's first graded assignment: DES-001. The assignment frames `docs/design-foundations.html` as a reviewable university-style submission with multi-source deep reading, notes generation, further reading suggestions, grading, resubmission rules, and benchmark-promotion criteria.
+
+Files changed:
+
+- `assignments/DES-001-design-foundations-study-dashboard.md`
+- `assignments/rubrics/design-foundations-rubric.md`
+- `ARTIFACT_INDEX.md`
+
+Evidence produced:
+
+- DES-001 assignment brief
+- 100-mark marking rubric
+- grading bands: Fail, Pass, Good, Excellent, Benchmark
+- automatic cap rules for weak source comparison or unsafe claims
+- benchmark eligibility criteria
+- resubmission rules
+
+Next action:
+
+Begin DES-001 deep reading with Topic 1: UI vs UX. Update `docs/design-foundations.html` with notes, source comparison, browser implications, anti-patterns, and further reading.
+
 ## 2026-05-12 — Seed compatibility cleanup completed
 
 Type: taxonomy / validation / QA
@@ -188,7 +215,7 @@ Type: dataset / QA / validation
 
 Summary:
 
-Created a validation utility for the normalized 225-row India destination backlog. The validator checks required columns, duplicate keys, normalized destination types, normalized vibes, trip-style tags, context tags, caution tags, and promotion statuses before master schema design.
+Created a validation utility for the normalized 225-row India destination backlog. The validator checks required columns, duplicate keys, normalized destination types, normalized vibes, trip-style tags, context tags, and promotion statuses before master schema design.
 
 Files changed:
 
