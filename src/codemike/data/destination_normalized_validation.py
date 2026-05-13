@@ -27,11 +27,11 @@ REPORT_PATH = Path("reports/evidence/destination-normalized-backlog-validation-v
 
 
 VALID_DESTINATION_TYPES = {
-    "metro_city", "city", "global_city", "capital_city", "heritage_city", "culture_city",
+    "metro_city", "city", "global_city", "capital_city", "heritage_city", "culture_city", "culture_town",
     "spiritual_city", "temple_city", "pilgrim_city", "planned_city", "coastal_city",
     "hill_city", "mountain_city", "gateway_city", "city_gateway", "business_city",
     "education_city", "food_city", "craft_city",
-    "hill_station", "hill_town", "hill_region", "mountain_town", "mountain_region",
+    "hill_station", "lake_hill_station", "hill_town", "hill_region", "mountain_town", "mountain_region", "mountain_resort",
     "high_altitude", "valley", "lake_city", "lake_region", "river_town", "river_region",
     "waterfall_site", "canyon_region", "desert_region", "forest_region", "rainforest_region",
     "meadow_region", "plateau_region", "tea_region", "coffee_region", "spice_region",
@@ -57,13 +57,13 @@ VALID_VIBES = {
     "spiritual", "pilgrimage", "slow_travel", "family", "luxury", "budget", "wellness",
     "romantic", "nightlife", "business", "education", "art", "craft", "music", "festival",
     "photography", "viewpoint", "local_life", "hills", "mountains", "valley", "lakes",
-    "river", "waterfalls", "forest", "rainforest", "desert", "snow", "tea", "coffee",
+    "river", "waterfalls", "forest", "rainforest", "rain", "desert", "snow", "tea", "coffee",
     "spice", "backwaters", "gardens", "meadows", "caves", "mangrove", "wetland",
     "birding", "flowers", "landscape", "sunrise", "sunset", "beach", "coast", "islands",
     "marine", "diving", "snorkelling", "water", "resort", "lagoon", "coral", "cruise",
     "houseboat", "adventure", "trekking", "safari", "ski", "rafting", "paragliding",
     "camping", "road_trip", "cycling", "boating", "theme_parks", "water_sports",
-    "desert_safari", "buddhist", "jain", "sikh", "temples", "forts", "palace", "wine",
+    "desert_safari", "buddhist", "jain", "sikh", "monastery", "temples", "forts", "palace", "rock_carving", "wine",
     "textiles", "handicrafts", "wildlife", "tiger", "rhino", "elephant", "marine_life",
     "colonial", "french_quarter", "silk_route", "nature",
 }
