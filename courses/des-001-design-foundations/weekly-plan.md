@@ -1,0 +1,49 @@
+# DES-001 Weekly Plan
+
+## Week 1 — UI vs UX
+
+- Complete multi-source reading
+- Compare source framing
+- Add Topic 1 dashboard notes
+- Add further-reading extension
+- Execute browser audit lab
+- Complete quiz
+
+## Week 2 — UI Design Basics
+
+- Study interface elements and controls
+- Build component inventory for destination browser
+- Define card/table/filter/detail-drawer UI rules
+
+## Week 3 — UX Design Basics
+
+- Study task flows, journey mapping, and user needs
+- Map reviewer journey in destination browser
+- Define UX acceptance criteria
+
+## Week 4 — Perception and Interaction Laws
+
+- Study Gestalt principles
+- Study Fitts' law
+- Apply grouping and target-size principles to dashboard controls
+
+## Week 5 — Visual Foundations
+
+- Study typography
+- Study colour theory
+- Study contrast and accessibility
+- Improve dashboard readability criteria
+
+## Week 6 — Layout and Design Systems
+
+- Study grid layout
+- Study design systems
+- Convert findings into reusable CodeMike design standards
+
+## Final Week — Submission and Grading
+
+- Finalize dashboard artifact
+- Submit DES-001 assignment
+- Grade against rubric
+- Produce revision plan
+- Extract portfolio output
