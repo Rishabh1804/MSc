@@ -68,3 +68,44 @@ browse → narrow → compare → inspect → recover → leave with correct tru
 ### Next action
 
 Update the grade report and decide whether to implement Destination Master Browser v1.1 immediately or continue with DES-001 Topic 2 first.
+
+---
+
+## 2026-05-14 — Grade report completed after Lab 01
+
+### What was graded
+
+The current DES-001 state after Topic 1 and Lab 01 was graded against:
+
+- `assignments/rubrics/design-foundations-rubric.md`
+- `courses/des-001-design-foundations/grading-policy.md`
+
+### Result
+
+```text
+82 / 100 — Excellent by DES-001 rubric; Distinction by course grading policy
+```
+
+### Feedback summary
+
+Topic 1 is strong because it includes multi-source reading, source comparison, further-reading extension, applied lab execution, checklist implications, and a formal submission trail.
+
+The result is provisional rather than final because the remaining DES-001 topics are not yet deeply digested and the modular dashboard still needs live visual verification.
+
+### Decision
+
+Proceed to DES-001 Topic 2 before implementing Destination Master Browser v1.1.
+
+### Reason
+
+Topic 2 will improve component-level UI decisions. Topic 3 will improve UX journey and task-flow decisions. Browser v1.1 should be implemented after the design vocabulary is stronger.
+
+### Repository outputs updated
+
+- `courses/des-001-design-foundations/feedback/DES-001-grade-report-v1.md`
+- `courses/des-001-design-foundations/revisions/DES-001-revision-plan-v1.md`
+- `courses/des-001-design-foundations/competency-map.md`
+
+### Next action
+
+Start DES-001 Topic 2 — What is UI design.
