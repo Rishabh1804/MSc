@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CodeMike MSc — Repository Map</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --panel: #ffffff;
+      --line: #e2e8f0;
+      --soft: #f1f5f9;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --good: #047857;
+      --good-soft: #d1fae5;
+      --warn: #b45309;
+      --warn-soft: #fef3c7;
+      --todo: #6d28d9;
+      --todo-soft: #ede9fe;
+      --radius: 22px;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at top left, #dbeafe 0, transparent 32rem), var(--bg);
+      line-height: 1.55;
+    }
+
+    .wrap { width: min(1180px, calc(100vw - 32px)); margin: 0 auto; }
+    header { padding: 44px 0 24px; }
+    .eyebrow {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h1 { margin: 0; font-size: clamp(34px, 5vw, 64px); line-height: .95; letter-spacing: -0.06em; max-width: 900px; }
+    .lead { margin: 18px 0 0; max-width: 860px; color: var(--muted); font-size: 17px; }
+
+    .notice {
+      margin: 22px 0 0;
+      padding: 16px 18px;
+      border-radius: 16px;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      color: #1e3a8a;
+      font-size: 14px;
+    }
+
+    .grid { display: grid; gap: 16px; }
+    .stats { grid-template-columns: repeat(4, 1fr); margin: 22px 0; }
+    .stat, .card, .rule, .course-card {
+      background: rgba(255, 255, 255, .94);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .stat { padding: 16px; }
+    .stat small { display: block; color: var(--muted); font-weight: 750; margin-bottom: 6px; }
+    .stat strong { font-size: 26px; letter-spacing: -0.04em; }
+
+    .section-title { margin: 34px 0 14px; display: flex; align-items: end; justify-content: space-between; gap: 16px; }
+    .section-title h2 { margin: 0; font-size: 27px; letter-spacing: -0.04em; }
+    .section-title p { margin: 0; max-width: 650px; color: var(--muted); font-size: 14px; }
+
+    .folder-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .card { padding: 18px; min-width: 0; }
+    .card h3 { margin: 0 0 6px; font-size: 21px; letter-spacing: -0.035em; }
+    .card p { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+    .path {
+      display: inline-flex;
+      max-width: 100%;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: #334155;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .links { display: grid; gap: 8px; margin-top: 14px; }
+    a {
+      color: #1d4ed8;
+      text-decoration: none;
+      font-weight: 750;
+    }
+    a:hover { text-decoration: underline; }
+    .link-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 9px 10px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      min-width: 0;
+    }
+    .link-row span { color: var(--muted); font-size: 12px; text-align: right; }
+
+    .course-card { padding: 20px; }
+    .course-head { display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: start; }
+    .course-head h3 { margin: 0 0 6px; font-size: 25px; letter-spacing: -0.04em; }
+    .course-head p { margin: 0; color: var(--muted); }
+    .status {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+    .status.active { background: var(--good-soft); color: var(--good); }
+    .status.pending { background: var(--todo-soft); color: var(--todo); }
+    .status.review { background: var(--warn-soft); color: var(--warn); }
+
+    .table-wrap { overflow-x: auto; border-radius: 18px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+    table { width: 100%; border-collapse: collapse; background: #fff; min-width: 760px; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { background: #f8fafc; color: #334155; font-size: 12px; text-transform: uppercase; letter-spacing: .05em; }
+    td { color: #334155; font-size: 14px; }
+    tr:last-child td { border-bottom: 0; }
+
+    .decision {
+      margin: 30px 0 46px;
+      padding: 22px;
+      border-radius: 24px;
+      background: #0f172a;
+      color: #e2e8f0;
+      box-shadow: var(--shadow);
+    }
+    .decision h2 { margin: 0 0 10px; letter-spacing: -0.03em; }
+    .decision p, .decision li { color: #cbd5e1; }
+    .decision code { color: #bfdbfe; }
+
+    @media (max-width: 980px) {
+      .stats, .folder-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .section-title, .course-head { display: block; }
+      .status { margin-top: 12px; }
+    }
+    @media (max-width: 640px) {
+      .stats, .folder-grid { grid-template-columns: 1fr; }
+      header { padding-top: 28px; }
+      .link-row { grid-template-columns: 1fr; }
+      .link-row span { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <div class="eyebrow">CodeMike MSc · Repository Map</div>
+    <h1>One clean map for courses, artifacts, design work, and evidence.</h1>
+    <p class="lead">This page is the visual front door for the MSc repository. It separates academic coursework from public artifacts, design standards, datasets, and scripts so the project does not drift into file sprawl.</p>
+    <div class="notice"><strong>Rule:</strong> coursework evidence lives under <code>courses/</code>; rendered/public artifacts live under <code>docs/</code>; reusable design standards live under <code>design/</code>.</div>
+  </header>
+
+  <main class="wrap">
+    <section class="grid stats" aria-label="Repository status">
+      <div class="stat"><small>Active courses</small><strong>1</strong></div>
+      <div class="stat"><small>Active assignment</small><strong>DES-001</strong></div>
+      <div class="stat"><small>Current grade</small><strong>82/100</strong></div>
+      <div class="stat"><small>Next step</small><strong>Topic 2</strong></div>
+    </section>
+
+    <div class="section-title">
+      <h2>Primary folders</h2>
+      <p>Use this section to decide where a file belongs before creating it.</p>
+    </div>
+
+    <section class="grid folder-grid">
+      <article class="card">
+        <span class="path">courses/</span>
+        <h3>Course environment</h3>
+        <p>Syllabus, lectures, readings, labs, submissions, feedback, revisions, viva, portfolio.</p>
+        <div class="links">
+          <div class="link-row"><a href="../courses/README.md">Courses index</a><span>academic map</span></div>
+          <div class="link-row"><a href="../courses/des-001-design-foundations/README.md">DES-001 course</a><span>active</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="path">docs/</span>
+        <h3>Renderable artifacts</h3>
+        <p>HTML dashboards, browser tools, and public-facing review surfaces.</p>
+        <div class="links">
+          <div class="link-row"><a href="design-foundations-v2.html">Design Foundations v2</a><span>dashboard</span></div>
+          <div class="link-row"><a href="destination-master-browser-v1.html">Destination Browser v1</a><span>artifact</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="path">design/</span>
+        <h3>Design standards</h3>
+        <p>Reusable design foundations, checklists, and audit criteria.</p>
+        <div class="links">
+          <div class="link-row"><a href="../design/checklists/master-browser-design-checklist.md">Master browser checklist</a><span>standard</span></div>
+          <div class="link-row"><a href="../design/foundations/ui-vs-ux-further-reading.md">UI vs UX further reading</a><span>Topic 1</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="path">assignments/</span>
+        <h3>Briefs and rubrics</h3>
+        <p>Assignment definitions and marking criteria. Submissions do not belong here.</p>
+        <div class="links">
+          <div class="link-row"><a href="../assignments/DES-001-design-foundations-study-dashboard.md">DES-001 brief</a><span>brief</span></div>
+          <div class="link-row"><a href="../assignments/rubrics/design-foundations-rubric.md">DES-001 rubric</a><span>rubric</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="path">datasets/</span>
+        <h3>Data</h3>
+        <p>Reference data and source datasets used by the browsers and course tasks.</p>
+        <div class="links">
+          <div class="link-row"><a href="../datasets/reference/destinations_master_v2.csv">Destinations master v2 CSV</a><span>source data</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="path">scripts/</span>
+        <h3>Scripts</h3>
+        <p>Build, validation, and utility scripts. Keep logic here instead of embedding everything in HTML.</p>
+        <div class="links">
+          <div class="link-row"><a href="../scripts/">Scripts folder</a><span>tooling</span></div>
+        </div>
+      </article>
+    </section>
+
+    <div class="section-title">
+      <h2>Active course</h2>
+      <p>DES-001 is the current active course environment.</p>
+    </div>
+
+    <section class="course-card">
+      <div class="course-head">
+        <div>
+          <h3>DES-001 — Design Foundations</h3>
+          <p>Current milestone: Topic 1 complete and provisionally graded. Next: Topic 2 — What is UI design.</p>
+        </div>
+        <span class="status active">Active · 82/100 provisional</span>
+      </div>
+      <div class="links" style="margin-top:16px;">
+        <div class="link-row"><a href="../courses/des-001-design-foundations/syllabus.md">Syllabus</a><span>course frame</span></div>
+        <div class="link-row"><a href="../courses/des-001-design-foundations/learning-outcomes.md">Learning outcomes</a><span>outcomes</span></div>
+        <div class="link-row"><a href="../courses/des-001-design-foundations/lectures/lecture-01-ui-vs-ux.md">Lecture 01 — UI vs UX</a><span>lecture</span></div>
+        <div class="link-row"><a href="../courses/des-001-design-foundations/labs/lab-01-ui-vs-ux-browser-audit.md">Lab 01 brief</a><span>lab</span></div>
+        <div class="link-row"><a href="../courses/des-001-design-foundations/submissions/lab-01-ui-vs-ux-browser-audit-results.md">Lab 01 submission</a><span>submitted</span></div>
+        <div class="link-row"><a href="../courses/des-001-design-foundations/feedback/DES-001-grade-report-v1.md">Grade report v1</a><span>82/100</span></div>
+        <div class="link-row"><a href="../courses/des-001-design-foundations/revisions/DES-001-revision-plan-v1.md">Revision plan v1</a><span>active</span></div>
+      </div>
+    </section>
+
+    <div class="section-title">
+      <h2>Navigation table</h2>
+      <p>A compact index of the important files created so far.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>File</th>
+            <th>Status</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Dashboard</td><td><a href="design-foundations-v2.html">docs/design-foundations-v2.html</a></td><td>Active</td><td>DES-001 study dashboard.</td></tr>
+          <tr><td>Dashboard modules</td><td><a href="design-foundations-app/README.md">docs/design-foundations-app/</a></td><td>Active</td><td>Modular CSS/JS dashboard implementation.</td></tr>
+          <tr><td>Browser artifact</td><td><a href="destination-master-browser-v1.html">docs/destination-master-browser-v1.html</a></td><td>Audit target</td><td>Destination Master Browser v1.</td></tr>
+          <tr><td>Course</td><td><a href="../courses/des-001-design-foundations/README.md">courses/des-001-design-foundations/</a></td><td>Active</td><td>DES-001 course environment.</td></tr>
+          <tr><td>Evidence</td><td><a href="../design/foundations/topic-01-ui-vs-ux-exercise-results.md">topic-01-ui-vs-ux-exercise-results.md</a></td><td>Complete</td><td>Executed Lab 01 evidence.</td></tr>
+          <tr><td>Feedback</td><td><a href="../courses/des-001-design-foundations/feedback/DES-001-grade-report-v1.md">DES-001-grade-report-v1.md</a></td><td>Complete</td><td>Provisional 82/100 grade.</td></tr>
+          <tr><td>Governance</td><td><a href="../REPO_STRUCTURE.md">REPO_STRUCTURE.md</a></td><td>Active</td><td>Repository structure rules.</td></tr>
+          <tr><td>Governance</td><td><a href="../GITHUB_WORKFLOW.md">GITHUB_WORKFLOW.md</a></td><td>Active</td><td>Batching and PR rules.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <section class="decision">
+      <h2>Working decision</h2>
+      <p>The repository should not be reorganized by random moves. The safe cleanup path is:</p>
+      <ol>
+        <li>Use this map as the visual front door.</li>
+        <li>Use <code>REPO_STRUCTURE.md</code> for placement rules.</li>
+        <li>Batch future changes by phase.</li>
+        <li>Migrate or archive messy files only in planned cleanup branches.</li>
+      </ol>
+      <p><strong>Next academic step:</strong> DES-001 Topic 2 — What is UI design.</p>
+    </section>
+  </main>
+</body>
+</html>

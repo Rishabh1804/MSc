@@ -4,6 +4,21 @@ This repository is the working academic and project repository for the CodeMike 
 
 The repository must stay navigable. Academic performance depends on clear evidence, clear submissions, and clear separation between coursework, reusable project artifacts, and generated/output files.
 
+## Repository map
+
+Open the visual map first:
+
+```text
+docs/repo-map.html
+```
+
+If served through GitHub Pages, use one of these depending on Pages configuration:
+
+```text
+https://rishabh1804.github.io/MSc/docs/repo-map.html
+https://rishabh1804.github.io/MSc/repo-map.html
+```
+
 ## Current active course
 
 | Course | Status | Current next step |
@@ -25,6 +40,7 @@ The repository must stay navigable. Academic performance depends on clear eviden
 
 | Artifact | Path |
 |---|---|
+| Repository visual map | `docs/repo-map.html` |
 | Design Foundations dashboard v2 | `docs/design-foundations-v2.html` |
 | Design Foundations app modules | `docs/design-foundations-app/` |
 | Destination Master Browser v1 | `docs/destination-master-browser-v1.html` |
