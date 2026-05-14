@@ -1,79 +1,48 @@
-# MSc — CodeMike Capability Workspace
+# CodeMike MSc Repository
 
-This repository is the home of **CodeMike**, an applied AI postgraduate capability system for Advanced Data Science, Artificial Intelligence, Big Data, High Performance Computing, Optimisation, Research Methods, Decision Science, and Data Product Engineering.
+This repository is the working academic and project repository for the CodeMike MSc simulation.
 
-The repository is inspired by an MSc-style postgraduate structure, but it is not a passive notes archive. It is a working capability base: learning should produce evidence, reusable methods, project-ready patterns, and transferable implementation assets.
+The repository must stay navigable. Academic performance depends on clear evidence, clear submissions, and clear separation between coursework, reusable project artifacts, and generated/output files.
 
-## Core operating loop
+## Current active course
 
-```text
-Orient → Learn → Prove → Package → Transfer → Improve
-```
+| Course | Status | Current next step |
+|---|---|---|
+| DES-001 Design Foundations | Active | Start Topic 2 — What is UI design |
 
-CodeMike should first understand the academic, legal, cultural, ethical, professional, and student-life context; then learn technical material; prove it through evidence; package it into reusable capabilities; transfer it into real projects; and improve through review, failure logs, and versioning.
+## Primary locations
 
-## Workspace purpose
+| Folder | Purpose |
+|---|---|
+| `courses/` | Course environment: syllabus, lectures, readings, labs, submissions, feedback, revisions, viva, portfolio |
+| `docs/` | Renderable/public artifacts and browser dashboards |
+| `design/` | Reusable design foundations, checklists, and design standards |
+| `assignments/` | Assignment briefs and rubrics |
+| `datasets/` | Data inputs and reference files |
+| `scripts/` | Build, validation, or utility scripts |
 
-CodeMike exists to support real projects that need:
+## Active artifacts
 
-- data analysis and data engineering
-- big data analytics
-- data mining and visualisation
-- machine learning and computational intelligence
-- optimisation and decision science
-- high-performance and parallel computing
-- reproducible experiments
-- research synthesis
-- data product engineering
-- portfolio-grade technical evidence
+| Artifact | Path |
+|---|---|
+| Design Foundations dashboard v2 | `docs/design-foundations-v2.html` |
+| Design Foundations app modules | `docs/design-foundations-app/` |
+| Destination Master Browser v1 | `docs/destination-master-browser-v1.html` |
+| DES-001 course folder | `courses/des-001-design-foundations/` |
 
-When another project needs these capabilities, this repository is the training ground, proving ground, and reusable memory.
+## Working rule
 
-## Initial philosophy
+Do not create files casually. Every new file must be one of:
 
-The workspace starts with a hybrid model:
+1. course evidence
+2. public/rendered artifact
+3. reusable design standard/checklist
+4. dataset/source file
+5. script/tooling
+6. index/governance file
 
-- lean enough to execute quickly
-- structured enough to mature into a full institutional capability base
+If a file does not fit one of those buckets, it should not be added.
 
-The long-term direction is Option B: a comprehensive, governed, reusable postgraduate capability institution.
+## GitHub workflow rule
 
-## Key files
-
-- `CLAUDE.md` — operating instructions for AI assistants working in this repo
-- `CODEMIKE.md` — identity, mandate, and operating model for CodeMike
-- `STUDENT_LIFE.md` — academic, cultural, legal, wellbeing, HR, and professional orientation index
-- `ROADMAP.md` — six-month capability roadmap
-- `PROJECT_LOG.md` — session and milestone log
-- `SKILL_MAP.md` — skills, maturity levels, and evidence pointers
-- `CAPABILITIES.md` — catalogue of reusable capabilities
-- `TRANSFER_LOG.md` — record of capability transfers to other projects
-- `BUDGET.md` — ₹20,000 / six-month budget policy
-- `TOOLING.md` — tool evaluation and usage register
-
-## First milestone
-
-**Milestone 0 — Foundation Setup**
-
-Deliverables:
-
-- root identity and governance files
-- active capability tracking files
-- folder scaffolds
-- first skill map
-- first roadmap
-- first project log entry
-- initial CodeMike induction layer
-
-## Rule of value
-
-A learning unit is valuable only when it produces at least one of:
-
-- a reusable skill
-- a working notebook
-- a tested method
-- a documented experiment
-- a project-ready capability
-- a transferable pattern
-- a warning from failure
-- a contribution to a real project
+For future work, prefer one batched commit per phase instead of many one-file commits. See `GITHUB_WORKFLOW.md`.
