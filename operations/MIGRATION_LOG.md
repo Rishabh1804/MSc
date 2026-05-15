@@ -42,20 +42,20 @@ Commit: `32cd4f3`
 Scope: Added the four foundation files that make subsequent batches reviewable and idempotent.  
 Files added:
   - `charter/HARD_RULES.md`
-  - `charter/REPO_STRUCTURE.md` (rewritten in place)
+  - `charter/REPO_STRUCTURE.md` (rewritten version of the pre-existing root `REPO_STRUCTURE.md`; the stale root copy was inadvertently left behind and is removed in Batch 2)
   - `operations/MIGRATION_PLAN.md`
   - `operations/MIGRATION_LOG.md`  
 
 Files moved: none  
 Files deleted: none  
 Verification: PR #1 opened as draft; `mergeable_state: clean`; no review threads; 0 check runs (no workflows configured yet).  
-Notes: First commit on the migration branch. Citations in `HARD_RULES.md` to `charter/...` and `operations/...` paths intentionally do not resolve until Batches 2 and 3 land.
+Notes: First commit on the migration branch. Citations in `HARD_RULES.md` to `charter/...` and `operations/...` paths intentionally do not resolve until Batches 2 and 3 land. Batch 0 corrected by Batch 2: the original root `REPO_STRUCTURE.md` was not deleted when the rewritten copy was added at `charter/REPO_STRUCTURE.md`; the duplicate is removed in Batch 2.
 
 ### Batch 1 — Stub READMEs for new top-level buckets
 
 Date: 2026-05-15  
 PR: #1  
-Commit: (pending — backfilled next batch)  
+Commit: `e877e38`  
 Scope: Added README files to the new top-level buckets so they exist in git and explain their purpose to anyone landing there.  
 Files added:
   - `charter/README.md`
@@ -71,3 +71,35 @@ Files moved: none
 Files deleted: none  
 Verification: Five new files, none overwriting existing content. `capabilities/README.md` deliberately NOT touched — the directory already exists with nine capability cards indexed (`dashboard-insight-design`, `data-cleaning`, `exploratory-analysis`, `model-evaluation`, `optimisation-modelling`, `project-transfer`, `recommendation-scoring`, `research-synthesis`, plus the existing README). It will be updated in Batch 5 when `patterns/`, `anti-patterns/`, `case-studies/`, `decision-science/` land underneath it.  
 Notes: `curriculum/`, `cockpit/`, `decks/` are entirely new directories created by this commit. `charter/` and `operations/` already existed from Batch 0; their READMEs document the bucket's purpose for anyone landing there.
+
+### Batch 2 — Move charter docs
+
+Date: 2026-05-15  
+PR: #1  
+Commit: (pending — backfilled next batch)  
+Scope: Moved 13 policy docs from the repository root into `charter/`, where the bucket README declares them to live.  
+Files moved (via `git mv`, rename detection: yes):
+  - `BUDGET.md` → `charter/BUDGET.md`
+  - `CODEMIKE.md` → `charter/CODEMIKE.md`
+  - `DATA_POLICY.md` → `charter/DATA_POLICY.md`
+  - `DOCTRINES.md` → `charter/DOCTRINES.md`
+  - `DOMAIN_MAP.md` → `charter/DOMAIN_MAP.md`
+  - `GITHUB_WORKFLOW.md` → `charter/GITHUB_WORKFLOW.md`
+  - `HTML_ARTIFACTS.md` → `charter/HTML_ARTIFACTS.md`
+  - `PRODUCTISATION.md` → `charter/PRODUCTISATION.md`
+  - `QA_CHECKLIST.md` → `charter/QA_CHECKLIST.md`
+  - `RESPONSIBLE_AI.md` → `charter/RESPONSIBLE_AI.md`
+  - `STUDENT_LIFE.md` → `charter/STUDENT_LIFE.md`
+  - `SUPERVISION.md` → `charter/SUPERVISION.md`
+  - `TOOLING.md` → `charter/TOOLING.md`
+
+Files modified:
+  - `charter/README.md` — rewritten with the post-Batch-2 contents table.
+  - `operations/MIGRATION_LOG.md` — backfilled Batch 1's commit SHA (`e877e38`); appended this entry.
+
+Files added: none  
+Files deleted:
+  - `REPO_STRUCTURE.md` (root) — stale pre-rewrite duplicate of `charter/REPO_STRUCTURE.md`; left behind by Batch 0. Diff before deletion: 112 lines (root) vs 114 lines (charter); root version used the pre-migration framing without the cross-links to `operations/MIGRATION_PLAN.md`. Removing the root copy makes `charter/REPO_STRUCTURE.md` the single source of truth.
+
+Verification: No content changes to the 13 moved files — moves only. `git status --short` shows 13 `R` (rename) entries, 1 `D` (delete) entry, plus 2 `M` (modified) entries for `charter/README.md` and this log file. Root `.md` count before Batch 2: 32 (31 original + `REPO_STRUCTURE.md` carried over). After Batch 2: 18 (`CLAUDE.md`, `README.md`, and 16 operations docs awaiting Batch 3). After Batch 3 it drops to 2 — the target.  
+Notes: Tracked internal links from `CLAUDE.md` and from the moved files themselves (e.g. references like `[BUDGET.md](BUDGET.md)`) will break until Batch 9 (internal link sweep). This is intentional and documented in `MIGRATION_PLAN.md`. `CLAUDE.md` stays at root per `REPO_STRUCTURE.md` (root inventory) and is rewritten in Batch 9.
