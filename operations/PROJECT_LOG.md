@@ -31,6 +31,46 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-16 — DES-001 Topic 2 closed (deep reading + Lab 02 + rule sheet)
+
+Type: learning / assignment / capability
+
+Summary:
+
+Closed DES-001 Topic 2 — What is UI design. Two PRs land the topic: PR A produces the deep-reading evidence (source-by-source notes across Material Design 3, Apple HIG, IBM Carbon, GOV.UK Design System, Don Norman; source comparison; CodeMike interpretation; browser application; anti-patterns; v1.1 implementation backlog; checklist updates). PR B executes Lab 02 (20-pattern inventory + state-coverage matrix + affordance/signifier/feedback audit + container-selection rules + filter-UI rules + consolidated rule sheet) and appends six Topic 2 component gates to the master-browser checklist.
+
+Structural insight from the topic: the Destination Master Browser is a *master-detail data-review tool with faceted filtering* (Carbon pattern vocabulary). Naming the pattern fixes most v1.1 component choices: table by default with cards as secondary, drawer for detail (never modal), filter chips + dropdowns + search for narrowing, content-rich empty state with Clear-all recovery, skeleton loading, inline error notification, and a four-depth trust signal (top banner + list row + drawer header + future confirm-modal).
+
+The five required sources differ less on definition than on emphasis — modality (Material permissive vs HIG/Carbon/GOV.UK restrictive), data-table prominence (Carbon first-class vs others light), and "when not to use" discipline (GOV.UK explicit vs others implicit). For this product, the HIG/Carbon/GOV.UK majority position wins on modality; Carbon's table-and-pattern vocabulary wins on the central reviewer task; GOV.UK's negative-space discipline becomes a checklist gate.
+
+Files changed:
+
+- `design/foundations/topic-02-what-is-ui-design.md` (new — 13-section deep-reading doc)
+- `design/foundations/topic-02-ui-design-component-inventory.md` (new — Lab 02 Steps 1–3)
+- `design/foundations/ui-design-component-rules.md` (new — Lab 02 Steps 4–6; Browser v1.1's input)
+- `curriculum/courses/des-001-design-foundations/quizzes/quiz-02-what-is-ui-design-answers.md` (new — ten worked answers)
+- `curriculum/courses/des-001-design-foundations/viva/DES-001-viva-questions.md` + `-answers.md` (Topic 2 questions and answers appended)
+- `curriculum/courses/des-001-design-foundations/submissions/lab-02-ui-design-component-inventory-results.md` (new — formal Lab 02 submission)
+- `design/checklists/master-browser-design-checklist.md` (§18 six Topic 2 gates + §19 canonical rule-sheet pointer)
+- `docs/design-foundations-app/data.js` (Topic 2 module flipped to `done`; sources expanded from three to six; full notes object attached; Playwright re-verified)
+- `curriculum/courses/des-001-design-foundations/competency-map.md`, `weekly-plan.md`, `learning-log.md`, `submissions/DES-001-submission.md`, `revisions/DES-001-revision-plan-v1.md`, `feedback/DES-001-grade-report-v1.md` (tracking files updated; Topic 2 marked closed; revision item 5 closed)
+
+Evidence produced:
+
+- 20-pattern v1 component inventory with element-category classification
+- 12-pattern missing-pattern list (the v1.1 backlog)
+- 20 × 9 state-coverage matrix with severity-ranked findings (3 HIGH + 4 MEDIUM)
+- Affordance / signifier / feedback audit per interactive pattern; three cross-cutting findings (F1 active-state, F2 trust-signal depth, F3 three-states-one-component)
+- Container-selection rule sheet (card / table / list / drawer / modal) with when-to-use + when-not-to-use + sources + decision tree
+- Filter-UI rule sheet (search / chip / dropdown / faceted panel) with decision tree
+- Four-depth trust-signal specification with seven trust states
+- Six Topic 2 checklist gates appended to the master-browser checklist
+- Three reusable CodeMike design capabilities extracted from the topic (master-detail-with-faceted-search pattern card; nine-state interactive checklist; affordance-signifier-feedback triple-check)
+
+Next action:
+
+Start Topic 3 — UX design. Browser v1.1 implementation remains gated on Topic 3 closing per the ratified execution plan.
+
 ## 2026-05-16 — DES-001 execution plan ratified and Topic 1 close-out
 
 Type: learning / assignment / assessment / governance

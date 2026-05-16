@@ -24,7 +24,7 @@
 
 Benchmark eligible: not yet, because the full 12-topic DES-001 scope is not complete and browser visual verification remains pending.
 
-## Topic 2 — What is UI design (deep reading complete; Lab 02 pending)
+## Topic 2 — What is UI design (closed)
 
 | Competency | Evidence | Status |
 |---|---|---|
@@ -40,21 +40,22 @@ Benchmark eligible: not yet, because the full 12-topic DES-001 scope is not comp
 | Produce Topic 2 quiz answers | `quizzes/quiz-02-what-is-ui-design-answers.md` | Complete |
 | Produce Topic 2 viva answers | `viva/DES-001-viva-answers.md` Topic 2 section | Complete |
 | Update Topic 2 dashboard module | `docs/design-foundations-app/data.js` (status flipped to `done`, full notes attached) | Complete |
-| Build browser component catalogue | Lab 02 Step 1 | Pending — PR B |
-| Audit state coverage in v1 | Lab 02 Step 2 | Pending — PR B |
-| Audit affordance / signifier / feedback | Lab 02 Step 3 | Pending — PR B |
-| Define container-selection rules | Lab 02 Step 4 | Pending — PR B |
-| Define filter-UI rules | Lab 02 Step 5 | Pending — PR B |
-| Produce consolidated rule sheet | `design/foundations/ui-design-component-rules.md` via Lab 02 Step 6 | Pending — PR B |
-| Update master-browser checklist with new gates | `design/checklists/master-browser-design-checklist.md` | Pending — PR B |
+| Build browser component catalogue | `design/foundations/topic-02-ui-design-component-inventory.md` Step 1 (20 patterns present + 12 missing) | Complete |
+| Audit state coverage in v1 | Step 2 of the same file (3 HIGH + 4 MEDIUM findings) | Complete |
+| Audit affordance / signifier / feedback | Step 3 of the same file (3 cross-cutting findings: F1 active-state, F2 trust-signal depth, F3 three-states-one-component) | Complete |
+| Define container-selection rules | `design/foundations/ui-design-component-rules.md` §3 + decision tree §3.6 | Complete |
+| Define filter-UI rules | `design/foundations/ui-design-component-rules.md` §4 + decision tree §4.5 | Complete |
+| Produce consolidated rule sheet | `design/foundations/ui-design-component-rules.md` — Browser v1.1's input | Complete |
+| Update master-browser checklist with new gates | `design/checklists/master-browser-design-checklist.md` §18 (six gates) + §19 (rule-sheet pointer) | Complete |
+| Submit Lab 02 | `courses/des-001-design-foundations/submissions/lab-02-ui-design-component-inventory-results.md` | Complete |
 
 ## Next recommended action
 
-Execute Topic 2 reading using the five required sources in the reading pack, then run Lab 02. Defer Browser v1.1 until Lab 02's rule sheet exists — implementing v1.1 without the rules would risk repeating Topic 1's already-identified gaps with no improvement in vocabulary.
+Start DES-001 Topic 3 — UX design. Browser v1.1 implementation is gated on Topic 3 producing the reviewer-journey + UX-acceptance-criteria companion to the Topic 2 component rule sheet. Both are required before v1.1 code lands.
 
 Rationale:
 
-- Lab 01 identified workflow and trust-preservation gaps in v1.
-- Topic 2 produces the component-level rules those gaps need.
-- Topic 3 (UX design) will produce the journey-level rules.
-- Browser v1.1 should be implemented after at least Topic 2's rule sheet is signed off.
+- Topic 2 closed: 20-pattern inventory + state matrix + affordance audit + container/filter rules + consolidated rule sheet + six checklist gates.
+- Topic 3 will produce the reviewer-journey gates that complement Topic 2's component gates.
+- Topic 3's lab will validate the v1.1 backlog against actual reviewer tasks before any code change.
+- Per ratified execution plan: Topic 3 → Browser v1.1 implementation → Topics 4–12.

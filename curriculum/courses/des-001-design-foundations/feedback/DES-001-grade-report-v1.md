@@ -57,8 +57,8 @@ Before final DES-001 submission:
 2. ~~Add quiz answers for Topic 1.~~ **Closed 2026-05-16.** See `quizzes/quiz-01-ui-vs-ux-answers.md`.
 3. ~~Add viva answers for Topic 1.~~ **Closed 2026-05-16.** See `viva/DES-001-viva-answers.md`.
 4. ~~Decide whether DES-001 scope requires all 12 topics before final grading.~~ **Closed 2026-05-16.** Decision: all 12 topics, per ratified execution plan §1.1 (`curriculum/courses/des-001-design-foundations/execution-plan.md`).
-5. Continue Topic 2 deep reading using the same course pattern. (Topic 2 scaffolded in PR #3; execution begins after this close-out merges.)
-6. Preserve Lab 01 recommendations as design gates for Destination Master Browser v1.1.
+5. ~~Continue Topic 2 deep reading using the same course pattern.~~ **Closed 2026-05-16.** Topic 2 closed in PR A (deep-reading + source comparison + quiz + viva + data.js update) and PR B (Lab 02 + rule sheet at `design/foundations/ui-design-component-rules.md` + six checklist gates).
+6. Preserve Lab 01 recommendations as design gates for Destination Master Browser v1.1. (Topic 2's rule sheet operationalises them at component level.)
 
 ## Stretch improvements
 

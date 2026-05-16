@@ -214,3 +214,30 @@ Which data-trust or workflow risk does it reduce?
 ```
 
 Changes that cannot answer those questions should be deferred.
+
+## 18. Topic 2 Component Gates
+
+Source topic: DES-001 Topic 2 — What is UI design. Added 2026-05-16 from Lab 02 (`design/foundations/ui-design-component-rules.md`).
+
+Every component change in v1.1 must pass all six gates below.
+
+| Gate | Pass criteria | Source |
+|---|---|---|
+| Container-selection gate | The new container names a reviewer task and an alternative container it beat, with reason | Topic 2 deep-reading doc §7 + §3 of rule sheet |
+| State-coverage gate | All nine standard states (default / hover / focus / active / disabled / loading / empty / error / success) implemented or explicitly N/A | Material, Apple HIG, Carbon, GOV.UK |
+| Affordance / signifier / feedback gate | Every interactive answers Norman's three questions; an empty signifier or feedback column is a finding | Don Norman (DOET) |
+| Modality gate | A modal must be either *confirm-destructive* or *must-finish-or-cancel*; any other use is rejected | HIG + Carbon + GOV.UK consensus |
+| Colour-plus-text rule | Status conveyed by colour is also conveyed by icon and text label; colour-alone fails | WCAG 1.4.1 + accessibility patterns from all four design systems |
+| "When-not-to-use" clause | Every component in the system has a documented "when not to use", ideally with evidence | GOV.UK negative-space discipline |
+
+A component that fails any gate is refused — even if it passes the §3 UI-vs-UX gate. Topic 2 gates compound on top of Topic 1 gates; they do not replace them.
+
+## 19. Component rule sheet (canonical)
+
+The full per-component rule sheet for v1.1 lives at:
+
+```text
+design/foundations/ui-design-component-rules.md
+```
+
+That sheet is Browser v1.1's input. Any change to the seven anti-patterns, the container-selection rules, the filter-UI rules, or the trust-signal specification must update both the rule sheet and this checklist.
