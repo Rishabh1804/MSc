@@ -34,7 +34,10 @@ docs/design-foundations.html
 | Topic 3 deep reading + source comparison | `design/foundations/topic-03-ux-design.md` | Complete |
 | Topic 3 quiz answers | `courses/des-001-design-foundations/quizzes/quiz-03-ux-design-answers.md` | Submitted |
 | Topic 3 viva answers | `courses/des-001-design-foundations/viva/DES-001-viva-answers.md` (Topic 3) | Submitted |
-| Master browser checklist | `design/checklists/master-browser-design-checklist.md` (§18 Topic 2 gates + §19 rule-sheet pointer; Topic 3 §20 + §21 pending PR B) | Updated |
+| Topic 3 Lab 03 journey map + criteria + need-audit + gap analysis | `design/foundations/topic-03-ux-design-journey-map.md` | Complete |
+| Topic 3 UX acceptance-criteria sheet (Browser v1.1 UX gate) | `design/foundations/ux-acceptance-criteria.md` | Complete |
+| Topic 3 Lab 03 submission | `courses/des-001-design-foundations/submissions/lab-03-ux-design-journey-map-results.md` | Submitted |
+| Master browser checklist | `design/checklists/master-browser-design-checklist.md` (§3 UI-vs-UX gate + §18 Topic 2 component gates + §20 Topic 3 UX gates + §21 UX anti-patterns + §19/§22 canonical sheet pointers) | Updated |
 
 ## Reflection
 
@@ -58,8 +61,8 @@ The main v1.1 direction should therefore be workflow completion rather than visu
 ## Known limitations
 
 - ~~Full browser visual verification of `docs/design-foundations.html` is still pending.~~ Closed 2026-05-16; see `verification/dashboard-visual-verification-2026-05-16.md`.
-- Topics 3–12 are scaffolded but not deeply digested. Topic 1 and Topic 2 are both fully closed (reading + lab + checklist + submission).
-- Browser v1.1 implementation has not started; gated on Topic 3 (UX design) closing per the ratified execution plan.
+- Topics 4–12 are scaffolded but not deeply digested. Topics 1, 2, and 3 are all fully closed (reading + lab + checklist + submission).
+- Browser v1.1 implementation is **unblocked** as of 2026-05-16: Topic 2 rule sheet + Topic 3 acceptance-criteria sheet + master-browser checklist §3 + §18 + §20 together form the v1.1 specification.
 - Final (non-provisional) grade report is pending after enough topics close to justify it. Current provisional grade: **87/100 (Excellent / Distinction)** per `feedback/DES-001-grade-report-v2.md` — superseding v1's 82/100. The v2 cumulative grade is the subscore sum (93) minus an explicit −6 scope-incompleteness adjustment (10 of 12 topics still scaffolded). Benchmark promotion of the whole assignment requires Topics 3–12 to close, at which point the adjustment reaches 0.
 
 ## Submission decision

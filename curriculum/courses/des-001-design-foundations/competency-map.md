@@ -56,7 +56,7 @@ Grade reports:
 | Update master-browser checklist with new gates | `design/checklists/master-browser-design-checklist.md` §18 (six gates) + §19 (rule-sheet pointer) | Complete |
 | Submit Lab 02 | `courses/des-001-design-foundations/submissions/lab-02-ui-design-component-inventory-results.md` | Complete |
 
-## Topic 3 — UX design (deep reading complete; Lab 03 pending)
+## Topic 3 — UX design (closed)
 
 | Competency | Evidence | Status |
 |---|---|---|
@@ -72,16 +72,23 @@ Grade reports:
 | Topic 3 quiz answers | `quizzes/quiz-03-ux-design-answers.md` | Complete |
 | Topic 3 viva answers | `viva/DES-001-viva-answers.md` Topic 3 section | Complete |
 | Update Topic 3 dashboard module | `docs/design-foundations-app/data.js` (status flipped to `done`, full notes attached, six sources) | Complete |
-| Map the full reviewer journey | Lab 03 Step 1 | Pending — PR B |
-| Produce UX acceptance-criteria sheet | `design/foundations/ux-acceptance-criteria.md` via Lab 03 Step 5 | Pending — PR B |
-| Run user-need / request / solution-shape audit | Lab 03 Step 3 | Pending — PR B |
-| Run Lab 01 → Lab 03 gap analysis | Lab 03 Step 4 | Pending — PR B |
-| Update master-browser checklist with Topic 3 gates | `design/checklists/master-browser-design-checklist.md` §20 + §21 | Pending — PR B |
-| Submit Lab 03 | `submissions/lab-03-ux-design-journey-map-results.md` | Pending — PR B |
+| Map the full reviewer journey | `design/foundations/topic-03-ux-design-journey-map.md` §Step 1 (7 steps with goal / cost / failure / trust / current-v1) | Complete |
+| Produce UX acceptance-criteria sheet | `design/foundations/ux-acceptance-criteria.md` — 12 criteria, 13 gate-tests; Browser v1.1's UX gate | Complete |
+| Run user-need / request / solution-shape audit | Journey-map doc §Step 3 (9 v1 features + 13 v1.1 backlog items audited) | Complete |
+| Run Lab 01 → Lab 03 gap analysis | Journey-map doc §Step 4 (11 findings tracked; all closeable by v1.1) | Complete |
+| Update master-browser checklist with Topic 3 gates | `design/checklists/master-browser-design-checklist.md` §20 (four UX gates) + §21 (four anti-patterns) + §22 (canonical pointer) | Complete |
+| Submit Lab 03 | `submissions/lab-03-ux-design-journey-map-results.md` | Complete |
 
 ## Next recommended action
 
-Run Lab 03 (PR B). After Lab 03 closes, Topic 3 is fully closed and Browser v1.1 implementation can begin against (Topic 2 component rule sheet) + (Topic 3 acceptance-criteria sheet) + (master-browser checklist §3 + §18 + §20).
+**Implement Browser v1.1.** Topic 2 (component rule sheet) + Topic 3 (UX acceptance-criteria sheet) + checklist §3 + §18 + §20 together form the complete v1.1 specification. Per the ratified execution plan §3 (gate 1), v1.1 implementation begins now — between Lab 03 close and Topic 4 open.
+
+Rationale:
+
+- Lab 01 identified the workflow and trust-preservation gaps in v1; both are now operationalised at component level (Topic 2) and journey level (Topic 3).
+- 0 of 7 reviewer-journey steps cleanly Pass in v1; 3 Fail; 1 Partial-to-fail; 3 Partial. v1.1's combined component + journey work closes all gaps.
+- Topics 4–12 add depth on specific design dimensions (design thinking, HCD, Gestalt, Fitts', typography, colour, grid, design systems) but no further input is needed for the v1.1 scope.
+- Implementing v1.1 now produces the project transfer the CodeMike operating loop's "Transfer" step requires, and validates the rule sheet + criteria sheet against an actual build.
 
 Rationale:
 

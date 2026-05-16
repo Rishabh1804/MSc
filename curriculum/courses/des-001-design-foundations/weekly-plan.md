@@ -25,25 +25,18 @@ Closed by two PRs (PR A — reading; PR B — Lab 02):
 - `submissions/lab-02-ui-design-component-inventory-results.md` — formal Lab 02 submission
 - `design/checklists/master-browser-design-checklist.md` §18 + §19 — six Topic 2 gates + canonical rule-sheet pointer
 
-## Week 3 — UX Design Basics (active)
+## Week 3 — UX Design Basics ✓ complete (2026-05-16)
 
-Scaffolded + deep-reading executed (PR A):
+Closed by two PRs (PR A — reading; PR B — Lab 03):
 
-- `lectures/lecture-03-ux-design.md`
-- `readings/topic-03-ux-design-reading-pack.md`
-- `quizzes/quiz-03-ux-design.md` + answer key + worked answers
-- `labs/lab-03-ux-design-journey-map.md`
-- `design/foundations/topic-03-ux-design.md` (16-section deep-reading doc)
-- Topic 3 viva questions + answers appended
-- `docs/design-foundations-app/data.js` Topic 3 → `done`
-
-To execute (PR B):
-
-- Run Lab 03 against the v1 browser
-- Produce `design/foundations/topic-03-ux-design-journey-map.md` (Steps 1–4 evidence)
-- Produce `design/foundations/ux-acceptance-criteria.md` (Step 5 — Browser v1.1 UX gate)
-- Append Topic 3 section to `design/checklists/master-browser-design-checklist.md` (Step 6)
-- Submit `submissions/lab-03-ux-design-journey-map-results.md`
+- Lecture, reading pack, quiz + answer key + worked answers, lab brief (PR A)
+- `design/foundations/topic-03-ux-design.md` — 16-section deep-reading doc (PR A)
+- `viva/DES-001-viva-questions.md` + `-answers.md` — eight Topic 3 questions + answers (PR A)
+- `docs/design-foundations-app/data.js` — Topic 3 module flipped to `done` with full notes (PR A)
+- `design/foundations/topic-03-ux-design-journey-map.md` — Lab 03 Steps 1–4 evidence (PR B)
+- `design/foundations/ux-acceptance-criteria.md` — Lab 03 Step 5 consolidated sheet, **Browser v1.1's UX gate** (PR B)
+- `submissions/lab-03-ux-design-journey-map-results.md` — formal lab submission (PR B)
+- `design/checklists/master-browser-design-checklist.md` §20 (four UX gates) + §21 (four anti-patterns) + §22 (canonical sheet pointer) (PR B)
 
 ## Week 4 — Perception and Interaction Laws
 

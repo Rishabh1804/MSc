@@ -241,3 +241,37 @@ design/foundations/ui-design-component-rules.md
 ```
 
 That sheet is Browser v1.1's input. Any change to the seven anti-patterns, the container-selection rules, the filter-UI rules, or the trust-signal specification must update both the rule sheet and this checklist.
+
+## 20. Topic 3 UX gates
+
+Source topic: DES-001 Topic 3 — UX design. Added 2026-05-16 from Lab 03 (`design/foundations/ux-acceptance-criteria.md`).
+
+Every v1.1 implementation decision must pass all four gates. They are the journey-level companion to §18's component gates; both apply.
+
+| Gate | Pass criteria | Source |
+|---|---|---|
+| Criterion-presence gate | Every new component or backlog item references at least one UX acceptance criterion from `ux-acceptance-criteria.md` § 2 | Topic 3 deep-reading doc §8 + §10.2 |
+| Behaviour-testability gate | Every criterion is testable by two evaluators reaching the same pass/fail verdict; the gate-test for each is documented in `ux-acceptance-criteria.md` §5 | Topic 3 deep-reading doc §1 + §8 |
+| Need-vs-request audit | Every feature produces a user need in GOV.UK form (`As a [user], I need [outcome], so that [goal]`) with **no UI mechanism named**. Requests and solution-shapes are rewritten before being added to the backlog. | GOV.UK Service Manual — *Learning about users* |
+| Journey-completeness gate | Every reviewer-journey step has at least one acceptance criterion; empty / loading / error are first-class journey states, not edge cases | Topic 3 deep-reading doc §7 + §11 anti-pattern 1 |
+
+A v1.1 PR that fails any of these gates does not merge. The gates compound on top of §3 (UI-vs-UX gate) and §18 (Topic 2 component gates) — they do not replace them.
+
+## 21. Topic 3 UX anti-patterns
+
+Four UX anti-patterns specific to data-review tools. Every v1.1 implementation decision must refuse all four.
+
+1. **Designing the happy path only.** Data-review tools spend most reviewer-time in non-happy paths (empty, conflict, missing-field, blocked). Empty / loading / error are first-class. (Sources: Norman gulfs; Lab 02 finding F3.)
+2. **Confusing user request with user need.** A request names a mechanism; a need names an outcome. Designing for a request locks the design unnecessarily. (Source: GOV.UK Service Manual.)
+3. **Skipping evaluation.** The 13-gate test plan in `ux-acceptance-criteria.md` §5 is the *minimum* evaluation gate; user testing with real reviewers is the next step. A v1.1 PR that does not test against the criteria is not v1.1-ready. (Sources: NN/g + Norman.)
+4. **Ignoring the trust check at depth.** Trust state must survive every journey step. A design that drops the trust signal in inspection, after filtering, or in an empty state is a journey UX failure. (Sources: Topic 1 framing; Topic 2 §6.2 four-depth spec.)
+
+## 22. UX acceptance-criteria sheet (canonical)
+
+The full UX acceptance-criteria sheet for v1.1 lives at:
+
+```text
+design/foundations/ux-acceptance-criteria.md
+```
+
+That sheet is Browser v1.1's UX gate. Together with `design/foundations/ui-design-component-rules.md` (the component gate), it forms the complete v1.1 specification. Any change to the 12 criteria, the 13 gate-tests, or the four anti-patterns must update both the sheet and this checklist.

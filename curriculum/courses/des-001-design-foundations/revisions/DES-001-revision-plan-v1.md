@@ -18,8 +18,8 @@ DES-001 remains open because only Topic 1 has been completed in full. The remain
 2. ~~Add Topic 1 quiz answers.~~ **Closed 2026-05-16.** See `quizzes/quiz-01-ui-vs-ux-answers.md`.
 3. ~~Add Topic 1 viva answers.~~ **Closed 2026-05-16.** See `viva/DES-001-viva-answers.md`.
 4. ~~Continue Topic 2 — What is UI design — with the same course pattern.~~ **Closed 2026-05-16.** Topic 2 fully digested across two PRs: PR A produced the deep-reading doc + source comparison + quiz answers + viva answers + data.js update; PR B produced Lab 02 (component inventory + state matrix + affordance audit) + the consolidated rule sheet at `design/foundations/ui-design-component-rules.md` + six new gates in the master-browser checklist (§18) + the canonical rule-sheet pointer (§19).
-5. Continue Topic 3 — UX design — before implementing Browser v1.1.
-6. Keep Lab 01 recommendations as formal v1.1 design gates. (Topic 2's rule sheet supersedes them at the component level while preserving the workflow-completion and trust-preservation framing.)
+5. ~~Continue Topic 3 — UX design — before implementing Browser v1.1.~~ **Closed 2026-05-16.** Topic 3 fully digested across two PRs: PR A produced the deep-reading doc + source comparison + quiz answers + viva answers + data.js update; PR B produced Lab 03 (journey map + acceptance-criteria sheet at `design/foundations/ux-acceptance-criteria.md` — Browser v1.1's UX gate) + four UX gates and anti-patterns in the master-browser checklist (§20 + §21 + §22) + formal lab submission.
+6. ~~Keep Lab 01 recommendations as formal v1.1 design gates.~~ **Closed 2026-05-16.** Topic 2's rule sheet operationalises Lab 01 at the component level; Topic 3's acceptance-criteria sheet operationalises Lab 01 at the journey level. All 11 tracked Lab 01 findings are closeable by v1.1.
 
 ## Stretch revisions
 
@@ -58,3 +58,4 @@ Destination Master Browser v1.1 implementation
 | 2026-05-16 | Closed Topic 1 revision items 1-4 | Visual verification passed, quiz answers + viva answers written, scope decision ratified |
 | 2026-05-16 | Closed Topic 2 (revision item 4 of this plan) | Deep reading + source comparison + Lab 02 + consolidated rule sheet + checklist gates. PR A and PR B. |
 | 2026-05-16 | Grade report v2 issued | Cumulative grade 87/100 (Excellent / Distinction) after Lyra-flagged reconciliation of v1's hidden scope-incompleteness deduction (subscore sum 93 minus explicit −6 adjustment). Topic 2 standalone 96/100. See `feedback/DES-001-grade-report-v2.md`. |
+| 2026-05-16 | Closed Topic 3 (revision items 5 + 6 of this plan) | Deep reading + source comparison + Lab 03 + UX acceptance-criteria sheet (Browser v1.1's UX gate) + master-browser checklist §20 + §21 + §22. PR A and PR B. Lab 01 findings are now traceably closeable by v1.1. |
