@@ -4,7 +4,7 @@ Frozen target state for the repository restructure. This file does not change as
 
 ## Why
 
-The root of the repo currently holds 32 Markdown files and 22 directories. New contributors and review tools cannot tell at a glance which files are slow-changing policy and which are live registers that update weekly. Capability artifacts, curriculum artifacts, and trackers are intermixed.
+The root of the repo currently holds 32 Markdown files and 23 directories (one of these, `artifacts/`, was missed in the initial audit and added to the plan in the Batch-6 plan revision). New contributors and review tools cannot tell at a glance which files are slow-changing policy and which are live registers that update weekly. Capability artifacts, curriculum artifacts, and trackers are intermixed.
 
 The migration sorts root content into four named buckets — charter (policy), operations (live registers), capabilities (reusable skill cards), curriculum (academic work) — and adds a cockpit PWA and a deck pipeline that read from those buckets without duplicating their content.
 
@@ -61,6 +61,7 @@ Charter vs operations distinction: charter docs change on the order of months an
 | Current | Target | Reason |
 |---|---|---|
 | `anti-patterns/` | `capabilities/anti-patterns/` | Reusable-knowledge sibling |
+| `artifacts/` | `operations/artifacts/` | Operational evidence outputs (HTML, exports); governed by `charter/HTML_ARTIFACTS.md`, indexed by `operations/ARTIFACT_INDEX.md` |
 | `assignments/` | `curriculum/assignments/` | Curriculum merge |
 | `benchmarks/` | `operations/benchmarks/` | Evidence-evolving |
 | `capabilities/` | `capabilities/` (stays) | Already correctly named |
@@ -79,7 +80,7 @@ Charter vs operations distinction: charter docs change on the order of months an
 | `references/` | `references/` (stays) | Cited material |
 | `reports/` | `reports/` (stays) | Evidence reports |
 | `src/` | `src/` (stays) | Convention |
-| `synthetic-data/` | `datasets/synthetic/` | De-dup into existing dir |
+| `synthetic-data/` | `datasets/synthetic/` | De-dup into existing dir (target already has `trip_options_sample.csv`; the merge moves `trip_options_generator.py` into the same place and merges the two READMEs) |
 | `thesis/` | `curriculum/thesis/` | Capstone home |
 | `trackers/` | `operations/trackers/` | Trackers are operations |
 
@@ -118,7 +119,7 @@ The migration runs as numbered batches. All batches stack as commits on branch `
 | 3 | Move operations docs | — | 16 files → `operations/` |
 | 4 | Curriculum merge | — | `assignments/`, `courses/`, `modules/`, `thesis/` → `curriculum/` |
 | 5 | Capability consolidation | — | `anti-patterns/`, `case-studies/`, `decision-science/`, `patterns/` → `capabilities/` |
-| 6 | Trackers, benchmarks, orientation, synthetic-data | — | Per directory table above |
+| 6 | Trackers, benchmarks, orientation, synthetic-data, artifacts | — | `trackers/` → `operations/trackers/`, `benchmarks/` → `operations/benchmarks/`, `orientation/` → `charter/orientation/`, `synthetic-data/` → `datasets/synthetic/` (merge), `artifacts/` → `operations/artifacts/` |
 | 7 | Cockpit PWA scaffold | `cockpit/`, `.github/workflows/cockpit-build.yml` | — |
 | 8 | Deck pipeline scaffold | `decks/shared/`, sample deck, `.github/workflows/decks-export.yml` | — |
 | 9 | Internal link sweep | — | Update cross-references repo-wide |

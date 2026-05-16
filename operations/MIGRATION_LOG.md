@@ -32,7 +32,14 @@ Affects: All batches from Batch 1 onward; Batch 0 retroactively reclassified fro
 Change: Migration plan now describes the cadence as stacked commits on a single branch / single PR, not one PR per batch.  
 Reason: Aligns with the session's designated working branch and reduces PR overhead. Per-commit review preserves batch-level reviewability.
 
-## Register
+### 2026-05-15 — Add `artifacts/` to the directory table; expand Batch 6 row
+
+PR: #1  
+Commit: (pending — same commit as this revision)  
+Affects: Batch 6.  
+Change: Adds a new row to the root-directory-targets table in `MIGRATION_PLAN.md`: `artifacts/` → `operations/artifacts/`. Updates the Batch 6 row in the Batches table to enumerate all five directories now in scope (`trackers`, `benchmarks`, `orientation`, `synthetic-data`, `artifacts`). Updates the "Why" paragraph from "22 directories" to "23 directories" with a note about the audit miss.  
+Reason: `artifacts/` was discovered at the repo root during Batch 4 staging — the original audit missed it. The migration plan must reflect actual state before the batch that moves it. Target chosen: `operations/artifacts/` because the directory contains operational evidence outputs (HTML, exports) that are governed by `charter/HTML_ARTIFACTS.md` and catalogued by `operations/ARTIFACT_INDEX.md`. Also clarifies that the `synthetic-data/` → `datasets/synthetic/` move is a merge (target already exists with `trip_options_sample.csv`), not a rename.
+
 
 ### Batch 0 — Foundation
 
