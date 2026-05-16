@@ -266,7 +266,7 @@ Notes: The deck pipeline's "no .pptx in the repo" stance is intentional — the 
 
 Date: 2026-05-15  
 PR: #1  
-Commit: (pending — last commit in the migration)  
+Commit: `a651d2b`  
 Scope: Final batch. Updated cross-bucket references in `CLAUDE.md` and `README.md` to point at the post-migration locations, and added a reproducible link-sweep script for future migrations. Verified that no Markdown link targets `](FILE.md)` to moved bare-filename docs remain anywhere in the tree.  
 Files added:
   - `.github/scripts/link_sweep.py` — reproducible link-sweep. Walks every `.md` file (excluding `MIGRATION_LOG.md`, `MIGRATION_PLAN.md`, and itself), parses Markdown inline-link `](target)` and reference-style `[id]: target` definitions, and rewrites targets that match moved files or moved root directories using `os.path.relpath` from the file containing the link. Idempotent; preserves anchors and query strings.
