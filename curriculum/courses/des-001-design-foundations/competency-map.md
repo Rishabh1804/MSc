@@ -24,13 +24,33 @@
 
 Benchmark eligible: not yet, because the full 12-topic DES-001 scope is not complete and browser visual verification remains pending.
 
+## Topic 2 — What is UI design (scaffolded, in progress)
+
+Scaffolding produced by the Topic 2 advance:
+
+| Competency | Evidence | Status |
+|---|---|---|
+| Define UI design as a discipline | `lectures/lecture-02-what-is-ui-design.md` | Lecture written; reading not yet executed |
+| Enumerate element categories | Lecture 02 element-vocabulary table | Complete |
+| Enumerate the nine component states | Lecture 02 states section | Complete |
+| Distinguish affordance / signifier / feedback | Lecture 02 Norman section | Complete |
+| Multi-source reading across design systems | `readings/topic-02-what-is-ui-design-reading-pack.md` | Pack staged; reading not yet executed |
+| Compare design-system framings | Topic 2 source-comparison notes | Pending |
+| Build browser component catalogue | Lab 02 Step 1 | Pending |
+| Audit state coverage in v1 | Lab 02 Step 2 | Pending |
+| Audit affordance / signifier / feedback | Lab 02 Step 3 | Pending |
+| Define container-selection rules | Lab 02 Step 4 | Pending |
+| Define filter-UI rules | Lab 02 Step 5 | Pending |
+| Produce consolidated rule sheet | `design/foundations/ui-design-component-rules.md` via Lab 02 Step 6 | Pending — input to Browser v1.1 |
+| Answer Quiz 02 | `quizzes/quiz-02-what-is-ui-design-answers.md` | Pending |
+
 ## Next recommended action
 
-Begin DES-001 Topic 2 — What is UI design — before implementing Destination Master Browser v1.1.
+Execute Topic 2 reading using the five required sources in the reading pack, then run Lab 02. Defer Browser v1.1 until Lab 02's rule sheet exists — implementing v1.1 without the rules would risk repeating Topic 1's already-identified gaps with no improvement in vocabulary.
 
 Rationale:
 
-- Lab 01 already identifies v1.1 workflow gaps.
-- Topic 2 will improve component-level UI decisions.
-- Topic 3 will improve UX journey and task-flow decisions.
-- Browser v1.1 should be implemented after stronger UI and UX vocabulary is available.
+- Lab 01 identified workflow and trust-preservation gaps in v1.
+- Topic 2 produces the component-level rules those gaps need.
+- Topic 3 (UX design) will produce the journey-level rules.
+- Browser v1.1 should be implemented after at least Topic 2's rule sheet is signed off.

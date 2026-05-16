@@ -109,3 +109,33 @@ Topic 2 will improve component-level UI decisions. Topic 3 will improve UX journ
 ### Next action
 
 Start DES-001 Topic 2 — What is UI design.
+
+---
+
+## 2026-05-16 — Topic 2 started: What is UI design
+
+### What was scaffolded
+
+Topic 2 artifacts created in the same shape as Topic 1:
+
+- `lectures/lecture-02-what-is-ui-design.md` — UI design as a discipline; element vocabulary (controls, containers, navigation, data display, feedback, editorial); nine standard component states; affordance / signifier / feedback (Norman); consistency as load reducer; application to the Destination Master Browser.
+- `readings/topic-02-what-is-ui-design-reading-pack.md` — five required sources (Material Design, Apple HIG, IBM Carbon, GOV.UK Design System, Don Norman) plus five extension sources (Refactoring UI, NN/g pattern articles, Atomic Design, Smashing Magazine pattern essays, WCAG / ARIA Authoring Practices). Seven reading questions plus an extraction target.
+- `quizzes/quiz-02-what-is-ui-design.md` and `quizzes/quiz-02-what-is-ui-design-answer-key.md` — ten questions covering definition, vocabulary, states, affordance/signifier/feedback, container selection (card vs table vs drawer vs modal), filter-UI choice, empty-state design, and a design-decision gate. Answer key includes worked examples grounded in the Destination Master Browser.
+- `labs/lab-02-ui-design-component-inventory.md` — six-step lab that produces a component catalogue, state-coverage matrix, affordance audit, container-selection rules, filter-UI rules, and a consolidated rule sheet (`design/foundations/ui-design-component-rules.md`) that becomes the input for Browser v1.1.
+
+### What changed in understanding
+
+UI design is decision work: choosing the right element for the right task, in the right state, with honest feedback. Visual design is a sub-skill within UI design — a polished colour palette does not redeem a wrong container choice. The Topic 1 finding ("v1 lacks workflow completion and trust preservation") now has a Topic 2 path forward: a rule-driven rebuild of the components themselves.
+
+### Open work
+
+- Complete Topic 2 deep reading (five required sources)
+- Produce source-comparison notes
+- Execute Lab 02 against the v1 browser
+- Submit Lab 02 results and update `design/checklists/master-browser-design-checklist.md`
+- Answer Quiz 02 without the answer key, then self-mark
+
+### Next action
+
+Begin Topic 2 deep reading. Lab 02 cannot start until the readings produce the source-comparison notes and the extraction target.
+
