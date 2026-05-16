@@ -261,3 +261,48 @@ The Destination Master Browser's reviewer journey has seven steps (arrive / unde
 
 Open Topic 3 Execution PR A (this commit set), then start Lab 03 on a fresh branch for PR B.
 
+---
+
+## 2026-05-16 — Lab 03 executed (Topic 3 closed)
+
+### What was executed
+
+All six steps of Lab 03 against `docs/destination-master-browser-v1.html` (671 lines). The lab converted Topic 3's reading evidence into applied coursework evidence at the journey level.
+
+### Exercises completed
+
+- **Step 1 — Full reviewer journey map**: 7 steps with goal (in GOV.UK user-need form) / cost budget / failure mode / trust check / current-v1 state / Lab 01 gap. Verdicts: 0 of 7 cleanly Pass; 3 Partial (Arrive, Understand, Leave); 1 Partial-to-fail (Narrow); 3 Fail (Compare, Inspect, Recover).
+- **Step 2 — UX acceptance criteria**: 12 behavioural, testable, mechanism-independent criteria across the 7 steps. Each cross-referenced to its Topic 2 rule-sheet component(s) and the Lab 01 finding it closes.
+- **Step 3 — User-need extraction**: 9 v1 features + 13 v1.1 backlog items audited as need / request / solution-shape. All produce a clean user need in GOV.UK form. One v1 implementation choice (shared `.empty` pane for loading/empty/error) flagged as solution-shape at the implementation layer; v1.1 splits it.
+- **Step 4 — Lab 01 → Lab 03 gap analysis**: 11 Lab 01 findings tracked. All 11 closeable by v1.1 with combined rule sheet + acceptance-criteria sheet. One honest disagreement with Lab 01's heuristic verdict on item 9 (empty/error states marked Pass at heuristic granularity, Fail at criterion granularity — v1.1 honours the stricter standard).
+- **Step 5 — Consolidated UX acceptance-criteria sheet**: `design/foundations/ux-acceptance-criteria.md` — 14 criteria total; 13 are v1.1 UX gates (must pass before ship); 1 deferred to v1.1.x (U-INS-3 Prev/Next in drawer); 1 cross-cutting verification (U-LEA-1). Per-criterion test plan included.
+- **Step 6 — Master-browser checklist Topic 3 section**: §20 (four UX gates: criterion-presence, behaviour-testability, need-vs-request, journey-completeness); §21 (four UX anti-patterns: happy-path-only, request-vs-need, skip-evaluation, ignore-trust-at-depth); §22 (canonical pointer to the acceptance-criteria sheet).
+
+### Key findings
+
+1. **Browser v1.1 is now unblocked.** Topic 2 (component rule sheet) + Topic 3 (UX acceptance-criteria sheet) + master-browser checklist §3 + §18 + §20 form the complete v1.1 specification. The ratified execution plan's gate 1 (v1.1 implementation between Lab 03 close and Topic 4 open) is now reachable.
+2. **Three Fail steps in v1**: Compare (no table/sort), Inspect (no drawer), Recover (no Clear-all / no content-rich empty state). v1.1's component + behavioural commitments close all three.
+3. **All 11 tracked Lab 01 findings** are closeable by v1.1 — the heuristic-level findings translate into criterion-level closures.
+4. **The 13-gate test plan** is reusable: it can be applied to any future data-review tool with the master-detail-with-faceted-filtering pattern.
+
+### Repository outputs created
+
+- `design/foundations/topic-03-ux-design-journey-map.md` — Lab 03 Steps 1–4.
+- `design/foundations/ux-acceptance-criteria.md` — Lab 03 Step 5 consolidated sheet (Browser v1.1's UX gate).
+- `curriculum/courses/des-001-design-foundations/submissions/lab-03-ux-design-journey-map-results.md` — formal lab submission.
+- `design/checklists/master-browser-design-checklist.md` §20 + §21 + §22 — Topic 3 gates, anti-patterns, and canonical pointer.
+
+### What changed in understanding
+
+Lab 01's heuristic-level findings ("workflow completion + trust preservation") translate cleanly into Topic 3's criterion-level closures, but at a different granularity. Heuristic audits and acceptance criteria are complementary evaluation tools, not equivalents. The criterion approach is more reproducible (two evaluators reach the same verdict); the heuristic approach catches things the criteria forgot to name. Both have a role.
+
+The most operationally consequential discipline Topic 3 introduces is the user-need audit as a backlog gate. Every v1.1 item now has a *need* (no UI mechanism named) and an *acceptance-criterion ID*. Items that cannot produce both are refused. This is the GOV.UK posture made operational.
+
+### Topic 3 status
+
+**Closed.** Both PR A (deep reading + source comparison + quiz + viva + data.js) and PR B (this entry's lab work + acceptance-criteria sheet + checklist gates + submission) are complete.
+
+### Next action
+
+**Implement Browser v1.1** against the consolidated specification: Topic 2 rule sheet + Topic 3 acceptance-criteria sheet + master-browser checklist §3 + §18 + §20.
+

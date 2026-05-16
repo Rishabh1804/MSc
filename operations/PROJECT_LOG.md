@@ -31,6 +31,48 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-16 — DES-001 Topic 3 closed (UX design + Lab 03 + acceptance-criteria sheet)
+
+Type: learning / assignment / capability
+
+Summary:
+
+Closed DES-001 Topic 3 — UX design. Two PRs land the topic: PR A (#8) produces the deep-reading evidence (source-by-source notes across Don Norman / NN/g / IDEO / GOV.UK Service Manual / IxDF; source comparison; CodeMike interpretation; browser application; anti-patterns; v1.1 UX-implementation impact; checklist updates). PR B (this entry) executes Lab 03 (full reviewer-journey map + 14 UX acceptance criteria + user-need audit + Lab 01 → Lab 03 gap analysis) and appends Topic 3 sections to the master-browser checklist (§20 four UX gates + §21 four UX anti-patterns + §22 canonical pointer to the acceptance-criteria sheet).
+
+The seven-step reviewer journey (arrive / understand / narrow / compare / inspect / recover / leave) has goal / cost-budget / failure-mode / trust-check per step. v1's verdict: 0 of 7 cleanly Pass; 3 Partial; 1 Partial-to-fail; 3 Fail (Compare, Inspect, Recover). The 14 UX acceptance criteria (13 gate-tests, 12 marked as v1.1 must-pass gates) close all three Fail steps and all 11 tracked Lab 01 findings.
+
+The single most operationally important discipline introduced is **GOV.UK's user-need form** applied as a backlog gate. Every v1.1 item now has a *need* (no UI mechanism named) and an *acceptance-criterion ID*. Items that cannot produce both are refused. The other four sources (Norman, NN/g, IDEO, IxDF) allow loose user-need language that lets solution-shape thinking drift in; GOV.UK alone enforces the discipline that catches it.
+
+**Browser v1.1 is now unblocked.** Per the ratified execution plan §3 (gate 1), v1.1 implementation begins between Lab 03 close and Topic 4 open. The complete v1.1 specification = Topic 2 component rule sheet + Topic 3 UX acceptance-criteria sheet + master-browser checklist §3 + §18 + §20.
+
+Files changed:
+
+- `design/foundations/topic-03-ux-design.md` (new — 16-section deep-reading doc; PR A)
+- `design/foundations/topic-03-ux-design-journey-map.md` (new — Lab 03 Steps 1–4; PR B)
+- `design/foundations/ux-acceptance-criteria.md` (new — Lab 03 Step 5; Browser v1.1's UX gate; PR B)
+- `curriculum/courses/des-001-design-foundations/lectures/lecture-03-ux-design.md` (new; PR A)
+- `curriculum/courses/des-001-design-foundations/readings/topic-03-ux-design-reading-pack.md` (new; PR A)
+- `curriculum/courses/des-001-design-foundations/quizzes/quiz-03-ux-design.md` + `-answer-key.md` + `-answers.md` (new; PR A)
+- `curriculum/courses/des-001-design-foundations/labs/lab-03-ux-design-journey-map.md` (new; PR A)
+- `curriculum/courses/des-001-design-foundations/submissions/lab-03-ux-design-journey-map-results.md` (new; PR B)
+- `curriculum/courses/des-001-design-foundations/viva/DES-001-viva-questions.md` + `-answers.md` (Topic 3 questions and answers appended; PR A)
+- `design/checklists/master-browser-design-checklist.md` (§20 + §21 + §22 appended; PR B)
+- `docs/design-foundations-app/data.js` (Topic 3 module flipped to `done`; three of twelve now `done`; PR A)
+- Tracking files: `competency-map.md`, `weekly-plan.md`, `learning-log.md`, `submissions/DES-001-submission.md`, `revisions/DES-001-revision-plan-v1.md`
+
+Evidence produced:
+
+- Seven-step reviewer-journey map for the Destination Master Browser
+- 14 UX acceptance criteria with 13 gate-tests
+- 9 v1 features + 13 v1.1 backlog items audited as need / request / solution-shape; all produce clean user needs
+- Lab 01 → Lab 03 gap-closure trail (11 findings, all closeable by v1.1)
+- Four UX gates and four UX anti-patterns appended to the master-browser checklist
+- Three more reusable CodeMike design capabilities (seven-step reviewer-journey template; UX acceptance-criterion form; user-need triage). Combined with Topic 2's three, the workspace now has six reusable design capabilities — threshold for promoting to formal capability cards.
+
+Next action:
+
+Implement Browser v1.1 against the consolidated specification (rule sheet + acceptance-criteria sheet + checklist gates). Then start Topic 4 — Design thinking.
+
 ## 2026-05-16 — DES-001 grade report v2 (Topic 1 + Topic 2 milestone)
 
 Type: assessment / review

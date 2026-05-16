@@ -35,6 +35,7 @@ Accepted evidence includes notebooks, scripts, reports, benchmarks, evaluations,
 | Reproducible experimentation | 0 | None yet | Create experiment log format |
 | Productisation | 0 | None yet | Define notebook-to-product path |
 | Responsible AI | 0 | None yet | Create policy and checklist |
+| UI / UX design for data-review tools | 4 | DES-001 Topics 1–3 closed: deep-reading docs at `design/foundations/topic-01-ui-vs-ux-exercise-results.md`, `topic-02-what-is-ui-design.md`, `topic-03-ux-design.md`; component rule sheet at `ui-design-component-rules.md` and UX acceptance-criteria sheet at `ux-acceptance-criteria.md` (both signed off as Browser v1.1 input); Lab 01 heuristic audit + Lab 02 component inventory + Lab 03 journey map executed; cumulative grade report v2 = 87/100 Excellent/Distinction | Implement Destination Master Browser v1.1 against both sheets to reach level 5 (transferred to project) |
 
 ## Skill Entry Template
 
