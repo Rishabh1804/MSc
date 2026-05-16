@@ -14,7 +14,7 @@ UI is the visible and interactive interface layer. UX is the broader task journe
 
 ### Repository outputs created
 
-- `docs/design-foundations-v2.html`
+- `docs/design-foundations.html`
 - `docs/design-foundations-app/`
 - `design/foundations/ui-vs-ux-further-reading.md`
 - `design/checklists/master-browser-design-checklist.md`
