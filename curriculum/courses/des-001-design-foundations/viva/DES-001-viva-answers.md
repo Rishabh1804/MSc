@@ -79,3 +79,94 @@ Because v1's visual hierarchy is competent. Starting there would polish a workin
 ## How these answers were defended
 
 These answers were written to survive viva-style questioning: each one names a specific Lab 01 finding, a specific source, or a specific reviewer task rather than relying on generic design language. The examiner-push lines are real likely follow-ups, not rhetorical fill — they correspond to the points where Topic 1's argument is least obvious.
+
+## Topic 2 — What is UI design
+
+### 1. Define UI design as a discipline and explain why visual design is a sub-skill rather than a synonym.
+
+UI design is the discipline of *choosing* which elements appear, *arranging* them, *specifying their behaviour across all states*, and *visually treating* them — so a user can complete a task with low cognitive cost and unambiguous feedback. The verbs do the load-bearing work: it is decision work. Visual design (colour, typography, illustration, mood) sits *inside* that discipline as the "visually treating" step. A perfectly visually-treated interface that picked the wrong container, missed the loading state, and gave no feedback is a UI failure that happens to look good — which is exactly what makes the conflation dangerous.
+
+*Examiner push: "If visual design is downstream, why do design teams hire visual designers?"*
+
+Because visual treatment is a real specialism — type hierarchy, colour systems, illustration craft are deep skills. The point isn't that visual design is unimportant; it's that visual design serves a UI decision that has already been made. The team that hires a visual designer to fix a usability problem is treating the symptom; the team that hires a UI designer to make the component choices and a visual designer to treat those choices is doing it correctly.
+
+### 2. Name the nine standard component states. Which three are most commonly missing in data-review tools, and why?
+
+`default`, `hover`, `focus`, `active`, `disabled`, `loading`, `empty`, `error`, `success`.
+
+The three most commonly missing are **loading**, **empty**, and **error**. They appear only when the data layer is being honest — waiting, returning nothing, failing. A happy-path UI doesn't render them because the developer never saw them during build. In data-review tools the reviewer specifically needs these states: *loading* tells them the system is fetching (not broken); *empty* tells them the filters narrowed correctly (not that the system failed); *error* tells them what failed and what to do. Their absence reads as silence at exactly the moments the reviewer needs signal.
+
+*Examiner push: "Loading you can argue. But isn't 'empty' just bad data? Why design it?"*
+
+Because in a reviewer tool, *empty is sometimes the correct answer*. The reviewer might be specifically looking for unverified records in a region that happens to have none — that is a successful query with zero rows, and treating it as a failure state confuses the reviewer. A content-rich empty state ("No records match these filters" + which filters are active + a clear-all action) tells the reviewer the query worked and the data answered.
+
+### 3. Distinguish affordance, signifier, and feedback. Why does Norman argue that the signifier does most of the design work in digital interfaces?
+
+- **Affordance** — what the object can do. A button affords being pressed.
+- **Signifier** — how the user *knows* it can be done. The button looks pressable: raised, coloured, hovered, focused.
+- **Feedback** — confirmation that the action happened. The button visibly responds; the system state updates.
+
+Norman's argument: in the physical world, affordances are often perceivable directly — a door handle suggests pulling. In a digital interface, almost nothing has a physical handle. A clickable card has the affordance of being clicked, but unless the signifier (hover treatment, focus ring, cursor change) makes that affordance visible, the user has no way to know. For digital interfaces, *all affordance is perceived affordance* — which means all affordance lives in the signifier.
+
+*Examiner push: "Doesn't the cursor change handle the signifier?"*
+
+It handles some of it for mouse users — and even then, only after the user hovers. It does nothing for keyboard users, nothing for touch users, and nothing for users who simply don't move their cursor over the element. The cursor change is a *secondary* signifier; the *primary* signifier has to be visible without interaction.
+
+### 4. The five required Topic 2 sources differ less on definition than on emphasis. Name two specific emphasis differences that change a v1.1 design decision.
+
+First: **modality**. Material Design 3 is permissive about dialogs and treats them as a standard container. Apple HIG, Carbon, and GOV.UK are all sceptical and prefer non-modal containers (drawer, side panel, inline disclosure). This is the difference between v1.1 opening records in a modal (Material-shaped) and opening them in a drawer that preserves the list context (HIG/Carbon/GOV.UK-shaped). For a reviewer tool whose central task involves peripheral context, the majority position wins.
+
+Second: **data tables**. Only Carbon treats the data table as a first-class enterprise primitive with sortable / sticky-header / batch-select / row-expansion patterns. Material is light on tables; HIG and GOV.UK are light on tables. The Destination Master Browser's main task is "compare many records along one or two attributes" — a table task. Without Carbon in the source set, the design would default to cards (Material's most prominent list pattern) and miss the central reviewer task.
+
+*Examiner push: "Why not pick the source whose values you share and follow it consistently?"*
+
+Because each source has known blind spots. Material is consumer-shaped; HIG is platform-shaped; Carbon is corporate-shaped; GOV.UK is transactional-shaped. The Destination Master Browser is none of those — it is an internal data-review tool. Picking one source means inheriting its blind spot. Reading all five and using each where it is strongest gives the design a more accurate operating range.
+
+### 5. For the Destination Master Browser, when should a record open in a drawer rather than a modal? When does the choice flip?
+
+Inspecting a record is a *non-blocking* task — the reviewer wants to read the record's full fields, possibly compare it to other records in the list, and either close the inspection or take an action. Peripheral context (the list, the active filters, the trust banner) matters during the inspection. That makes it a **drawer** task.
+
+The choice flips when the task is *blocking and must finish or cancel*. Examples for this product:
+
+- **Confirm destructive action**: "promote 3 records to Planner — confirm?" The reviewer cannot continue browsing while the action is in flight; cancellation is a real option; the wrong outcome is irreversible. **Modal.**
+- **Edit with validation that must complete**: rare in this product, but if a single-record edit needed to validate against the master schema before saving, that's a modal task.
+
+The criterion: *does the task need to block the rest of the UI?* If yes, modal. If no, drawer.
+
+*Examiner push: "What about full-page for the inspect task?"*
+
+Full-page is too much for "look at one record and decide". It strips the peripheral context the reviewer is using and adds navigation cost (back-button, scroll-restore). Full-page belongs to flows that have their own substructure — preparing a verified record for export, or editing a record across several fields. Inspect-then-decide is drawer-shaped.
+
+### 6. Why does the topic argue that the unit of design is the *pattern* (master-detail, faceted search) rather than the *component*?
+
+Because component-by-component decisions don't produce coherent interfaces. If a designer decides "add a card", then "add a filter", then "add a button", then "add a modal", each decision can be defensible on its own and the result still fails — because the pattern (the relationship between list, detail, filter, and action) was never named. Naming the pattern first ("this is a master-detail tool with faceted search") fixes most of the component choices: master-detail implies *table + drawer*; faceted search implies *filter chips + persistent active-filter summary*; the persistent stats banner becomes the natural top-of-pattern element. Component invention stops once the pattern is named.
+
+*Examiner push: "Doesn't that just push the decision up a level? You still have to pick the pattern."*
+
+Yes — and that's the point. Picking the pattern is a *task* decision (what is the reviewer doing?), not an *aesthetic* decision. There are maybe a dozen patterns for this whole category of tool; the designer has to pick the one that matches the task. Once that's done, the per-component decisions are mostly determined. Pushing the decision up a level is exactly the improvement.
+
+### 7. Give one example of a Topic 2 anti-pattern that v1 commits, and the v1.1 fix.
+
+v1 commits **inconsistent affordance** in its narrowing controls. The search input and the filter chips are both narrowing controls but use different visual languages (rectangular input vs rounded chip), different state treatments (the input has a clear-button and focus ring; the chips currently have neither visible focus ring nor obvious active state), and produce different feedback (input live-updates; chip toggles are slower to perceive). A reviewer has to learn each separately.
+
+**v1.1 fix**: treat search-and-chips as one "narrow the result set" pattern. Standardise focus rings across both. Make chip-active and chip-inactive states visually as strong as the input's "has content / has been cleared" states. Make both produce the same feedback: a visible result-count animation when state changes.
+
+*Examiner push: "Isn't visual consistency superficial?"*
+
+It's not — it's the *signifier* that tells the reviewer two controls do similar work. Without that signifier the reviewer has to derive the relationship from documentation or trial-and-error. With it, the reviewer learns "things that look like this narrow the list" once and applies it everywhere.
+
+### 8. The topic adds a "when not to use" gate to the master-browser checklist. Why is that gate more important than a "when to use" rule?
+
+Because "when to use" rules are easy to satisfy — there is almost always a defensible reason to add a component. A team that wants to add a carousel can justify it ("it shows multiple items in less space", "competitors use it"). A team that wants to add a modal can justify it ("we needed somewhere to put the form"). "When to use" rules are permissive by construction.
+
+"When not to use" rules are restrictive by construction. They prevent additions that would have passed a "when to use" test but fail the negative-space test ("modal is wrong here because the task is non-blocking; the carousel is wrong here because research shows users miss content past the first slide"). The GOV.UK Design System publishes "when not to use" guidance per component, with research links, precisely because they discovered that "when to use" guidance let through almost any addition.
+
+For the Destination Master Browser, the gate is operationally useful: a request to add a new component must answer "what reviewer task does this serve?" AND "what is the case where this would be wrong?" If the second question has no answer, the component is decoration and is refused.
+
+*Examiner push: "Couldn't a team just write a weak 'when not to use' clause to pass the gate?"*
+
+They could. The mitigation is to make the "when not to use" clause come from user research, prior failure, or a competing pattern that already solves the task — not from imagination. That's the GOV.UK posture: every "when not to use" links to evidence, so it is testable. A "when not to use" clause without evidence is a smell.
+
+## How the Topic 2 answers were defended
+
+Each Topic 2 answer cites at least one specific source (Material, HIG, Carbon, GOV.UK, Norman) and at least one specific reviewer task or v1 finding. The examiner-push lines are the points where Topic 2's argument is least obvious — where a casual reader might agree and then drift back to component-shopping. The follow-ups close those drifts.

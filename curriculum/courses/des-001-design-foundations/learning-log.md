@@ -139,3 +139,39 @@ UI design is decision work: choosing the right element for the right task, in th
 
 Begin Topic 2 deep reading. Lab 02 cannot start until the readings produce the source-comparison notes and the extraction target.
 
+---
+
+## 2026-05-16 — Topic 2 deep reading executed
+
+### What was studied
+
+The five required sources from the Topic 2 reading pack: Material Design 3 (foundations + components), Apple Human Interface Guidelines (foundations + components), IBM Carbon (component patterns + usage guidelines), GOV.UK Design System (components + patterns), Don Norman (DOET — affordances, signifiers, feedback). The reading produced source-by-source notes, a structured source comparison, CodeMike interpretation, browser application, anti-patterns, implementation implications, a checklist update, and three reusable design capabilities.
+
+### What changed in understanding
+
+UI design is the work of *choosing pattern → choosing container → choosing elements → specifying all nine states → verifying affordance/signifier/feedback for each interactive → defending against a "when not to use" gate*. Visual treatment is downstream of those decisions. The five sources differ less on definition than on emphasis — modality (Material permissive vs HIG/Carbon/GOV.UK restrictive), data-table prominence (Carbon first-class vs others light), and "when not to use" discipline (GOV.UK explicit vs others implicit) — and those emphasis differences map directly onto v1.1 design choices. The single biggest reframing: the unit of design is the *pattern* (master-detail with faceted search) not the component, and once the pattern is named most component choices follow.
+
+### Repository outputs created
+
+- `design/foundations/topic-02-what-is-ui-design.md` — 13-section deep-reading doc covering topic definition, source list with type classification, source-by-source notes, source comparison, CodeMike interpretation, browser application (with a per-decision sourcing table and a four-depth trust-signal specification), anti-patterns, implementation implications (10-item v1.1 backlog), further reading, checklist updates, three reusable CodeMike design capabilities, source-set reflection, and open work.
+- `curriculum/courses/des-001-design-foundations/quizzes/quiz-02-what-is-ui-design-answers.md` — ten worked answers cross-checked against the answer key, with self-mark notes.
+- `curriculum/courses/des-001-design-foundations/viva/DES-001-viva-questions.md` — eight Topic 2 viva questions appended.
+- `curriculum/courses/des-001-design-foundations/viva/DES-001-viva-answers.md` — eight Topic 2 viva answers appended, each with an examiner-push follow-up.
+- `docs/design-foundations-app/data.js` — Topic 2 module flipped from `todo` to `done`; sources expanded from three to six (five required + the extension link); full notes object replacing `PENDING_NOTES`.
+
+### Key finding
+
+The Destination Master Browser is — in Carbon's pattern vocabulary — a *master-detail data-review tool with faceted filtering*. That phrase, once spoken, fixes most v1.1 decisions: **table by default (cards as secondary), drawer for detail (never modal), filter chips + dropdowns + search for narrowing, content-rich empty state, skeleton loading, inline error notification, and a four-depth trust signal (top banner + list row + drawer header + confirm-modal)**. The v1 build was designed component-by-component; v1.1 should be designed pattern-first.
+
+### Open work after Topic 2 reading
+
+- Execute Lab 02 against `docs/destination-master-browser-v1.html`.
+- Produce `design/foundations/topic-02-ui-design-component-inventory.md` (catalogue + state matrix + affordance audit).
+- Produce `design/foundations/ui-design-component-rules.md` (the consolidated rule sheet — Browser v1.1's input).
+- Update `design/checklists/master-browser-design-checklist.md` with the six new gates listed in §10 of the deep-reading doc.
+- Open Topic 2 Execution PR B (Lab 02 + rule sheet).
+
+### Next action
+
+Open Topic 2 Execution PR A (this commit set), then start Lab 02 on a fresh branch for PR B.
+
