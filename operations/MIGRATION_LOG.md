@@ -35,7 +35,7 @@ Reason: Aligns with the session's designated working branch and reduces PR overh
 ### 2026-05-15 — Add `artifacts/` to the directory table; expand Batch 6 row
 
 PR: #1  
-Commit: (pending — same commit as this revision)  
+Commit: `82596a7`  
 Affects: Batch 6.  
 Change: Adds a new row to the root-directory-targets table in `MIGRATION_PLAN.md`: `artifacts/` → `operations/artifacts/`. Updates the Batch 6 row in the Batches table to enumerate all five directories now in scope (`trackers`, `benchmarks`, `orientation`, `synthetic-data`, `artifacts`). Updates the "Why" paragraph from "22 directories" to "23 directories" with a note about the audit miss.  
 Reason: `artifacts/` was discovered at the repo root during Batch 4 staging — the original audit missed it. The migration plan must reflect actual state before the batch that moves it. Target chosen: `operations/artifacts/` because the directory contains operational evidence outputs (HTML, exports) that are governed by `charter/HTML_ARTIFACTS.md` and catalogued by `operations/ARTIFACT_INDEX.md`. Also clarifies that the `synthetic-data/` → `datasets/synthetic/` move is a merge (target already exists with `trip_options_sample.csv`), not a rename.
@@ -169,7 +169,7 @@ Notes: Discovered an unplanned root directory during this batch — `artifacts/`
 
 Date: 2026-05-15  
 PR: #1  
-Commit: (pending — backfilled next batch)  
+Commit: `2f9d0ff`  
 Scope: Moved four root directories — `anti-patterns/`, `case-studies/`, `decision-science/`, `patterns/` — into `capabilities/`, putting reusable-knowledge sub-buckets under their parent.  
 Directories moved (via `git mv`, 12 file renames in total, all 100% similarity):
   - `anti-patterns/` → `capabilities/anti-patterns/` (1 README; populated as anti-patterns are documented)
@@ -185,3 +185,31 @@ Files added: none
 Files deleted: none  
 Verification: No content changes to the 12 moved files. Pattern links in the existing `capabilities/README.md` table (e.g. `patterns/data-cleaning-checklist.md`) — broken before this batch because `/patterns/` was a root sibling, not a child of `capabilities/` — now resolve correctly. Root directory count: 20 → 16.  
 Notes: The pre-Batch-5 README was authored expecting `patterns/` to already live inside `capabilities/`; the original repo had it at root, so those links were broken before any migration ran. This batch makes the README correct. Cross-bucket references to `../operations/...` files are written assuming Batches 2-3 (operations moves) have already landed.
+
+### Batch 6 — Trackers, benchmarks, orientation, synthetic-data, artifacts
+
+Date: 2026-05-15  
+PR: #1  
+Commit: (pending — backfilled next batch)  
+Scope: Moved the remaining four planned root directories plus the `artifacts/` directory added by the preceding plan revision (`82596a7`). Post-Batch-6 root holds 15 directories — the target inventory minus `.github/`, which Batches 7-8 add.  
+Directories moved (via `git mv`, all 100% similarity):
+  - `trackers/` → `operations/trackers/`
+  - `benchmarks/` → `operations/benchmarks/`
+  - `orientation/` → `charter/orientation/` (13 files, the student-life policy bucket)
+  - `artifacts/` → `operations/artifacts/` (1 subdir + 1 HTML artifact)
+
+Merge — `synthetic-data/` → `datasets/synthetic/`:
+  - Source `synthetic-data/trip_options_generator.py` moved into `datasets/synthetic/` alongside the existing `trip_options_sample.csv`.
+  - Source `synthetic-data/README.md` removed; its useful content (generator purpose, candidate list) merged into `datasets/synthetic/README.md`. The generator reference path was corrected from `synthetic-data/trip_options_generator.py` to `trip_options_generator.py` (now a sibling), and `DATASETS.md` reference was rewritten to `../../operations/DATASETS.md`.
+  - The `synthetic-data/` directory is removed (git does not track empty directories).
+
+Files modified:
+  - `datasets/synthetic/README.md` — merged in the deleted README's content, fixed generator and `DATASETS.md` paths.
+  - `operations/MIGRATION_LOG.md` — backfilled Batch 5's commit SHA (`2f9d0ff`); backfilled the Batch-6 plan revision's commit SHA (`82596a7`); appended this entry.
+
+Files added: none  
+Files deleted:
+  - `synthetic-data/README.md` — content merged into `datasets/synthetic/README.md`.
+
+Verification: Root directory inventory after Batch 6: `capabilities/`, `charter/`, `cockpit/`, `curriculum/`, `datasets/`, `decks/`, `design/`, `docs/`, `notebooks/`, `operations/`, `projects/`, `prompts/`, `references/`, `reports/`, `src/`. That is 15 directories — exactly the post-migration target minus `.github/`, which is created by Batches 7-8.  
+Notes: With `orientation/` now living at `charter/orientation/`, any reference in `STUDENT_LIFE.md` (now `charter/STUDENT_LIFE.md`) or in `CLAUDE.md` to `orientation/` as a root sibling is broken — caught by Batch 9. Internal references inside `orientation/` documents to root-level filenames remain broken until Batch 9 as well.
