@@ -76,7 +76,7 @@ Notes: `curriculum/`, `cockpit/`, `decks/` are entirely new directories created 
 
 Date: 2026-05-15  
 PR: #1  
-Commit: (pending — backfilled next batch)  
+Commit: `37add23`  
 Scope: Moved 13 policy docs from the repository root into `charter/`, where the bucket README declares them to live.  
 Files moved (via `git mv`, rename detection: yes):
   - `BUDGET.md` → `charter/BUDGET.md`
@@ -103,3 +103,36 @@ Files deleted:
 
 Verification: No content changes to the 13 moved files — moves only. `git status --short` shows 13 `R` (rename) entries, 1 `D` (delete) entry, plus 2 `M` (modified) entries for `charter/README.md` and this log file. Root `.md` count before Batch 2: 32 (31 original + `REPO_STRUCTURE.md` carried over). After Batch 2: 18 (`CLAUDE.md`, `README.md`, and 16 operations docs awaiting Batch 3). After Batch 3 it drops to 2 — the target.  
 Notes: Tracked internal links from `CLAUDE.md` and from the moved files themselves (e.g. references like `[BUDGET.md](BUDGET.md)`) will break until Batch 9 (internal link sweep). This is intentional and documented in `MIGRATION_PLAN.md`. `CLAUDE.md` stays at root per `REPO_STRUCTURE.md` (root inventory) and is rewritten in Batch 9.
+
+### Batch 3 — Move operations docs
+
+Date: 2026-05-15  
+PR: #1  
+Commit: (pending — backfilled next batch)  
+Scope: Moved 16 register/log docs from the repository root into `operations/`, completing the root cleanup that brings root `.md` count to its target of 2 (`CLAUDE.md`, `README.md`).  
+Files moved (via `git mv`, rename detection: 100% similarity on all 16):
+  - `ARTIFACT_INDEX.md` → `operations/ARTIFACT_INDEX.md`
+  - `CAPABILITIES.md` → `operations/CAPABILITIES.md`
+  - `DATASETS.md` → `operations/DATASETS.md`
+  - `DECISIONS.md` → `operations/DECISIONS.md`
+  - `EVIDENCE.md` → `operations/EVIDENCE.md`
+  - `EXPERIMENTS.md` → `operations/EXPERIMENTS.md`
+  - `FAILURE_LOG.md` → `operations/FAILURE_LOG.md`
+  - `LIBRARY.md` → `operations/LIBRARY.md`
+  - `NEXT_ACTIONS.md` → `operations/NEXT_ACTIONS.md`
+  - `PORTFOLIO.md` → `operations/PORTFOLIO.md`
+  - `PROJECT_LOG.md` → `operations/PROJECT_LOG.md`
+  - `RISK_REGISTER.md` → `operations/RISK_REGISTER.md`
+  - `ROADMAP.md` → `operations/ROADMAP.md`
+  - `SKILL_MAP.md` → `operations/SKILL_MAP.md`
+  - `TRANSFER_LOG.md` → `operations/TRANSFER_LOG.md`
+  - `VIVA.md` → `operations/VIVA.md`
+
+Files modified:
+  - `operations/README.md` — rewritten with the post-Batch-3 contents table.
+  - `operations/MIGRATION_LOG.md` — backfilled Batch 2's commit SHA (`37add23`); appended this entry.
+
+Files added: none  
+Files deleted: none  
+Verification: No content changes to the 16 moved files. Root `.md` count: 18 → 2 (`CLAUDE.md`, `README.md`) — matches the target inventory in `MIGRATION_PLAN.md`. `git status --short` shows 16 `R` entries plus 2 `M` entries for the README and this log file.  
+Notes: Internal references from `CLAUDE.md` to `SKILL_MAP.md`, `PROJECT_LOG.md`, `TRANSFER_LOG.md`, `CAPABILITIES.md`, `BUDGET.md`, `TOOLING.md`, etc., now all break (the previous referenced root locations no longer exist). All such links are fixed in Batch 9 (internal link sweep). The remaining 14 root directories move in Batches 4-6.
