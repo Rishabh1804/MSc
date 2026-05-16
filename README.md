@@ -29,12 +29,27 @@ https://rishabh1804.github.io/MSc/repo-map.html
 
 | Folder | Purpose |
 |---|---|
-| `courses/` | Course environment: syllabus, lectures, readings, labs, submissions, feedback, revisions, viva, portfolio |
+| `charter/` | Slow-change policy and rule docs (hard rules, structure, budget, tooling, etc.) |
+| `operations/` | Live registers and logs (skill map, project log, evidence, next actions, etc.) |
+| `capabilities/` | Reusable capability cards, patterns, anti-patterns, case studies, decision science |
+| `curriculum/courses/` | Course environment: syllabus, lectures, readings, labs, submissions, feedback, revisions, viva, portfolio |
+| `curriculum/assignments/` | Assignment briefs and rubrics |
+| `curriculum/modules/` | Per-module workspaces (00-foundations … 09-capstone) |
+| `curriculum/thesis/` | Capstone thesis workspace |
+| `cockpit/` | PWA source — operating view of the workspace; fetches `operations/` data at runtime |
+| `decks/` | Slide-deck HTML source; `.pptx` is a workflow artifact, not committed |
 | `docs/` | Renderable/public artifacts and browser dashboards |
 | `design/` | Reusable design foundations, checklists, and design standards |
-| `assignments/` | Assignment briefs and rubrics |
-| `datasets/` | Data inputs and reference files |
-| `scripts/` | Build, validation, or utility scripts |
+| `datasets/` | Data inputs, reference files, and synthetic samples + generators |
+| `notebooks/` | Exploratory notebooks |
+| `projects/` | Active project work |
+| `prompts/` | Reusable prompt templates |
+| `references/` | Cited literature and academic references |
+| `reports/` | Evidence reports |
+| `src/` | Reusable library code |
+| `.github/scripts/` | Build, validation, or utility scripts (deck export, link sweep) |
+
+See `charter/REPO_STRUCTURE.md` for the authoritative layout standard and `operations/MIGRATION_LOG.md` for the per-batch record of how the repository reached this state.
 
 ## Active artifacts
 
@@ -44,7 +59,8 @@ https://rishabh1804.github.io/MSc/repo-map.html
 | Design Foundations dashboard v2 | `docs/design-foundations-v2.html` |
 | Design Foundations app modules | `docs/design-foundations-app/` |
 | Destination Master Browser v1 | `docs/destination-master-browser-v1.html` |
-| DES-001 course folder | `courses/des-001-design-foundations/` |
+| DES-001 course folder | `curriculum/courses/des-001-design-foundations/` |
+| CodeMike Cockpit (PWA) | `cockpit/` (deployed to GitHub Pages via `.github/workflows/cockpit-build.yml`) |
 
 ## Working rule
 
@@ -61,4 +77,4 @@ If a file does not fit one of those buckets, it should not be added.
 
 ## GitHub workflow rule
 
-For future work, prefer one batched commit per phase instead of many one-file commits. See `GITHUB_WORKFLOW.md`.
+For future work, prefer one batched commit per phase instead of many one-file commits. See `charter/GITHUB_WORKFLOW.md`.

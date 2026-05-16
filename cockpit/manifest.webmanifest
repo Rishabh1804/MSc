@@ -1,0 +1,10 @@
+{
+  "name": "CodeMike Cockpit",
+  "short_name": "Cockpit",
+  "description": "Operating view of the MSc capability workspace. Data fetched from operations/ and datasets/ at runtime.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a"
+}

@@ -1,0 +1,60 @@
+/* CodeMike deck theme — shares the cockpit's design tokens so a deck
+   feels like the same product as the live cockpit. Pairs with reveal.js
+   (loaded from the deck's slides.html via CDN). */
+
+:root {
+  --cm-bg: #0f172a;
+  --cm-surface: #1e293b;
+  --cm-text: #f1f5f9;
+  --cm-muted: #94a3b8;
+  --cm-accent: #38bdf8;
+  --cm-rule: #334155;
+}
+
+.reveal {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--cm-text);
+  background: var(--cm-bg);
+}
+
+.reveal .slides section {
+  text-align: left;
+  padding: 1rem 2rem;
+}
+
+.reveal h1, .reveal h2, .reveal h3 {
+  color: var(--cm-text);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+
+.reveal h1 { font-size: 2.4rem; }
+.reveal h2 { font-size: 1.8rem; }
+.reveal h3 { font-size: 1.3rem; }
+
+.reveal a { color: var(--cm-accent); }
+.reveal code { background: var(--cm-surface); padding: 0.1rem 0.3rem; border-radius: 0.2rem; font-size: 0.9em; }
+.reveal pre {
+  background: var(--cm-surface);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 0.6em;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  box-shadow: none;
+  width: 100%;
+}
+
+.reveal .cm-source-note {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 1.5rem;
+  font-size: 0.65rem;
+  color: var(--cm-muted);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+.reveal .cm-loading { color: var(--cm-muted); font-style: italic; }
+.reveal .cm-error { color: #f87171; }

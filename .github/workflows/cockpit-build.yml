@@ -1,0 +1,70 @@
+name: cockpit-build
+
+# Stages the cockpit/ shell together with the operations/ and datasets/
+# files the cockpit reads at runtime, then publishes the bundle as a
+# GitHub Pages artifact.
+#
+# Triggered on pushes to main that touch cockpit/, operations/, or
+# datasets/, and via manual dispatch.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'cockpit/**'
+      - 'operations/**'
+      - 'datasets/**'
+      - '.github/workflows/cockpit-build.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-cockpit
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Stage cockpit bundle
+        run: |
+          set -euo pipefail
+          mkdir -p _site/cockpit _site/operations _site/datasets
+          cp -r cockpit/. _site/cockpit/
+          # Only files the cockpit actually reads — keep the bundle small
+          # and the contract auditable.
+          for f in SKILL_MAP.md PROJECT_LOG.md NEXT_ACTIONS.md ROADMAP.md CAPABILITIES.md; do
+            if [ -f "operations/$f" ]; then
+              cp "operations/$f" "_site/operations/$f"
+            fi
+          done
+          # Datasets stay opt-in; copy what the cockpit shell links to.
+          if [ -d datasets/synthetic ]; then
+            mkdir -p _site/datasets/synthetic
+            cp -r datasets/synthetic/. _site/datasets/synthetic/
+          fi
+          # Landing redirect so /cockpit/ resolves cleanly under Pages root.
+          cat > _site/index.html <<'HTML'
+          <!doctype html>
+          <meta charset="utf-8">
+          <title>CodeMike Cockpit</title>
+          <meta http-equiv="refresh" content="0; url=./cockpit/">
+          <link rel="canonical" href="./cockpit/">
+          <p>Redirecting to <a href="./cockpit/">the cockpit</a>&hellip;</p>
+          HTML
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deploy
+        uses: actions/deploy-pages@v4
