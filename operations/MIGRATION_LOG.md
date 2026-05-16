@@ -218,7 +218,7 @@ Notes: With `orientation/` now living at `charter/orientation/`, any reference i
 
 Date: 2026-05-15  
 PR: #1  
-Commit: (pending — backfilled next batch)  
+Commit: `ff38e96`  
 Scope: Scaffolded the CodeMike Cockpit — a dependency-free PWA whose views fetch markdown from `operations/` at runtime and render it as escaped preformatted text, honouring HR-MSc-9 ("no academic claim hardcoded in cockpit HTML").  
 Files added:
   - `cockpit/index.html` — landing page; lists views; registers the service worker.
@@ -237,3 +237,27 @@ Files moved: none
 Files deleted: none  
 Verification: Cockpit served locally from the repo root via `python -m http.server` resolves `http://localhost:8000/cockpit/`, the skill-map view fetches `../../operations/SKILL_MAP.md` and renders the file contents. Workflow file lints (yaml structure verified in commit); first deployment will occur when this branch merges to `main` and triggers `cockpit-build`. New root directory: `.github/`.  
 Notes: No view duplicates any content from the source markdown. The choice to render as `<pre>` rather than parsed markdown is deliberate — it keeps the contract honest ("what you see is what the file says") and avoids a runtime dependency. A future view can add per-view parsing helpers if needed.
+
+### Batch 8 — Deck pipeline scaffold
+
+Date: 2026-05-15  
+PR: #1  
+Commit: (pending — backfilled next batch)  
+Scope: Scaffolded the deck pipeline. Decks are reveal.js HTML with the same fetch-at-runtime contract as cockpit views; a workflow renders every `decks/**/slides.html` to `.pptx` via headless Chromium + python-pptx and uploads the bundle as a workflow artifact.  
+Files added:
+  - `decks/shared/reveal-theme.css` — reveal.js theme using the same design tokens as `cockpit/assets/cockpit.css` (cm-bg, cm-surface, cm-text, cm-accent, cm-rule). A deck looks like the same product as the cockpit.
+  - `decks/shared/deck-data-fetch.js` — hydrates `<section data-source="…">` slides with the fetched markdown, escaped, into a sibling `<pre class="cm-source-content">`. Hooked into `Reveal.on('ready')` when available, falls back to `DOMContentLoaded`.
+  - `decks/curriculum/00-foundations/slides.html` — sample deck. Loads reveal.js v5 from jsdelivr, applies `shared/reveal-theme.css`, three data-bearing slides fetching `operations/SKILL_MAP.md`, `operations/ROADMAP.md`, `operations/NEXT_ACTIONS.md`.
+  - `decks/curriculum/00-foundations/notes.md` — speaker notes for the sample deck. Walks slide-by-slide and explains how to add a new data slide.
+  - `decks/curriculum/00-foundations/README.md` — deck charter: intent, audience, evidence links, how to run (HTML + .pptx).
+  - `.github/scripts/export_decks.py` — Python exporter. Serves the repo via `http.server` on a free port, walks `decks/**/slides.html`, navigates each slide via `Reveal.slide(i)`, screenshots at 1920×1080, assembles a `.pptx` per deck (one full-bleed image per slide). Attaches `notes.md` (if present) to the first slide's notes.
+  - `.github/workflows/decks-export.yml` — workflow. Triggers: push to `main` touching `decks/`, `operations/`, the workflow, or the script. Installs Playwright + python-pptx + Chromium, runs `export_decks.py`, uploads `build/*.pptx` as the `decks-pptx` artifact. Output not committed.
+
+Files modified:
+  - `decks/README.md` — rewritten with the post-Batch-8 layout, deck contract, export model, and local-run instructions.
+  - `operations/MIGRATION_LOG.md` — backfilled Batch 7's commit SHA (`ff38e96`); appended this entry.
+
+Files moved: none  
+Files deleted: none  
+Verification: `python -m py_compile .github/scripts/export_decks.py` succeeds (verified locally before commit — see commit notes). Sample deck served locally via `python -m http.server` resolves at `http://localhost:8000/decks/curriculum/00-foundations/slides.html`, reveal.js initialises, and the three data slides populate from `operations/`. The workflow's first execution will occur when this branch merges to `main`.  
+Notes: The deck pipeline's "no .pptx in the repo" stance is intentional — the HTML is the source of truth, the .pptx is a transport artifact. The same fetch contract used in `cockpit/` and `decks/` means a future "what does the workspace currently say?" view in either channel renders the same thing.

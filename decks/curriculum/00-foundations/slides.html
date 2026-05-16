@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>00-foundations &mdash; CodeMike deck</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css" id="reveal-theme">
+  <link rel="stylesheet" href="../../shared/reveal-theme.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section>
+        <h1>00 &mdash; Foundations</h1>
+        <p>CodeMike capability workspace &mdash; module 00.</p>
+        <p class="cm-source-note">deck source: decks/curriculum/00-foundations/slides.html</p>
+      </section>
+
+      <section>
+        <h2>What this deck is</h2>
+        <ul>
+          <li>Walking sample of the deck pipeline (Batch 8 scaffold).</li>
+          <li>Every data-bearing slide fetches its source file at runtime.</li>
+          <li>No academic claim is hardcoded in this HTML &mdash; HR-MSc-9.</li>
+        </ul>
+      </section>
+
+      <section data-source="../../../operations/SKILL_MAP.md">
+        <h2>Current skill map</h2>
+        <pre class="cm-source-content cm-loading">Loading operations/SKILL_MAP.md&hellip;</pre>
+        <span class="cm-source-note">source: operations/SKILL_MAP.md</span>
+      </section>
+
+      <section data-source="../../../operations/ROADMAP.md">
+        <h2>Six-month roadmap</h2>
+        <pre class="cm-source-content cm-loading">Loading operations/ROADMAP.md&hellip;</pre>
+        <span class="cm-source-note">source: operations/ROADMAP.md</span>
+      </section>
+
+      <section data-source="../../../operations/NEXT_ACTIONS.md">
+        <h2>Next actions</h2>
+        <pre class="cm-source-content cm-loading">Loading operations/NEXT_ACTIONS.md&hellip;</pre>
+        <span class="cm-source-note">source: operations/NEXT_ACTIONS.md</span>
+      </section>
+
+      <section>
+        <h2>Speaker notes</h2>
+        <p>See <code>notes.md</code> in this directory.</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      transition: 'fade',
+    });
+  </script>
+  <script src="../../shared/deck-data-fetch.js"></script>
+</body>
+</html>

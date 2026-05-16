@@ -1,0 +1,44 @@
+name: decks-export
+
+# Renders every decks/**/slides.html to .pptx via headless Chromium
+# (Playwright) and python-pptx, uploading the bundle as a workflow
+# artifact. Per HR-MSc-9 / the migration plan, the .pptx output is NOT
+# committed back to the repository.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'decks/**'
+      - 'operations/**'
+      - '.github/workflows/decks-export.yml'
+      - '.github/scripts/export_decks.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python deps
+        run: pip install --upgrade pip playwright python-pptx
+
+      - name: Install Chromium for Playwright
+        run: python -m playwright install --with-deps chromium
+
+      - name: Export decks to .pptx
+        run: python .github/scripts/export_decks.py
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: decks-pptx
+          path: build/*.pptx
+          if-no-files-found: error
