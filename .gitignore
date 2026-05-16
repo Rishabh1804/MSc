@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+
+# Build outputs
+build/
+dist/
+_site/
+
+# Virtualenvs
+.venv/
+venv/
+
+# Editor noise
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Node (decks/cockpit are dependency-free but contributors may try)
+node_modules/
