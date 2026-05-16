@@ -7,7 +7,7 @@ Convert Topic 3's reading evidence into applied coursework evidence by mapping t
 Target artifact:
 
 ```text
-docs/destination-master-browser-v1.html
+docs/destination-master-browser-v1.0.html
 ```
 
 ## Materials
@@ -18,7 +18,7 @@ docs/destination-master-browser-v1.html
 - `design/foundations/topic-01-ui-vs-ux-exercise-results.md` (Lab 01 — heuristic-level journey map)
 - `design/foundations/topic-02-ui-design-component-inventory.md` + `ui-design-component-rules.md` (Topic 2 component rule sheet)
 - `design/checklists/master-browser-design-checklist.md`
-- `docs/destination-master-browser-v1.html`
+- `docs/destination-master-browser-v1.0.html`
 
 ## Lab steps
 

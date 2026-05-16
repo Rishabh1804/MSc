@@ -2,7 +2,7 @@
 
 Lab brief: `curriculum/courses/des-001-design-foundations/labs/lab-02-ui-design-component-inventory.md`
 Source topic: `design/foundations/topic-02-what-is-ui-design.md`
-Target artifact: `docs/destination-master-browser-v1.html`
+Target artifact: `docs/destination-master-browser-v1.0.html`
 
 ## Executive summary
 

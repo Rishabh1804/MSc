@@ -31,6 +31,39 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-16 — Destination Master Browser v1.1 core implementation
+
+Type: capability / transfer
+
+Summary:
+
+First PR of the v1.1 implementation work. Ships the core build of the Destination Master Browser at the canonical path `docs/destination-master-browser.html`, against the DES-001 Topic 2 component rule sheet (`design/foundations/ui-design-component-rules.md`) and Topic 3 UX acceptance-criteria sheet (`design/foundations/ux-acceptance-criteria.md`). The v1 build is archived at `docs/destination-master-browser-v1.0.html`.
+
+v1.1 implements the seven-step reviewer journey at component level: sticky dataset-trust banner at the top of every screen; toolbar with search + 5 selects + accent-indicator on non-default fields; active-filter summary chip-row above the result list with per-filter removal and a Clear-all action; table-by-default with sortable columns; card view as a secondary toggle; record-detail drawer that opens on row/card click with persistent trust banner in the drawer header, Prev/Next navigation, close-on-click-outside + close-on-Esc; trust-badge component used at four depths (top banner, list row, card top-right, drawer header) with seven defined states (`verified`, `planner-ready`, `unverified`, `blocked`, `missing-fields`, `conflict`, `unassigned`) each carrying icon + colour + text; distinct components for loading (skeleton), empty (content-rich, with active-filter summary + Clear-all + suggestion), and error (inline notification with Retry + Report-issue actions); responsive layout collapsing to single-column on narrow viewports; `prefers-reduced-motion` honoured.
+
+Playwright smoke test against an in-memory CSV stub passed 26/26 checks: trust banner visible; correct row count; trust badges in every row; sortable headers; view toggle; active-filter chip appears on filter change; Clear-all visible; empty state renders with filter list + recovery action; drawer opens with correct name + trust state, navigates with Prev/Next, closes on Esc with proper state cleanup; cards view renders all records. Zero console errors. Initial defects found during smoke testing and fixed in the same PR: sticky table-header was intercepting row clicks (removed); `.drawer { display: grid }` was overriding `[hidden] { display: none }` (added explicit `.drawer[hidden] { display: none !important }` override).
+
+Reference-path discipline: historical references (Lab 01 / Lab 02 / Lab 03 evidence, lecture-02, design/foundations/ docs) point at `destination-master-browser-v1.0.html` to preserve historical accuracy (those labs were executed against v1); active references (README.md, docs/index.html, docs/repo-map.html, operations/NEXT_ACTIONS.md, operations/ARTIFACT_INDEX.md) point at the canonical `destination-master-browser.html`.
+
+Files changed:
+
+- `docs/destination-master-browser.html` (new — canonical v1.1 build, ~1000 lines)
+- `docs/destination-master-browser-v1.0.html` (renamed from `-v1.html`)
+- `curriculum/courses/des-001-design-foundations/verification/v1.1-core/` (new — Playwright smoke-test screenshots)
+- All references across the repo updated to the correct historical-vs-active path
+- `operations/NEXT_ACTIONS.md` priority 4 moved to `doing` (full walk-through verification + TRANSFER_LOG entry land in PR B)
+
+Evidence produced:
+
+- A working v1.1 build at the canonical path, smoke-tested
+- Two Playwright screenshots (above-the-fold and full-page) saved as verification evidence
+- Reference-path discipline established for future versions (historical = explicit version suffix; active = canonical)
+- Two real defects found and fixed during smoke testing (sticky-header click interception; [hidden] specificity)
+
+Next action:
+
+Open PR B — full 13-gate walk-through verification against the live build; promote `SKILL_MAP.md` skill to level 5 (transferred); promote `CAPABILITIES.md` capabilities to maturity 4 (transferred to project); add a `TRANSFER_LOG.md` entry recording the DES-001 → Browser v1.1 capability transfer; polish items (refined focus rings, animation perceptibility tuning, accessibility audit). After PR B merges, NEXT_ACTIONS priority 4 moves to `done`.
+
 ## 2026-05-16 — DES-001 Topic 3 closed (UX design + Lab 03 + acceptance-criteria sheet)
 
 Type: learning / assignment / capability

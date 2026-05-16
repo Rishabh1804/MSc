@@ -112,6 +112,6 @@ It is still not Planner-ready because live travel facts and source verification 
 ## 14. Next Actions
 
 1. Fix any structural issues found by this report.
-2. Create `docs/destination-master-browser-v1.html` after validation is clean.
+2. Create `docs/destination-master-browser-v1.0.html` after validation is clean.
 3. Add a master browser link to `docs/index.html`.
 4. Begin enrichment fields only after the master layer is structurally clean.

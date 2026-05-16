@@ -33,7 +33,7 @@ The course requires CodeMike to read, compare, execute practical labs, submit ar
 Execute Topic 1 exercises against:
 
 ```text
-docs/destination-master-browser-v1.html
+docs/destination-master-browser-v1.0.html
 ```
 
 Record results in:

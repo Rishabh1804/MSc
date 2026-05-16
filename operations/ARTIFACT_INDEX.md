@@ -26,7 +26,7 @@ This file indexes important CodeMike artifacts so the workspace remains navigabl
 |---|---|---|---|
 | CodeMike artifact landing page | `https://rishabh1804.github.io/MSc/` | `docs/index.html` | Active |
 | Design Foundations Study Dashboard | `https://rishabh1804.github.io/MSc/design-foundations.html` | `docs/design-foundations.html` | Active, assignment artifact for DES-001 |
-| Destinations Master v2 Browser | `https://rishabh1804.github.io/MSc/destination-master-browser-v1.html` | `docs/destination-master-browser-v1.html` | Active, 359-row master review |
+| Destinations Master v2 Browser | `https://rishabh1804.github.io/MSc/destination-master-browser.html` | `docs/destination-master-browser.html` | Active, 359-row master review |
 | Destination Browser v1 | `https://rishabh1804.github.io/MSc/destination-browser-v1.html` | `docs/destination-browser-v1.html` | Active, basic |
 | Destination Browser v2 | `https://rishabh1804.github.io/MSc/destination-browser-v2.html` | `docs/destination-browser-v2.html` | Active, enriched prototype |
 | Destination Tag Dictionary Browser | `https://rishabh1804.github.io/MSc/destination-tag-dictionary.html` | `docs/destination-tag-dictionary.html` | Active, taxonomy review |

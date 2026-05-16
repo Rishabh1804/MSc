@@ -35,7 +35,7 @@ Planner-ready rows: 0
 | Master promotion report | `reports/evidence/destination-master-v2-promotion-report.md` | done | User / Termux | Confirms 359 rows, no exact duplicate name keys |
 | Master validation script | `src/codemike/data/destination_master_validation.py` | done | Assistant | Seed compatibility values accepted |
 | Master validation report | `reports/evidence/destination-master-v2-validation-report.md` | done | User / Termux | Clean structural validation |
-| Master HTML browser | `docs/destination-master-browser-v1.html` | done | Assistant | Review layer for master dataset |
+| Master HTML browser | `docs/destination-master-browser-v1.0.html` | done | Assistant | Review layer for master dataset |
 | Pages index link | `docs/index.html` | done | Assistant | Master browser linked |
 | Master enrichment strategy | `datasets/reference/destination_master_enrichment_strategy.md` | todo | Assistant | Next design step |
 | Destination scoring v1 | `src/codemike/recommendation/destination_scoring.py` | deferred | Assistant | After enrichment strategy exists |
@@ -66,7 +66,7 @@ A row should not move to Planner-ready without:
 Verify the GitHub Pages browser:
 
 ```text
-https://rishabh1804.github.io/MSc/destination-master-browser-v1.html
+https://rishabh1804.github.io/MSc/destination-master-browser-v1.0.html
 ```
 
 Then create:

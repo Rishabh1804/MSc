@@ -1,6 +1,6 @@
 # Quiz 01 — Answers
 
-Answer date: 2026-05-16. Answered without consulting the answer key first; cross-checked afterwards. Examples are drawn from the Destination Master Browser v1 (`docs/destination-master-browser-v1.html`).
+Answer date: 2026-05-16. Answered without consulting the answer key first; cross-checked afterwards. Examples are drawn from the Destination Master Browser v1 (`docs/destination-master-browser-v1.0.html`).
 
 ## 1. Define UI in one or two sentences.
 
