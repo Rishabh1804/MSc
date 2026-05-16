@@ -274,4 +274,4 @@ The full UX acceptance-criteria sheet for v1.1 lives at:
 design/foundations/ux-acceptance-criteria.md
 ```
 
-That sheet is Browser v1.1's UX gate. Together with `design/foundations/ui-design-component-rules.md` (the component gate), it forms the complete v1.1 specification. Any change to the 12 criteria, the 13 gate-tests, or the four anti-patterns must update both the sheet and this checklist.
+That sheet is Browser v1.1's UX gate. Together with `design/foundations/ui-design-component-rules.md` (the component gate), it forms the complete v1.1 specification. Any change to the 14 criteria, the 13 gate-tests, or the four anti-patterns must update both the sheet and this checklist.

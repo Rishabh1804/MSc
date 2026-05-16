@@ -6,7 +6,7 @@ Target artifact: `docs/destination-master-browser-v1.html`
 
 ## Executive summary
 
-Lab 03 executed all six steps against the Destination Master Browser v1. It produced a full seven-step reviewer-journey map (with goal / cost / failure / trust / current-v1 / Lab 01 gap per step), 12 testable UX acceptance criteria (13 gate-tests, including 1 cross-cutting) of which 12 are v1.1 UX gates, a complete user-need audit covering all 9 v1 features and all 13 v1.1 backlog items, a full Lab 01 → Lab 03 gap analysis, the consolidated UX acceptance-criteria sheet at `design/foundations/ux-acceptance-criteria.md` (the canonical UX gate for Browser v1.1), and four new master-browser checklist sections (§20 + §21 gates and anti-patterns).
+Lab 03 executed all six steps against the Destination Master Browser v1. It produced a full seven-step reviewer-journey map (with goal / cost / failure / trust / current-v1 / Lab 01 gap per step), 14 testable UX acceptance criteria (13 are v1.1 UX gates that must pass before ship; 1 deferred to v1.1.x; 1 cross-cutting verification), a complete user-need audit covering all 9 v1 features and all 13 v1.1 backlog items, a full Lab 01 → Lab 03 gap analysis, the consolidated UX acceptance-criteria sheet at `design/foundations/ux-acceptance-criteria.md` (the canonical UX gate for Browser v1.1), and four new master-browser checklist sections (§20 + §21 gates and anti-patterns).
 
 The most important finding is that **Compare is the worst-served reviewer step in v1** (Fail), followed by **Inspect** (Fail) and **Recover** (Fail). The three Fail steps are the central reviewer-task failures that Topic 2 + Topic 3 + v1.1 together close. All 11 tracked Lab 01 findings are closeable by v1.1 with the combined rule sheet + acceptance-criteria sheet.
 
@@ -17,7 +17,7 @@ The single most operationally consequential discipline the lab introduces is **G
 | Step | Output | File |
 |---|---|---|
 | 1 — Full reviewer journey map | 7 steps with goal / cost / failure / trust / current-v1 / gap | `design/foundations/topic-03-ux-design-journey-map.md` §Step 1 |
-| 2 — UX acceptance criteria | 12 criteria across 7 steps; each behavioural, testable, mechanism-independent; cross-referenced to rule sheet + Lab 01 | `design/foundations/topic-03-ux-design-journey-map.md` §Step 2 |
+| 2 — UX acceptance criteria | 14 criteria across 7 steps; each behavioural, testable, mechanism-independent; cross-referenced to rule sheet + Lab 01 | `design/foundations/topic-03-ux-design-journey-map.md` §Step 2 |
 | 3 — User-need extraction | 9 v1 features + 13 v1.1 backlog items audited as need / request / solution-shape | `design/foundations/topic-03-ux-design-journey-map.md` §Step 3 |
 | 4 — Lab 01 → Lab 03 gap analysis | 11 Lab 01 findings tracked; all 11 closeable by v1.1; one honest disagreement on heuristic-vs-criterion granularity | `design/foundations/topic-03-ux-design-journey-map.md` §Step 4 |
 | 5 — Consolidated acceptance-criteria sheet | The canonical UX gate for Browser v1.1, with 13 gate-tests | `design/foundations/ux-acceptance-criteria.md` |
@@ -70,7 +70,7 @@ All three preconditions are met after this PR merges. **Browser v1.1 implementat
 ## Submission checklist (per the lab brief)
 
 - [x] Reviewer-journey map completed for all 7 steps (Step 1)
-- [x] 12 acceptance criteria produced; each cross-referenced to journey step + rule-sheet component + Lab 01 finding (Step 2)
+- [x] 14 acceptance criteria produced; each cross-referenced to journey step + rule-sheet component + Lab 01 finding (Step 2)
 - [x] User-need / request / solution-shape audit completed for all v1 features and v1.1 backlog items (Step 3)
 - [x] Lab 01 → Lab 03 gap analysis completed (Step 4)
 - [x] Consolidated acceptance-criteria sheet at `design/foundations/ux-acceptance-criteria.md` (Step 5)

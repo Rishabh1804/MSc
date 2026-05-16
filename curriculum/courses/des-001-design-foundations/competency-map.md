@@ -73,7 +73,7 @@ Grade reports:
 | Topic 3 viva answers | `viva/DES-001-viva-answers.md` Topic 3 section | Complete |
 | Update Topic 3 dashboard module | `docs/design-foundations-app/data.js` (status flipped to `done`, full notes attached, six sources) | Complete |
 | Map the full reviewer journey | `design/foundations/topic-03-ux-design-journey-map.md` §Step 1 (7 steps with goal / cost / failure / trust / current-v1) | Complete |
-| Produce UX acceptance-criteria sheet | `design/foundations/ux-acceptance-criteria.md` — 12 criteria, 13 gate-tests; Browser v1.1's UX gate | Complete |
+| Produce UX acceptance-criteria sheet | `design/foundations/ux-acceptance-criteria.md` — 14 criteria; 13 gate-tests; Browser v1.1's UX gate | Complete |
 | Run user-need / request / solution-shape audit | Journey-map doc §Step 3 (9 v1 features + 13 v1.1 backlog items audited) | Complete |
 | Run Lab 01 → Lab 03 gap analysis | Journey-map doc §Step 4 (11 findings tracked; all closeable by v1.1) | Complete |
 | Update master-browser checklist with Topic 3 gates | `design/checklists/master-browser-design-checklist.md` §20 (four UX gates) + §21 (four anti-patterns) + §22 (canonical pointer) | Complete |

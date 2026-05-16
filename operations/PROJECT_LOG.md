@@ -37,9 +37,9 @@ Type: learning / assignment / capability
 
 Summary:
 
-Closed DES-001 Topic 3 — UX design. Two PRs land the topic: PR A (#8) produces the deep-reading evidence (source-by-source notes across Don Norman / NN/g / IDEO / GOV.UK Service Manual / IxDF; source comparison; CodeMike interpretation; browser application; anti-patterns; v1.1 UX-implementation impact; checklist updates). PR B (this entry) executes Lab 03 (full reviewer-journey map + 12 UX acceptance criteria + user-need audit + Lab 01 → Lab 03 gap analysis) and appends Topic 3 sections to the master-browser checklist (§20 four UX gates + §21 four UX anti-patterns + §22 canonical pointer to the acceptance-criteria sheet).
+Closed DES-001 Topic 3 — UX design. Two PRs land the topic: PR A (#8) produces the deep-reading evidence (source-by-source notes across Don Norman / NN/g / IDEO / GOV.UK Service Manual / IxDF; source comparison; CodeMike interpretation; browser application; anti-patterns; v1.1 UX-implementation impact; checklist updates). PR B (this entry) executes Lab 03 (full reviewer-journey map + 14 UX acceptance criteria + user-need audit + Lab 01 → Lab 03 gap analysis) and appends Topic 3 sections to the master-browser checklist (§20 four UX gates + §21 four UX anti-patterns + §22 canonical pointer to the acceptance-criteria sheet).
 
-The seven-step reviewer journey (arrive / understand / narrow / compare / inspect / recover / leave) has goal / cost-budget / failure-mode / trust-check per step. v1's verdict: 0 of 7 cleanly Pass; 3 Partial; 1 Partial-to-fail; 3 Fail (Compare, Inspect, Recover). The 12 UX acceptance criteria (13 gate-tests, 12 marked as v1.1 must-pass gates) close all three Fail steps and all 11 tracked Lab 01 findings.
+The seven-step reviewer journey (arrive / understand / narrow / compare / inspect / recover / leave) has goal / cost-budget / failure-mode / trust-check per step. v1's verdict: 0 of 7 cleanly Pass; 3 Partial; 1 Partial-to-fail; 3 Fail (Compare, Inspect, Recover). The 14 UX acceptance criteria (13 gate-tests, 12 marked as v1.1 must-pass gates) close all three Fail steps and all 11 tracked Lab 01 findings.
 
 The single most operationally important discipline introduced is **GOV.UK's user-need form** applied as a backlog gate. Every v1.1 item now has a *need* (no UI mechanism named) and an *acceptance-criterion ID*. Items that cannot produce both are refused. The other four sources (Norman, NN/g, IDEO, IxDF) allow loose user-need language that lets solution-shape thinking drift in; GOV.UK alone enforces the discipline that catches it.
 
@@ -63,7 +63,7 @@ Files changed:
 Evidence produced:
 
 - Seven-step reviewer-journey map for the Destination Master Browser
-- 12 UX acceptance criteria with 13 gate-tests
+- 14 UX acceptance criteria with 13 gate-tests
 - 9 v1 features + 13 v1.1 backlog items audited as need / request / solution-shape; all produce clean user needs
 - Lab 01 → Lab 03 gap-closure trail (11 findings, all closeable by v1.1)
 - Four UX gates and four UX anti-patterns appended to the master-browser checklist

@@ -158,7 +158,7 @@ For each journey step, 1–3 testable, behavioural, mechanism-independent criter
 
 ### Acceptance-criterion summary
 
-- **12 criteria across 7 steps** (1–3 per step; cost budgets explicit where applicable)
+- **14 criteria across 7 steps** (1–3 per step; cost budgets explicit where applicable)
 - Every criterion is **behavioural** (the reviewer can do X)
 - Every criterion is **mechanism-independent** (no UI mechanism named — components are referenced via the rule sheet)
 - Every criterion is **measurable** (interaction count, time budget, or visibility requirement)
@@ -247,7 +247,7 @@ The disagreement at item 9 is the kind of thing the topic structure produces by 
 
 Per the lab brief: *"Lab 03 is complete when a second evaluator, given the acceptance-criteria sheet and the v1 browser, would produce the same pass/fail verdict for each criterion."*
 
-Each of the 12 criteria in §Step 2 is testable as a pass/fail behaviour:
+Each of the 14 criteria in §Step 2 is testable as a pass/fail behaviour:
 
 - U-ARR-1: ≤ 5s, no scroll, no interaction. **Test:** open the page, look for title + dataset + trust statement; pass if all three are visible without scrolling.
 - U-ARR-2: trust banner persistent on scroll. **Test:** scroll the page; pass if banner remains visible.
@@ -270,7 +270,7 @@ Each criterion has a clear pass/fail test. Two evaluators applying these tests t
 
 ## Findings carried into Step 5 (the consolidated sheet) and Step 6 (the checklist)
 
-- The 12 criteria in §Step 2 become the canonical UX acceptance-criteria sheet at `design/foundations/ux-acceptance-criteria.md`, with v1.1 UX gates (the must-pass subset) marked.
+- The 14 criteria in §Step 2 become the canonical UX acceptance-criteria sheet at `design/foundations/ux-acceptance-criteria.md`, with v1.1 UX gates (the must-pass subset) marked.
 - The four UX gates and four UX anti-patterns are appended to `design/checklists/master-browser-design-checklist.md` as §20 and §21.
 - The user-need audit (Step 3) becomes the canonical record of how each feature is justified; future v1.2+ additions must produce a new row.
 - The Lab 01 → Lab 03 gap analysis (Step 4) is the audit trail from heuristic-level findings to criterion-level closures.

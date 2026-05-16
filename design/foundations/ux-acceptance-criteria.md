@@ -33,7 +33,7 @@ A criterion is **passed** when two independent evaluators applying the test to t
 
 ---
 
-## 2. The criteria (12 total; 9 are v1.1 UX gates)
+## 2. The criteria (14 total; 13 are v1.1 UX gates; 1 deferred to v1.1.x)
 
 ### Arrive
 
@@ -197,9 +197,7 @@ U-REC-2   Empty state is content-rich; loading and error are distinct
 U-LEA-1   Trust signal consistent across the journey
 ```
 
-13 of the 12 listed criteria? — U-LEA-1 is the cross-cutting verification, so 12 distinct + 1 cross-cutting = 13 gate-tests. **All 13 must pass.**
-
-(U-INS-3 — Prev/Next in drawer — is desirable but not gated. If implementation cost is high it can defer to v1.1.x without blocking v1.1 ship.)
+13 of the 14 authored criteria are v1.1 UX gates. U-INS-3 (Prev/Next in the drawer) is the one deferred — desirable but not blocking; it can land in v1.1.x if implementation cost is high. U-LEA-1 is the cross-cutting verification (it tests across all journey steps, not within one). **All 13 gates must pass before v1.1 ships.**
 
 ---
 
@@ -287,6 +285,6 @@ The v1.1 walk-through test before any v1.1 PR merges: run all 13 gate criteria a
 
 | Version | Date | Change |
 |---|---:|---|
-| v1 | 2026-05-16 | Initial sheet — 12 criteria across 7 journey steps; 13 gate-tests; sourced and traceable |
+| v1 | 2026-05-16 | Initial sheet — 14 criteria across 7 journey steps; 13 are v1.1 UX gates (1 deferred to v1.1.x); 1 cross-cutting (U-LEA-1); sourced and traceable |
 
 Future versions: revisit after v1.1 ships (validate gate-tests against actual implementation), then after Topic 6 (potential additional criteria from Gestalt + Fitts'), then again at Topic 12 closure (final consolidation).
