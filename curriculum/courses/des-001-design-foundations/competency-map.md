@@ -56,9 +56,32 @@ Grade reports:
 | Update master-browser checklist with new gates | `design/checklists/master-browser-design-checklist.md` §18 (six gates) + §19 (rule-sheet pointer) | Complete |
 | Submit Lab 02 | `courses/des-001-design-foundations/submissions/lab-02-ui-design-component-inventory-results.md` | Complete |
 
+## Topic 3 — UX design (deep reading complete; Lab 03 pending)
+
+| Competency | Evidence | Status |
+|---|---|---|
+| Define UX design as a discipline (four canonical activities) | `design/foundations/topic-03-ux-design.md` §1–§2 | Complete |
+| Name the seven canonical activities' artifacts | Deep-reading doc §2 + Lecture 03 | Complete |
+| Distinguish UX from UI from usability evaluation | Deep-reading doc §1; Lecture 03 | Complete |
+| Multi-source reading across UX traditions | Deep-reading doc §3 (Norman, NN/g, IDEO, GOV.UK, IxDF) | Complete |
+| Compare source framings | Deep-reading doc §5 (agreement + difference-by-emphasis + per-source omissions) | Complete |
+| User-need vs request vs solution-shape framework | Deep-reading doc §6 + three browser examples | Complete |
+| Seven-step reviewer journey with goal/cost/failure/trust | Deep-reading doc §7 + Lecture 03 | Complete |
+| UX acceptance-criterion form with worked examples | Deep-reading doc §8 (three examples) | Complete |
+| List Topic 3 anti-patterns | Deep-reading doc §11 (four anti-patterns, each sourced) | Complete |
+| Topic 3 quiz answers | `quizzes/quiz-03-ux-design-answers.md` | Complete |
+| Topic 3 viva answers | `viva/DES-001-viva-answers.md` Topic 3 section | Complete |
+| Update Topic 3 dashboard module | `docs/design-foundations-app/data.js` (status flipped to `done`, full notes attached, six sources) | Complete |
+| Map the full reviewer journey | Lab 03 Step 1 | Pending — PR B |
+| Produce UX acceptance-criteria sheet | `design/foundations/ux-acceptance-criteria.md` via Lab 03 Step 5 | Pending — PR B |
+| Run user-need / request / solution-shape audit | Lab 03 Step 3 | Pending — PR B |
+| Run Lab 01 → Lab 03 gap analysis | Lab 03 Step 4 | Pending — PR B |
+| Update master-browser checklist with Topic 3 gates | `design/checklists/master-browser-design-checklist.md` §20 + §21 | Pending — PR B |
+| Submit Lab 03 | `submissions/lab-03-ux-design-journey-map-results.md` | Pending — PR B |
+
 ## Next recommended action
 
-Start DES-001 Topic 3 — UX design. Browser v1.1 implementation is gated on Topic 3 producing the reviewer-journey + UX-acceptance-criteria companion to the Topic 2 component rule sheet. Both are required before v1.1 code lands.
+Run Lab 03 (PR B). After Lab 03 closes, Topic 3 is fully closed and Browser v1.1 implementation can begin against (Topic 2 component rule sheet) + (Topic 3 acceptance-criteria sheet) + (master-browser checklist §3 + §18 + §20).
 
 Rationale:
 

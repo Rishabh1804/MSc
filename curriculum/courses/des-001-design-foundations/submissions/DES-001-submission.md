@@ -31,7 +31,10 @@ docs/design-foundations.html
 | Topic 2 Lab 02 inventory + state matrix + affordance audit | `design/foundations/topic-02-ui-design-component-inventory.md` | Complete |
 | Topic 2 component rule sheet (Browser v1.1 input) | `design/foundations/ui-design-component-rules.md` | Complete |
 | Topic 2 Lab 02 submission | `courses/des-001-design-foundations/submissions/lab-02-ui-design-component-inventory-results.md` | Submitted |
-| Master browser checklist | `design/checklists/master-browser-design-checklist.md` (§18 Topic 2 gates + §19 rule-sheet pointer) | Updated |
+| Topic 3 deep reading + source comparison | `design/foundations/topic-03-ux-design.md` | Complete |
+| Topic 3 quiz answers | `courses/des-001-design-foundations/quizzes/quiz-03-ux-design-answers.md` | Submitted |
+| Topic 3 viva answers | `courses/des-001-design-foundations/viva/DES-001-viva-answers.md` (Topic 3) | Submitted |
+| Master browser checklist | `design/checklists/master-browser-design-checklist.md` (§18 Topic 2 gates + §19 rule-sheet pointer; Topic 3 §20 + §21 pending PR B) | Updated |
 
 ## Reflection
 

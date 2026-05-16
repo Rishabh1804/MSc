@@ -121,15 +121,52 @@ window.DES001_TOPICS = [
   },
   {
     title: 'UX design',
-    status: 'todo',
-    summary: 'Frames product design around user goals, journeys, research, friction, prototypes, and validation.',
+    status: 'done',
+    summary: 'UX design is the discipline of understanding the user task, modelling the journey, designing the interactions that make the journey succeed, and evaluating whether the design produces success for real users. Distinct from UI design (the substrate) and usability evaluation (one phase). Topic 2 ended at component rules; Topic 3 ends at a UX acceptance-criteria sheet. Both are required before Browser v1.1 ships.',
     sources: [
-      ['Primary', 'Figma — What is UX design?', 'https://www.figma.com/resource-library/what-is-ux-design/', 'Primary curriculum source.'],
-      ['Applied', 'Nielsen Norman Group — UX Definition', 'https://www.nngroup.com/articles/definition-user-experience/', 'Research-backed UX definition and scope.'],
-      ['Cross', 'Interaction Design Foundation — UX Design', 'https://www.interaction-design.org/literature/topics/ux-design', 'Broader educational framing of UX practice.']
+      ['Primary', 'Don Norman — The Design of Everyday Things', 'https://www.basicbooks.com/titles/don-norman/the-design-of-everyday-things/9780465050659/', 'Conceptual foundation: the gulfs of execution and evaluation, the seven-stage action model, errors as design failures. Pre-dates modern journey-map practice but supplies the underlying ergonomic theory.'],
+      ['Primary', 'Nielsen Norman Group — Definition of UX + 10 Usability Heuristics', 'https://www.nngroup.com/articles/definition-user-experience/', 'Broadest UX scope ("all aspects of the end-user interaction with the company, services, and products") plus the most-cited evaluation framework. Breadth is also a risk: if everything is UX, nothing diagnoses what to fix — so the heuristics provide the diagnostic grain.'],
+      ['Applied', 'IDEO — The Field Guide to Human-Centered Design (Methods)', 'https://www.designkit.org/resources/1', 'Practical synthesis methods, journey-mapping technique with emotional state per step, "how might we" reframing. Consumer-shaped; emotional-state column is repurposed to trust-state for data-review tools.'],
+      ['Applied', 'GOV.UK Service Manual — Learning about users + Map a user\'s journey', 'https://www.gov.uk/service-manual/user-research', 'Strictest source on user-need form (As a [user], I need [outcome], so that [goal] — with no UI mechanism named). Catches solution-shape language that other sources permit. Public-service-strict; transactional-shaped, but the discipline transfers.'],
+      ['Cross', 'Interaction Design Foundation — UX Design (foundations)', 'https://www.interaction-design.org/literature/topics/ux-design', 'Educational cross-check on the integrated UX discipline (interaction design + IA + usability + accessibility). Useful for confirming the integrated picture from the other four sources is not idiosyncratic.'],
+      ['Extension', 'CodeMike — Topic 3 deep reading + journey map + acceptance criteria', 'https://github.com/Rishabh1804/MSc/blob/main/design/foundations/topic-03-ux-design.md', 'Beyond-scope source comparison plus the seven-step Destination Master Browser reviewer journey with goal / cost / failure / trust per step.']
     ],
-    notes: window.DES001_PENDING_NOTES,
-    further: ['Task analysis', 'Journey mapping', 'Usability heuristics']
+    notes: {
+      summary: 'UX design is decision work that converts user understanding into testable behavioural criteria the UI must produce. The four canonical activities (research, modelling, design, evaluation) translate to artifacts: personas + needs, journey maps + mental models, wireframes + interaction specs, usability studies + heuristic audits. Topic 3 sits in the modelling activity and produces the bridge from modelling to design (the UX acceptance-criteria sheet). The seven-step reviewer journey (arrive / understand / narrow / compare / inspect / recover / leave) is the Destination Master Browser\'s canonical journey, with goal / cost / failure-mode / trust-check per step.',
+      principles: [
+        'UX design is broader than UI: it includes the journey, the trust state, the recovery path, and the user\'s mental model at the end.',
+        'A user need must be written without naming a UI mechanism (GOV.UK form: "As a [user], I need [outcome], so that [goal]").',
+        'A UX acceptance criterion is testable, behavioural, and independent of UI mechanism. Two evaluators applying it reach the same verdict.',
+        'Every journey step has a goal, a cost budget, a failure mode, and a trust check.',
+        'Data-review tools spend most reviewer-time in non-happy paths (empty, conflict, missing-field, blocked). Happy-path-only design is a UX failure for this product category.',
+        'Trust state replaces emotional state in journey maps for data-review tools.',
+        'Topic 2\'s component rule sheet and Topic 3\'s acceptance-criteria sheet are both required before v1.1 ships — neither alone is sufficient.'
+      ],
+      comparison: 'All five sources agree that UX is broader than UI, that research must back design decisions, and that journey maps are the canonical modelling artifact. They differ on emphasis: Norman supplies the underlying ergonomic theory (the two gulfs, the seven-stage action model); NN/g supplies the broadest scope and the most-cited evaluation framework; IDEO supplies methods and emotional-state-per-step journey maps; GOV.UK supplies the strictest user-need discipline and forbids solution-shape language; IxDF cross-checks the integrated picture. For the Destination Master Browser, GOV.UK\'s user-need form is the most operationally important corrective (prevents feature-first thinking) and IDEO\'s journey-map shape (with trust-state replacing emotional-state) is the most transferable artifact.',
+      disagreements: 'User-need discipline: GOV.UK very strict; others loose. Emotional state in journey maps: IDEO explicit; others absent. Process formality: IDEO and GOV.UK high (methods and rules); Norman and NN/g loose (concepts and findings). Reading-age and content discipline: GOV.UK very strict; others permissive. Coverage of data-review tools: all five are light; the topic synthesises rather than relies on any one source\'s direct guidance.',
+      interpretation: 'CodeMike treats UX design as: extract user needs in GOV.UK form, model the journey with goal/cost/failure/trust per step, write testable acceptance criteria per step, verify the design produces those criteria, and audit the design against UX anti-patterns. Every feature has a user-need statement; every journey step has at least one acceptance criterion. The discipline produces the UX gate that Topic 2\'s rule sheet does not.',
+      application: 'The Destination Master Browser\'s reviewer journey has seven steps. The high-priority v1.1 UX gates: arrive within 5s with dataset trust state visible; narrow with active-filter summary visible and individually removable in ≤ 3 interactions per facet; compare in table mode with sortable columns; inspect opens a drawer in ≤ 2 interactions with list context preserved and trust banner in drawer header; recover from any empty-result state in ≤ 1 interaction; trust signal survives every depth (list row, table row, drawer header). The full set lives in design/foundations/ux-acceptance-criteria.md.',
+      antiPatterns: [
+        'Designing the happy path only: data-review tools spend most reviewer-time in non-happy paths; treating empty/error/loading as edge cases is a UX failure for this category.',
+        'Confusing user request with user need: a request names a mechanism; a need names an outcome. Designing for the request locks the design unnecessarily.',
+        'Skipping evaluation: shipping a journey that was never tested against real reviewer behaviour. Acceptance criteria are the minimum evaluation gate; user testing is the next step.',
+        'Ignoring the trust check at depth: trust state must survive every journey step, not just the list. Topic 1 finding carried forward at journey level.'
+      ],
+      implementation: [
+        'Add a Need column to the v1.1 backlog — every backlog item has a user need in GOV.UK form.',
+        'Add an Acceptance-criterion column to the v1.1 backlog — every item has at least one criterion from ux-acceptance-criteria.md.',
+        'Add a reviewer-walk-through test before any v1.1 PR merges — seven journey steps × all criteria; design passes only if all are satisfied.',
+        'Add an empty / loading / error verification step — each non-happy-path state must be intentionally triggered and verified.',
+        'Defer all v1.1 features not justified by an acceptance criterion (visual polish, additional filter facets, batch actions, dashboards).'
+      ],
+      checklist: [
+        'Add a criterion-presence gate: every v1.1 component must reference at least one UX acceptance criterion it implements.',
+        'Add a behaviour-testability gate: every criterion must be testable by two evaluators reaching the same pass/fail verdict.',
+        'Add a need-vs-request audit: every feature must produce a user need in GOV.UK form (no UI mechanism named).',
+        'Add a journey-completeness gate: every reviewer-journey step has at least one criterion; empty / loading / error are first-class.'
+      ]
+    },
+    further: ['design/foundations/topic-03-ux-design.md — Topic 3 deep reading + source comparison', 'design/foundations/ux-acceptance-criteria.md — Lab 03 acceptance-criteria sheet (Browser v1.1 UX gate; PR B)', 'Kim Goodwin — Designing for the Digital Age (personas + scenarios)', 'Indi Young — Mental Models', 'Jeff Patton — User Story Mapping', 'ISO 9241-210 — Human-centred design lifecycle']
   }
 ];
 

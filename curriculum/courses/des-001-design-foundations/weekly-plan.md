@@ -25,11 +25,25 @@ Closed by two PRs (PR A — reading; PR B — Lab 02):
 - `submissions/lab-02-ui-design-component-inventory-results.md` — formal Lab 02 submission
 - `design/checklists/master-browser-design-checklist.md` §18 + §19 — six Topic 2 gates + canonical rule-sheet pointer
 
-## Week 3 — UX Design Basics
+## Week 3 — UX Design Basics (active)
 
-- Study task flows, journey mapping, and user needs
-- Map reviewer journey in destination browser
-- Define UX acceptance criteria
+Scaffolded + deep-reading executed (PR A):
+
+- `lectures/lecture-03-ux-design.md`
+- `readings/topic-03-ux-design-reading-pack.md`
+- `quizzes/quiz-03-ux-design.md` + answer key + worked answers
+- `labs/lab-03-ux-design-journey-map.md`
+- `design/foundations/topic-03-ux-design.md` (16-section deep-reading doc)
+- Topic 3 viva questions + answers appended
+- `docs/design-foundations-app/data.js` Topic 3 → `done`
+
+To execute (PR B):
+
+- Run Lab 03 against the v1 browser
+- Produce `design/foundations/topic-03-ux-design-journey-map.md` (Steps 1–4 evidence)
+- Produce `design/foundations/ux-acceptance-criteria.md` (Step 5 — Browser v1.1 UX gate)
+- Append Topic 3 section to `design/checklists/master-browser-design-checklist.md` (Step 6)
+- Submit `submissions/lab-03-ux-design-journey-map-results.md`
 
 ## Week 4 — Perception and Interaction Laws
 

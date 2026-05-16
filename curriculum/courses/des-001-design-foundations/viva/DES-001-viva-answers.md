@@ -170,3 +170,100 @@ They could. The mitigation is to make the "when not to use" clause come from use
 ## How the Topic 2 answers were defended
 
 Each Topic 2 answer cites at least one specific source (Material, HIG, Carbon, GOV.UK, Norman) and at least one specific reviewer task or v1 finding. The examiner-push lines are the points where Topic 2's argument is least obvious — where a casual reader might agree and then drift back to component-shopping. The follow-ups close those drifts.
+
+## Topic 3 — UX design
+
+### 1. Define UX design and explain why "thinking about users" is not by itself UX design.
+
+UX design is the discipline of *understanding* the user's task, *modelling* the journey they take through it, *designing* the interactions that make the journey succeed, and *evaluating* whether the design actually produces success for real users. The four verbs are load-bearing — UX design is decision work that produces artifacts (journey maps, acceptance criteria, evaluation reports), not a stance.
+
+"Thinking about users" is an input — sometimes a useful one — but it produces no artifact and no decision. A team that "thinks about users" without modelling and without acceptance criteria will still design feature-first, because the abstract thinking does not constrain the next design move. UX design imposes constraints: every journey step has a goal, a cost, a failure mode, and a trust check; every feature has a user-need statement; every design has acceptance criteria that produce reproducible pass/fail verdicts.
+
+*Examiner push: "Couldn't a very experienced designer skip the artifacts and just produce good UX?"*
+
+Possibly for very small designs by a single person — but not at the team or organisation scale that DES-001 targets. The artifacts exist to make the design reproducible across reviewers and auditable across versions. A senior designer who "just knows" produces good UX once; the artifacts produce good UX repeatably and let others contribute without losing the discipline.
+
+### 2. Norman's two gulfs
+
+The **gulf of execution** is between the user's goal and the system action — *how does the user act on the system?* The **gulf of evaluation** is between the system state and the user's understanding — *how does the user know what the system did?* Every interaction crosses both. Most UX failures live in one of them.
+
+v1's `.empty` shared loading/empty/error pane sits on the **gulf of evaluation**. The system is in different states (fetching, no data, failed) but renders the same visual region with the same styling — the user has no way to tell the states apart except by reading the message text. The system has done its work; the user cannot evaluate what it did. Norman's framing is precise: a perceptible difference in feedback is not a polish issue, it is a gulf-of-evaluation failure.
+
+*Examiner push: "Isn't reading the message text sufficient evaluation?"*
+
+It's the minimum, and it's brittle. The user has to remember the three message texts and distinguish them at a glance, often under time pressure. A perceptible *visual* difference — skeleton for loading, content-rich panel for empty, error-coloured banner with action for failure — gives the user instant evaluation without reading. Reading-as-the-only-feedback is a known cognitive-load failure mode that the gulf-of-evaluation framing names explicitly.
+
+### 3. GOV.UK user-need form and the failure it prevents
+
+The form: `As a [user], I need [outcome], so that [goal]` — with **no UI mechanism named**. The failure it prevents is *solution-shape language passing as a user need*. When a team writes "users need a reset button", "users need a dropdown for region", or "users need a card view", they have already locked the design before researching the underlying outcome. The reset button is the only solution if the need is "a reset button"; if the need is "recover from over-filtering without losing orientation", the team is free to pick the best mechanism. GOV.UK's discipline keeps the design options open by forcing the need-statement form upstream of the design.
+
+*Examiner push: "Doesn't naming mechanisms make the need more concrete and testable?"*
+
+It makes it *easier to ship*, not more testable. A genuine user need is testable as a *behaviour*: can the reviewer recover from over-filtering? A mechanism-named need is testable as *presence*: is there a button? The behaviour test is the harder, more honest one. GOV.UK insists on the harder one because it is the one that survives mechanism change without rewriting requirements.
+
+### 4. Two emphasis differences that change a v1.1 design decision
+
+First: **user-need discipline**. GOV.UK strictly enforces the GOV.UK form (no UI mechanism named); NN/g, IDEO, and IxDF allow loose user-need language; Norman is conceptual rather than enforcing. Without GOV.UK in the source set, v1.1 would accept solution-shape needs ("users need a sort dropdown") and ship features that fail when the underlying behaviour wasn't isolated. With GOV.UK, every v1.1 feature must answer to a user-need statement in the strict form. This changes which v1.1 features get built and how they're specified.
+
+Second: **emotional state in journey maps**. IDEO maps emotion per journey step; the other four sources do not. For the Destination Master Browser this difference flips: emotion is not the relevant journey-state variable — *trust state* is. The trust-check column in our seven-step journey map is IDEO's emotional-state column repurposed for a data-review tool. Without IDEO's framing we wouldn't think to put a column there; without GOV.UK's substance we wouldn't fill it with trust.
+
+*Examiner push: "Are you sure trust replaces emotion? Couldn't both belong?"*
+
+Both could belong in a tool where the reviewer's experience matters in emotional terms (e.g. a public-facing data-explorer). For an internal QA reviewer doing structured work, emotional state is a less reliable signal than trust state — and trust is the variable the wrong outcome ("over-trusted unverified records") most directly damages. We can revisit if reviewer feedback shows emotional state is also important; for now trust earns the column.
+
+### 5. Seven steps + most expensive cost budget
+
+The seven steps: **arrive → understand → narrow → compare → inspect → recover → leave**.
+
+The most cognitively expensive is **Compare** (step 4). Cost budget per the deep-reading doc §7: *≤ 60s for the first comparison pass*. The reason: comparing multiple records along common attributes requires holding multiple records in working memory simultaneously, switching attention across rows, and maintaining the active filter context. Cards-only forces serial reading and is the failure mode the cost budget catches; v1.1's table mode with sortable columns is what brings the cost within budget.
+
+*Examiner push: "Inspect feels harder than Compare. Wouldn't reading a full record cost more?"*
+
+Inspect is *deeper* per record but *narrower* across records. Cognitive cost for Inspect is "read this one record carefully"; cost for Compare is "hold five records' relevant fields and switch between them". The cognitive-load literature (and Norman's framing of working memory) treats the multi-record case as the harder one. Inspect has its own budget (≤ 2 interactions to open, ≤ 5s to render) — it's not free, just bounded differently.
+
+### 6. "Compare three records side-by-side" classification and need
+
+This is a **user request** — it came from a real user (a reviewer) but it names a UI mechanism (*side-by-side*) and a system structure (*three records*). The underlying need is:
+
+> *"As a reviewer, I need to compare a small number of records (typically 2–5) on their full detail simultaneously, so that I can identify which is the strongest candidate for promotion or the one needing enrichment."*
+
+The need leaves the design open. A side-by-side three-column comparison view is one valid implementation. A multi-select table-row that opens a compact comparison drawer is another. An export-to-comparison-CSV is another. The right implementation depends on Lab 03's criteria, the cost budget for the Compare step, and how often the task occurs (which is a research question — Topic 4–5 territory).
+
+*Examiner push: "Doesn't 'compare' already exist as journey step 4? Why is this user request different?"*
+
+Journey step 4 covers *scan-by-attribute-across-many*. This request covers *deep-compare-across-few*. They are related but not the same — the cost budget differs (60s for many; longer for deep), the visual treatment differs (sortable table for many; richer comparison for few), and the resulting v1.1 features differ. The journey-map framework can accommodate this as a sub-task of step 4 or as a step-4-plus that opens from inspect — Lab 03 will decide. The request is a useful surfacing of a need that the seven-step map under-specifies.
+
+### 7. v1.1 decision that needs both sheets
+
+**Recovery from an empty-result state.** The component rule sheet (Topic 2) specifies what the component is: *a content-rich empty state component, distinct from the loading and error components, containing an active-filter summary, a Clear-all action, and a what-to-try-next message*. The acceptance-criteria sheet (Topic 3) specifies what the behaviour is: *from any empty-result state, the reviewer can return to a non-empty result set in ≤ 1 interaction; the active filters are listed and individually removable*.
+
+If the criteria sheet is missing: the components exist but the reviewer might still take 4 interactions to recover because the Clear-all is below the fold. The components passed; the behaviour failed.
+
+If the rule sheet is missing: everyone agrees recovery should be ≤ 1 interaction, but no one decided what the component is — does the reviewer click a button, remove a chip, or hit a menu? Three teams build three different empty states.
+
+Both are required. The rule sheet says *what to build*; the criteria sheet says *how it must behave*. v1.1 ships only when both are satisfied.
+
+*Examiner push: "Couldn't a sufficiently good rule sheet imply the behaviour?"*
+
+Rule sheets specify components; they say nothing about scroll position, cumulative-interaction count across the journey, or feedback latency. Two designs that ship the same components can produce very different behaviour. The criteria sheet is the gate that catches that gap.
+
+### 8. Why "happy path only" is specifically dangerous in data-review tools
+
+Most consumer products spend most user-time in happy paths: browsing Netflix, scrolling Instagram, sending email. Empty / error / loading states are real but represent a small fraction of total user-time.
+
+Data-review tools spend most reviewer-time in **non-happy paths**:
+
+- *Empty filters* — the reviewer is intentionally narrowing to find candidates with specific characteristics, and zero-result is a frequent and meaningful outcome
+- *Conflicting records* — duplicates, contradictions, ambiguous trust state are the *work* of the reviewer, not edge cases
+- *Missing fields* — incomplete data is the input the reviewer is reviewing
+- *Blocked or unverified records* — the most decision-relevant records by definition
+
+A UX that designs the happy path well and treats the rest as edge cases gets the *easy part* right and the *core work* wrong. For the Destination Master Browser, this is most visible in v1's shared `.empty` component (Lab 02 finding F3): loading, empty, and error — three of the most reviewer-relevant states — share one CSS class with text-only differentiation. The happy path looks polished; the working states are silent.
+
+*Examiner push: "Couldn't a reviewer learn to read the message text quickly?"*
+
+They could, and reviewers do, and that's exactly the problem. A working UX should not require the user to compensate for design omissions. Reviewers reading message text quickly is the *survival strategy*; the design has failed them by requiring it. Topic 3's criteria for non-happy-path states (skeleton for loading, content-rich for empty, named-error-with-action for failure) close this gap.
+
+## How the Topic 3 answers were defended
+
+Each Topic 3 answer cites at least one specific source (Norman, NN/g, IDEO, GOV.UK, IxDF), at least one specific Lab 01 / Lab 02 finding or reviewer task, and ties to the seven-step journey or the acceptance-criteria framework. The examiner-push lines are the points where Topic 3's argument is least obvious — typically where the discipline (user-need form, criteria reproducibility, non-happy-path priority) is most likely to slip back into looser practice. The follow-ups hold the line.
