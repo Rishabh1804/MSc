@@ -62,15 +62,62 @@ window.DES001_TOPICS = [
   },
   {
     title: 'What is UI design',
-    status: 'todo',
-    summary: 'Defines interface elements, controls, navigation, feedback, visual hierarchy, and interaction surfaces.',
+    status: 'done',
+    summary: 'UI design is the discipline of choosing, arranging, specifying the behaviour of, and visually treating interface elements so that a user can complete a task with low cognitive cost and unambiguous feedback. Visual design is a sub-skill within UI design, not the discipline itself. State is first-class: every interactive lives in a small state machine of default / hover / focus / active / disabled / loading / empty / error / success.',
     sources: [
-      ['Primary', 'Figma — What is UI design?', 'https://www.figma.com/resource-library/what-is-ui-design/', 'Primary design-tool explanation of UI practice.'],
-      ['Applied', 'Material Design — Foundations', 'https://m3.material.io/foundations', 'Practical component and system guidance.'],
-      ['Cross', 'Apple HIG — Foundations', 'https://developer.apple.com/design/human-interface-guidelines/foundations', 'Platform-oriented interface principles for comparison.']
+      ['Applied', 'Material Design 3 — Foundations & Components', 'https://m3.material.io/foundations', 'Most widely deployed component library on the web. Strong on density, motion, elevation, and per-component state guidance. Under-specifies "when not to use" and is light on data tables.'],
+      ['Applied', 'Apple Human Interface Guidelines — Foundations & Components', 'https://developer.apple.com/design/human-interface-guidelines/foundations', 'Platform-led, behaviour-rule-heavy. Strong on clarity, deference, and modality discipline ("a modal must be earned"). Under-specifies dense data and web translation.'],
+      ['Applied', 'IBM Carbon — Component patterns & Usage guidelines', 'https://carbondesignsystem.com/', 'Enterprise-grade. Treats the data table as a first-class primitive and ships master-detail / faceted-search as named patterns. Accessibility is built into every component spec. Under-specifies consumer surfaces.'],
+      ['Applied', 'GOV.UK Design System — Components & Patterns', 'https://design-system.service.gov.uk/', 'Public-sector, content-first, accessibility-first. Distinctive for "when NOT to use this component" guidance and research links per component. Small component set by intent. Under-specifies enterprise data tools.'],
+      ['Primary', 'Don Norman — The Design of Everyday Things (affordances/signifiers/feedback)', 'https://www.basicbooks.com/titles/don-norman/the-design-of-everyday-things/9780465050659/', 'Conceptual foundation the four design systems silently inherit. Without it the systems read like style guides. Pre-dates modern web vocabulary so requires translation.'],
+      ['Extension', 'CodeMike — Topic 2 deep reading + source comparison', 'https://github.com/Rishabh1804/MSc/blob/main/design/foundations/topic-02-what-is-ui-design.md', 'Beyond-scope source comparison across the five required sources plus five extension sources (Refactoring UI, NN/g pattern articles, Atomic Design, WCAG / ARIA APG, Smashing pattern essays).']
     ],
-    notes: window.DES001_PENDING_NOTES,
-    further: ['Navigation patterns', 'Input controls', 'Status and feedback patterns']
+    notes: {
+      summary: 'UI design is decision work: choose container, choose elements inside the container, specify all nine states (default / hover / focus / active / disabled / loading / empty / error / success), verify affordance + signifier + feedback for each interactive, and defend each component against a "when not to use" gate. Visual treatment (colour, type, illustration) is downstream of these decisions, not the design discipline itself. The five required sources differ less on definition than on emphasis: Material is permissive about modality; Apple HIG, Carbon, and GOV.UK are restrictive. Carbon alone treats the data table as a first-class enterprise primitive. GOV.UK alone publishes per-component research evidence and "when not to use" guidance. Norman supplies the underlying affordance/signifier/feedback model the others silently inherit.',
+      principles: [
+        'A component is a system (anatomy + states + behaviour + content rules + accessibility), not a shape.',
+        'States are first-class. Loading, empty, and error are the three most commonly missing — and the three a reviewer most needs when the data layer is being honest.',
+        'Modality is a cost. A modal must be either confirm-destructive or must-finish-or-cancel; any other use is rejected.',
+        'Consistency reduces cognitive load. The same action must look and behave the same wherever it appears.',
+        'Accessibility is part of the component, not an audit. Colour-only signalling fails; status is reinforced by icon and text.',
+        'The unit of design is the pattern (master-detail, faceted-search, table-with-batch-actions) — not the individual component.',
+        'Every component must have a documented "when not to use" — the GOV.UK negative-space gate.'
+      ],
+      comparison: 'All five sources agree that a component is a system, not a shape, and that consistency reduces cognitive load. They disagree by emphasis. Material has the highest component count and richest visual system (density, motion, elevation) but is permissive about modality and light on data tables. Apple HIG is platform-led, strict on consistency with platform conventions, and unusually firm on modality discipline. Carbon is enterprise-grade with the strongest data-table and master-detail vocabulary; it treats the pattern as the unit of design. GOV.UK is the most disciplined on negative space: every component lists "when NOT to use" and links to user research. Norman supplies the conceptual ground (affordance, signifier, feedback) that all four design systems silently inherit. For a reviewer-facing data-review tool, Carbon and GOV.UK do most of the work; Material supplies visual treatment; HIG supplies modality discipline; Norman supplies the per-interactive review item.',
+      disagreements: 'Modality: Material permissive vs HIG/Carbon/GOV.UK restrictive. Data tables: Carbon heavy vs the others light. "When not to use" guidance: GOV.UK explicit vs Material implicit. Reading age and content discipline: GOV.UK explicit vs others largely silent. Component count: Material ~80 vs GOV.UK ~24, reflecting opposite philosophies ("we have a component for that" vs "if it is not published you probably do not need it"). For the Destination Master Browser the HIG/Carbon/GOV.UK majority position is the right default; Material is consulted for visual treatment of chosen components.',
+      interpretation: 'CodeMike treats UI design as: choose pattern → choose container → choose elements inside container → specify all nine states → verify affordance/signifier/feedback for each interactive → defend against a "when not to use" gate. Each component must name (a) the reviewer task it serves and (b) a less-costly alternative it beat, with the reason. A component that fails either test is decoration and is refused.',
+      application: 'The Destination Master Browser is a master-detail data-review tool with faceted filtering. That phrase (Carbon vocabulary) fixes most component choices: table by default (cards as secondary), drawer for record inspection (never modal), filter chips for low-cardinality facets / dropdowns for high-cardinality / search input for free-text, Carbon Status Indicator for trust signalling at every depth, skeleton loaders not spinners, content-rich empty state with "Clear all" recovery, inline error notification with what-happened-and-what-to-do. Modality is reserved for destructive or must-finish actions like batch-promote-to-Planner.',
+      antiPatterns: [
+        'Modal-as-default container: inspecting a record should not block the list. Use a drawer.',
+        'Cards as the only main list view: cards fail "scan by attribute" and "sort by column". Provide a table.',
+        'Decorative badges: a badge with no operational meaning trains reviewers to ignore badges. Every badge must have a defined state.',
+        'Colour-only signalling: fails reviewers with low-contrast displays, colour-vision difference, or screen readers. Colour is reinforced by icon and text.',
+        'Empty-state silence: a zero-result filter combination must show the active filters, a clear-all action, and a what-to-try-next message.',
+        'Loading silence: a request in flight must render a skeleton. Blank waiting time is a Norman feedback failure.',
+        'Inconsistent affordance: the same action must use the same control across every context. Mixed list-click behaviours are findings.'
+      ],
+      implementation: [
+        'Add a table mode alongside cards. Card/table toggle in the list-header right slot. Sortable columns, sticky header, optional row expansion.',
+        'Add a record-detail drawer that opens on row click. Persistent trust banner in the drawer header. Non-modal; the list scrolls behind it.',
+        'Add an active-filter summary above the result list — removable chips per applied filter.',
+        'Add a "Clear all filters" recovery action in the empty state when filters return zero records.',
+        'Add skeleton loading states for the result region. Spinners only for global page loads.',
+        'Add an inline error notification for failed CSV loads — what failed, why, what to do.',
+        'Add a top-level dataset-trust notification banner that persists with the header.',
+        'Standardise the trust badge — one component, six states (verified / unverified / planner-ready / blocked / missing-fields / conflict / unassigned), used at row + drawer + confirm-modal.',
+        'Add focus rings to every interactive. Keyboard navigation works for every list action.',
+        'Defer decorative additions until items 1–9 are complete. No new colour palette, type scale, illustration, or animation in v1.1.'
+      ],
+      checklist: [
+        'Add a container-selection gate: every new top-level container must name the reviewer task it serves and the existing container it could replace.',
+        'Add a state-coverage gate: every interactive implements or explicitly N/As all nine standard states; missing-state findings block release.',
+        'Add an affordance/signifier/feedback gate: every interactive answers Norman\'s three questions; an empty signifier or feedback column is a finding.',
+        'Add a modality gate: a modal must be either confirm-destructive or must-finish-or-cancel; any other use is rejected.',
+        'Add a colour-plus-text rule: status conveyed by colour is also conveyed by icon and text.',
+        'Add a "when not to use" clause to every component in the system (GOV.UK posture).'
+      ]
+    },
+    further: ['design/foundations/topic-02-what-is-ui-design.md — Topic 2 deep reading + source comparison', 'Brad Frost — Atomic Design', 'WCAG 2.2 / W3C ARIA Authoring Practices', 'Schoger & Wathan — Refactoring UI', 'NN/g pattern articles (card / table / modal)', 'Smashing — when to use cards vs tables']
   },
   {
     title: 'UX design',

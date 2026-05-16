@@ -22,7 +22,13 @@ docs/design-foundations.html
 | Topic 1 exercise results | `design/foundations/topic-01-ui-vs-ux-exercise-results.md` | Complete |
 | Topic 1 lab brief | `courses/des-001-design-foundations/labs/lab-01-ui-vs-ux-browser-audit.md` | Created |
 | Topic 1 lab results | `courses/des-001-design-foundations/submissions/lab-01-ui-vs-ux-browser-audit-results.md` | Submitted |
-| Master browser checklist | `design/checklists/master-browser-design-checklist.md` | Updated |
+| Topic 1 quiz answers | `courses/des-001-design-foundations/quizzes/quiz-01-ui-vs-ux-answers.md` | Submitted |
+| Topic 1 viva answers | `courses/des-001-design-foundations/viva/DES-001-viva-answers.md` (Topic 1) | Submitted |
+| Dashboard visual verification | `courses/des-001-design-foundations/verification/dashboard-visual-verification-2026-05-16.md` | Complete |
+| Topic 2 deep reading + source comparison | `design/foundations/topic-02-what-is-ui-design.md` | Complete |
+| Topic 2 quiz answers | `courses/des-001-design-foundations/quizzes/quiz-02-what-is-ui-design-answers.md` | Submitted |
+| Topic 2 viva answers | `courses/des-001-design-foundations/viva/DES-001-viva-answers.md` (Topic 2) | Submitted |
+| Master browser checklist | `design/checklists/master-browser-design-checklist.md` | Updated (Lab 02 gates pending) |
 
 ## Reflection
 
@@ -46,9 +52,10 @@ The main v1.1 direction should therefore be workflow completion rather than visu
 ## Known limitations
 
 - ~~Full browser visual verification of `docs/design-foundations.html` is still pending.~~ Closed 2026-05-16; see `verification/dashboard-visual-verification-2026-05-16.md`.
-- Remaining DES-001 topics are scaffolded but not deeply digested.
-- Browser v1.1 implementation has not started.
-- Formal grade report and revision plan are pending.
+- Topics 3–12 are scaffolded but not deeply digested. Topic 1 and Topic 2 are both deeply digested.
+- Topic 2 Lab 02 (component catalogue + state matrix + affordance audit + container/filter rules + consolidated rule sheet) is pending — opens as a separate PR after this reading-execution PR lands.
+- Browser v1.1 implementation has not started; gated on Lab 02 rule sheet + Topic 3 closing.
+- Final (non-provisional) grade report is pending after enough topics close to justify it.
 
 ## Submission decision
 
