@@ -23,7 +23,7 @@ https://rishabh1804.github.io/MSc/repo-map.html
 
 | Course | Status | Current next step |
 |---|---|---|
-| DES-001 Design Foundations | Active | Start Topic 2 — What is UI design |
+| DES-001 Design Foundations | Active — Topic 1 graded provisional Excellent/Distinction (82/100); Topic 2 scaffolded | Execute Topic 2 reading (five required sources) and run Lab 02 |
 
 ## Primary locations
 
