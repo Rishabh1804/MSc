@@ -35,7 +35,7 @@ UI is the visible and interactive interface layer. UX is the broader task journe
 Lab 01 was executed against:
 
 ```text
-docs/destination-master-browser-v1.html
+docs/destination-master-browser-v1.0.html
 ```
 
 The lab converted Topic 1 from reading evidence into applied coursework evidence.
@@ -165,7 +165,7 @@ The Destination Master Browser is — in Carbon's pattern vocabulary — a *mast
 
 ### Open work after Topic 2 reading
 
-- Execute Lab 02 against `docs/destination-master-browser-v1.html`.
+- Execute Lab 02 against `docs/destination-master-browser-v1.0.html`.
 - Produce `design/foundations/topic-02-ui-design-component-inventory.md` (catalogue + state matrix + affordance audit).
 - Produce `design/foundations/ui-design-component-rules.md` (the consolidated rule sheet — Browser v1.1's input).
 - Update `design/checklists/master-browser-design-checklist.md` with the six new gates listed in §10 of the deep-reading doc.
@@ -181,7 +181,7 @@ Open Topic 2 Execution PR A (this commit set), then start Lab 02 on a fresh bran
 
 ### What was executed
 
-All six steps of Lab 02 against `docs/destination-master-browser-v1.html` (671 lines). The lab converted Topic 2's reading evidence into applied coursework evidence at the component level.
+All six steps of Lab 02 against `docs/destination-master-browser-v1.0.html` (671 lines). The lab converted Topic 2's reading evidence into applied coursework evidence at the component level.
 
 ### Exercises completed
 
@@ -267,7 +267,7 @@ Open Topic 3 Execution PR A (this commit set), then start Lab 03 on a fresh bran
 
 ### What was executed
 
-All six steps of Lab 03 against `docs/destination-master-browser-v1.html` (671 lines). The lab converted Topic 3's reading evidence into applied coursework evidence at the journey level.
+All six steps of Lab 03 against `docs/destination-master-browser-v1.0.html` (671 lines). The lab converted Topic 3's reading evidence into applied coursework evidence at the journey level.
 
 ### Exercises completed
 

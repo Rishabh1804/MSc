@@ -3,7 +3,7 @@
 Artifact under review:
 
 ```text
-docs/destination-master-browser-v1.html
+docs/destination-master-browser-v1.0.html
 ```
 
 Purpose:

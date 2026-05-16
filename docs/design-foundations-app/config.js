@@ -42,7 +42,7 @@ window.DES001_CONFIG = {
     paragraphs: [
       '<strong>UI vs UX changes the redesign gate:</strong> the destination master browser cannot be judged by visual polish alone. UI quality covers visible controls, layout, states, hierarchy, and affordances. UX quality covers whether the reviewer can complete the full inspection journey safely: understand dataset status, filter, inspect, compare, detect uncertainty, and avoid mistaking structural validity for Planner-readiness.',
       '<strong>Further-reading extension added:</strong> <a href="https://github.com/Rishabh1804/MSc/blob/main/design/foundations/ui-vs-ux-further-reading.md">DES-001 Topic 1 — UI vs UX Further Reading Ladder</a> expands this topic through usability heuristics, UX honeycomb scoring, GOV.UK user-needs discipline, W3C accessibility framing, and applied browser audit exercises.',
-      'Before editing <code>docs/destination-master-browser-v1.html</code>, every proposed change must answer: <code>Which reviewer task improves? Which interface element supports it? Which trust or workflow risk is reduced?</code>'
+      'Before editing <code>docs/destination-master-browser-v1.0.html</code>, every proposed change must answer: <code>Which reviewer task improves? Which interface element supports it? Which trust or workflow risk is reduced?</code>'
     ]
   }
 };

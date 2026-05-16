@@ -2,7 +2,7 @@
 
 Lab brief: `curriculum/courses/des-001-design-foundations/labs/lab-03-ux-design-journey-map.md`
 Source topic: `design/foundations/topic-03-ux-design.md`
-Target artifact: `docs/destination-master-browser-v1.html`
+Target artifact: `docs/destination-master-browser-v1.0.html`
 
 ## Executive summary
 

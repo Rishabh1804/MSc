@@ -58,7 +58,7 @@ See `charter/REPO_STRUCTURE.md` for the authoritative layout standard and `opera
 | Repository visual map | `docs/repo-map.html` |
 | Design Foundations dashboard v2 | `docs/design-foundations.html` |
 | Design Foundations app modules | `docs/design-foundations-app/` |
-| Destination Master Browser v1 | `docs/destination-master-browser-v1.html` |
+| Destination Master Browser v1 | `docs/destination-master-browser.html` |
 | DES-001 course folder | `curriculum/courses/des-001-design-foundations/` |
 | CodeMike Cockpit (PWA) | `cockpit/` (deployed to GitHub Pages via `.github/workflows/cockpit-build.yml`) |
 

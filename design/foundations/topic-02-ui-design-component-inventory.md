@@ -1,7 +1,7 @@
 # Topic 2 — UI Design Component Inventory & State / Affordance Audit
 
 Lab brief: `curriculum/courses/des-001-design-foundations/labs/lab-02-ui-design-component-inventory.md`
-Target artifact: `docs/destination-master-browser-v1.html` (671 lines, single-file dashboard)
+Target artifact: `docs/destination-master-browser-v1.0.html` (671 lines, single-file dashboard)
 Source topic: `design/foundations/topic-02-what-is-ui-design.md`
 
 Steps 1–3 of Lab 02 are executed here. Steps 4–6 (container rules, filter rules, consolidated rule sheet) live in `design/foundations/ui-design-component-rules.md`. The formal lab submission with executive summary and findings lives in `curriculum/courses/des-001-design-foundations/submissions/lab-02-ui-design-component-inventory-results.md`.

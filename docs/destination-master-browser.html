@@ -1,0 +1,1176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CodeMike — Destination Master Browser</title>
+  <meta name="description" content="QA review interface for the destinations_master_v2 reference layer. Reference data: structurally valid; not Planner-ready." />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --panel: #ffffff;
+      --line: #e2e8f0;
+      --soft: #f1f5f9;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --warn: #b45309;
+      --warn-soft: #fef3c7;
+      --warn-line: #fde68a;
+      --good: #047857;
+      --good-soft: #d1fae5;
+      --info: #1d4ed8;
+      --info-soft: #dbeafe;
+      --risk: #be123c;
+      --risk-soft: #ffe4e6;
+      --risk-line: #fecdd3;
+      --neutral: #475569;
+      --neutral-soft: #e2e8f0;
+      --radius: 16px;
+      --shadow-sm: 0 2px 6px rgba(15, 23, 42, .05);
+      --shadow: 0 18px 40px rgba(15, 23, 42, .08);
+      --shadow-lg: 0 30px 60px rgba(15, 23, 42, .18);
+      --focus-ring: 2px solid #1d4ed8;
+      --focus-offset: 2px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { background: var(--bg); color: var(--ink); }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    :focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-offset); border-radius: 4px; }
+
+    .wrap { width: min(1280px, calc(100vw - 32px)); margin: 0 auto; }
+
+    /* === Sticky trust banner === */
+    .trust-banner {
+      position: sticky; top: 0; z-index: 30;
+      background: var(--warn-soft);
+      border-bottom: 1px solid var(--warn-line);
+      color: #78350f;
+    }
+    .trust-banner-inner {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 12px 16px;
+    }
+    .trust-banner svg { flex: 0 0 auto; margin-top: 2px; }
+    .trust-banner-text { font-size: 14px; }
+    .trust-banner-text strong { color: #92400e; }
+
+    /* === Header === */
+    header.app-header {
+      background: linear-gradient(180deg, #eff6ff 0, transparent 80%);
+      padding: 28px 0 12px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--info);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    h1 { margin: 0; font-size: clamp(28px, 4vw, 42px); line-height: 1.05; letter-spacing: -0.03em; }
+    .subtitle { color: var(--muted); margin: 8px 0 0; max-width: 70ch; font-size: 15px; }
+
+    /* === Toolbar === */
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) repeat(5, minmax(140px, 1fr)) auto;
+      gap: 10px;
+      margin: 18px 0 8px;
+      padding: 12px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+    .field { display: grid; gap: 4px; }
+    .field label { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .02em; text-transform: uppercase; }
+    .field .search-row { position: relative; }
+    .field input,
+    .field select {
+      width: 100%;
+      padding: 8px 32px 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel);
+      color: var(--ink);
+      font: inherit;
+    }
+    .field select { padding-right: 24px; }
+    .field input:hover, .field select:hover { border-color: #94a3b8; }
+    .field input:focus, .field select:focus { border-color: var(--accent); }
+    .field.has-value select,
+    .field.has-value input { border-color: var(--accent); }
+    .field.has-value::after {
+      content: "";
+      position: absolute;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      right: -2px; top: -2px;
+    }
+    .field { position: relative; }
+    .clear-search {
+      position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+      width: 24px; height: 24px;
+      border: 0; background: transparent; cursor: pointer;
+      color: var(--muted);
+      border-radius: 50%;
+      display: none;
+    }
+    .field.has-value .clear-search { display: inline-flex; align-items: center; justify-content: center; }
+    .clear-search:hover { background: var(--soft); color: var(--ink); }
+
+    .view-toggle {
+      display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; align-self: end;
+    }
+    .view-toggle button {
+      padding: 8px 12px; background: var(--panel); border: 0; cursor: pointer; font: inherit; color: var(--muted);
+      display: inline-flex; gap: 6px; align-items: center;
+    }
+    .view-toggle button[aria-pressed="true"] { background: var(--accent-soft); color: var(--info); font-weight: 600; }
+    .view-toggle button:hover { background: var(--soft); }
+    .view-toggle button[aria-pressed="true"]:hover { background: var(--accent-soft); }
+
+    /* === Active filter summary === */
+    .active-filters {
+      display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+      margin: 6px 0 16px;
+      padding: 10px 12px;
+      background: var(--soft);
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .active-filters.empty { display: none; }
+    .active-filters .chip-active {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 6px 4px 10px;
+      background: var(--accent-soft); color: var(--info);
+      border-radius: 999px; font-weight: 600;
+    }
+    .active-filters .chip-active button {
+      background: transparent; border: 0; color: var(--info); cursor: pointer;
+      width: 18px; height: 18px; padding: 0; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .active-filters .chip-active button:hover { background: rgba(29, 78, 216, .15); }
+    .active-filters .label { font-weight: 600; color: var(--ink); }
+    .active-filters .count { font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 600; }
+    .clear-all {
+      margin-left: auto;
+      padding: 6px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--panel); color: var(--ink); cursor: pointer; font: inherit;
+    }
+    .clear-all:hover { background: var(--soft); }
+
+    /* === Stats === */
+    .stats {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px;
+      margin: 0 0 16px;
+    }
+    .stat { padding: 12px 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; }
+    .stat .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; font-weight: 700; }
+    .stat .value { font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; margin-top: 2px; }
+    .stat.skel .value { background: var(--neutral-soft); color: transparent; border-radius: 4px; animation: pulse 1.4s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+
+    /* === Layout === */
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(220px, 280px) 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    aside {
+      position: sticky; top: 88px;
+      background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 14px; box-shadow: var(--shadow-sm);
+    }
+    .side-section + .side-section { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .side-section h2 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+    .mini-list { display: grid; gap: 4px; }
+    .mini-row { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; }
+    .mini-row strong { font-variant-numeric: tabular-nums; }
+    .footer-note { color: var(--muted); font-size: 12px; margin: 14px 0 0; }
+    .footer-note code { background: var(--soft); padding: 1px 6px; border-radius: 6px; }
+
+    /* === Result region: table === */
+    .result-region { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .result-region[hidden] { display: none !important; }
+    table.records {
+      width: 100%; border-collapse: collapse; font-size: 13px;
+    }
+    table.records thead th {
+      background: var(--soft); text-align: left;
+      padding: 10px 12px; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: .04em;
+      color: var(--muted); border-bottom: 1px solid var(--line);
+      cursor: pointer; user-select: none;
+    }
+    table.records thead th[aria-sort="ascending"]::after { content: " ▲"; color: var(--accent); }
+    table.records thead th[aria-sort="descending"]::after { content: " ▼"; color: var(--accent); }
+    table.records thead th[data-sort]:hover { color: var(--ink); }
+    table.records tbody tr {
+      cursor: pointer; transition: background-color .12s ease-out;
+    }
+    table.records tbody tr:hover, table.records tbody tr:focus-within { background: var(--accent-soft); }
+    table.records tbody td {
+      padding: 8px 12px; border-bottom: 1px solid var(--line);
+      vertical-align: middle;
+    }
+    table.records tbody td.name { font-weight: 600; color: var(--ink); }
+    table.records tbody td.place { color: var(--muted); }
+    table.records tbody td.id { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: var(--muted); }
+
+    /* === Result region: cards === */
+    .cards {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px; padding: 12px;
+    }
+    .card {
+      position: relative;
+      padding: 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+      cursor: pointer; transition: background-color .12s ease-out, border-color .12s ease-out, transform .08s;
+    }
+    .card:hover { background: #fbfdff; border-color: #cbd5e1; }
+    .card:active { transform: translateY(1px); }
+    .card-open-icon {
+      position: absolute; top: 12px; right: 12px;
+      color: var(--muted);
+    }
+    .card .name { font-weight: 700; font-size: 15px; margin-bottom: 2px; }
+    .card .place { color: var(--muted); font-size: 13px; margin-bottom: 8px; }
+    .card .id { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; color: var(--muted); }
+    .card .meta-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px;
+      margin: 10px 0 8px;
+    }
+    .meta-cell .k { color: var(--muted); font-size: 11px; }
+    .meta-cell .v { font-size: 13px; }
+    .card-chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+
+    /* === Trust badge === */
+    .trust-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em;
+      white-space: nowrap;
+      border: 1px solid transparent;
+    }
+    .trust-badge[data-state="verified"]    { background: var(--info-soft); color: var(--info); border-color: #bfdbfe; }
+    .trust-badge[data-state="planner-ready"] { background: var(--good-soft); color: var(--good); border-color: #a7f3d0; }
+    .trust-badge[data-state="unverified"]  { background: var(--warn-soft); color: var(--warn); border-color: var(--warn-line); }
+    .trust-badge[data-state="blocked"]     { background: var(--risk-soft); color: var(--risk); border-color: var(--risk-line); }
+    .trust-badge[data-state="missing-fields"] { background: #fef9c3; color: #854d0e; border-color: #fde68a; }
+    .trust-badge[data-state="conflict"]    { background: #fae8ff; color: #86198f; border-color: #f5d0fe; }
+    .trust-badge[data-state="unassigned"]  { background: var(--neutral-soft); color: var(--neutral); border-color: #cbd5e1; }
+
+    .trust-badge .icon { width: 12px; height: 12px; }
+
+    /* === Status pill (Planner-only, distinct from trust badge) === */
+    .planner-pill {
+      display: inline-flex; padding: 2px 8px; border-radius: 999px;
+      background: var(--soft); color: var(--neutral);
+      font-size: 11px; font-weight: 600;
+    }
+
+    /* === Chips (display) === */
+    .chip {
+      display: inline-flex; padding: 2px 8px;
+      background: var(--soft); color: var(--neutral);
+      border-radius: 999px; font-size: 11px;
+      border: 1px solid var(--line);
+    }
+    .chip.good { background: var(--good-soft); color: var(--good); border-color: #a7f3d0; }
+    .chip.warn { background: var(--warn-soft); color: var(--warn); border-color: var(--warn-line); }
+
+    /* === Skeleton loader === */
+    .skeleton { padding: 18px; }
+    .skel-row {
+      height: 28px; margin: 8px 0; border-radius: 6px;
+      background: linear-gradient(90deg, var(--soft) 0%, var(--neutral-soft) 50%, var(--soft) 100%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s ease-in-out infinite;
+    }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    /* === Empty / error states === */
+    .empty-state, .error-state {
+      padding: 28px 24px; text-align: left;
+      display: grid; gap: 12px;
+    }
+    .empty-state h3, .error-state h3 { margin: 0; font-size: 18px; }
+    .empty-state .filters-listed {
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .empty-state .filters-listed .chip-active {
+      display: inline-flex; gap: 6px; align-items: center;
+      padding: 4px 10px; background: var(--accent-soft); color: var(--info);
+      border-radius: 999px; font-size: 12px; font-weight: 600;
+    }
+    .empty-state .suggestion { color: var(--muted); font-size: 14px; }
+    .empty-state .actions, .error-state .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 14px;
+      background: var(--accent); color: white; border: 0; border-radius: 999px;
+      cursor: pointer; font: inherit; font-weight: 600;
+    }
+    .btn:hover { filter: brightness(1.05); }
+    .btn.secondary { background: var(--panel); color: var(--ink); border: 1px solid var(--line); }
+    .btn.secondary:hover { background: var(--soft); }
+    .error-state { background: var(--risk-soft); color: #881337; border-bottom: 1px solid var(--risk-line); }
+
+    /* === Drawer === */
+    .drawer-overlay {
+      position: fixed; inset: 0;
+      background: rgba(15, 23, 42, .35);
+      opacity: 0; pointer-events: none;
+      transition: opacity .15s ease-out;
+      z-index: 40;
+    }
+    .drawer-overlay.open { opacity: 1; pointer-events: auto; }
+    .drawer {
+      position: fixed; top: 0; right: 0; bottom: 0;
+      width: min(560px, 100vw); max-width: 100vw;
+      background: var(--panel);
+      box-shadow: var(--shadow-lg);
+      transform: translateX(110%);
+      transition: transform .2s ease-out;
+      z-index: 50;
+      display: grid; grid-template-rows: auto auto 1fr; min-height: 0;
+    }
+    .drawer.open { transform: translateX(0); }
+    .drawer[hidden], .drawer-overlay[hidden] { display: none !important; }
+    .drawer-header {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+      display: flex; gap: 12px; justify-content: space-between; align-items: center;
+    }
+    .drawer-header .name { font-weight: 700; font-size: 18px; }
+    .drawer-header .place { color: var(--muted); font-size: 13px; }
+    .drawer-trust {
+      padding: 10px 18px;
+      background: var(--warn-soft); color: #78350f;
+      font-size: 13px;
+      border-bottom: 1px solid var(--warn-line);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .drawer-body { overflow-y: auto; padding: 14px 18px; }
+    .drawer-section + .drawer-section { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+    .drawer-section h3 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+    .drawer .row { display: grid; grid-template-columns: 140px 1fr; gap: 8px 14px; font-size: 13px; padding: 4px 0; }
+    .drawer .row dt { color: var(--muted); font-weight: 600; }
+    .drawer .row dd { margin: 0; word-break: break-word; }
+    .drawer .nav {
+      display: inline-flex; gap: 4px;
+    }
+    .icon-button {
+      width: 32px; height: 32px;
+      border: 1px solid var(--line); background: var(--panel); color: var(--ink);
+      border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+    }
+    .icon-button:hover { background: var(--soft); }
+    .icon-button[disabled] { opacity: .4; cursor: not-allowed; }
+
+    /* === Mobile === */
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { position: static; }
+      .toolbar { grid-template-columns: 1fr 1fr; }
+      .toolbar .field:first-child { grid-column: 1 / -1; }
+      .toolbar .view-toggle { grid-column: 1 / -1; justify-self: start; }
+      table.records tbody td.id, table.records thead th.id { display: none; }
+    }
+    @media (max-width: 600px) {
+      .toolbar { grid-template-columns: 1fr; }
+      .drawer { width: 100vw; }
+    }
+
+    /* === Reduced motion === */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* === Screen-reader only === */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+</head>
+<body>
+  <!-- Sticky dataset-trust banner: U-ARR-1, U-ARR-2, U-UND-1 -->
+  <div class="trust-banner" role="region" aria-label="Dataset trust state">
+    <div class="wrap trust-banner-inner">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+      </svg>
+      <div class="trust-banner-text">
+        <strong>Reference layer — not Planner-ready.</strong>
+        This dataset is structurally valid and useful for QA review. It is <em>not</em> a verified source for visa, route, safety, or family-suitability claims. Every record carries a trust badge — read it before acting on the data.
+      </div>
+    </div>
+  </div>
+
+  <header class="app-header">
+    <div class="wrap">
+      <span class="eyebrow">CodeMike · Destination Master Browser · v1.1</span>
+      <h1>Destination Master Browser</h1>
+      <p class="subtitle">QA review interface for the <code>destinations_master_v2</code> reference layer (359 rows). Browse, narrow, compare, inspect, recover — with trust state visible at every depth.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Toolbar: search + selects + view toggle -->
+    <div class="toolbar" role="search" aria-label="Filter destinations">
+      <div class="field" id="searchField">
+        <label for="search">Search</label>
+        <div class="search-row">
+          <input id="search" type="search" placeholder="Name, place, ID, tag…" autocomplete="off" />
+          <button class="clear-search" type="button" aria-label="Clear search" data-clear="search">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="field" id="sourceLayerField">
+        <label for="sourceLayer">Source layer</label>
+        <select id="sourceLayer"><option value="">All sources</option></select>
+      </div>
+      <div class="field" id="macroRegionField">
+        <label for="macroRegion">Region</label>
+        <select id="macroRegion"><option value="">All regions</option></select>
+      </div>
+      <div class="field" id="scaleField">
+        <label for="scale">Scale</label>
+        <select id="scale"><option value="">All scales</option></select>
+      </div>
+      <div class="field" id="plannerStatusField">
+        <label for="plannerStatus">Planner status</label>
+        <select id="plannerStatus"><option value="">All Planner states</option></select>
+      </div>
+      <div class="field" id="verificationField">
+        <label for="verification">Verification</label>
+        <select id="verification"><option value="">All verification</option></select>
+      </div>
+      <div class="view-toggle" role="group" aria-label="View mode">
+        <button id="viewTable" aria-pressed="true" type="button">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+          Table
+        </button>
+        <button id="viewCards" aria-pressed="false" type="button">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/></svg>
+          Cards
+        </button>
+      </div>
+    </div>
+
+    <!-- Active-filter summary: U-NAR-1 -->
+    <div class="active-filters empty" id="activeFilters" role="status" aria-live="polite" aria-atomic="true">
+      <span class="label">Active filters</span>
+      <div id="activeFilterChips" style="display: contents;"></div>
+      <span><span class="count" id="resultCount">0</span> of <span class="count" id="totalCount">0</span> records</span>
+      <button class="clear-all" id="clearAll" type="button">Clear all</button>
+    </div>
+
+    <!-- Stats banner -->
+    <section class="stats" id="stats" aria-label="Result summary"></section>
+
+    <!-- Layout: side panel + result region -->
+    <div class="layout">
+      <aside aria-label="Dataset snapshot">
+        <div class="side-section">
+          <h2>Dataset snapshot</h2>
+          <div class="mini-list" id="snapshot"></div>
+        </div>
+        <div class="side-section">
+          <h2>Top destination scales</h2>
+          <div class="mini-list" id="scaleList"></div>
+        </div>
+        <div class="side-section">
+          <h2>Source files</h2>
+          <div class="mini-list">
+            <div class="mini-row"><span>Seed</span><strong>134</strong></div>
+            <div class="mini-row"><span>Normalized candidates</span><strong>225</strong></div>
+          </div>
+        </div>
+        <p class="footer-note">
+          Source: <code>datasets/reference/destinations_master_v2.csv</code><br />
+          Validation: <code>master_structurally_valid_not_planner_ready</code><br />
+          Predecessor: <a href="destination-master-browser-v1.0.html">v1.0 (archived)</a>
+        </p>
+      </aside>
+
+      <section aria-label="Records" style="min-width: 0;">
+        <!-- Loading state: skeleton (U-REC-2) -->
+        <div class="result-region" id="resultLoading">
+          <div class="skeleton" aria-live="polite" aria-busy="true">
+            <span class="sr-only">Loading master destination records…</span>
+            <div class="skel-row" style="width: 95%;"></div>
+            <div class="skel-row" style="width: 88%;"></div>
+            <div class="skel-row" style="width: 92%;"></div>
+            <div class="skel-row" style="width: 80%;"></div>
+            <div class="skel-row" style="width: 90%;"></div>
+            <div class="skel-row" style="width: 76%;"></div>
+          </div>
+        </div>
+
+        <!-- Error state: inline notification with retry (U-REC-2) -->
+        <div class="result-region error-state" id="resultError" hidden>
+          <h3>Couldn't load the master dataset</h3>
+          <p id="errorMessage">Unknown error.</p>
+          <div class="actions">
+            <button class="btn" id="retryBtn" type="button">Retry</button>
+            <a class="btn secondary" href="https://github.com/Rishabh1804/MSc/issues" target="_blank" rel="noopener">Report an issue</a>
+          </div>
+        </div>
+
+        <!-- Empty state: content-rich (U-REC-1, U-REC-2) -->
+        <div class="result-region empty-state" id="resultEmpty" hidden>
+          <h3>No records match the active filters.</h3>
+          <p>Active filters:</p>
+          <div class="filters-listed" id="emptyFiltersListed"></div>
+          <p class="suggestion" id="emptySuggestion">Try removing one filter, or clear them all to see the full dataset again.</p>
+          <div class="actions">
+            <button class="btn" id="emptyClearAll" type="button">Clear all filters</button>
+          </div>
+        </div>
+
+        <!-- Table mode (default v1.1): U-COM-1, U-COM-2 -->
+        <div class="result-region" id="resultTable" hidden>
+          <table class="records" aria-label="Destination records">
+            <thead>
+              <tr>
+                <th scope="col" data-sort="trust" aria-sort="none">Trust</th>
+                <th scope="col" data-sort="canonical_name" aria-sort="none">Name</th>
+                <th scope="col" data-sort="place" aria-sort="none">Place</th>
+                <th scope="col" data-sort="destination_scale" aria-sort="none">Scale</th>
+                <th scope="col" data-sort="source_layer" aria-sort="none">Source</th>
+                <th scope="col" data-sort="verification_status" aria-sort="none">Verification</th>
+                <th scope="col" data-sort="planner_use_status" aria-sort="none">Planner</th>
+                <th scope="col" class="id" data-sort="destination_master_id" aria-sort="none">ID</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+
+        <!-- Cards mode (secondary v1.1): U-COM-2 -->
+        <div class="result-region" id="resultCards" hidden>
+          <div class="cards" id="cardsBody"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Record-detail drawer: U-INS-1, U-INS-2 -->
+  <div class="drawer-overlay" id="drawerOverlay" hidden></div>
+  <aside class="drawer" id="drawer" role="dialog" aria-modal="false" aria-labelledby="drawerName" hidden>
+    <div class="drawer-header">
+      <div>
+        <div class="name" id="drawerName"></div>
+        <div class="place" id="drawerPlace"></div>
+      </div>
+      <div class="nav">
+        <button class="icon-button" id="drawerPrev" aria-label="Previous record" type="button" disabled>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <button class="icon-button" id="drawerNext" aria-label="Next record" type="button" disabled>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <button class="icon-button" id="drawerClose" aria-label="Close" type="button">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="drawer-trust" id="drawerTrust">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+      <span id="drawerTrustText">Trust state</span>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </aside>
+
+  <script>
+    const CSV_URL = 'https://raw.githubusercontent.com/Rishabh1804/MSc/main/datasets/reference/destinations_master_v2.csv';
+
+    const state = {
+      rows: [],
+      filtered: [],
+      sortKey: 'canonical_name',
+      sortDir: 'ascending',
+      view: 'table',
+      drawerIndex: -1
+    };
+
+    const els = {
+      search: document.getElementById('search'),
+      sourceLayer: document.getElementById('sourceLayer'),
+      macroRegion: document.getElementById('macroRegion'),
+      scale: document.getElementById('scale'),
+      plannerStatus: document.getElementById('plannerStatus'),
+      verification: document.getElementById('verification'),
+      stats: document.getElementById('stats'),
+      snapshot: document.getElementById('snapshot'),
+      scaleList: document.getElementById('scaleList'),
+      tableBody: document.getElementById('tableBody'),
+      cardsBody: document.getElementById('cardsBody'),
+      activeFilters: document.getElementById('activeFilters'),
+      activeFilterChips: document.getElementById('activeFilterChips'),
+      resultCount: document.getElementById('resultCount'),
+      totalCount: document.getElementById('totalCount'),
+      clearAll: document.getElementById('clearAll'),
+      emptyClearAll: document.getElementById('emptyClearAll'),
+      emptyFiltersListed: document.getElementById('emptyFiltersListed'),
+      retryBtn: document.getElementById('retryBtn'),
+      errorMessage: document.getElementById('errorMessage'),
+      resultLoading: document.getElementById('resultLoading'),
+      resultError: document.getElementById('resultError'),
+      resultEmpty: document.getElementById('resultEmpty'),
+      resultTable: document.getElementById('resultTable'),
+      resultCards: document.getElementById('resultCards'),
+      viewTable: document.getElementById('viewTable'),
+      viewCards: document.getElementById('viewCards'),
+      drawer: document.getElementById('drawer'),
+      drawerOverlay: document.getElementById('drawerOverlay'),
+      drawerName: document.getElementById('drawerName'),
+      drawerPlace: document.getElementById('drawerPlace'),
+      drawerTrust: document.getElementById('drawerTrust'),
+      drawerTrustText: document.getElementById('drawerTrustText'),
+      drawerBody: document.getElementById('drawerBody'),
+      drawerPrev: document.getElementById('drawerPrev'),
+      drawerNext: document.getElementById('drawerNext'),
+      drawerClose: document.getElementById('drawerClose'),
+    };
+
+    const FILTER_FIELDS = [
+      { key: 'sourceLayer', el: els.sourceLayer, label: 'Source', field: 'source_layer' },
+      { key: 'macroRegion', el: els.macroRegion, label: 'Region', field: 'macro_region' },
+      { key: 'scale', el: els.scale, label: 'Scale', field: 'destination_scale' },
+      { key: 'plannerStatus', el: els.plannerStatus, label: 'Planner', field: 'planner_use_status' },
+      { key: 'verification', el: els.verification, label: 'Verification', field: 'verification_status' },
+    ];
+
+    /* ---------- CSV parsing (preserved from v1) ---------- */
+    function parseCSV(text) {
+      const rows = []; let row = []; let value = ''; let inQuotes = false;
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i], n = text[i + 1];
+        if (c === '"' && inQuotes && n === '"') { value += '"'; i++; }
+        else if (c === '"') { inQuotes = !inQuotes; }
+        else if (c === ',' && !inQuotes) { row.push(value); value = ''; }
+        else if ((c === '\n' || c === '\r') && !inQuotes) {
+          if (c === '\r' && n === '\n') i++;
+          row.push(value);
+          if (row.some(cell => cell.length > 0)) rows.push(row);
+          row = []; value = '';
+        } else { value += c; }
+      }
+      if (value || row.length) { row.push(value); rows.push(row); }
+      const headers = rows.shift() || [];
+      return rows.map(values => Object.fromEntries(headers.map((h, i) => [h, values[i] || ''])));
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;').replaceAll("'", '&#039;');
+    }
+
+    function uniqueValues(rows, key) {
+      return [...new Set(rows.map(r => r[key]).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+    }
+
+    function fillSelect(select, values) {
+      values.forEach(v => {
+        const o = document.createElement('option');
+        o.value = v; o.textContent = v;
+        select.appendChild(o);
+      });
+    }
+
+    function searchableText(row) {
+      return [
+        row.destination_master_id, row.canonical_name, row.country, row.macro_region,
+        row.state_or_area, row.district_or_area, row.destination_scale, row.location_type,
+        row.vibe_1, row.vibe_2, row.vibe_3, row.trip_style_tags, row.context_tags, row.caution_tags,
+        row.source_layer, row.source_id
+      ].join(' ').toLowerCase();
+    }
+
+    function placeOf(row) {
+      return [row.district_or_area, row.state_or_area, row.country].filter(Boolean).join(', ');
+    }
+
+    /* ---------- Trust badge: maps record → state + label + icon ---------- */
+    function trustStateOf(row) {
+      const v = row.verification_status || '';
+      const p = row.planner_use_status || '';
+      if (p === 'planner_ready') return 'planner-ready';
+      if (v === 'blocked' || p === 'blocked') return 'blocked';
+      if (v === 'conflict') return 'conflict';
+      if (v === 'verified' || v === 'seed_verified') return 'verified';
+      if (v === 'missing_fields') return 'missing-fields';
+      if (v === 'seed_unverified' || v === 'candidate' || p === 'needs_verification') return 'unverified';
+      if (!v && !p) return 'unassigned';
+      return 'unverified';
+    }
+
+    const TRUST_LABEL = {
+      'verified': 'Verified',
+      'planner-ready': 'Planner-ready',
+      'unverified': 'Unverified',
+      'blocked': 'Blocked',
+      'missing-fields': 'Missing fields',
+      'conflict': 'Conflict',
+      'unassigned': 'Unassigned'
+    };
+
+    function trustBadge(row) {
+      const s = trustStateOf(row);
+      return `<span class="trust-badge" data-state="${s}" title="${TRUST_LABEL[s]}">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">${trustIconPath(s)}</svg>
+        ${TRUST_LABEL[s]}
+      </span>`;
+    }
+
+    function trustIconPath(state) {
+      switch (state) {
+        case 'verified': return '<path d="m9 12 2 2 4-4M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z"/>';
+        case 'planner-ready': return '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4 12 14.01l-3-3"/>';
+        case 'unverified': return '<path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>';
+        case 'blocked': return '<circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 14.14 14.14"/>';
+        case 'missing-fields': return '<circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>';
+        case 'conflict': return '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>';
+        case 'unassigned':
+        default: return '<circle cx="12" cy="12" r="10"/><path d="M12 12h.01"/>';
+      }
+    }
+
+    function plannerPill(row) {
+      const p = row.planner_use_status || 'unassigned';
+      return `<span class="planner-pill">${escapeHtml(p)}</span>`;
+    }
+
+    /* ---------- Filtering / sorting ---------- */
+    function getActiveFilters() {
+      const list = [];
+      const q = els.search.value.trim();
+      if (q) list.push({ key: 'search', label: 'Search', value: q });
+      FILTER_FIELDS.forEach(f => {
+        if (f.el.value) list.push({ key: f.key, label: f.label, value: f.el.value });
+      });
+      return list;
+    }
+
+    function applyFilters() {
+      const q = els.search.value.trim().toLowerCase();
+      state.filtered = state.rows.filter(row => {
+        if (q && !searchableText(row).includes(q)) return false;
+        for (const f of FILTER_FIELDS) {
+          if (f.el.value && row[f.field] !== f.el.value) return false;
+        }
+        return true;
+      });
+      sortRows();
+      reflectFieldStates();
+      render();
+    }
+
+    function reflectFieldStates() {
+      // U-NAR-2: visible "non-default" indicator on selects + search
+      const has = els.search.value.trim().length > 0;
+      document.getElementById('searchField').classList.toggle('has-value', has);
+      FILTER_FIELDS.forEach(f => {
+        document.getElementById(f.key + 'Field').classList.toggle('has-value', !!f.el.value);
+      });
+    }
+
+    function sortValue(row, key) {
+      if (key === 'place') return placeOf(row).toLowerCase();
+      if (key === 'trust') {
+        const order = { 'planner-ready': 0, 'verified': 1, 'unverified': 2, 'missing-fields': 3, 'conflict': 4, 'blocked': 5, 'unassigned': 6 };
+        return order[trustStateOf(row)] ?? 9;
+      }
+      return (row[key] || '').toLowerCase();
+    }
+
+    function sortRows() {
+      const k = state.sortKey, dir = state.sortDir === 'ascending' ? 1 : -1;
+      state.filtered.sort((a, b) => {
+        const av = sortValue(a, k), bv = sortValue(b, k);
+        if (av < bv) return -1 * dir;
+        if (av > bv) return 1 * dir;
+        return 0;
+      });
+    }
+
+    /* ---------- Rendering ---------- */
+    function render() {
+      renderActiveFilters();
+      renderStats();
+      renderSnapshot();
+      const empty = state.filtered.length === 0;
+      els.resultLoading.hidden = true;
+      els.resultError.hidden = true;
+      els.resultEmpty.hidden = !empty;
+      els.resultTable.hidden = empty || state.view !== 'table';
+      els.resultCards.hidden = empty || state.view !== 'cards';
+      if (empty) {
+        renderEmptyState();
+      } else if (state.view === 'table') {
+        renderTable();
+      } else {
+        renderCards();
+      }
+    }
+
+    function renderActiveFilters() {
+      const active = getActiveFilters();
+      els.activeFilters.classList.toggle('empty', active.length === 0);
+      els.totalCount.textContent = state.rows.length;
+      els.resultCount.textContent = state.filtered.length;
+      els.activeFilterChips.innerHTML = active.map(f => `
+        <span class="chip-active">${escapeHtml(f.label)}: ${escapeHtml(f.value)}
+          <button type="button" data-remove="${f.key}" aria-label="Remove ${escapeHtml(f.label)} filter">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </span>
+      `).join('');
+    }
+
+    function renderStats() {
+      const rows = state.filtered;
+      const all = state.rows;
+      const plannerReady = rows.filter(r => r.planner_use_status === 'planner_ready').length;
+      const needsVerification = rows.filter(r => r.planner_use_status === 'needs_verification').length;
+      const seed = rows.filter(r => r.source_layer === 'seed').length;
+      const candidates = rows.filter(r => r.source_layer === 'normalized_candidate').length;
+      els.stats.innerHTML = [
+        ['Showing', rows.length],
+        ['Total master rows', all.length],
+        ['Seed rows', seed],
+        ['Candidate rows', candidates],
+        ['Needs verification', needsVerification],
+        ['Planner-ready', plannerReady],
+      ].map(([k, v]) => `<div class="stat"><div class="label">${escapeHtml(k)}</div><div class="value">${escapeHtml(String(v))}</div></div>`).join('');
+    }
+
+    function renderSnapshot() {
+      const rows = state.filtered;
+      const sourceCounts = countBy(rows, 'source_layer');
+      const verificationCounts = countBy(rows, 'verification_status');
+      const plannerCounts = countBy(rows, 'planner_use_status');
+      els.snapshot.innerHTML = [
+        ['Filtered rows', rows.length],
+        ['Seed', sourceCounts.seed || 0],
+        ['Normalized candidate', sourceCounts.normalized_candidate || 0],
+        ['Candidate verification', verificationCounts.candidate || 0],
+        ['Seed unverified', verificationCounts.seed_unverified || 0],
+        ['Needs verification', plannerCounts.needs_verification || 0],
+      ].map(([k, v]) => `<div class="mini-row"><span>${escapeHtml(k)}</span><strong>${escapeHtml(String(v))}</strong></div>`).join('');
+
+      const scaleCounts = Object.entries(countBy(rows, 'destination_scale'))
+        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+        .slice(0, 9);
+      els.scaleList.innerHTML = scaleCounts.map(([k, v]) =>
+        `<div class="mini-row"><span>${escapeHtml(k)}</span><strong>${escapeHtml(String(v))}</strong></div>`
+      ).join('') || `<div class="mini-row"><span>No records</span><strong>0</strong></div>`;
+    }
+
+    function countBy(rows, key) {
+      return rows.reduce((a, r) => { const v = r[key] || 'blank'; a[v] = (a[v] || 0) + 1; return a; }, {});
+    }
+
+    function renderTable() {
+      const rows = state.filtered;
+      els.tableBody.innerHTML = rows.map((r, i) => `
+        <tr tabindex="0" data-index="${i}" role="button" aria-label="Open ${escapeHtml(r.canonical_name)}">
+          <td>${trustBadge(r)}</td>
+          <td class="name">${escapeHtml(r.canonical_name)}</td>
+          <td class="place">${escapeHtml(placeOf(r))}</td>
+          <td>${escapeHtml(r.destination_scale)}</td>
+          <td>${escapeHtml(r.source_layer)}</td>
+          <td>${escapeHtml(r.verification_status)}</td>
+          <td>${plannerPill(r)}</td>
+          <td class="id">${escapeHtml(r.destination_master_id)}</td>
+        </tr>
+      `).join('');
+
+      // Reflect current sort state on headers
+      document.querySelectorAll('table.records thead th[data-sort]').forEach(th => {
+        const k = th.dataset.sort;
+        th.setAttribute('aria-sort', k === state.sortKey ? state.sortDir : 'none');
+      });
+    }
+
+    function renderCards() {
+      const rows = state.filtered;
+      els.cardsBody.innerHTML = rows.map((r, i) => {
+        const vibes = [r.vibe_1, r.vibe_2, r.vibe_3].filter(Boolean).map(v => `<span class="chip">${escapeHtml(v)}</span>`).join('');
+        const trip = chipsFrom(r.trip_style_tags, 'good');
+        const caution = chipsFrom(r.caution_tags, 'warn');
+        return `
+          <article class="card" tabindex="0" role="button" data-index="${i}" aria-label="Open ${escapeHtml(r.canonical_name)}">
+            <span class="card-open-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M14 10l7-7M9 21H3v-6M10 14l-7 7"/></svg>
+            </span>
+            <div style="display:flex; justify-content: space-between; gap: 12px; align-items: start;">
+              <div>
+                <div class="name">${escapeHtml(r.canonical_name)}</div>
+                <div class="place">${escapeHtml(placeOf(r))}</div>
+                <div class="id">${escapeHtml(r.destination_master_id)} · ${escapeHtml(r.source_layer)}</div>
+              </div>
+              ${trustBadge(r)}
+            </div>
+            <div class="meta-grid">
+              <div class="meta-cell"><div class="k">Scale</div><div class="v">${escapeHtml(r.destination_scale || '—')}</div></div>
+              <div class="meta-cell"><div class="k">Region</div><div class="v">${escapeHtml(r.macro_region || '—')}</div></div>
+              <div class="meta-cell"><div class="k">Type</div><div class="v">${escapeHtml(r.location_type || '—')}</div></div>
+              <div class="meta-cell"><div class="k">Verification</div><div class="v">${escapeHtml(r.verification_status || '—')}</div></div>
+            </div>
+            <div class="card-chips">${vibes}${trip}${caution}</div>
+            <div style="margin-top: 8px;">${plannerPill(r)}</div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function chipsFrom(value, cls = '') {
+      return (value || '').split(';').map(v => v.trim()).filter(Boolean).map(v => `<span class="chip ${cls}">${escapeHtml(v)}</span>`).join('');
+    }
+
+    function renderEmptyState() {
+      const active = getActiveFilters();
+      els.emptyFiltersListed.innerHTML = active.length ? active.map(f => `
+        <span class="chip-active">${escapeHtml(f.label)}: ${escapeHtml(f.value)}
+          <button type="button" data-remove="${f.key}" aria-label="Remove ${escapeHtml(f.label)} filter" style="background:transparent;border:0;cursor:pointer;color:inherit;margin-left:4px;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </span>
+      `).join('') : `<span style="color: var(--muted)">No filters are applied — this is unexpected. Check the dataset CSV.</span>`;
+    }
+
+    /* ---------- Drawer ---------- */
+    function openDrawer(index) {
+      if (index < 0 || index >= state.filtered.length) return;
+      state.drawerIndex = index;
+      const r = state.filtered[index];
+      els.drawerName.textContent = r.canonical_name;
+      els.drawerPlace.textContent = placeOf(r);
+      const s = trustStateOf(r);
+      els.drawerTrustText.innerHTML = `<strong>${TRUST_LABEL[s]}</strong> &mdash; ${trustExplanation(r)}`;
+      els.drawerBody.innerHTML = renderDrawerBody(r);
+      els.drawerPrev.disabled = index === 0;
+      els.drawerNext.disabled = index === state.filtered.length - 1;
+      els.drawer.hidden = false;
+      els.drawerOverlay.hidden = false;
+      requestAnimationFrame(() => {
+        els.drawer.classList.add('open');
+        els.drawerOverlay.classList.add('open');
+        els.drawerClose.focus();
+      });
+    }
+
+    function closeDrawer() {
+      els.drawer.classList.remove('open');
+      els.drawerOverlay.classList.remove('open');
+      setTimeout(() => {
+        els.drawer.hidden = true;
+        els.drawerOverlay.hidden = true;
+      }, 200);
+      state.drawerIndex = -1;
+    }
+
+    function trustExplanation(r) {
+      const s = trustStateOf(r);
+      const v = r.verification_status || '—';
+      const p = r.planner_use_status || '—';
+      return `verification: <code>${escapeHtml(v)}</code>; Planner: <code>${escapeHtml(p)}</code>. Treat per the badge.`;
+    }
+
+    function renderDrawerBody(r) {
+      return `
+        <div class="drawer-section">
+          <h3>Identity</h3>
+          <dl>
+            <div class="row"><dt>Master ID</dt><dd><code>${escapeHtml(r.destination_master_id)}</code></dd></div>
+            <div class="row"><dt>Source layer</dt><dd>${escapeHtml(r.source_layer)}</dd></div>
+            <div class="row"><dt>Source ID</dt><dd><code>${escapeHtml(r.source_id || '—')}</code></dd></div>
+          </dl>
+        </div>
+        <div class="drawer-section">
+          <h3>Place</h3>
+          <dl>
+            <div class="row"><dt>Country</dt><dd>${escapeHtml(r.country || '—')}</dd></div>
+            <div class="row"><dt>State / area</dt><dd>${escapeHtml(r.state_or_area || '—')}</dd></div>
+            <div class="row"><dt>District / area</dt><dd>${escapeHtml(r.district_or_area || '—')}</dd></div>
+            <div class="row"><dt>Macro region</dt><dd>${escapeHtml(r.macro_region || '—')}</dd></div>
+          </dl>
+        </div>
+        <div class="drawer-section">
+          <h3>Taxonomy</h3>
+          <dl>
+            <div class="row"><dt>Scale</dt><dd>${escapeHtml(r.destination_scale || '—')}</dd></div>
+            <div class="row"><dt>Type</dt><dd>${escapeHtml(r.location_type || '—')}</dd></div>
+            <div class="row"><dt>Vibes</dt><dd>${[r.vibe_1, r.vibe_2, r.vibe_3].filter(Boolean).map(v => `<span class="chip">${escapeHtml(v)}</span>`).join(' ') || '—'}</dd></div>
+            <div class="row"><dt>Trip styles</dt><dd>${chipsFrom(r.trip_style_tags, 'good') || '—'}</dd></div>
+            <div class="row"><dt>Context</dt><dd>${chipsFrom(r.context_tags) || '—'}</dd></div>
+            <div class="row"><dt>Caution</dt><dd>${chipsFrom(r.caution_tags, 'warn') || '—'}</dd></div>
+          </dl>
+        </div>
+        <div class="drawer-section">
+          <h3>Workflow</h3>
+          <dl>
+            <div class="row"><dt>Verification</dt><dd>${escapeHtml(r.verification_status || '—')}</dd></div>
+            <div class="row"><dt>Promotion</dt><dd>${escapeHtml(r.promotion_status || '—')}</dd></div>
+            <div class="row"><dt>Planner use</dt><dd>${escapeHtml(r.planner_use_status || '—')}</dd></div>
+          </dl>
+        </div>
+      `;
+    }
+
+    /* ---------- Events ---------- */
+    function bindEvents() {
+      [els.search, ...FILTER_FIELDS.map(f => f.el)].forEach(el => el.addEventListener('input', applyFilters));
+
+      els.clearAll.addEventListener('click', clearAllFilters);
+      els.emptyClearAll.addEventListener('click', clearAllFilters);
+
+      // Remove individual filter chips (event delegation; works for both summary + empty-state)
+      document.addEventListener('click', e => {
+        const btn = e.target.closest('[data-remove]');
+        if (!btn) return;
+        const key = btn.dataset.remove;
+        if (key === 'search') { els.search.value = ''; }
+        else {
+          const f = FILTER_FIELDS.find(f => f.key === key);
+          if (f) f.el.value = '';
+        }
+        applyFilters();
+      });
+
+      document.addEventListener('click', e => {
+        const clearBtn = e.target.closest('[data-clear]');
+        if (!clearBtn) return;
+        const target = clearBtn.dataset.clear;
+        if (target === 'search') els.search.value = '';
+        applyFilters();
+      });
+
+      // View toggle
+      els.viewTable.addEventListener('click', () => setView('table'));
+      els.viewCards.addEventListener('click', () => setView('cards'));
+
+      // Sortable headers
+      document.querySelectorAll('table.records thead th[data-sort]').forEach(th => {
+        th.addEventListener('click', () => {
+          const k = th.dataset.sort;
+          if (state.sortKey === k) state.sortDir = state.sortDir === 'ascending' ? 'descending' : 'ascending';
+          else { state.sortKey = k; state.sortDir = 'ascending'; }
+          sortRows(); render();
+        });
+        th.tabIndex = 0;
+        th.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); th.click(); }
+        });
+      });
+
+      // Row click → drawer
+      els.tableBody.addEventListener('click', e => {
+        const tr = e.target.closest('tr[data-index]');
+        if (tr) openDrawer(Number(tr.dataset.index));
+      });
+      els.tableBody.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          const tr = e.target.closest('tr[data-index]');
+          if (tr) { e.preventDefault(); openDrawer(Number(tr.dataset.index)); }
+        }
+      });
+
+      // Card click → drawer
+      els.cardsBody.addEventListener('click', e => {
+        const card = e.target.closest('.card[data-index]');
+        if (card) openDrawer(Number(card.dataset.index));
+      });
+      els.cardsBody.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          const card = e.target.closest('.card[data-index]');
+          if (card) { e.preventDefault(); openDrawer(Number(card.dataset.index)); }
+        }
+      });
+
+      // Drawer controls
+      els.drawerClose.addEventListener('click', closeDrawer);
+      els.drawerOverlay.addEventListener('click', closeDrawer);
+      els.drawerPrev.addEventListener('click', () => openDrawer(state.drawerIndex - 1));
+      els.drawerNext.addEventListener('click', () => openDrawer(state.drawerIndex + 1));
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && state.drawerIndex >= 0) closeDrawer();
+        if (state.drawerIndex < 0) return;
+        if (e.key === 'ArrowLeft' && state.drawerIndex > 0) openDrawer(state.drawerIndex - 1);
+        if (e.key === 'ArrowRight' && state.drawerIndex < state.filtered.length - 1) openDrawer(state.drawerIndex + 1);
+      });
+
+      els.retryBtn.addEventListener('click', loadData);
+    }
+
+    function clearAllFilters() {
+      els.search.value = '';
+      FILTER_FIELDS.forEach(f => f.el.value = '');
+      applyFilters();
+    }
+
+    function setView(view) {
+      state.view = view;
+      els.viewTable.setAttribute('aria-pressed', String(view === 'table'));
+      els.viewCards.setAttribute('aria-pressed', String(view === 'cards'));
+      render();
+    }
+
+    /* ---------- Loading ---------- */
+    async function loadData() {
+      els.resultLoading.hidden = false;
+      els.resultError.hidden = true;
+      els.resultEmpty.hidden = true;
+      els.resultTable.hidden = true;
+      els.resultCards.hidden = true;
+      try {
+        const res = await fetch(CSV_URL);
+        if (!res.ok) throw new Error(`Could not load CSV (HTTP ${res.status})`);
+        const text = await res.text();
+        state.rows = parseCSV(text);
+        state.filtered = state.rows.slice();
+        FILTER_FIELDS.forEach(f => {
+          // Clear options except the default first one
+          while (f.el.options.length > 1) f.el.remove(1);
+          fillSelect(f.el, uniqueValues(state.rows, f.field));
+        });
+        sortRows();
+        render();
+      } catch (err) {
+        els.errorMessage.textContent = err.message;
+        els.resultLoading.hidden = true;
+        els.resultError.hidden = false;
+        els.resultEmpty.hidden = true;
+        els.resultTable.hidden = true;
+        els.resultCards.hidden = true;
+      }
+    }
+
+    bindEvents();
+    loadData();
+  </script>
+</body>
+</html>

@@ -302,7 +302,7 @@ design/checklists/master-browser-design-checklist.md
 Then audit:
 
 ```text
-docs/destination-master-browser-v1.html
+docs/destination-master-browser-v1.0.html
 ```
 
 Only then implement v1.1.

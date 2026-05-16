@@ -1,7 +1,7 @@
 # Topic 3 — UX Design Journey Map and Gap Analysis
 
 Lab brief: `curriculum/courses/des-001-design-foundations/labs/lab-03-ux-design-journey-map.md`
-Target artifact: `docs/destination-master-browser-v1.html`
+Target artifact: `docs/destination-master-browser-v1.0.html`
 Source topic: `design/foundations/topic-03-ux-design.md`
 Companion topic (UI design): `design/foundations/topic-02-what-is-ui-design.md` and `design/foundations/ui-design-component-rules.md`
 

@@ -326,5 +326,5 @@ Then later:
 ```text
 src/codemike/data/destination_master_validation.py
 reports/evidence/destination-master-v2-validation-report.md
-docs/destination-master-browser-v1.html
+docs/destination-master-browser-v1.0.html
 ```

@@ -2,7 +2,7 @@
 
 Status: Executed  
 Lab: `courses/des-001-design-foundations/labs/lab-01-ui-vs-ux-browser-audit.md`  
-Target artifact: `docs/destination-master-browser-v1.html`  
+Target artifact: `docs/destination-master-browser-v1.0.html`  
 Supporting reading: `design/foundations/ui-vs-ux-further-reading.md`  
 Checklist: `design/checklists/master-browser-design-checklist.md`
 

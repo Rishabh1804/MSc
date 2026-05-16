@@ -328,7 +328,7 @@ Avoid:
 
 ## 8. Required Design Process Before HTML Upgrade
 
-Before redesigning `destination-master-browser-v1.html`, CodeMike must:
+Before redesigning `destination-master-browser-v1.0.html`, CodeMike must:
 
 1. read the relevant design principles
 2. translate principles into project-specific criteria

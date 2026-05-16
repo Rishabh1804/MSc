@@ -7,14 +7,14 @@ Execute the Topic 1 further-reading exercises against the current Destination Ma
 Target artifact:
 
 ```text
-docs/destination-master-browser-v1.html
+docs/destination-master-browser-v1.0.html
 ```
 
 ## Materials
 
 - `design/foundations/ui-vs-ux-further-reading.md`
 - `design/checklists/master-browser-design-checklist.md`
-- `docs/destination-master-browser-v1.html`
+- `docs/destination-master-browser-v1.0.html`
 
 ## Lab steps
 

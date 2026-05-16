@@ -11,7 +11,7 @@ design/foundations/topic-01-ui-vs-ux-exercise-results.md
 Target artifact audited:
 
 ```text
-docs/destination-master-browser-v1.html
+docs/destination-master-browser-v1.0.html
 ```
 
 ## Submission summary

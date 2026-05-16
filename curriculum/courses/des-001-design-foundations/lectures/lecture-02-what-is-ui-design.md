@@ -80,7 +80,7 @@ UI design is not "make the screen look better". It is "decide what each pixel is
 
 ## Application to browser redesign
 
-For each component pattern in `docs/destination-master-browser-v1.html` answer:
+For each component pattern in `docs/destination-master-browser-v1.0.html` answer:
 
 1. Which reviewer task does this component serve?
 2. Which element category does this pattern belong to?

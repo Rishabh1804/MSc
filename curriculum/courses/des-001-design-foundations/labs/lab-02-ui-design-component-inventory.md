@@ -7,7 +7,7 @@ Convert Topic 2 readings into applied evidence by inventorying every UI componen
 Target artifact:
 
 ```text
-docs/destination-master-browser-v1.html
+docs/destination-master-browser-v1.0.html
 ```
 
 ## Materials
@@ -16,7 +16,7 @@ docs/destination-master-browser-v1.html
 - `curriculum/courses/des-001-design-foundations/readings/topic-02-what-is-ui-design-reading-pack.md`
 - `design/foundations/topic-01-ui-vs-ux-exercise-results.md` (Lab 01's UI inventory and heuristic audit)
 - `design/checklists/master-browser-design-checklist.md`
-- `docs/destination-master-browser-v1.html`
+- `docs/destination-master-browser-v1.0.html`
 
 ## Lab steps
 

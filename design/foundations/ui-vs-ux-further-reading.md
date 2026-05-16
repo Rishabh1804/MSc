@@ -108,7 +108,7 @@ The destination browser should prefer native HTML controls unless a custom compo
 
 ### Exercise A — UI inventory
 
-List every visible UI element in `docs/destination-master-browser-v1.html`:
+List every visible UI element in `docs/destination-master-browser-v1.0.html`:
 
 - header badges
 - title/subtitle
