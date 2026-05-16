@@ -141,7 +141,7 @@ Notes: Internal references from `CLAUDE.md` to `SKILL_MAP.md`, `PROJECT_LOG.md`,
 
 Date: 2026-05-15  
 PR: #1  
-Commit: (pending — backfilled next batch)  
+Commit: `49d95e2`  
 Scope: Moved four root directories — `assignments/`, `courses/`, `modules/`, `thesis/` — into `curriculum/`, giving academic work a single parent.  
 Directories moved (via `git mv`, 33 file renames in total, all 100% similarity):
   - `assignments/` → `curriculum/assignments/` (3 entries: 1 brief, 1 README, `rubrics/`)
@@ -157,3 +157,24 @@ Files added: none
 Files deleted: none  
 Verification: No content changes to the 33 moved files. Root directory count: 24 → 20 (assignments, courses, modules, thesis no longer at root).  
 Notes: Discovered an unplanned root directory during this batch — `artifacts/` (containing `artifacts/html/destination-browser-v1.html` + README). It is not in the `MIGRATION_PLAN.md` directory table. A plan revision will follow before Batch 6, targeting `artifacts/` → `operations/artifacts/` (operational evidence outputs, governed by `charter/HTML_ARTIFACTS.md` and indexed by `operations/ARTIFACT_INDEX.md`). `artifacts/` is not touched in Batch 4. Cross-references in moved files to root-level filenames (e.g. links to `PROJECT_LOG.md`) remain broken until Batch 9.
+
+### Batch 5 — Capability consolidation
+
+Date: 2026-05-15  
+PR: #1  
+Commit: (pending — backfilled next batch)  
+Scope: Moved four root directories — `anti-patterns/`, `case-studies/`, `decision-science/`, `patterns/` — into `capabilities/`, putting reusable-knowledge sub-buckets under their parent.  
+Directories moved (via `git mv`, 12 file renames in total, all 100% similarity):
+  - `anti-patterns/` → `capabilities/anti-patterns/` (1 README; populated as anti-patterns are documented)
+  - `case-studies/` → `capabilities/case-studies/` (1 README; populated as case studies are written)
+  - `decision-science/` → `capabilities/decision-science/` (1 README; populated as decision-science methods land)
+  - `patterns/` → `capabilities/patterns/` (1 README + 8 pattern files)
+
+Files modified:
+  - `capabilities/README.md` — added a "Layout" section showing the new sub-buckets; refreshed the cross-bucket reference paths in the "Maturity Rule" section from bare filenames (`EVIDENCE.md`) to the post-migration paths (`../operations/EVIDENCE.md`). Original capability-card table preserved unchanged.
+  - `operations/MIGRATION_LOG.md` — backfilled Batch 4's commit SHA (`49d95e2`); appended this entry.
+
+Files added: none  
+Files deleted: none  
+Verification: No content changes to the 12 moved files. Pattern links in the existing `capabilities/README.md` table (e.g. `patterns/data-cleaning-checklist.md`) — broken before this batch because `/patterns/` was a root sibling, not a child of `capabilities/` — now resolve correctly. Root directory count: 20 → 16.  
+Notes: The pre-Batch-5 README was authored expecting `patterns/` to already live inside `capabilities/`; the original repo had it at root, so those links were broken before any migration ran. This batch makes the README correct. Cross-bucket references to `../operations/...` files are written assuming Batches 2-3 (operations moves) have already landed.
