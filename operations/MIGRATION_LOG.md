@@ -190,7 +190,7 @@ Notes: The pre-Batch-5 README was authored expecting `patterns/` to already live
 
 Date: 2026-05-15  
 PR: #1  
-Commit: (pending — backfilled next batch)  
+Commit: `19cf2f1`  
 Scope: Moved the remaining four planned root directories plus the `artifacts/` directory added by the preceding plan revision (`82596a7`). Post-Batch-6 root holds 15 directories — the target inventory minus `.github/`, which Batches 7-8 add.  
 Directories moved (via `git mv`, all 100% similarity):
   - `trackers/` → `operations/trackers/`
@@ -213,3 +213,27 @@ Files deleted:
 
 Verification: Root directory inventory after Batch 6: `capabilities/`, `charter/`, `cockpit/`, `curriculum/`, `datasets/`, `decks/`, `design/`, `docs/`, `notebooks/`, `operations/`, `projects/`, `prompts/`, `references/`, `reports/`, `src/`. That is 15 directories — exactly the post-migration target minus `.github/`, which is created by Batches 7-8.  
 Notes: With `orientation/` now living at `charter/orientation/`, any reference in `STUDENT_LIFE.md` (now `charter/STUDENT_LIFE.md`) or in `CLAUDE.md` to `orientation/` as a root sibling is broken — caught by Batch 9. Internal references inside `orientation/` documents to root-level filenames remain broken until Batch 9 as well.
+
+### Batch 7 — Cockpit PWA scaffold
+
+Date: 2026-05-15  
+PR: #1  
+Commit: (pending — backfilled next batch)  
+Scope: Scaffolded the CodeMike Cockpit — a dependency-free PWA whose views fetch markdown from `operations/` at runtime and render it as escaped preformatted text, honouring HR-MSc-9 ("no academic claim hardcoded in cockpit HTML").  
+Files added:
+  - `cockpit/index.html` — landing page; lists views; registers the service worker.
+  - `cockpit/views/skill-map.html` — reference view; fetches `../../operations/SKILL_MAP.md` via `data-source`.
+  - `cockpit/assets/cockpit.css` — design tokens (cm-bg, cm-surface, cm-text, cm-accent, cm-rule) + minimal layout (max-width 70ch, sans-system stack).
+  - `cockpit/assets/cockpit.js` — fetch + HTML-escape helpers; no markdown parser. Reads `data-source` on `[data-source].cm-view` elements, fetches with `cache: 'no-cache'`, escapes the body, wraps in `<pre>`.
+  - `cockpit/manifest.webmanifest` — PWA manifest (theme `#0f172a`, standalone).
+  - `cockpit/sw.js` — service worker; shell cached on install (`cockpit-shell-v1`), network-first for everything else so operations data is always fresh.
+  - `.github/workflows/cockpit-build.yml` — Pages deploy workflow. Trigger: pushes to `main` touching `cockpit/**`, `operations/**`, `datasets/**`. Stages the cockpit, a curated subset of operations files (`SKILL_MAP.md`, `PROJECT_LOG.md`, `NEXT_ACTIONS.md`, `ROADMAP.md`, `CAPABILITIES.md`), and `datasets/synthetic/` into `_site/`, then deploys via `actions/deploy-pages@v4`.
+
+Files modified:
+  - `cockpit/README.md` — rewritten with the post-Batch-7 layout, view contract, deploy model, and dependency-free rationale.
+  - `operations/MIGRATION_LOG.md` — backfilled Batch 6's commit SHA (`19cf2f1`); appended this entry.
+
+Files moved: none  
+Files deleted: none  
+Verification: Cockpit served locally from the repo root via `python -m http.server` resolves `http://localhost:8000/cockpit/`, the skill-map view fetches `../../operations/SKILL_MAP.md` and renders the file contents. Workflow file lints (yaml structure verified in commit); first deployment will occur when this branch merges to `main` and triggers `cockpit-build`. New root directory: `.github/`.  
+Notes: No view duplicates any content from the source markdown. The choice to render as `<pre>` rather than parsed markdown is deliberate — it keeps the contract honest ("what you see is what the file says") and avoids a runtime dependency. A future view can add per-view parsing helpers if needed.

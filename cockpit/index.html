@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeMike Cockpit</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./assets/cockpit.css">
+  <meta name="theme-color" content="#0f172a">
+</head>
+<body>
+  <header class="cm-header">
+    <h1>CodeMike Cockpit</h1>
+    <p class="cm-tagline">Operating view of the MSc capability workspace. Data fetched live from <code>operations/</code> and <code>datasets/</code>; no academic claim is hardcoded here (HR-MSc-9).</p>
+  </header>
+
+  <nav class="cm-nav">
+    <h2>Views</h2>
+    <ul>
+      <li><a href="./views/skill-map.html">Skill map</a> &mdash; renders <code>operations/SKILL_MAP.md</code>.</li>
+    </ul>
+    <p class="cm-future">Additional views (project log, next actions, roadmap, viva readiness) follow once their data sources stabilise. The view template in <code>views/skill-map.html</code> is the reference implementation.</p>
+  </nav>
+
+  <footer class="cm-footer">
+    <p>Source: <code>cockpit/</code> in the repo. See <code>../charter/REPO_STRUCTURE.md</code> and <code>../charter/HARD_RULES.md</code>.</p>
+  </footer>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>
