@@ -53,11 +53,11 @@ Note: Academic discipline received evidence beyond the original 5-mark allocatio
 
 Before final DES-001 submission:
 
-1. Complete live visual verification of `docs/design-foundations-v2.html`.
-2. Add quiz answers for Topic 1.
-3. Add viva answers for Topic 1.
-4. Decide whether DES-001 scope requires all 12 topics before final grading.
-5. Continue Topic 2 deep reading using the same course pattern.
+1. ~~Complete live visual verification of `docs/design-foundations.html`.~~ **Closed 2026-05-16.** Playwright run against the canonical dashboard recorded zero console errors, zero failed requests, 12 rendered module cards, populated hero/stats/workflow/synthesis sections, and a working Topic 1 extension link. Screenshots in `curriculum/courses/des-001-design-foundations/verification/`. The legacy single-file dashboard is archived at `docs/design-foundations-v1.html`.
+2. ~~Add quiz answers for Topic 1.~~ **Closed 2026-05-16.** See `quizzes/quiz-01-ui-vs-ux-answers.md`.
+3. ~~Add viva answers for Topic 1.~~ **Closed 2026-05-16.** See `viva/DES-001-viva-answers.md`.
+4. ~~Decide whether DES-001 scope requires all 12 topics before final grading.~~ **Closed 2026-05-16.** Decision: all 12 topics, per ratified execution plan §1.1 (`curriculum/courses/des-001-design-foundations/execution-plan.md`).
+5. Continue Topic 2 deep reading using the same course pattern. (Topic 2 scaffolded in PR #3; execution begins after this close-out merges.)
 6. Preserve Lab 01 recommendations as design gates for Destination Master Browser v1.1.
 
 ## Stretch improvements

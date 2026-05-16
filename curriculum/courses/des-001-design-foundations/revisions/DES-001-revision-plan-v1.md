@@ -14,10 +14,10 @@ DES-001 remains open because only Topic 1 has been completed in full. The remain
 
 ## Required revisions before final DES-001 submission
 
-1. Complete live visual verification of `docs/design-foundations-v2.html`.
-2. Add Topic 1 quiz answers.
-3. Add Topic 1 viva answers.
-4. Continue Topic 2 — What is UI design — with the same course pattern.
+1. ~~Complete live visual verification of `docs/design-foundations.html`.~~ **Closed 2026-05-16.** Playwright verification passed all six promotion-rule conditions documented in `docs/design-foundations-app/README.md`. Screenshots in `curriculum/courses/des-001-design-foundations/verification/`. The legacy single-file dashboard is archived at `docs/design-foundations-v1.html`.
+2. ~~Add Topic 1 quiz answers.~~ **Closed 2026-05-16.** See `quizzes/quiz-01-ui-vs-ux-answers.md`.
+3. ~~Add Topic 1 viva answers.~~ **Closed 2026-05-16.** See `viva/DES-001-viva-answers.md`.
+4. Continue Topic 2 — What is UI design — with the same course pattern. (Topic 2 scaffolded in PR #3; execution begins after this close-out merges.)
 5. Continue Topic 3 — UX design — before implementing Browser v1.1.
 6. Keep Lab 01 recommendations as formal v1.1 design gates.
 
@@ -54,3 +54,5 @@ Destination Master Browser v1.1 implementation
 |---|---|---|
 | 2026-05-14 | Created revision shell | Prepare grading and revision workflow |
 | 2026-05-14 | Activated revision plan after grade report | Lab 01 complete and provisional grade assigned |
+| 2026-05-16 | Ratified 12-topic scope + per-topic sequencing + v1.1-after-Topic-3 + dashboard rename | See `execution-plan.md` §1 |
+| 2026-05-16 | Closed Topic 1 revision items 1-4 | Visual verification passed, quiz answers + viva answers written, scope decision ratified |

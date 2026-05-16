@@ -9,14 +9,14 @@ DES-001 — Design Foundations Study Dashboard
 ## Submitted artifact
 
 ```text
-docs/design-foundations-v2.html
+docs/design-foundations.html
 ```
 
 ## Supporting evidence
 
 | Evidence | Path | Status |
 |---|---|---|
-| Modular dashboard | `docs/design-foundations-v2.html` | Created |
+| Modular dashboard | `docs/design-foundations.html` | Created |
 | Dashboard app architecture | `docs/design-foundations-app/` | Created |
 | Topic 1 further reading | `design/foundations/ui-vs-ux-further-reading.md` | Complete |
 | Topic 1 exercise results | `design/foundations/topic-01-ui-vs-ux-exercise-results.md` | Complete |
@@ -40,12 +40,12 @@ The main v1.1 direction should therefore be workflow completion rather than visu
 | Source comparison | Strong | Dashboard notes and reading pack |
 | Browser application | Strong | Lab 01 audit results |
 | Practical execution | Complete for Topic 1 | UI inventory, journey map, heuristic audit, Honeycomb score |
-| Assignment artifact quality | Good, with remaining verification | Modular v2 dashboard exists but needs visual Pages check |
+| Assignment artifact quality | Strong | Modular dashboard now lives at canonical `docs/design-foundations.html`; Playwright visual verification recorded 2026-05-16 (`verification/dashboard-visual-verification-2026-05-16.md`) |
 | Revision discipline | In progress | Competency map and learning log updated |
 
 ## Known limitations
 
-- Full browser visual verification of `docs/design-foundations-v2.html` is still pending.
+- ~~Full browser visual verification of `docs/design-foundations.html` is still pending.~~ Closed 2026-05-16; see `verification/dashboard-visual-verification-2026-05-16.md`.
 - Remaining DES-001 topics are scaffolded but not deeply digested.
 - Browser v1.1 implementation has not started.
 - Formal grade report and revision plan are pending.

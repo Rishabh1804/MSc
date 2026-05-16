@@ -1,17 +1,17 @@
 # DES-001 Modular Dashboard App
 
-This folder contains the modular v2 implementation of the CodeMike DES-001 Design Foundations Study Dashboard.
+This folder contains the modular v2 implementation of the CodeMike DES-001 Design Foundations Study Dashboard. It became the canonical artifact on 2026-05-16 after Playwright-based visual verification passed all six promotion-rule conditions.
 
-Primary page:
-
-```text
-docs/design-foundations-v2.html
-```
-
-Legacy monolithic page:
+Primary page (canonical, per the assignment brief):
 
 ```text
 docs/design-foundations.html
+```
+
+Archived legacy monolithic page (single-file inline-styled predecessor):
+
+```text
+docs/design-foundations-v1.html
 ```
 
 ## Why this folder exists
@@ -30,7 +30,7 @@ The v2 dashboard separates the app into small files so each edit has a clear tar
 
 | File | Role | Edit when |
 |---|---|---|
-| `../design-foundations-v2.html` | Small HTML shell that loads the app modules | Adding/removing top-level containers or changing script order |
+| `../design-foundations.html` | Small HTML shell that loads the app modules | Adding/removing top-level containers or changing script order |
 | `styles.css` | Visual design, layout, responsive rules, component styling | Changing appearance only |
 | `config.js` | Assignment metadata, workflow, rules, synthesis text, version | Changing global assignment framing |
 | `data.js` | Topic list, source list, status, summaries, note excerpts, further reading links | Updating topics or source scaffolds |
@@ -41,7 +41,7 @@ The v2 dashboard separates the app into small files so each edit has a clear tar
 
 ## Edit rules
 
-1. Do not put long academic notes directly into `design-foundations-v2.html`.
+1. Do not put long academic notes directly into `design-foundations.html`.
 2. Keep the HTML shell small and stable.
 3. Put topic metadata, status, and links in `data.js`.
 4. Put long topic notes in Markdown under `design/foundations/`.
@@ -94,27 +94,31 @@ The extension note adds further reading and applied exercises beyond the minimum
 
 ## Browser verification notes
 
-The expected GitHub Pages URLs are:
+The canonical GitHub Pages URLs are:
 
 ```text
-https://rishabh1804.github.io/MSc/docs/design-foundations-v2.html
-https://rishabh1804.github.io/MSc/design-foundations-v2.html
+https://rishabh1804.github.io/MSc/docs/design-foundations.html
+https://rishabh1804.github.io/MSc/design-foundations.html
 ```
 
 Use whichever matches the repository's GitHub Pages serving mode.
 
-## Promotion rule
+## Promotion rule — closed 2026-05-16
 
-Do not replace `docs/design-foundations.html` with v2 until:
+The original promotion rule required six conditions before v2 could replace the legacy single-file dashboard:
 
-- v2 renders successfully in browser
-- CSS loads correctly
-- all JS modules load without console errors
-- Topic 1 extension link opens correctly
-- `sync.js` reports no validation issues for completed topics
-- the visual layout is at least equivalent to the legacy dashboard
+- v2 renders successfully in browser ✓
+- CSS loads correctly ✓
+- all JS modules load without console errors ✓ (Playwright reported zero `error`, `pageerror`, and `requestfailed` events)
+- Topic 1 extension link opens correctly ✓ (links to `design/foundations/ui-vs-ux-further-reading.md` resolved)
+- `sync.js` reports no validation issues for completed topics ✓ (no console output from validation pass)
+- the visual layout is at least equivalent to the legacy dashboard ✓ (hero, stats, workflow, rule grid, 12 module cards, synthesis section all rendered)
 
-After verification, the project can either:
+All six conditions passed on 2026-05-16. The rename was executed:
 
-1. keep both files and treat v2 as the active artifact, or
-2. rename v2 into `docs/design-foundations.html` and archive the old monolithic version.
+```text
+docs/design-foundations-v2.html  →  docs/design-foundations.html  (canonical)
+docs/design-foundations.html     →  docs/design-foundations-v1.html  (archived legacy)
+```
+
+Verification evidence lives in `curriculum/courses/des-001-design-foundations/verification/`.

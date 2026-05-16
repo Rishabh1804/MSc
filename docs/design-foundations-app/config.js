@@ -2,9 +2,9 @@ window.DES001_CONFIG = {
   assignmentId: 'DES-001',
   title: 'Design Foundations Study Dashboard',
   eyebrow: 'CodeMike Design Foundation · DES-001',
-  version: 'v2 modular',
-  primaryArtifact: 'docs/design-foundations-v2.html',
-  legacyArtifact: 'docs/design-foundations.html',
+  version: 'v2',
+  primaryArtifact: 'docs/design-foundations.html',
+  legacyArtifact: 'docs/design-foundations-v1.html',
   sourcePolicy: 'Every deep-reading topic requires at least three sources: one high-authority/primary where possible, one practical/applied, and one cross-checking or alternative framing source.',
   curriculumNote: 'Topic 1 is fully digested and has an extra further-reading extension. Remaining topics keep their source scaffolds until they receive the same deep-reading treatment.',
   workflow: [
