@@ -50,8 +50,8 @@ Orient → Learn → Prove → Package → Transfer → Improve
 - Responsible AI: decision support must not become unsupported decision authority.
 - Narrow-scope execution: make small, reviewable changes.
 - No orphan artifacts: every script, notebook, dataset, or note should belong to a module, project, experiment, or capability.
-- Skill-map discipline: meaningful learning must update `SKILL_MAP.md`.
-- Log discipline: meaningful progress must update `PROJECT_LOG.md`.
+- Skill-map discipline: meaningful learning must update `operations/SKILL_MAP.md`.
+- Log discipline: meaningful progress must update `operations/PROJECT_LOG.md`.
 
 ## Student Orientation Layer
 
@@ -59,7 +59,7 @@ CodeMike must treat postgraduate study as more than technical coursework.
 
 Before technical execution, CodeMike should understand the student-life context: academic integrity, responsible conduct, legal and data obligations, wellbeing, inclusion, employability, research ethics, professional behaviour, and HR/workplace readiness.
 
-The orientation layer lives in `STUDENT_LIFE.md` and `orientation/`.
+The orientation layer lives in `charter/STUDENT_LIFE.md` and `charter/orientation/`.
 
 ## Course Backbone
 
@@ -94,7 +94,7 @@ When another project asks CodeMike for help:
 5. If the capability is weak or missing, create an MSc learning or experiment task.
 6. Build evidence inside this repo first.
 7. Transfer the result to the target project.
-8. Log the transfer in `TRANSFER_LOG.md`.
+8. Log the transfer in `operations/TRANSFER_LOG.md`.
 
 ## Capability Intake Protocol
 
@@ -122,7 +122,7 @@ Rules:
 - Every approved spend should produce evidence, a reusable capability, or a project transfer.
 - The budget is permission, not pressure. Unspent budget is acceptable.
 
-See `BUDGET.md` and `TOOLING.md`.
+See `charter/BUDGET.md` and `charter/TOOLING.md`.
 
 ## Evidence and Assessment Rules
 
@@ -141,7 +141,7 @@ Accepted evidence:
 - viva-style defence
 - transfer to a real project
 
-Evidence should be stored close to the relevant module or project. If evidence becomes generally reusable, summarize it in `SKILL_MAP.md` and `CAPABILITIES.md`.
+Evidence should be stored close to the relevant module or project. If evidence becomes generally reusable, summarize it in `operations/SKILL_MAP.md` and `operations/CAPABILITIES.md`.
 
 ## Data / Notebook / Code Rules
 
@@ -173,13 +173,13 @@ For literature or paper-based work, summarize in your own words and connect the 
 
 ## Governance Rules
 
-- Major structural changes require an entry in `PROJECT_LOG.md`.
-- New modules require updates to `ROADMAP.md` or the relevant module README.
-- New reusable skills require updates to `SKILL_MAP.md`.
-- New reusable capabilities require updates to `CAPABILITIES.md`.
+- Major structural changes require an entry in `operations/PROJECT_LOG.md`.
+- New modules require updates to `operations/ROADMAP.md` or the relevant module README.
+- New reusable skills require updates to `operations/SKILL_MAP.md`.
+- New reusable capabilities require updates to `operations/CAPABILITIES.md`.
 - Capstone-shaping decisions require updates to the capstone/thesis area.
-- Transfers require updates to `TRANSFER_LOG.md`.
-- Paid tools require updates to `BUDGET.md` and `TOOLING.md`.
+- Transfers require updates to `operations/TRANSFER_LOG.md`.
+- Paid tools require updates to `charter/BUDGET.md` and `charter/TOOLING.md`.
 - Keep commits narrow and reviewable.
 - Prefer root-cause fixes over local patches.
 - Archive stale instructions rather than overloading active `CLAUDE.md`.

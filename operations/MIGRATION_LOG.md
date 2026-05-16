@@ -242,7 +242,7 @@ Notes: No view duplicates any content from the source markdown. The choice to re
 
 Date: 2026-05-15  
 PR: #1  
-Commit: (pending — backfilled next batch)  
+Commit: `1bd74aa` (with fixup `4739f14` adding `.gitignore` and untracking a stray `.pyc`)  
 Scope: Scaffolded the deck pipeline. Decks are reveal.js HTML with the same fetch-at-runtime contract as cockpit views; a workflow renders every `decks/**/slides.html` to `.pptx` via headless Chromium + python-pptx and uploads the bundle as a workflow artifact.  
 Files added:
   - `decks/shared/reveal-theme.css` — reveal.js theme using the same design tokens as `cockpit/assets/cockpit.css` (cm-bg, cm-surface, cm-text, cm-accent, cm-rule). A deck looks like the same product as the cockpit.
@@ -261,3 +261,35 @@ Files moved: none
 Files deleted: none  
 Verification: `python -m py_compile .github/scripts/export_decks.py` succeeds (verified locally before commit — see commit notes). Sample deck served locally via `python -m http.server` resolves at `http://localhost:8000/decks/curriculum/00-foundations/slides.html`, reveal.js initialises, and the three data slides populate from `operations/`. The workflow's first execution will occur when this branch merges to `main`.  
 Notes: The deck pipeline's "no .pptx in the repo" stance is intentional — the HTML is the source of truth, the .pptx is a transport artifact. The same fetch contract used in `cockpit/` and `decks/` means a future "what does the workspace currently say?" view in either channel renders the same thing.
+
+### Batch 9 — Internal link sweep
+
+Date: 2026-05-15  
+PR: #1  
+Commit: (pending — last commit in the migration)  
+Scope: Final batch. Updated cross-bucket references in `CLAUDE.md` and `README.md` to point at the post-migration locations, and added a reproducible link-sweep script for future migrations. Verified that no Markdown link targets `](FILE.md)` to moved bare-filename docs remain anywhere in the tree.  
+Files added:
+  - `.github/scripts/link_sweep.py` — reproducible link-sweep. Walks every `.md` file (excluding `MIGRATION_LOG.md`, `MIGRATION_PLAN.md`, and itself), parses Markdown inline-link `](target)` and reference-style `[id]: target` definitions, and rewrites targets that match moved files or moved root directories using `os.path.relpath` from the file containing the link. Idempotent; preserves anchors and query strings.
+
+Files modified:
+  - `CLAUDE.md` — prose references rewritten from bare filenames to the post-migration paths:
+    - `SKILL_MAP.md` → `operations/SKILL_MAP.md` (3 occurrences)
+    - `PROJECT_LOG.md` → `operations/PROJECT_LOG.md` (2 occurrences)
+    - `STUDENT_LIFE.md` → `charter/STUDENT_LIFE.md`
+    - `orientation/` → `charter/orientation/`
+    - `TRANSFER_LOG.md` → `operations/TRANSFER_LOG.md` (2 occurrences)
+    - `BUDGET.md` → `charter/BUDGET.md` (2 occurrences)
+    - `TOOLING.md` → `charter/TOOLING.md` (2 occurrences)
+    - `CAPABILITIES.md` → `operations/CAPABILITIES.md` (2 occurrences)
+    - `ROADMAP.md` → `operations/ROADMAP.md`
+  - `README.md` — "Primary locations" table rewritten to reflect the post-migration top-level inventory (`charter/`, `operations/`, `capabilities/`, `curriculum/courses/`, `curriculum/assignments/`, `curriculum/modules/`, `curriculum/thesis/`, `cockpit/`, `decks/`, etc.). DES-001 course-folder path updated to `curriculum/courses/des-001-design-foundations/`. Cockpit row added to the Active Artifacts table. Reference to `GITHUB_WORKFLOW.md` updated to `charter/GITHUB_WORKFLOW.md`.
+  - `operations/MIGRATION_LOG.md` — backfilled Batch 8's commit SHA (`1bd74aa`) and the follow-up fixup SHA (`4739f14`); appended this entry.
+
+Files moved: none  
+Files deleted: none  
+Verification: `python3 .github/scripts/link_sweep.py` reports `0 file(s) changed, 0 link(s) rewritten` — confirming no broken Markdown link targets remain. Spot-checks of `grep -rIn --include="*.md" -E '\]\((BUDGET|...|VIVA)\.md'` and `\]\((anti-patterns|...|trackers)/'` return only matches inside `operations/MIGRATION_LOG.md` (intentional historical citations) and `link_sweep.py` itself (the script's regex).  
+Notes: The migration plan and its "internal link sweep" Batch 9 commitment proved larger in label than in scope — most cross-references in the original repo were prose backtick mentions (`` `SKILL_MAP.md` ``) rather than Markdown hyperlinks. The script catches the hyperlink case; the prose case was handled file-by-file in `CLAUDE.md` and `README.md`. Moved docs (under `charter/`, `operations/`, etc.) that reference other moved docs as siblings did not need rewriting since their relative positions are preserved.
+
+---
+
+End of migration. Root state matches `MIGRATION_PLAN.md` target: 2 `.md` files (`CLAUDE.md`, `README.md`) and 16 directories including `.github/` (`capabilities/`, `charter/`, `cockpit/`, `curriculum/`, `datasets/`, `decks/`, `design/`, `docs/`, `notebooks/`, `operations/`, `projects/`, `prompts/`, `references/`, `reports/`, `src/`, `.github/`).
