@@ -31,16 +31,12 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  // Network-first for every request. The shell is cached at install
+  // via addAll(SHELL_FILES); on a network failure the cache provides
+  // the offline shell. Operational data (operations/*.md) is always
+  // fetched fresh — we deliberately do NOT write it to cache here.
   const req = event.request;
   event.respondWith(
-    fetch(req)
-      .then((res) => {
-        if (req.method === 'GET' && res.ok && SHELL_FILES.some((f) => req.url.endsWith(f.replace('./', '')))) {
-          const copy = res.clone();
-          caches.open(SHELL_CACHE).then((cache) => cache.put(req, copy));
-        }
-        return res;
-      })
-      .catch(() => caches.match(req))
+    fetch(req).catch(() => caches.match(req))
   );
 });

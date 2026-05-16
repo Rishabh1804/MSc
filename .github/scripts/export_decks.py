@@ -52,18 +52,6 @@ def deck_url(port: int, slides_path: Path) -> str:
     return f"http://127.0.0.1:{port}/{rel}"
 
 
-def count_slides(page) -> int:
-    return page.evaluate(
-        "() => (window.Reveal && window.Reveal.getTotalSlides) ? window.Reveal.getTotalSlides() : "
-        "document.querySelectorAll('.reveal .slides > section').length"
-    )
-
-
-def goto_slide(page, idx: int) -> None:
-    page.evaluate(f"() => window.Reveal && window.Reveal.slide({idx})")
-    page.wait_for_timeout(400)  # let transitions and data fetches settle
-
-
 def export_one(slides_path: Path, port: int) -> Path:
     rel = slides_path.parent.relative_to(DECKS_DIR)
     pptx_path = BUILD_DIR / f"{rel.as_posix().replace('/', '__')}.pptx"
@@ -82,14 +70,30 @@ def export_one(slides_path: Path, port: int) -> Path:
         # Let deck-data-fetch.js populate slides.
         page.wait_for_timeout(1500)
 
-        total = count_slides(page)
+        # Start at the first slide (0, 0) — Reveal.next() walks both
+        # horizontal and vertical stacks in document order, so this
+        # reaches every slide regardless of whether the deck uses
+        # vertical stacks. Reveal.slide(idx) with a single index only
+        # sets the horizontal slide, missing verticals.
+        page.evaluate("() => window.Reveal && window.Reveal.slide(0, 0)")
+        page.wait_for_timeout(400)
+
         with tempfile.TemporaryDirectory() as td:
-            for i in range(total):
-                goto_slide(page, i)
-                shot = Path(td) / f"slide-{i:03d}.png"
+            slide_idx = 0
+            while True:
+                shot = Path(td) / f"slide-{slide_idx:03d}.png"
                 page.screenshot(path=str(shot), full_page=False)
                 slide = prs.slides.add_slide(blank)
                 slide.shapes.add_picture(str(shot), 0, 0, prs.slide_width, prs.slide_height)
+                slide_idx += 1
+
+                is_last = page.evaluate(
+                    "() => !!(window.Reveal && window.Reveal.isLastSlide && window.Reveal.isLastSlide())"
+                )
+                if is_last:
+                    break
+                page.evaluate("() => window.Reveal && window.Reveal.next()")
+                page.wait_for_timeout(400)
 
         browser.close()
 

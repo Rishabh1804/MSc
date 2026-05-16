@@ -11,6 +11,7 @@ on:
     paths:
       - 'decks/**'
       - 'operations/**'
+      - 'datasets/**'
       - '.github/workflows/decks-export.yml'
       - '.github/scripts/export_decks.py'
   workflow_dispatch:
