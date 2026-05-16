@@ -31,6 +31,42 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-16 — DES-001 grade report v2 (Topic 1 + Topic 2 milestone)
+
+Type: assessment / review
+
+Summary:
+
+Issued grade report v2 for DES-001 after Topic 1 and Topic 2 both closed. Cumulative grade is **93/100 — Excellent (rubric) / Distinction (course policy)**, up from v1's 82/100. Topic 2 *as a topic* scores 96/100 (Benchmark band), but promotion of the whole assignment to benchmark requires Topics 3–12 to close.
+
+Subscore changes vs v1:
+
+- Source comparison and bias awareness: 13 → 14 (Topic 2 added the agreement / difference-by-emphasis / per-source-omissions structure)
+- Application to CodeMike/browser: 18 → 19 (Topic 2's rule sheet is the strongest browser-application artifact in the course)
+- HTML usability and clarity: 8 → 9 (live visual verification closed; Topic 2 module digested)
+- Checklist/actionability: 9 → 10 (Topic 2 added six sourced gates plus the canonical rule-sheet pointer)
+
+All six v1 required revisions are now closed or partially closed. New v2 required revisions are forward progress only: continue Topic 3 → implement Browser v1.1 → continue Topics 4–12.
+
+Files changed:
+
+- `curriculum/courses/des-001-design-foundations/feedback/DES-001-grade-report-v2.md` (new — supersedes v1 as the current provisional grade)
+- `curriculum/courses/des-001-design-foundations/competency-map.md` (current-grade-status banner updated)
+- `curriculum/courses/des-001-design-foundations/revisions/DES-001-revision-plan-v1.md` (revision log row added)
+- `curriculum/courses/des-001-design-foundations/submissions/DES-001-submission.md` (grade pointer updated)
+
+Evidence produced:
+
+- Per-criterion v2 grade with explicit Δ vs v1
+- Topic 2 standalone per-topic grade (96/100)
+- Named-and-closed status for every v1 required revision
+- New v2 required-revisions list (forward-progress only)
+- Reaffirmed next-action: Topic 3, then Browser v1.1
+
+Next action:
+
+Start Topic 3 — UX design.
+
 ## 2026-05-16 — DES-001 Topic 2 closed (deep reading + Lab 02 + rule sheet)
 
 Type: learning / assignment / capability

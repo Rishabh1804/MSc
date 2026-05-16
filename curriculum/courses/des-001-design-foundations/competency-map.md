@@ -19,10 +19,17 @@
 ## Current grade status
 
 ```text
-82 / 100 — Excellent by DES-001 rubric; Distinction by course grading policy
+93 / 100 — Excellent (rubric) / Distinction (course policy)   [grade report v2, 2026-05-16]
++11 over v1's 82/100 baseline
+Topic 2 standalone scored at 96/100 (Benchmark band per topic)
 ```
 
-Benchmark eligible: not yet, because the full 12-topic DES-001 scope is not complete and browser visual verification remains pending.
+Benchmark eligible: NOT YET — promotion of the **full DES-001 assignment** to benchmark status (rubric §12) requires Topics 3–12 to close. Topic 2 *as a topic* meets benchmark criteria; the assignment as a whole does not yet.
+
+Grade reports:
+
+- `feedback/DES-001-grade-report-v1.md` — Topic 1 + Lab 01 milestone (82/100)
+- `feedback/DES-001-grade-report-v2.md` — Topic 1 + Topic 2 milestone (93/100) — **current**
 
 ## Topic 2 — What is UI design (closed)
 

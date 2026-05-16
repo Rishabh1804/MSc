@@ -57,7 +57,7 @@ The main v1.1 direction should therefore be workflow completion rather than visu
 - ~~Full browser visual verification of `docs/design-foundations.html` is still pending.~~ Closed 2026-05-16; see `verification/dashboard-visual-verification-2026-05-16.md`.
 - Topics 3–12 are scaffolded but not deeply digested. Topic 1 and Topic 2 are both fully closed (reading + lab + checklist + submission).
 - Browser v1.1 implementation has not started; gated on Topic 3 (UX design) closing per the ratified execution plan.
-- Final (non-provisional) grade report is pending after enough topics close to justify it.
+- Final (non-provisional) grade report is pending after enough topics close to justify it. Current provisional grade: **93/100 (Excellent / Distinction)** per `feedback/DES-001-grade-report-v2.md` — superseding v1's 82/100. Benchmark promotion of the whole assignment requires Topics 3–12 to close.
 
 ## Submission decision
 
