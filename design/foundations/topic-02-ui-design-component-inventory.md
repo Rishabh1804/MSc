@@ -137,7 +137,7 @@ Every interactive pattern audited on Norman's three questions. The audit checks 
 Three findings recur across multiple patterns:
 
 - **F1 — No active state on filter controls.** Affects P3–P8. Reviewers cannot see which filters are non-default at a glance. v1.1 must add an *Active-filter summary* (chips below the toolbar, removable per filter) AND must visually distinguish "select is at its default" from "select has been changed".
-- **F2 — Trust signal is shallow.** Affects P15 + P16. Verified/unverified is only in metadata text; status pill carries Planner state, not trust state. v1.1 must standardise a *trust badge component* with six states (`verified`, `unverified`, `planner-ready`, `blocked`, `missing-fields`, `conflict`, `unassigned`) at four depths (top-of-page banner, list row, drawer header, confirm-modal). This is the Topic 2 §6.2 specification.
+- **F2 — Trust signal is shallow.** Affects P15 + P16. Verified/unverified is only in metadata text; status pill carries Planner state, not trust state. v1.1 must standardise a *trust badge component* with seven states (`verified`, `unverified`, `planner-ready`, `blocked`, `missing-fields`, `conflict`, `unassigned`) at four depths (top-of-page banner, list row, drawer header, confirm-modal). This is the Topic 2 §6.2 specification — promoting "no badge" to an explicit `unassigned` state, since Norman's feedback requirement says silence is not allowed.
 - **F3 — Three feedback states share one component.** Affects P18. v1.1 must split `empty / loading / error` into three distinct components with distinct visual treatment, content rules, and (for empty and error) recovery actions.
 
 ---
