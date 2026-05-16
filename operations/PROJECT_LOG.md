@@ -37,7 +37,9 @@ Type: assessment / review
 
 Summary:
 
-Issued grade report v2 for DES-001 after Topic 1 and Topic 2 both closed. Cumulative grade is **93/100 — Excellent (rubric) / Distinction (course policy)**, up from v1's 82/100. Topic 2 *as a topic* scores 96/100 (Benchmark band), but promotion of the whole assignment to benchmark requires Topics 3–12 to close.
+Issued grade report v2 for DES-001 after Topic 1 and Topic 2 both closed. Cumulative grade is **87/100 — Excellent (rubric) / Distinction (course policy)**, up from v1's 82/100 (+5). Topic 2 *as a topic* scores 96/100 (Benchmark band), but promotion of the whole assignment to benchmark requires Topics 3–12 to close.
+
+The Lyra review caught an arithmetic-integrity issue: v1's subscores summed to 89 (with the academic-discipline cap), yet v1 reported total 82 — a hidden 7-mark scope-incompleteness deduction below the line. v2 surfaces that discipline explicitly with a `−6` adjustment in the table (proportional to 10/12 vs 11/12 scaffolded), so v3 (after Topic 6) and v4 (after Topic 12) can scale honestly. The adjustment reaches 0 only at full course closure.
 
 Subscore changes vs v1:
 

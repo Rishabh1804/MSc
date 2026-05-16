@@ -19,9 +19,9 @@
 ## Current grade status
 
 ```text
-93 / 100 — Excellent (rubric) / Distinction (course policy)   [grade report v2, 2026-05-16]
-+11 over v1's 82/100 baseline
-Topic 2 standalone scored at 96/100 (Benchmark band per topic)
+87 / 100 — Excellent (rubric) / Distinction (course policy)   [grade report v2, 2026-05-16]
++5 over v1's 82/100 baseline (Lyra-corrected; subscore sum 93 minus the explicit −6 scope-incompleteness adjustment)
+Topic 2 standalone scored at 96/100 (Benchmark band if Topic 2 were the whole assignment)
 ```
 
 Benchmark eligible: NOT YET — promotion of the **full DES-001 assignment** to benchmark status (rubric §12) requires Topics 3–12 to close. Topic 2 *as a topic* meets benchmark criteria; the assignment as a whole does not yet.
