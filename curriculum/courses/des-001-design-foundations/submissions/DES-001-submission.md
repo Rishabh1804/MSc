@@ -28,7 +28,10 @@ docs/design-foundations.html
 | Topic 2 deep reading + source comparison | `design/foundations/topic-02-what-is-ui-design.md` | Complete |
 | Topic 2 quiz answers | `courses/des-001-design-foundations/quizzes/quiz-02-what-is-ui-design-answers.md` | Submitted |
 | Topic 2 viva answers | `courses/des-001-design-foundations/viva/DES-001-viva-answers.md` (Topic 2) | Submitted |
-| Master browser checklist | `design/checklists/master-browser-design-checklist.md` | Updated (Lab 02 gates pending) |
+| Topic 2 Lab 02 inventory + state matrix + affordance audit | `design/foundations/topic-02-ui-design-component-inventory.md` | Complete |
+| Topic 2 component rule sheet (Browser v1.1 input) | `design/foundations/ui-design-component-rules.md` | Complete |
+| Topic 2 Lab 02 submission | `courses/des-001-design-foundations/submissions/lab-02-ui-design-component-inventory-results.md` | Submitted |
+| Master browser checklist | `design/checklists/master-browser-design-checklist.md` (§18 Topic 2 gates + §19 rule-sheet pointer) | Updated |
 
 ## Reflection
 
@@ -52,9 +55,8 @@ The main v1.1 direction should therefore be workflow completion rather than visu
 ## Known limitations
 
 - ~~Full browser visual verification of `docs/design-foundations.html` is still pending.~~ Closed 2026-05-16; see `verification/dashboard-visual-verification-2026-05-16.md`.
-- Topics 3–12 are scaffolded but not deeply digested. Topic 1 and Topic 2 are both deeply digested.
-- Topic 2 Lab 02 (component catalogue + state matrix + affordance audit + container/filter rules + consolidated rule sheet) is pending — opens as a separate PR after this reading-execution PR lands.
-- Browser v1.1 implementation has not started; gated on Lab 02 rule sheet + Topic 3 closing.
+- Topics 3–12 are scaffolded but not deeply digested. Topic 1 and Topic 2 are both fully closed (reading + lab + checklist + submission).
+- Browser v1.1 implementation has not started; gated on Topic 3 (UX design) closing per the ratified execution plan.
 - Final (non-provisional) grade report is pending after enough topics close to justify it.
 
 ## Submission decision

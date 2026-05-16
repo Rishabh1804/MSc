@@ -11,23 +11,19 @@
 
 See `feedback/DES-001-grade-report-v1.md` for the provisional grade and the open revision items.
 
-## Week 2 — UI Design Basics (active)
+## Week 2 — UI Design Basics ✓ complete (2026-05-16)
 
-Scaffolded:
+Closed by two PRs (PR A — reading; PR B — Lab 02):
 
-- `lectures/lecture-02-what-is-ui-design.md`
-- `readings/topic-02-what-is-ui-design-reading-pack.md`
-- `quizzes/quiz-02-what-is-ui-design.md` + answer key
-- `labs/lab-02-ui-design-component-inventory.md`
-
-To execute:
-
-- Study interface elements and controls (five required sources)
-- Produce Topic 2 source-comparison notes
-- Build component inventory for destination browser (Lab 02 Step 1)
-- Define card/table/filter/detail-drawer UI rules (Lab 02 Steps 4-6)
-- Output consolidated rule sheet at `design/foundations/ui-design-component-rules.md`
-- Answer Quiz 02 and self-mark
+- Lecture, reading pack, quiz + answer key, lab brief (scaffolded earlier)
+- `design/foundations/topic-02-what-is-ui-design.md` — 13-section deep-reading doc
+- `quizzes/quiz-02-what-is-ui-design-answers.md` — ten worked answers
+- `viva/DES-001-viva-questions.md` + `-answers.md` — eight Topic 2 questions and answers
+- `docs/design-foundations-app/data.js` — Topic 2 module flipped to `done` with full notes
+- `design/foundations/topic-02-ui-design-component-inventory.md` — 20-pattern inventory, state matrix, affordance audit
+- `design/foundations/ui-design-component-rules.md` — consolidated rule sheet (Browser v1.1's input)
+- `submissions/lab-02-ui-design-component-inventory-results.md` — formal Lab 02 submission
+- `design/checklists/master-browser-design-checklist.md` §18 + §19 — six Topic 2 gates + canonical rule-sheet pointer
 
 ## Week 3 — UX Design Basics
 

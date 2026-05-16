@@ -175,3 +175,46 @@ The Destination Master Browser is — in Carbon's pattern vocabulary — a *mast
 
 Open Topic 2 Execution PR A (this commit set), then start Lab 02 on a fresh branch for PR B.
 
+---
+
+## 2026-05-16 — Lab 02 executed (Topic 2 closed)
+
+### What was executed
+
+All six steps of Lab 02 against `docs/destination-master-browser-v1.html` (671 lines). The lab converted Topic 2's reading evidence into applied coursework evidence at the component level.
+
+### Exercises completed
+
+- **Step 1 — Component catalogue**: 20 patterns inventoried as present in v1 (controls / containers / data display / feedback / editorial / navigation), plus 12 patterns inventoried as missing but expected by Topic 2's named pattern fit (table, drawer, active-filter summary, Clear-all, card/table toggle, sortable headers, sticky header, skeleton loader, inline notification, confirm modal — deferred, focus rings, active-state on selects).
+- **Step 2 — State coverage matrix**: every present pattern × nine standard states. Three HIGH-severity findings (control states missing across P3–P8; loading/empty/error sharing one component; record-card has no clickable state) and four MEDIUM-severity findings (stats-banner zero-narrative; side-panel loading; metadata missing-field handling; chips empty state).
+- **Step 3 — Affordance / signifier / feedback audit**: per-pattern audit on Norman's three questions. Three cross-cutting findings: F1 active-state on filter controls; F2 trust-signal depth; F3 three feedback states sharing one component.
+- **Step 4 — Container-selection rules**: card / table / list / drawer / modal each with when-to-use + when-not-to-use + sources + browser application. Decision tree included.
+- **Step 5 — Filter-UI rules**: search input / filter chip / dropdown / faceted panel each with decision criteria. Active-filter summary is mandatory regardless of filter pattern in use.
+- **Step 6 — Consolidated rule sheet**: full per-component rule table at `design/foundations/ui-design-component-rules.md` (signed off as Browser v1.1's input).
+
+### Key findings
+
+1. **Pattern resolution**: the Destination Master Browser is a *master-detail data-review tool with faceted filtering* (Carbon vocabulary). v1 commits to that pattern partially (has master, missing detail; has filtering, missing summary + recovery). v1.1 must close the partial commitment.
+2. **Default view changes**: table becomes the default; cards become the secondary view via a toggle. The cards-vs-table debate from Lab 01 is resolved.
+3. **Modality stays out of v1.1**: detail uses a drawer; modals are reserved for v1.2+ destructive batch actions.
+4. **Trust-signal specification**: one trust-badge component, seven states (`verified`, `unverified`, `planner-ready`, `blocked`, `missing-fields`, `conflict`, `unassigned`), four depths (top banner + list row + drawer header + future confirm-modal). Colour palette deferred to Topic 10 — until then, colour + icon + text, never colour alone.
+
+### Repository outputs created
+
+- `design/foundations/topic-02-ui-design-component-inventory.md` — Lab 02 Steps 1–3.
+- `design/foundations/ui-design-component-rules.md` — Lab 02 Steps 4–6 (consolidated rule sheet).
+- `curriculum/courses/des-001-design-foundations/submissions/lab-02-ui-design-component-inventory-results.md` — formal lab submission with executive summary, key findings, and decision-gate satisfaction.
+- `design/checklists/master-browser-design-checklist.md` §18 (six Topic 2 gates) + §19 (canonical rule-sheet pointer).
+
+### What changed in understanding
+
+Lab 01's "workflow completion + trust preservation" framing was correct but high-level. Lab 02 turns it into 18 concrete v1.1 changes (10 from the Topic 2 backlog + 8 component-rule refinements). The pattern-first framing — name the pattern, then the components follow — is the structural insight Topic 2 contributes to Browser v1.1.
+
+### Topic 2 status
+
+**Closed.** Both PR A (deep reading + source comparison + quiz + viva + data.js) and PR B (this entry's lab work + rule sheet + checklist gates + submission) are complete.
+
+### Next action
+
+Start DES-001 Topic 3 — UX design. Browser v1.1 implementation is gated on Topic 3 producing the reviewer-journey + UX-acceptance-criteria companion to the Topic 2 component rule sheet.
+
