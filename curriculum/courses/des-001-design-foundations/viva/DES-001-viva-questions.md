@@ -22,6 +22,17 @@
 7. Give one example of a Topic 2 anti-pattern that v1 commits, and the v1.1 fix.
 8. The topic adds a "when not to use" gate to the master-browser checklist. Why is that gate more important than a "when to use" rule?
 
+## Topic 3 — UX design
+
+1. Define UX design and explain why "thinking about users" is not by itself UX design.
+2. Norman names two "gulfs". What are they, and which gulf does v1's `.empty` shared loading/empty/error pane sit on?
+3. GOV.UK enforces a specific form for user needs. State the form and explain what design failure it prevents.
+4. The five required Topic 3 sources agree on the *what* of UX design but differ on *emphasis*. Name two emphasis differences that change a v1.1 design decision.
+5. State the seven steps of the Destination Master Browser reviewer journey and the cost budget for the most cognitively-expensive one.
+6. A reviewer says: "I'd love a way to compare three records side-by-side". Classify this and produce the underlying user need in GOV.UK form.
+7. Topic 2 ended at a component rule sheet; Topic 3 ends at an acceptance-criteria sheet. Give one v1.1 decision that needs both, and explain what fails if either is missing.
+8. The Topic 3 "happy path only" anti-pattern is specifically dangerous in data-review tools. Why?
+
 ## Answer file
 
 Answers should be stored in:

@@ -218,3 +218,46 @@ Lab 01's "workflow completion + trust preservation" framing was correct but high
 
 Start DES-001 Topic 3 — UX design. Browser v1.1 implementation is gated on Topic 3 producing the reviewer-journey + UX-acceptance-criteria companion to the Topic 2 component rule sheet.
 
+---
+
+## 2026-05-16 — Topic 3 scaffolded + deep reading executed (PR A)
+
+### What was scaffolded and executed
+
+Topic 3 artifacts created in the Topic 1/Topic 2 shape, plus the deep reading executed in the same PR (no separate scaffold-only PR this time — the Topic 2 pattern was established enough to combine):
+
+Scaffolding:
+
+- `lectures/lecture-03-ux-design.md` — UX design as a discipline (research / modelling / design / evaluation); the four canonical activities and their artifacts; user-need vs request vs solution-shape; the seven-step reviewer journey with goal / cost / failure-mode / trust-check per step; UX acceptance-criterion form.
+- `readings/topic-03-ux-design-reading-pack.md` — five required sources (Norman, NN/g, IDEO, GOV.UK Service Manual, IxDF) + five extension sources (Goodwin, Young, Morville Honeycomb, Patton, ISO 9241-210). Eight reading questions + extraction target + linked extension at `design/foundations/ux-acceptance-criteria.md`.
+- `quizzes/quiz-03-ux-design.md` and `quizzes/quiz-03-ux-design-answer-key.md` — ten questions covering definition, the four activities, user-need classification, the seven journey steps, acceptance-criterion form, heuristic-vs-criterion comparison, GOV.UK discipline, why both Topic 2 and Topic 3 sheets are required, anti-patterns, design-decision gate.
+- `labs/lab-03-ux-design-journey-map.md` — six-step lab brief that produces the journey map, the acceptance-criteria sheet, the user-need audit, the Lab 01 → Lab 03 gap analysis, and the master-browser checklist Topic 3 section.
+
+Deep reading executed:
+
+- `design/foundations/topic-03-ux-design.md` — 16-section deep-reading doc covering topic definition, the four canonical activities, source list with type classification, source-by-source notes, structured source comparison, user-need framework with three browser examples, the seven-step reviewer journey with goal/cost/failure/trust per step, UX acceptance-criterion form with three worked examples, CodeMike interpretation, browser application (with per-decision sourcing and v1.1 UX gates), four anti-patterns, ten-item v1.1 implementation impact, three reusable CodeMike design capabilities, source-set reflection, and open work.
+
+Topic 3 quiz answers (ten worked answers, self-marked against the key).
+
+Topic 3 viva questions (eight) + answers (eight, each with examiner-push follow-up) appended to the existing viva files.
+
+Dashboard module updated: `docs/design-foundations-app/data.js` Topic 3 flipped from `todo` to `done`. Six sources attached (Norman, NN/g, IDEO, GOV.UK, IxDF, plus the CodeMike deep-reading-doc link). Full notes object mirroring Topic 1 and Topic 2 structure. Playwright re-verified post-change: 12 modules render, zero console errors, three of twelve now show `done` status.
+
+### What changed in understanding
+
+UX design is the discipline that turns user understanding into testable behavioural criteria the UI must produce. The single most important corrective the topic introduces — sourced primarily from GOV.UK — is the *user-need form*: `As a [user], I need [outcome], so that [goal]` with **no UI mechanism named**. This catches the entire class of solution-shape thinking ("users need a sort dropdown", "users need a reset button") that locks the design before the underlying outcome is researched.
+
+The Destination Master Browser's reviewer journey has seven steps (arrive / understand / narrow / compare / inspect / recover / leave), each with goal / cost / failure / trust. The trust-check column is the journey-level operationalisation of Topic 2's four-depth trust signal. The Compare step is the most cognitively expensive (≤ 60s budget for the first comparison pass) and is the step v1's cards-only view fails — Topic 2's table mode is the fix.
+
+### Open work after Topic 3 reading
+
+- Execute Lab 03 against the v1 browser.
+- Produce `design/foundations/topic-03-ux-design-journey-map.md` (lab Steps 1–4 evidence).
+- Produce `design/foundations/ux-acceptance-criteria.md` (lab Step 5 — Browser v1.1's UX gate, companion to Topic 2's component rule sheet).
+- Append Topic 3 section to `design/checklists/master-browser-design-checklist.md` (lab Step 6 — four UX gates + four UX anti-patterns).
+- Open Topic 3 Execution PR B (lab + acceptance-criteria sheet + checklist gates + Topic 3 closure).
+
+### Next action
+
+Open Topic 3 Execution PR A (this commit set), then start Lab 03 on a fresh branch for PR B.
+
