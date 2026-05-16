@@ -1,6 +1,17 @@
 # DES-001 Execution Plan
 
-Status: draft — awaiting scope and sequencing decisions before execution starts.
+Status: **ratified 2026-05-16** — all four §1 decisions confirmed as the recommended option. Execution proceeds per §3.
+
+Ratified decisions:
+
+| # | Decision | Locked choice |
+|---|---|---|
+| 1.1 | Scope | **A — all 12 topics** (benchmark eligibility retained) |
+| 1.2 | Sequencing | **A — per topic** (scaffold + execute + close before the next opens) |
+| 1.3 | Browser v1.1 timing | **A — after Topic 3** (between Lab 03 close and Topic 4 open) |
+| 1.4 | Dashboard naming | **A — rename `docs/design-foundations-v2.html` to `docs/design-foundations.html`** |
+
+Next action per §3: close Topic 1 revisions (quiz answers, viva answers, v2 visual verification against the canonical filename) on a fresh branch, separate from PR #3.
 
 This plan turns the 12-topic assignment brief into a concrete execution order with per-topic source lists, effort estimates, and decision gates. It does **not** start executing topics — that begins after the four decisions in §1 are locked.
 
