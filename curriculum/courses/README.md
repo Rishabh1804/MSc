@@ -12,7 +12,7 @@ syllabus → lectures → readings → labs → assignments → submissions → 
 
 | Course | Status | Current topic | Primary artifact | Grade status |
 |---|---|---|---|---|
-| DES-001 Design Foundations | Active | Topic 1 — UI vs UX | `docs/design-foundations-v2.html` | Pending formal grading |
+| DES-001 Design Foundations | Active | Topic 1 — UI vs UX | `docs/design-foundations.html` | Pending formal grading |
 
 ## Standard course folder pattern
 

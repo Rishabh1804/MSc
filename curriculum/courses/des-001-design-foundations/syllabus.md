@@ -26,7 +26,7 @@ By the end of DES-001, CodeMike should be able to:
 ## Primary artifact
 
 ```text
-docs/design-foundations-v2.html
+docs/design-foundations.html
 ```
 
 ## Assessment components

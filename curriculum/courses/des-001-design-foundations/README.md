@@ -5,7 +5,7 @@ Status: Active
 Primary artifact:
 
 ```text
-docs/design-foundations-v2.html
+docs/design-foundations.html
 ```
 
 Legacy artifact:

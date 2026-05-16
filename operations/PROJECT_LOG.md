@@ -31,6 +31,40 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-16 — DES-001 execution plan ratified and Topic 1 close-out
+
+Type: learning / assignment / assessment / governance
+
+Summary:
+
+Ratified the DES-001 execution plan (all four §1 decisions confirmed as the recommended option: full 12-topic scope, per-topic sequencing, Browser v1.1 implementation after Topic 3, dashboard rename). Closed four of the six required revisions from the Topic 1 grade report.
+
+Live visual verification of the modular dashboard ran under Playwright/Chromium against `file://` URLs in the remote execution container. All six promotion-rule conditions from `docs/design-foundations-app/README.md` passed: rendering, CSS, zero console errors, Topic 1 extension link, sync.js validation, layout equivalence with the legacy single-file dashboard. The rename then executed: `docs/design-foundations-v2.html` → `docs/design-foundations.html` (canonical, matching the assignment brief); `docs/design-foundations.html` (the 418-line monolithic predecessor) → `docs/design-foundations-v1.html` (archived). A second Playwright run against the canonical filename confirmed the rename did not break the relative `design-foundations-app/` script paths. Topic 1 quiz answers and viva answers were written to round out the close-out.
+
+Files changed:
+
+- `docs/design-foundations.html` (formerly `design-foundations-v2.html`)
+- `docs/design-foundations-v1.html` (formerly `design-foundations.html`)
+- `docs/design-foundations-app/config.js` (primaryArtifact and legacyArtifact paths swapped; version label updated)
+- `docs/design-foundations-app/README.md` (Promotion rule section closed; verification result recorded)
+- `curriculum/courses/des-001-design-foundations/verification/` (new — verification report and screenshots)
+- `curriculum/courses/des-001-design-foundations/quizzes/quiz-01-ui-vs-ux-answers.md` (new)
+- `curriculum/courses/des-001-design-foundations/viva/DES-001-viva-answers.md` (new)
+- `curriculum/courses/des-001-design-foundations/feedback/DES-001-grade-report-v1.md` (items 1–4 of Required revisions marked closed)
+- `curriculum/courses/des-001-design-foundations/revisions/DES-001-revision-plan-v1.md` (items 1–3 closed; revision-log rows added)
+- `README.md`, `docs/repo-map.html`, `curriculum/courses/README.md`, course-level `README.md`/`syllabus.md`/`learning-log.md`/`submissions/DES-001-submission.md` (all `design-foundations-v2.html` references updated to the canonical filename)
+
+Evidence produced:
+
+- Playwright verification report at `curriculum/courses/des-001-design-foundations/verification/dashboard-visual-verification-2026-05-16.md`
+- Three full-page screenshots (pre-rename v2, pre-rename above-the-fold, post-rename canonical) in `curriculum/courses/des-001-design-foundations/verification/`
+- Defensible viva answers covering all eight Topic 1 questions with examiner-push follow-ups
+- Self-marked quiz answers grounded in the Destination Master Browser
+
+Next action:
+
+Open the PR for this close-out work. After it merges, execute Topic 2 (the scaffold landed in PR #3): five-source deep reading, source comparison, and Lab 02 — producing the component rule sheet that becomes Browser v1.1's input.
+
 ## 2026-05-12 — DES-001 assignment and rubric created
 
 Type: learning / assignment / assessment
