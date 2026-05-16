@@ -108,7 +108,7 @@ Notes: Tracked internal links from `CLAUDE.md` and from the moved files themselv
 
 Date: 2026-05-15  
 PR: #1  
-Commit: (pending — backfilled next batch)  
+Commit: `61f92d1`  
 Scope: Moved 16 register/log docs from the repository root into `operations/`, completing the root cleanup that brings root `.md` count to its target of 2 (`CLAUDE.md`, `README.md`).  
 Files moved (via `git mv`, rename detection: 100% similarity on all 16):
   - `ARTIFACT_INDEX.md` → `operations/ARTIFACT_INDEX.md`
@@ -136,3 +136,24 @@ Files added: none
 Files deleted: none  
 Verification: No content changes to the 16 moved files. Root `.md` count: 18 → 2 (`CLAUDE.md`, `README.md`) — matches the target inventory in `MIGRATION_PLAN.md`. `git status --short` shows 16 `R` entries plus 2 `M` entries for the README and this log file.  
 Notes: Internal references from `CLAUDE.md` to `SKILL_MAP.md`, `PROJECT_LOG.md`, `TRANSFER_LOG.md`, `CAPABILITIES.md`, `BUDGET.md`, `TOOLING.md`, etc., now all break (the previous referenced root locations no longer exist). All such links are fixed in Batch 9 (internal link sweep). The remaining 14 root directories move in Batches 4-6.
+
+### Batch 4 — Curriculum merge
+
+Date: 2026-05-15  
+PR: #1  
+Commit: (pending — backfilled next batch)  
+Scope: Moved four root directories — `assignments/`, `courses/`, `modules/`, `thesis/` — into `curriculum/`, giving academic work a single parent.  
+Directories moved (via `git mv`, 33 file renames in total, all 100% similarity):
+  - `assignments/` → `curriculum/assignments/` (3 entries: 1 brief, 1 README, `rubrics/`)
+  - `courses/` → `curriculum/courses/` (`des-001-design-foundations/` plus README)
+  - `modules/` → `curriculum/modules/` (10 numbered module dirs: `00-foundations` … `09-capstone`)
+  - `thesis/` → `curriculum/thesis/` (README only at present)
+
+Files modified:
+  - `curriculum/README.md` — rewritten with the post-Batch-4 contents table.
+  - `operations/MIGRATION_LOG.md` — backfilled Batch 3's commit SHA (`61f92d1`); appended this entry.
+
+Files added: none  
+Files deleted: none  
+Verification: No content changes to the 33 moved files. Root directory count: 24 → 20 (assignments, courses, modules, thesis no longer at root).  
+Notes: Discovered an unplanned root directory during this batch — `artifacts/` (containing `artifacts/html/destination-browser-v1.html` + README). It is not in the `MIGRATION_PLAN.md` directory table. A plan revision will follow before Batch 6, targeting `artifacts/` → `operations/artifacts/` (operational evidence outputs, governed by `charter/HTML_ARTIFACTS.md` and indexed by `operations/ARTIFACT_INDEX.md`). `artifacts/` is not touched in Batch 4. Cross-references in moved files to root-level filenames (e.g. links to `PROJECT_LOG.md`) remain broken until Batch 9.
