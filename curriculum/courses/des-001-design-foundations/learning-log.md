@@ -427,3 +427,61 @@ For DES-001 specifically: HCD is the umbrella over Topics 2 (UI components), 3 (
 
 Open Topic 5 PR A (this commit set), then start Lab 05 on a fresh branch for PR B.
 
+---
+
+## 2026-05-17 — Lab 05 executed (Topic 5 closed)
+
+### What was executed
+
+Full HCD audit (Audit 1) of v1.1 + Lab 04 Loop 1 against ISO 9241-210's four activities, six principles, and the W3C accessibility/usability/inclusion triad. Seven findings identified; six-item prioritised v1.2 HCD list produced.
+
+### Verdict summary
+
+| Dimension | Result |
+|---|---|
+| Four ISO activities | All audited with evidence |
+| Six ISO principles | 2 Pass, 3 Partial, 1 Fail |
+| W3C triad | 1 Pass (Usability), 1 Partial (Accessibility), 1 Fail (Inclusion) |
+| Findings | 7 (4 High, 2 Medium, 1 lower) |
+| v1.2 HCD list | 6-item prioritised list, ordered by leverage |
+
+**Overall**: v1.1 is *HCD-substantial but incomplete*. The audit-shape is intact; machine-grade discipline is strong. The Fail (Principle 2: Users involved throughout) and four High-severity findings are all closable in v1.2 with Sponsor Reviewer recruitment + four targeted specification efforts.
+
+### Key findings
+
+- **F-CTX-1 (High)**: Systems-level context-of-use under-documented. The downstream Planner consumer + lateral handoff + regulatory layers are not yet designed objects. Norman's *HCD Considered Harmful?* critique applies.
+- **F-REQ-1 (Medium)**: Lab 04 §8 U-CONF-1..4 criteria in prose but not landed in `ux-acceptance-criteria.md`.
+- **F-REQ-2 (High)**: Inclusion-lens user requirements entirely absent from the canonical criteria sheet.
+- **F-EVAL-1 (High)**: Human-grade evaluation is absent — only the machine-grade 19-gate walkthrough exists.
+- **F-PRIN-1 (High)**: Principle 2 (Users involved throughout) is the only outright Fail; Sponsor Reviewer recruitment becomes a v1.2 prerequisite.
+- **F-W3C-1 (High)**: Inclusion lens fails on five sub-dimensions (language, bandwidth, device, cultural context, terminology).
+
+### Prioritised v1.2 HCD list
+
+1. Recruit at least one Sponsor Reviewer (closes F-EVAL-1, F-PRIN-1)
+2. Land U-CONF-1..4 in `ux-acceptance-criteria.md` (closes F-REQ-1)
+3. Produce systems-context-of-use document (closes F-CTX-1)
+4. Specify inclusion-lens requirements (closes F-REQ-2, F-W3C-1)
+5. Include screen-reader test in Sponsor Reviewer recruitment (upgrades Accessibility lens)
+6. Re-audit v1.1 at heuristic-grade with post-Topics-2-5 discipline (closes F-EVAL-2)
+
+### Repository outputs created
+
+- `design/foundations/topic-05-hcd-audit.md` — Audit 1 (Steps 1–7 evidence; capability extraction)
+- `curriculum/courses/des-001-design-foundations/submissions/lab-05-hcd-audit-results.md` — formal lab submission
+- `design/checklists/master-browser-design-checklist.md` §26 + §27 + §28 (Topic 5 gates + anti-patterns + canonical pointer)
+
+### What changed in understanding
+
+The audit-shape itself is the most operationally important discipline Topic 5 introduces. Before the audit, *we did HCD* was unverifiable; after, the four activities + six principles + W3C triad are a checklist. Items that can be passed off as "the design is good" are surfaced as concrete gaps (F-CTX-1, F-REQ-2, F-EVAL-1, F-W3C-1) with specific closure paths.
+
+The single most important meta-finding: *honest naming of limitations is the discipline*. v1.1 isn't HCD-failing because it has gaps; it's HCD-substantial because the gaps are named, prioritised, and queued for closure. Pretending the gaps don't exist is the non-compliance failure mode.
+
+### Topic 5 status
+
+**Closed.** Both PR A (deep reading + scaffold + quiz + viva + data.js) and PR B (this entry's Lab 05 + audit + checklist gates + submission) are complete.
+
+### Next action
+
+Start **DES-001 Topic 6 — Gestalt principles** — the final topic in the ratified three-topic push (Topics 4 → 5 → 6 ending in grade report v3).
+

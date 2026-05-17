@@ -101,7 +101,7 @@ Grade reports:
 | Append Topic 4 gates to master-browser checklist | `design/checklists/master-browser-design-checklist.md` §23 (four gates) + §24 (five anti-patterns) + §25 (canonical loop-output pointer) | Complete |
 | Submit Lab 04 | `submissions/lab-04-design-thinking-loop-results.md` | Complete |
 
-## Topic 5 — Human-centred design (deep reading complete; Lab 05 pending)
+## Topic 5 — Human-centred design (closed)
 
 | Competency | Evidence | Status |
 |---|---|---|
@@ -118,14 +118,14 @@ Grade reports:
 | Topic 5 quiz answers | `quizzes/quiz-05-human-centered-design-answers.md` | Complete |
 | Topic 5 viva answers | `viva/DES-001-viva-answers.md` Topic 5 section | Complete |
 | Update Topic 5 dashboard module | `docs/design-foundations-app/data.js` (status flipped to `done`, five sources, full notes) | Complete |
-| Run full HCD audit of v1.1 + Lab 04 Loop 1 | Lab 05 Steps 1–7 | Pending — PR B |
-| Produce HCD audit doc | `design/foundations/topic-05-hcd-audit.md` | Pending — PR B |
-| Append Topic 5 gates to master-browser checklist | `design/checklists/master-browser-design-checklist.md` §26 + §27 + §28 | Pending — PR B |
-| Submit Lab 05 | `submissions/lab-05-hcd-audit-results.md` | Pending — PR B |
+| Run full HCD audit of v1.1 + Lab 04 Loop 1 | `design/foundations/topic-05-hcd-audit.md` (Audit 1: 4 activities, 6 principles, W3C triad; 7 findings; 6-item prioritised v1.2 list) | Complete |
+| Produce HCD audit doc | `design/foundations/topic-05-hcd-audit.md` | Complete |
+| Append Topic 5 gates to master-browser checklist | `design/checklists/master-browser-design-checklist.md` §26 (four HCD gates) + §27 (four anti-patterns) + §28 (canonical audit pointer) | Complete |
+| Submit Lab 05 | `submissions/lab-05-hcd-audit-results.md` | Complete |
 
 ## Next recommended action
 
-Run **Lab 05** (PR B). Full HCD audit of v1.1 + Lab 04 Loop 1 against ISO 9241-210's four activities + six principles + W3C triad. After Lab 05 closes, Topic 5 is fully closed and Topic 6 (Gestalt principles) begins — the final topic in the ratified three-topic push ending in grade report v3.
+Start **Topic 6 (Gestalt principles)** — the final topic in the ratified three-topic push (Topics 4 → 5 → 6 ending in grade report v3). After Topic 6 closes, grade report v3 covers the cumulative DES-001 grade after Topics 1–6.
 
 Rationale:
 

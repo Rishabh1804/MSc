@@ -312,3 +312,41 @@ design/foundations/topic-04-design-thinking-loop.md
 ```
 
 Loop 1 (batch-promote-confirm modal) is the workspace's first run of the discipline. Future loops follow the same eight-step shape (Pick → Empathize → Define → Ideate → Triage → Prototype → Test-spec → Decision) and produce the same handoff format to Topic 3 criteria + Topic 2 components. Lab 04's submission (`submissions/lab-04-design-thinking-loop-results.md`) is the formal lab evidence for Loop 1.
+
+## 26. Topic 5 HCD gates
+
+Source topic: DES-001 Topic 5 — Human-centred design. Added 2026-05-17 from Lab 05 (`design/foundations/topic-05-hcd-audit.md`).
+
+Every v1.2+ backlog item must pass all four gates. They are the lifecycle-level companion to §3 (Topic 1 UI-vs-UX), §18 (Topic 2 components), §20 (Topic 3 UX), §23 (Topic 4 design-thinking).
+
+| Gate | Pass criteria | Source |
+|---|---|---|
+| HCD self-audit gate (four cells) | Every backlog item names (a) context of use, (b) user requirement, (c) design solution shape, (d) evaluation that would confirm it works. Any empty cell = return to the missing activity. | Topic 5 deep-reading doc §10 + Lab 05 §Step 7 |
+| Per-PR activity gate | Every PR that changes the browser names which ISO activity its work serves, and which activity it leaves under-served. | ISO 9241-210 + Lab 05 §Step 7 |
+| W3C triad lens gate | Every v1.2 feature is evaluated against all three lenses (usability / accessibility / inclusion); the worst-served lens is named. | W3C Accessibility, Usability, and Inclusion + Lab 05 §Step 6 |
+| Sponsor-Reviewer presence gate | If no Sponsor Reviewer is recruited, the PR description explicitly names the absence and what the next-loop input would need to confirm. Pretending a Sponsor Reviewer exists when one doesn't is HCD non-compliance. | ISO 9241-210 Principle 2 + Norman *HCD Considered Harmful?* |
+
+A backlog item or PR that fails any gate is incomplete; the gate's stage must be re-run before merge. These gates compound on top of §3 / §18 / §20 / §23 — they don't replace them.
+
+## 27. Topic 5 HCD anti-patterns
+
+Four HCD anti-patterns specific to single-person workspaces. Every backlog item / PR must refuse all four.
+
+1. **Treating self as user (introspection-as-context)** — filling Activity 1 with the designer's own experience. Mitigation: three-persona synthesis + explicit naming of the limitation.
+2. **Skipping the evaluate activity** — "we shipped, that's enough". Mitigation: machine-grade walkthrough as minimum + named human-grade gap.
+3. **Treating accessibility as a post-hoc audit** — adding ARIA / keyboard / focus *after* the design is done, instead of specifying them as user requirements in Activity 2. Mitigation: accessibility appears in the requirements sheet, not only in the implementation.
+4. **Defining the user as "the user"** — treating the user as monolithic, without personas or context. Mitigation: name personas explicitly; describe contexts per persona; surface persona-conflicts when they happen.
+
+Each is sourced from Topic 5 deep-reading doc §11 (which cites ≥ 1 of the four required Topic 5 sources per anti-pattern).
+
+## 28. HCD audit canonical pointer
+
+The canonical HCD audit lives at:
+
+```text
+design/foundations/topic-05-hcd-audit.md
+```
+
+Audit 1 (v1.1 + Lab 04 Loop 1) is the workspace's first formal HCD audit. Future audits follow the same seven-step shape (Activity 1 / 2 / 3 / 4 / six-principle / W3C-triad / Findings + prioritised list) and produce the same prioritised-by-leverage closure list. Lab 05's submission (`submissions/lab-05-hcd-audit-results.md`) is the formal lab evidence for Audit 1.
+
+The prioritised v1.2 HCD list from Audit 1 (Sponsor Reviewer + U-CONF criteria landing + systems-context-of-use doc + inclusion requirements + screen-reader test + heuristic re-audit) is inherited work for the v1.2 implementation PR.

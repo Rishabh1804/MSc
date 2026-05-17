@@ -42,6 +42,8 @@ docs/design-foundations.html
 | Topic 5 deep reading + source comparison | `design/foundations/topic-05-hcd.md` | Complete |
 | Topic 5 quiz answers | `courses/des-001-design-foundations/quizzes/quiz-05-human-centered-design-answers.md` | Submitted |
 | Topic 5 viva answers | `courses/des-001-design-foundations/viva/DES-001-viva-answers.md` (Topic 5) | Submitted |
+| Topic 5 Lab 05 HCD audit (v1.1 + Lab 04 Loop 1) | `design/foundations/topic-05-hcd-audit.md` (Audit 1; 4 activities + 6 principles + W3C triad; 7 findings; 6-item prioritised v1.2 list) | Complete |
+| Topic 5 Lab 05 submission | `courses/des-001-design-foundations/submissions/lab-05-hcd-audit-results.md` | Submitted |
 | Topic 3 Lab 03 journey map + criteria + need-audit + gap analysis | `design/foundations/topic-03-ux-design-journey-map.md` | Complete |
 | Topic 3 UX acceptance-criteria sheet (Browser v1.1 UX gate) | `design/foundations/ux-acceptance-criteria.md` | Complete |
 | Topic 3 Lab 03 submission | `courses/des-001-design-foundations/submissions/lab-03-ux-design-journey-map-results.md` | Submitted |

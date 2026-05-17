@@ -50,24 +50,17 @@ Closed by two PRs (PR A — reading; PR B — Lab 04):
 - `submissions/lab-04-design-thinking-loop-results.md` — formal lab submission (PR B)
 - `design/checklists/master-browser-design-checklist.md` §23 (four design-thinking gates) + §24 (five anti-patterns) + §25 (canonical loop-output pointer) (PR B)
 
-## Week 5 — Human-centred design (active)
+## Week 5 — Human-centred design ✓ complete (2026-05-17)
 
-Scaffolded + deep-reading executed (PR A):
+Closed by two PRs (PR A — reading; PR B — Lab 05 HCD audit):
 
-- `lectures/lecture-05-human-centered-design.md`
-- `readings/topic-05-human-centered-design-reading-pack.md`
-- `quizzes/quiz-05-human-centered-design.md` + answer key + worked answers
-- `labs/lab-05-hcd-audit.md`
-- `design/foundations/topic-05-hcd.md` (16-section deep-reading doc)
-- Topic 5 viva questions + answers appended
-- `docs/design-foundations-app/data.js` Topic 5 → `done`
-
-To execute (PR B):
-
-- Run Lab 05 HCD audit of v1.1 + Lab 04 Loop 1
-- Produce `design/foundations/topic-05-hcd-audit.md` (per-activity evidence, six-principle audit, W3C triad audit, prioritised findings)
-- Submit `submissions/lab-05-hcd-audit-results.md`
-- Append Topic 5 §26 + §27 + §28 to `design/checklists/master-browser-design-checklist.md`
+- Lecture, reading pack, quiz + key + worked answers, lab brief (PR A)
+- `design/foundations/topic-05-hcd.md` — 16-section deep-reading doc (PR A)
+- `viva/DES-001-viva-questions.md` + `-answers.md` — eight Topic 5 questions + answers (PR A)
+- `docs/design-foundations-app/data.js` — Topic 5 flipped to `done` (PR A)
+- `design/foundations/topic-05-hcd-audit.md` — Audit 1 (v1.1 + Lab 04 Loop 1; 4 activities; 6 principles; W3C triad; 7 findings; 6-item prioritised v1.2 list) (PR B)
+- `submissions/lab-05-hcd-audit-results.md` — formal lab submission (PR B)
+- `design/checklists/master-browser-design-checklist.md` §26 (four HCD gates) + §27 (four anti-patterns) + §28 (canonical audit pointer) (PR B)
 
 ## Week 6 — Gestalt principles (planned for Topic 6)
 
