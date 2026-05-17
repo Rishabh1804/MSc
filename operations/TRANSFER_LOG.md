@@ -93,3 +93,49 @@ Plus the workspace-level UI/UX design skill (SKILL_MAP.md, promoted level 4 → 
 2. User to verify the production GitHub Pages render (priority 3) when convenient.
 3. Start DES-001 Topic 4 (Design thinking) per the ratified execution plan §3.
 4. When 3–4 more design transfers accumulate, promote the six capabilities from register rows to formal capability cards under `capabilities/` (template at the bottom of `operations/CAPABILITIES.md`).
+
+### Transfer 2 — DES-001 Lab 06 Gestalt audit → Browser v1.1.x polish PR
+
+**Date:** 2026-05-17
+
+**Source capability:** All five DES-001 Topics 4 + 5 + 6 audit-derived capabilities (CAPABILITIES.md rows added at maturity 4 as part of the three-topic-push closure):
+- Gestalt audit template (Steps 1–6)
+- Gestalt violation taxonomy (false-positive / false-negative / unresolved conflict)
+- Density-vs-grouping audit pattern
+- HCD audit template (Steps 1–7)
+- HCD self-audit gate (four cells)
+
+Plus the workspace-level design-discipline meta-skill (SKILL_MAP.md row added).
+
+**Target project:** Destination Master Browser v1.1.x polish — the next implementation cycle on `docs/destination-master-browser.html`, scoped to the Lab 06 prioritised v1.1.x fix list (visual-treatment-only changes that close 6 Gestalt findings without changing component rules).
+
+**Problem solved:** v1.1 ships with 6 Gestalt findings (F-GES-1..6) the Lab 06 audit surfaced. Five of the six fixes are visual-treatment-only (v1.1.x scope); they close findings whose root causes the audit-shape made visible (silarity-collapse around the verification text; toolbar over-grouping; active-filter summary bleed; sortable-header affordance; search-vs-select grammar separation). The transfer is the audit's prioritised fix list moving from `design/foundations/topic-06-gestalt-audit.md` into the next polish PR's scope.
+
+**Artifact transferred (planned):**
+- `docs/destination-master-browser.html` (v1.1.x build — updated visual treatment on six regions)
+- Per-fix before/after screenshots attached to `design/foundations/topic-06-gestalt-audit.md` retroactively (per Lyra missed-opportunity on PR #18)
+- Anticipated leverage scores computed per fix (per Lyra missed-opportunity)
+
+**Evidence (to be produced by the polish PR):**
+- Lab 06 prioritised fix list as the input
+- Updated `docs/destination-master-browser.html` with the six visual-treatment changes
+- Annotated before/after screenshots in the audit doc
+- v1.1.x walk-through re-verified (existing 19-gate Playwright walk-through should continue to pass; no regression)
+
+**Outcome (planned):**
+- All 6 Gestalt findings closed at v1.1.x scope (F-GES-1 + F-GES-2 closed by Fix #1; F-GES-3 by Fix #4; F-GES-4 by Fix #2; F-GES-5 visual half by Fix #5a; F-GES-6 by Fix #3)
+- R1 caution-chip Trade-off upgraded to Pass by Fix #6
+- Audit doc gains empirical (screenshot) grounding
+- Fix #5b grammar-unification deferred to v1.2 pending Sponsor Reviewer input
+
+**Limitations:**
+- The polish PR is not yet started; this entry pre-records the transfer per the Aurelius missed-opportunity that flagged Lab-06-fix-list-as-transfer-payload as a missed governance step
+- Fix #5b stays in v1.2 scope and is *not* part of this transfer
+- Audit 2 trigger (NEXT_ACTIONS priority 11) is the verification step that closes this transfer after v1.2 ships
+
+**Next action:**
+1. Start the v1.1.x polish PR (NEXT_ACTIONS priority 8) implementing the six fixes
+2. Capture before/after screenshots per fix as evidence
+3. Attach screenshots + computed leverage scores to the audit doc retroactively
+4. Re-verify the existing 19-gate walk-through (no regression)
+5. Update this Transfer 2 entry's "Outcome" section with the actual results once shipped

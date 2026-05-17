@@ -19,17 +19,19 @@
 ## Current grade status
 
 ```text
-87 / 100 — Excellent (rubric) / Distinction (course policy)   [grade report v2, 2026-05-16]
-+5 over v1's 82/100 baseline (Lyra-corrected; subscore sum 93 minus the explicit −6 scope-incompleteness adjustment)
-Topic 2 standalone scored at 96/100 (Benchmark band if Topic 2 were the whole assignment)
+91 / 100 — Excellent (rubric) / Distinction (course policy)   [grade report v3, 2026-05-17]
++4 over v2's 87/100 baseline (subscore sum 94 minus the explicit −3 scope-incompleteness adjustment)
+Per-topic standalone grades (Topics 4–6 added by the three-topic push): 94 / 95 / 94
+Topic 2 standalone at 96/100 + Topic 5 standalone at 95/100 = two topics already in Benchmark band
 ```
 
-Benchmark eligible: NOT YET — promotion of the **full DES-001 assignment** to benchmark status (rubric §12) requires Topics 3–12 to close. Topic 2 *as a topic* meets benchmark criteria; the assignment as a whole does not yet.
+Benchmark eligible: NOT YET — promotion of the **full DES-001 assignment** to benchmark status (rubric §12) requires Topics 7–12 to close. Topic 2 + Topic 5 each meet benchmark criteria *as topics*; the assignment as a whole does not yet (6/12 topics still scaffolded).
 
 Grade reports:
 
 - `feedback/DES-001-grade-report-v1.md` — Topic 1 + Lab 01 milestone (82/100)
-- `feedback/DES-001-grade-report-v2.md` — Topic 1 + Topic 2 milestone (93/100) — **current**
+- `feedback/DES-001-grade-report-v2.md` — Topic 1 + Topic 2 milestone (87/100)
+- `feedback/DES-001-grade-report-v3.md` — Topics 1–6 milestone (**91/100**) — **current** (closes the ratified three-topic push)
 
 ## Topic 2 — What is UI design (closed)
 

@@ -79,7 +79,7 @@ The main v1.1 direction should therefore be workflow completion rather than visu
 - ~~Full browser visual verification of `docs/design-foundations.html` is still pending.~~ Closed 2026-05-16; see `verification/dashboard-visual-verification-2026-05-16.md`.
 - Topics 4–12 are scaffolded but not deeply digested. Topics 1, 2, and 3 are all fully closed (reading + lab + checklist + submission).
 - Browser v1.1 implementation is **unblocked** as of 2026-05-16: Topic 2 rule sheet + Topic 3 acceptance-criteria sheet + master-browser checklist §3 + §18 + §20 together form the v1.1 specification.
-- Final (non-provisional) grade report is pending after enough topics close to justify it. Current provisional grade: **87/100 (Excellent / Distinction)** per `feedback/DES-001-grade-report-v2.md` — superseding v1's 82/100. The v2 cumulative grade is the subscore sum (93) minus an explicit −6 scope-incompleteness adjustment (10 of 12 topics still scaffolded). Benchmark promotion of the whole assignment requires Topics 3–12 to close, at which point the adjustment reaches 0.
+- Final (non-provisional) grade report is pending after enough topics close to justify it. Current provisional grade: **91/100 (Excellent / Distinction)** per `feedback/DES-001-grade-report-v3.md` — superseding v2's 87/100 and v1's 82/100. The v3 cumulative grade is the subscore sum (94) minus an explicit −3 scope-incompleteness adjustment (6 of 12 topics still scaffolded — the adjustment scaled down proportionally from v2's −6). Per-topic standalone grades across the three-topic push: Topic 4 = 94, Topic 5 = 95 (Benchmark band), Topic 6 = 94. Benchmark promotion of the whole assignment requires Topics 7–12 to close, at which point the adjustment reaches 0.
 
 ## Submission decision
 
