@@ -391,3 +391,39 @@ The single most important meta-finding: **Loop 1's three-persona substitute for 
 
 Start **DES-001 Topic 5 — Human-centred design** per the ratified three-topic push (Topics 4 → 5 → 6 ending in grade report v3).
 
+---
+
+## 2026-05-17 — Topic 5 scaffolded + deep reading executed (PR A)
+
+### What was scaffolded and executed
+
+Topic 5 (Human-centred design) artifacts created in the Topic 4 shape (scaffold + deep reading + quiz + viva + data.js + tracking all in one PR).
+
+Scaffolding: lecture-05, reading-pack-topic-05, quiz-05 + answer key, lab-05.
+
+Deep reading executed:
+- `design/foundations/topic-05-hcd.md` — 16-section deep-reading doc: topic definition (HCD as standards-grade lifecycle); four ISO 9241-210 activities with per-activity artifacts; six ISO principles with single-person-workspace translation table; W3C accessibility/usability/inclusion triad; source list (ISO, Norman, IDEO, W3C + 6 extension); source-by-source notes; structured source comparison; Norman *HCD Considered Harmful?* critique + per-source responses; canonical hierarchy (HCD umbrella over Topics 2/3/4) with artifact-to-activity mapping; application to v1.1 (anticipated gaps); four anti-patterns for solo workspaces; implementation implications for v1.2 + grade-report v3; further reading; reusable capabilities; source-set reflection; open work.
+
+Topic 5 quiz answers (ten worked answers, self-marked).
+Topic 5 viva questions (eight) + answers (eight, each with examiner-push follow-up) appended.
+
+Dashboard module: `docs/design-foundations-app/data.js` Topic 5 promoted from stub to full module entry. Five sources attached. Full notes object. Playwright re-verified: 12 modules render, zero console errors, five of twelve now `done`.
+
+### What changed in understanding
+
+HCD is the *standards-grade lifecycle* that wraps every other design discipline. Its value isn't new artifacts; it's the *audit-shape* — every Topic 2/3/4 artifact maps to at least one ISO 9241-210 activity, and missing activities become visible. The Norman critique (HCD over-centres the individual user, missing systems thinking) is addressed structurally by doing Activity 1 (Context of use) properly: context-of-use IS systems-thinking when done well.
+
+For DES-001 specifically: HCD is the umbrella over Topics 2 (UI components), 3 (UX criteria + journey), and 4 (design-thinking loop). Lab 05 will audit v1.1 against the lifecycle. Anticipated gaps: human-grade evaluation absent; systems-level context-of-use incomplete; inclusion lens fail (English-only, desktop-only, monocultural).
+
+### Open work after Topic 5 reading
+
+- Execute Lab 05 HCD audit (PR B)
+- Produce `design/foundations/topic-05-hcd-audit.md`
+- Submit `submissions/lab-05-hcd-audit-results.md`
+- Append Topic 5 §26 + §27 + §28 to `design/checklists/master-browser-design-checklist.md`
+- Move on to Topic 6 (Gestalt) — final topic in the three-topic push
+
+### Next action
+
+Open Topic 5 PR A (this commit set), then start Lab 05 on a fresh branch for PR B.
+

@@ -44,6 +44,17 @@
 7. The CodeMike workspace is single-person today. Which Topic 4 disciplines transfer directly to single-person work, and which need translation?
 8. Give one example of an evidence-free version of any of the five stages, and explain what the *next* stage suffers as a consequence.
 
+## Topic 5 — Human-centred design
+
+1. Define HCD as a discipline. Distinguish it from design thinking (Topic 4) and from UX design (Topic 3).
+2. Name the four ISO 9241-210 activities. For each, name one artifact the Destination Master Browser work has already produced that maps to it.
+3. State three of the six ISO principles and explain how each translates to a single-person workspace.
+4. The W3C triad (usability / accessibility / inclusion) overlaps heavily. Where on v1.1 are the three lenses well-served? Where is the worst-served lens, and what does that gap look like concretely?
+5. Norman's *HCD Considered Harmful?* argues HCD can over-centre the individual user at the cost of systems thinking. Defend or attack the position; cite either way.
+6. The hierarchy says HCD is the umbrella over Topics 2 / 3 / 4. Which of the four activities does Topic 4 (design thinking loop) most directly exercise? Which one does Topic 4 under-serve, requiring HCD discipline to compensate?
+7. Lab 05's audit will surface gaps. Name two anticipated gaps and explain how each would be closed in v1.2.
+8. The HCD self-audit gate has four cells. Pick a v1.2 candidate (your choice) and run the gate. What's the weakest cell?
+
 ## Answer file
 
 Answers should be stored in:
