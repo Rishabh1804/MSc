@@ -216,11 +216,58 @@ window.DES001_TOPICS = [
       ]
     },
     further: ['design/foundations/topic-04-design-thinking.md — Topic 4 deep reading + source comparison', 'design/foundations/topic-04-design-thinking-loop.md — Lab 04 single-pain-point loop (PR B)', 'IDEO Field Guide (different chapters than Topic 3)', 'Jeanne Liedtka — Design Thinking for the Greater Good', 'Kim Goodwin — Designing for the Digital Age (scenarios + personas)', 'Don Norman — Design Thinking: A Useful Myth (2010 essay; critique)', 'GOV.UK Service Manual — Discovery phase']
+  },
+  {
+    title: 'Human-centered design',
+    status: 'done',
+    summary: 'HCD is the standards-grade lifecycle (ISO 9241-210) of designing interactive systems so they fit the human, not the other way around. Four-activity iterative cycle (Context of use → User requirements → Design solutions → Evaluation) governed by six principles, paired with the W3C accessibility/usability/inclusion triad. The umbrella over Topics 2 (UI) / 3 (UX) / 4 (design thinking) — every Topic 2/3/4 artifact maps to at least one ISO activity. Value isn\'t new artifacts; it\'s the audit-shape that ensures every artifact serves the lifecycle and nothing is silently skipped.',
+    sources: [
+      ['Primary', 'ISO 9241-210 — Human-centred design for interactive systems', 'https://www.iso.org/standard/77520.html', 'The discipline\'s auditable spec: four activities (Context of use → User requirements → Design solutions → Evaluate) + six principles. Standards-grade; deliberately method-agnostic; cited by every other source.'],
+      ['Primary', 'Don Norman — HCD essays (HCD Considered Harmful?; The Future of Design; DOET chapters)', 'https://www.nngroup.com/articles/human-centered-design-considered-harmful/', 'The honest engagement with HCD\'s risks (over-centring individual user; missing systems thinking) + the argument that HCD is the only framing that doesn\'t drift into designer-centred design.'],
+      ['Applied', 'IDEO — Field Guide to Human-Centered Design (HCD chapters)', 'https://www.designkit.org/resources/1', 'Operational handbook: methods catalogue by activity (stakeholder mapping, expert interviews, immersion, co-design). Fills the operational gap ISO leaves.'],
+      ['Cross', 'W3C — Accessibility, Usability, and Inclusion', 'https://www.w3.org/WAI/fundamentals/accessibility-usability-inclusion/', 'The triad framing that ensures accessibility is part of HCD, not separate from it. Three overlapping lenses; any HCD process must address all three.'],
+      ['Extension', 'CodeMike — Topic 5 deep reading', 'https://github.com/Rishabh1804/MSc/blob/main/design/foundations/topic-05-hcd.md', 'Beyond-scope source comparison + Norman critique with per-source responses + canonical HCD-as-umbrella hierarchy + single-person-workspace principle translations.']
+    ],
+    notes: {
+      summary: 'HCD is the standards-grade lifecycle that wraps every other design discipline. Four activities (Context of use → User requirements → Design solutions → Evaluation), six principles, iterative. Paired with the W3C triad (usability/accessibility/inclusion) as the lens. HCD is the umbrella over Topics 2/3/4 — every Topic 2/3/4 artifact maps to at least one ISO activity. The discipline\'s value is the audit-shape: every artifact ties back to the lifecycle, missing activities become visible. ISO is method-agnostic on purpose; IDEO provides operational methods; Norman provides honest critique; W3C provides the triad vocabulary. Norman\'s HCD-Considered-Harmful argument (HCD over-centres the individual user, missing systems thinking) is addressed by doing Activity 1 (Context of use) properly — context-of-use IS systems-thinking when done well.',
+      principles: [
+        'HCD is a standards-grade lifecycle (ISO 9241-210), not a workshop or a method.',
+        'Four activities + six principles; both must be addressed.',
+        'Accessibility is part of HCD via the W3C triad, not a separate audit.',
+        'Every Topic 2/3/4 artifact maps to at least one ISO activity; nothing is silently skipped.',
+        'Solo-workspace principle translations work only when the limitation is named explicitly.',
+        'Context-of-use done properly is systems-thinking (Norman critique addressed structurally).',
+        'The audit-shape distinguishes HCD-compliant work from design theatre.'
+      ],
+      comparison: 'All four required sources agree HCD is a lifecycle (not a method), is iterative, requires user involvement throughout, and treats accessibility as part of HCD. They differ on role: ISO is the standard (audit), Norman is the critic (honest framing), IDEO is the handbook (methods), W3C is the vocabulary (triad). A team that stopped at one would have a known gap — ISO without methods, Norman without standards, IDEO without critique, W3C without lifecycle. The four together cover HCD; one or two would have known gaps.',
+      disagreements: 'Auditability: ISO high (the standard), others medium. Method specificity: IDEO high, ISO intentionally low. Critique surface: Norman high (warns about over-centring), others low. Accessibility centrality: W3C high (dedicated framing), others mention. Team scale: ISO and IDEO assume multidisciplinary teams; Norman and W3C are more flexible. For CodeMike solo workspace, all sources need translation; ISO\'s six principles in particular get worked through one-by-one for single-person translation (Topic 5 deep-reading doc §3).',
+      interpretation: 'CodeMike treats HCD as the umbrella over Topics 2/3/4. Every artifact maps to at least one ISO activity. The lifecycle is the unit of auditability; the four activities are the checklist. Single-person workspace honours the six principles by translating each (three-persona synthesis for Principle 1; machine-grade walkthrough as lower-bound evaluation for Principle 3; conscious multi-lens adoption for Principle 6) AND by naming the limitations explicitly. Pretending a principle is fully satisfied when it isn\'t is HCD non-compliance.',
+      application: 'Lab 05 runs an HCD audit of v1.1 + Lab 04 Loop 1 against the four ISO activities, six principles, and W3C triad. Expected gaps: human-grade evaluation absent (only machine-grade walkthrough exists); systems-level context-of-use incomplete (Planner downstream and data-engineering upstream documented in passing); inclusion lens fail (English-only copy, no low-bandwidth consideration, mobile not tested as primary). Closures in v1.2 require recruiting at least one Sponsor Reviewer + documenting the wider workflow context.',
+      antiPatterns: [
+        'Treating self as user (introspection-as-context): collapses HCD\'s four activities into the designer\'s own experience. Mitigation: three-persona synthesis + explicit naming of the limitation.',
+        'Skipping the evaluate activity: "we shipped, that\'s enough" — common in solo workspaces with no team to demo to. Mitigation: machine-grade walkthrough as minimum + named human-grade gap.',
+        'Treating accessibility as a post-hoc audit: adding ARIA/keyboard/focus AFTER the design is done, instead of specifying them in Activity 2. Mitigation: accessibility appears in the requirements sheet, not only in implementation.',
+        'Defining the user as "the user" without naming personas or contexts: treats the user as monolithic. Mitigation: name personas explicitly; describe contexts per persona.'
+      ],
+      implementation: [
+        'Every v1.2 backlog item passes the HCD self-audit gate: name (a) context of use, (b) user requirement, (c) design solution shape, (d) evaluation that would confirm it works. Items with any empty cell return to the missing activity.',
+        'The v1.2 HCD findings list from Lab 05 is the prioritised list of HCD-driven changes to ship in v1.2.',
+        'Recruit a Sponsor Reviewer for v1.2 work; absence is named explicitly until then.',
+        'Grade report v3 (after Topic 6) incorporates HCD compliance as a marking criterion alongside the existing rubric.',
+        'Document the systems-level context of use (Planner downstream, data-engineering upstream) in a new one-page systems-context-of-use file in v1.2.'
+      ],
+      checklist: [
+        'Add an HCD self-audit gate to the v1.2 backlog: every item names its context-of-use, user-requirement, design-solution shape, and evaluation; empty cell = return to activity.',
+        'Add a per-activity audit gate to every PR that changes the browser: which ISO activity does this PR\'s work serve? Which activity does it leave under-served?',
+        'Add a W3C-triad-lens gate: every v1.2 feature is evaluated against all three lenses (usability/accessibility/inclusion); the worst-served lens is named.',
+        'Add a Sponsor-Reviewer-status row to NEXT_ACTIONS: if no Sponsor Reviewer is yet recruited, the row tracks the recruitment as a v1.2 prerequisite.'
+      ]
+    },
+    further: ['design/foundations/topic-05-hcd.md — Topic 5 deep reading + source comparison', 'design/foundations/topic-05-hcd-audit.md — Lab 05 HCD audit of v1.1 (PR B)', 'ISO 9241-11 — Usability: Definitions and concepts', 'WCAG 2.2 success criteria', 'Microsoft Inclusive Design Toolkit', 'Jakob Nielsen — Why You Only Need to Test with 5 Users', 'GOV.UK Service Manual — Accessibility and assisted digital']
   }
 ];
 
 window.DES001_TOPIC_STUBS = [
-  'Human-centered design',
   'Gestalt principles',
   "Fitts' law",
   'Button states',

@@ -101,9 +101,31 @@ Grade reports:
 | Append Topic 4 gates to master-browser checklist | `design/checklists/master-browser-design-checklist.md` §23 (four gates) + §24 (five anti-patterns) + §25 (canonical loop-output pointer) | Complete |
 | Submit Lab 04 | `submissions/lab-04-design-thinking-loop-results.md` | Complete |
 
+## Topic 5 — Human-centred design (deep reading complete; Lab 05 pending)
+
+| Competency | Evidence | Status |
+|---|---|---|
+| Define HCD as a standards-grade lifecycle | `design/foundations/topic-05-hcd.md` §1 | Complete |
+| Name the four ISO 9241-210 activities | Deep-reading doc §2 (mapping table + per-activity artifacts) | Complete |
+| Name the six ISO principles + single-person translations | Deep-reading doc §3 (per-principle translation table) | Complete |
+| W3C accessibility / usability / inclusion triad | Deep-reading doc §4 (triad framing + overlap/distinction) | Complete |
+| Multi-source reading across HCD traditions | Deep-reading doc §5 (ISO, Norman, IDEO, W3C) + 6 extension sources | Complete |
+| Compare source framings | Deep-reading doc §7 (agreement + difference-by-emphasis + per-source omissions) | Complete |
+| Engage with Norman's HCD-Considered-Harmful critique | Deep-reading doc §8 (per-source responses to systems-thinking risk) | Complete |
+| Canonical HCD hierarchy (umbrella over Topics 2/3/4) | Deep-reading doc §9 (with artifact-to-activity mapping table) | Complete |
+| Application to browser HCD audit | Deep-reading doc §10 (anticipated gaps; expected closures) | Complete |
+| List HCD anti-patterns for solo workspaces | Deep-reading doc §11 (four anti-patterns) | Complete |
+| Topic 5 quiz answers | `quizzes/quiz-05-human-centered-design-answers.md` | Complete |
+| Topic 5 viva answers | `viva/DES-001-viva-answers.md` Topic 5 section | Complete |
+| Update Topic 5 dashboard module | `docs/design-foundations-app/data.js` (status flipped to `done`, five sources, full notes) | Complete |
+| Run full HCD audit of v1.1 + Lab 04 Loop 1 | Lab 05 Steps 1–7 | Pending — PR B |
+| Produce HCD audit doc | `design/foundations/topic-05-hcd-audit.md` | Pending — PR B |
+| Append Topic 5 gates to master-browser checklist | `design/checklists/master-browser-design-checklist.md` §26 + §27 + §28 | Pending — PR B |
+| Submit Lab 05 | `submissions/lab-05-hcd-audit-results.md` | Pending — PR B |
+
 ## Next recommended action
 
-Start **Topic 5 (Human-centred design)** per the ratified three-topic push (Topics 4 → 5 → 6 ending in grade report v3). Topic 5 provides the standards-grade vocabulary (ISO 9241-210) that names the same four activities Topic 4 compresses; both pair with Topic 3 (criteria) and Topic 2 (components) to give the workspace a complete design-discipline frame.
+Run **Lab 05** (PR B). Full HCD audit of v1.1 + Lab 04 Loop 1 against ISO 9241-210's four activities + six principles + W3C triad. After Lab 05 closes, Topic 5 is fully closed and Topic 6 (Gestalt principles) begins — the final topic in the ratified three-topic push ending in grade report v3.
 
 Rationale:
 

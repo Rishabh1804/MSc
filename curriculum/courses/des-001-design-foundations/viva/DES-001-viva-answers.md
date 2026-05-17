@@ -378,3 +378,106 @@ Other valid examples:
 ## How the Topic 4 answers were defended
 
 Each Topic 4 answer cites at least one specific source (d.school, IBM, Brown, NN/g; sometimes Norman from the extension), at least one specific reviewer-task or v1.2-candidate, and connects to Topics 1–3's framework (user-need form, acceptance criteria, journey-step). The examiner-push lines target the points where Topic 4's argument is most likely to slip back into either pure-process advocacy (over-selling) or pure-skepticism (under-selling). The follow-ups defend the middle position the deep-reading doc takes: design thinking is a *tool*, useful when paired with domain expertise, evidence-shaped at every stage.
+
+## Topic 5 — Human-centred design
+
+### 1. Define HCD; distinguish from Topics 3 and 4
+
+HCD is the **standards-grade lifecycle** (ISO 9241-210) for designing interactive systems so they fit the human, not the other way around. Four activities (Context of use → User requirements → Design solutions → Evaluation), six principles, paired with the W3C accessibility/usability/inclusion triad. Distinct from Topic 4 (design thinking is the *loop* run *within* HCD's lifecycle when problems aren't well-framed) and from Topic 3 (UX design is the *practice* that produces journey + criteria artifacts; HCD is the *audit* that ensures those artifacts satisfy a standards-grade lifecycle).
+
+*Examiner push: "If HCD is just an audit, why does it need its own topic?"*
+
+Because the audit-shape itself is a design move. Without ISO 9241-210, "we did HCD" is unverifiable — there's no checklist to satisfy. With it, every artifact maps to one of four activities, and missing activities are visible. The audit-shape transforms HCD from a stance into a checkable lifecycle. That's what makes it standards-grade, and that's what makes it different from Topics 3 and 4 (which produce artifacts but don't audit them).
+
+### 2. Four activities + browser artifacts
+
+| Activity | Browser artifact |
+|---|---|
+| Context of use | Topic 3 §6 user-need extraction (`topic-03-ux-design-journey-map.md` §Step 3) |
+| Specify user requirements | Topic 3 `ux-acceptance-criteria.md` (14 criteria) |
+| Produce design solutions | Topic 2 `ui-design-component-rules.md` + v1.1 `destination-master-browser.html` |
+| Evaluate against requirements | 19-gate Playwright walkthrough |
+
+The lifecycle is iterative; the v1.1 → v1.2 transition is the next iteration cycle, with Topic 5's audit informing the Context-of-use refresh.
+
+*Examiner push: "Doesn't Topic 4's Lab 04 loop exercise all four activities by itself?"*
+
+Yes, in compressed form. A Topic 4 loop maps Empathize→Context, Define→Requirements, Ideate+Prototype→Design solutions, Test→Evaluate. That's why HCD says design thinking runs *within* the HCD lifecycle — a loop is one *iteration* of the lifecycle, not a substitute for it. The HCD frame ensures that the loop is part of an ongoing process, not a one-off.
+
+### 3. Three principles + single-person translation
+
+- **Principle 1** (Explicit understanding of users, tasks, environments): solo = three-persona synthesis (first-time/power/accessibility-need) as the explicit-understanding substitute; *honestly name* that no real users have been involved.
+- **Principle 3** (User-centred evaluation): solo = machine-grade walkthrough as the lower bound; *honestly name* the human-grade gap until a Sponsor Reviewer is recruited.
+- **Principle 6** (Multidisciplinary team): the most-stretched principle for solo work. Translation = consciously adopt different lenses (designer/engineer/domain-reviewer/accessibility-need user) within one person; *honestly name* that the same person plays all roles.
+
+The pattern: every translation works when the limitation is *named explicitly*. Pretending the principle is fully satisfied when it isn't is HCD non-compliance.
+
+*Examiner push: "Naming a limitation doesn't fix it. Doesn't that just license cutting corners?"*
+
+Naming doesn't fix; it preserves *honesty*. The fix is the Sponsor Reviewer in v1.2, the multidisciplinary team in v2.x, the iterative cycle that compounds. Naming the limitation makes the gap visible so the fix has a target. The alternative — claiming the principle is satisfied when it isn't — produces design that *looks* compliant but isn't. HCD's discipline is to never pretend.
+
+### 4. W3C triad on v1.1
+
+**Well-served:**
+- **Usability** — the 19-gate walkthrough covers typical-case task completion across the seven-step journey. Pass.
+- **Accessibility** — substantially served (focus rings, aria-describedby, keyboard nav, screen-reader-friendly drawer). Partial pending real assistive-tech testing.
+
+**Worst-served:**
+- **Inclusion** — Fail. Copy is English-only; assumes reviewer knows domain terms like "Planner-ready"; no low-bandwidth consideration; mobile layout exists but not tested as a primary use case; no consideration for non-Western reviewer contexts. The gap is concrete: v1.1 works for an English-speaking desktop reviewer with prior context; it fails for any reviewer outside that profile.
+
+*Examiner push: "Couldn't most of those inclusion gaps be deferred indefinitely without harm?"*
+
+Some can, in scope. But the *naming* matters. A v1.1 that says "we serve English-speaking desktop reviewers; multi-language and low-bandwidth are deferred to v2.x" is HCD-compliant. A v1.1 that silently ignores the gap and ships as "the browser for reviewers" is overclaiming. The inclusion gap is real; the fix is to scope it explicitly.
+
+### 5. Norman's *HCD Considered Harmful?* — defend or attack
+
+**Defend the position.** Norman is right that HCD risks over-centring the individual user. The risk is real because "centring the user" is structurally individualistic — it focuses attention on one user's experience, not on the system they're embedded in. For the Destination Master Browser specifically, v1.1's context-of-use is reviewer-focused; the downstream Planner workflow and the upstream data-engineering pipeline are documented in passing but not as full context-of-use specifications. Norman's critique surfaces this as a real gap.
+
+The defence within HCD: ISO 9241-210's *context of use* activity *is* systems-thinking when done properly. The activity includes the user's organisation, workflow, equipment, downstream consumers, and constraints. A team that does context-of-use seriously is doing the systems thinking Norman calls for. So the discipline contains the corrective; the failure mode is *bad context-of-use work*, not HCD itself.
+
+For DES-001: Lab 05's audit will surface the systems-level context-of-use gap explicitly and queue it for v1.2 to close.
+
+*Examiner push: "Couldn't 'centring the user' be re-defined to mean 'centring the user-in-their-system'?"*
+
+Yes — and that's what good HCD does. But the discipline has to *name* this explicitly. The simple "centre the user" reading risks the over-centring Norman warns about; the "centre the user-in-their-system" reading is what ISO 9241-210's context-of-use activity actually requires. The deep-reading doc §10's expected gaps list anticipates this exact issue for v1.1.
+
+### 6. Topic 4's relationship to the four HCD activities
+
+A Topic 4 design-thinking loop **most directly exercises** *Design solutions* (Ideate + Prototype produce candidate designs). It **secondarily exercises** User requirements (Define produces the POV statement; the requirement form follows) and Evaluation (Test specification names the falsification criteria). It **under-serves** Context of use — the loop assumes the user is understood enough to start Empathize; the broader systems-level context is left implicit.
+
+HCD's compensation: Activity 1 (Context of use) runs *outside* the design-thinking loop. The workspace's context-of-use specification feeds *into* the loop as Empathize input, and the loop's findings refine the specification on the way out. The two work together: HCD provides the lifecycle frame; design thinking is the iteration mechanism inside it.
+
+*Examiner push: "Couldn't you argue the loop's Empathize stage IS the context-of-use activity?"*
+
+In a small workspace, yes — Empathize and Context-of-use can collapse into one. But ISO 9241-210 treats them as distinct because at organisational scale they are: Context-of-use includes stakeholder mapping, regulatory constraints, equipment and environment surveys — work that happens *before* and *outside* any design-thinking loop. For CodeMike solo, the two activities are tightly coupled but should still be *named separately* in the audit, so the gaps in either become visible.
+
+### 7. Anticipated gaps + closures
+
+**Gap 1: human-grade evaluation is absent.** v1.1 was tested with the 19-gate machine walkthrough only; no real reviewers have used it. **Closure**: recruit at least one Sponsor Reviewer in v1.2; run a real-user test of the modal anatomy from Lab 04 against its six falsification criteria.
+
+**Gap 2: systems-level context-of-use is incomplete.** v1.1's context-of-use documents the reviewer's individual experience but not the surrounding Planner workflow downstream or the data-engineering pipeline upstream. **Closure**: produce a systems-context-of-use document in v1.2 (one page, mapping the reviewer's role in the wider workflow), and revisit the user-requirements activity to ensure Planner-downstream and data-upstream constraints are reflected.
+
+*Examiner push: "Couldn't both gaps be closed by the same Sponsor Reviewer interview?"*
+
+Partially. The reviewer can tell you about their own experience (closes Gap 1) and about the upstream/downstream context they know (helps with Gap 2). But a full systems-level context-of-use needs *also* the Planner team's perspective and the data-engineering team's perspective. The Sponsor Reviewer closes the reviewer-centred portion; the wider workflow needs separate stakeholder interviews. HCD's discipline is to name both inputs and not collapse them.
+
+### 8. HCD self-audit gate on a v1.2 candidate
+
+Candidate: **collapsible filter panel** (deferred from Lab 03; one of the three Topic 4 candidates).
+
+| Cell | Content | Strength |
+|---|---|---|
+| Context of use | Reviewer uses six filters; sometimes wants screen real estate back when scanning many records | Weak — assumes the screen-real-estate need without evidence |
+| User requirement | "As a reviewer, I need to reclaim screen space when reviewing many records, so I can scan faster" | Medium — writable but speculative |
+| Design solution | Collapsible toolbar with toggle | Strong — Topic 2 rule sheet supports it |
+| Evaluation | Walkthrough criterion: reviewer can collapse + expand in ≤ 1 interaction; preserves filter state | Strong — testable |
+
+**Weakest cell: Context of use.** No evidence that reviewers actually want this. The need was inferred from Lab 03's "filters take screen space" observation, not from observed reviewer behaviour. HCD verdict: run a Topic 4 loop to validate the context-of-use claim before adding to v1.2 backlog. (This matches Topic 4 §9's "Topic 4 first when problem isn't well-framed" decision rule — the HCD gate caught the same issue the Topic 4 routing rule catches.)
+
+*Examiner push: "If two gates catch the same issue, isn't one redundant?"*
+
+No — they catch it from different angles. Topic 4's routing rule asks "is the problem well-framed enough to skip a loop?"; HCD's self-audit gate asks "does every activity have evidence?". Both produce the same answer here because both surface the same kind of gap. Belt-and-braces is appropriate at a v1.2 backlog gate; redundancy is cheap, undetected gaps are not.
+
+## How the Topic 5 answers were defended
+
+Each Topic 5 answer cites at least one specific source (ISO 9241-210, Norman, IDEO, W3C), at least one specific v1.1 or Lab 04 artifact, and connects to the canonical hierarchy (HCD as umbrella over Topics 2 / 3 / 4). The examiner-push lines target the points where HCD's discipline most risks being treated as ceremony — "naming limitations" risks licensing corner-cutting; "audit-shape" risks being treated as a paperwork exercise; "centring the user" risks the over-individual reading Norman warns about. The follow-ups defend the substantive position: HCD is auditable and that's its value; honest naming is the discipline, not the corner-cutting; the audit catches what intuition misses.
