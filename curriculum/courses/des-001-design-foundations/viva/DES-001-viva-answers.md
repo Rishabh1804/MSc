@@ -481,3 +481,124 @@ No — they catch it from different angles. Topic 4's routing rule asks "is the 
 ## How the Topic 5 answers were defended
 
 Each Topic 5 answer cites at least one specific source (ISO 9241-210, Norman, IDEO, W3C), at least one specific v1.1 or Lab 04 artifact, and connects to the canonical hierarchy (HCD as umbrella over Topics 2 / 3 / 4). The examiner-push lines target the points where HCD's discipline most risks being treated as ceremony — "naming limitations" risks licensing corner-cutting; "audit-shape" risks being treated as a paperwork exercise; "centring the user" risks the over-individual reading Norman warns about. The follow-ups defend the substantive position: HCD is auditable and that's its value; honest naming is the discipline, not the corner-cutting; the audit catches what intuition misses.
+
+## Topic 6 — Gestalt principles
+
+### 1. Define Gestalt; perceptual constraint vs aesthetic rule
+
+Gestalt principles are **perceptual constraints on how the human visual system groups visual elements** — empirical facts about perception established by Wertheimer 1912 / Koffka 1935 / Köhler 1929 and validated repeatedly since. They are not aesthetic rules of thumb, style preferences, or designer conventions. The human will perceive grouping whether the designer intended it or not; the discipline's only job is to make perceived grouping match intended grouping.
+
+The constraint reading is operationally different from the style reading because *defensibility flips*. Under the style reading, "use whitespace generously" is unfalsifiable — a designer can override it on taste and there's no test. Under the constraint reading, every visual choice has to defend itself against what the visual system *will do*: "we used 16px between unrelated controls and 4px within related ones, defending the proximity signal for the toolbar's narrowing-controls group" is falsifiable — you can audit whether the proximity is doing what the design claims.
+
+*Examiner push: "Isn't 'perceptual constraint' just a fancier way of saying 'good design'?"*
+
+No — and the test is *falsifiability*. A good-design claim is satisfied by intuition: it looks fine, ship it. A perceptual-constraint claim is satisfied by audit: you can point to the proximity grouping the design intended and check whether the visual arrangement produces that grouping for a naïve viewer. The constraint framing forces designers to make claims that can be wrong, which is exactly what Topic 6's quiz Q10 gate enforces.
+
+### 2. Prägnanz and the corollary
+
+**Prägnanz** ("good figure" / "good form") says the visual system organises perception toward the **simplest, most stable, most symmetric interpretation** available. The system runs a least-cost interpretation continuously; the cheapest interpretation wins. Computationally: it's cheaper to perceive a group than N separate elements, cheaper to recognise a closed shape than track arc-segments, cheaper to assume aligned elements belong together than to treat each as independent.
+
+Three corollaries worked through:
+
+- **Proximity** is Prägnanz applied to *spatial relationships*: grouping spatially-close elements is cheaper than tracking each element's position independently. Tight spacing → one group is the system's least-cost interpretation.
+- **Similarity** is Prägnanz applied to *categorical relationships*: assuming visually-alike elements are functionally alike is cheaper than tracking N categories. Same colour, same shape, same size → one category is the least-cost call.
+- **Closure** is Prägnanz applied to *shape recognition*: recognising a closed familiar form is cheaper than perceiving incomplete arc-segments. A frame with one open side is perceived as a complete frame because that interpretation is simpler than "three independent line segments".
+
+Each principle is a different *way* the visual system simplifies; Prägnanz is the *why*.
+
+*Examiner push: "Isn't 'computationally cheaper' just hand-waving? Where does that claim come from?"*
+
+It comes from the cognitive-science extension reading (E4) and from the experimental work in Köhler 1929 + Koffka 1935. Modern cognitive science has substantially confirmed the framing — the visual system is doing constraint-satisfaction with a bias toward simplicity, and this is computational, not metaphorical. The Wertheimer apparent-motion experiments are the original proof: the visual system *adds* perceived motion to discrete stimuli because perceiving continuous motion is the simpler interpretation. Computation is the right word.
+
+### 3. Six core principles with honoured browser examples
+
+| # | Principle | v1.1 example where it's currently honoured |
+|---:|---|---|
+| 1 | Proximity | Drawer body sections use generous vertical whitespace between sections + tight whitespace within sections — proximity correctly groups field+label pairs and separates sections |
+| 2 | Similarity | Trust badge component is visually identical at four depths (card, drawer header, drawer banner, footer) → the eye correctly reads "one signal in multiple places" |
+| 3 | Continuity | Table view's columns hold *because* values align vertically; the alignment is the column-as-category signal |
+| 4 | Closure | Drawer overlay reads as a contained region even without an explicit top border — the visual system completes the shape from the three borders that *are* visible |
+| 5 | Common region | Record cards correctly bind name + place + trust badge + chips into one perceptual unit via the card's bounded region |
+| 6 | Common fate | PR #12's result-count flash animation co-varies with filter changes → the eye correctly infers "this count is reacting to that filter change" |
+
+Each example will be audited in Lab 06 against alternative perceptual readings.
+
+*Examiner push: "If the principles are honoured, why does Lab 06 exist?"*
+
+Because *honoured in some regions* is not *honoured in every region*. The six examples above are the regions where v1.1 gets it right. Lab 06's job is to find the regions where v1.1 gets it wrong (toolbar grouping; trust badge inside card metadata grid; sortable column headers; active-filter summary bleed; caution-chip conflict; density compromises). Anticipated violations are listed in deep-reading doc §9.2 and will be confirmed/refuted regionally.
+
+### 4. v1.1 false-positive grouping violation
+
+**Region**: the toolbar (search input + filter selects + view-toggle).
+
+**Principle(s) violated**: proximity + similarity, both arguing for false-positive grouping.
+
+**Violation**: the search input and the filter selects sit close together (proximity → "one group") with similar rectangular input-styling (similarity → "one category of control"). The reviewer reads them as "one group of narrowing controls". But the interaction grammar differs: the search updates *live as you type*, the selects update *on selection change*. A reviewer trained on the search expects live update from a select and is surprised when nothing happens until commit.
+
+**Reviewer-task consequence**: the journey step "Narrow" (step 3 of seven) takes longer than it should — the reviewer changes a select, expects immediate feedback, doesn't get it, hesitates, then commits the change explicitly. Cumulative cost across the seven-filter workflow is meaningful. The fix (Lab 06 to confirm and tag v1.1.x): either *unify* the grammar (selects update on change → consistent with search) or *visually separate* the two controls so the false-positive grouping breaks (proximity gap + distinct styling for the selects).
+
+*Examiner push: "Couldn't a reviewer just learn the grammar difference and move on?"*
+
+They could, and reviewers do — but that's the survival strategy that Topic 1 explicitly warns against. A reviewer learning to compensate for the false-positive grouping is paying a cognitive cost on every filter change that proper visual treatment could eliminate. Topic 6's discipline is to fix the perceptual mismatch at the source, not to expect the user to override their visual system's natural grouping.
+
+### 5. Cards-view conflict + adjudication
+
+**Conflict**: proximity vs similarity for caution chips inside record cards.
+
+- Proximity says: caution chips are spatially close to the regular tag chips (same card, same row) → one group of card tags.
+- Similarity says: caution chips are visually distinct (different colour, sometimes different icon) → a *different* category from regular tags.
+
+**Adjudication**: similarity wins. The chips are *signalling different categories of information* — a caution chip means "the reviewer should know about a risk before promoting" while a regular tag means "this record has this vibe / trip-type / context". Distinguishing them is the reviewer-task; grouping them is the by-product of card layout. The resolution: maintain explicit visual separation (extra gap or a thin divider) so proximity stops fighting similarity and perceived grouping matches semantic grouping.
+
+**General rule applied** (from Smashing, the only required source that adjudicates explicitly): when two principles conflict, the winning principle is the one that *better serves the user's task*. For caution chips the task is distinguishing risk-bearing records from neutral ones; similarity wins. For the toolbar's narrowing controls the task is treating them as one functional group; if proximity and similarity *agreed* there, both would win — they actually conflict with the interaction grammar (Q4) rather than with each other.
+
+*Examiner push: "Doesn't 'task-driven' just push the decision to whoever defines the task?"*
+
+Yes — and that's the right place to push it. The alternative is a fixed principle hierarchy ("similarity always wins over proximity") which would produce wrong calls in regions where the task makes proximity the decision-relevant signal. The task-driven rule means the adjudication is contestable on task grounds — "is distinguishing-cautions the actual reviewer task here?" — which is a productive argument, not a deadlock. Tasks come from Topic 3's user-need work; the Gestalt adjudication inherits the Topic 3 framing rather than reinventing it.
+
+### 6. Canonical hierarchy + Gestalt underneath Topic 2
+
+```text
+Topic 5 — HCD (the umbrella; ISO 9241-210 + W3C triad)
+   ├─ Topic 4 — Design thinking (the loop, when problem isn't well-framed)
+   ├─ Topic 3 — UX design (the criteria + journey)
+   ├─ Topic 2 — UI design (the components)
+   └─ Topic 6 — Gestalt (the perceptual constraint layer underneath visual treatment)
+```
+
+Topic 6 sits *underneath* Topic 2 (not alongside) because Topic 2 is *compositional* (which components exist) and Topic 6 is *perceptual* (how those components are visually grouped by the visual system). A design can satisfy Topic 2's rule sheet completely — the right components, the right states, the right modality — and still violate Gestalt, producing a "feels off" reaction that Topic 2 alone can't catch.
+
+Concretely: Topic 2's rule sheet for v1.1 says "record card contains name, place, trust badge, chips, action buttons". Gestalt audits *how the card's internal arrangement groups those elements visually*. If the trust badge blends with surrounding metadata via similarity, the card is Topic-2-compliant but Gestalt-violating — and the violation is the false-negative grouping that hides the trust signal. Gestalt is the perceptual layer Topic 2 sits on top of.
+
+*Examiner push: "Why not just fold Gestalt into Topic 2 as a sub-section?"*
+
+Because the *audit-shape* differs. Topic 2's audit asks "is the right component present and specified?". Gestalt's audit asks "is the perceived grouping matching the intended grouping?". A Topic 2 component-correctness check passes a card that has all the right elements; a Gestalt audit can fail the same card if its internal arrangement groups those elements wrongly. The two audits run different tests and produce different fix lists; combining them would obscure which kind of failure a given finding represents. Keeping Topic 6 distinct (and underneath Topic 2) preserves both audit-shapes.
+
+### 7. Scoping defence (~4–5h vs 5–7h)
+
+The execution plan's smaller estimate reflects that Topic 6 covers a *smaller conceptual surface* than Topic 4/5. Topic 4 has multiple competing frameworks (d.school 5-stage, IBM Loop 3-activity, Brown's three-constraint triage, NN/g, plus Norman's *Useful Myth* critique) and the framework-comparison work is heavy. Topic 5 spans an ISO standard, Norman's *HCD Considered Harmful?* critique, IDEO's methods handbook, and W3C's accessibility triad — four sources at the standard / critique / methods / vocabulary level, each with substantial integration work. Topic 6 has six principles, four sources at the foundation / education / diagnosis / adjudication level, and most of the disagreement is on *emphasis* rather than on *substance*. The reading is shorter; the lab focuses on application rather than synthesis.
+
+**Two things the smaller scope deliberately doesn't cover:**
+
+- **Cognitive-science foundations** for *why* the visual system organises perception toward Prägnanz. This is genuinely deep territory (deferred to extension E4); covering it would expand Topic 6 to Topic 5 scale without changing the operational guidance. The constraint-framing is sufficient for the audit-shape.
+- **Boundary cases** where Gestalt-driven design breaks down: very high information density (where every grouping signal compromises), motion-disabled accessibility settings (where common-fate can't be used), multi-screen multi-device contexts (where the perceptual context fragments). Topic 6 names these as known limits but doesn't develop the workarounds; that work is shared between later topics (Fitts in 7, typography in 9, colour in 10, accessibility in HCD).
+
+*Examiner push: "If the cognitive-science foundations matter, isn't deferring them a real gap?"*
+
+A real gap, yes — but a *named* gap, with the extension reading (E4) flagged for follow-up if the workspace ever needs to defend the *why* rather than just apply the *what*. For now, the operational guidance ("the principles are constraints; honour them or trade them off explicitly") is sufficient to run the Lab 06 audit and ship a Gestalt-compliant v1.2. If a future topic or capstone needs the deeper grounding, E4 is the entry point.
+
+### 8. Two anticipated Lab 06 violations
+
+**Violation 1: toolbar false-positive grouping** (deep-reading §9.2 row 1). The toolbar's search input + filter selects look like one group of narrowing controls (proximity + similarity) but have different interaction grammars (live update vs commit-on-change). Lab 06 audit will confirm by comparing the perceived grouping (one group) with the intended functional grouping (two groups by interaction grammar). Expected fix: visual separation between search and selects + unified interaction grammar across selects. Tag: v1.1.x (visual-treatment change) or v1.2 (if interaction-grammar change is needed).
+
+**Violation 2: cards-view trust-badge false-negative grouping** (deep-reading §9.2 row 2). The trust badge inside the card metadata grid blends with surrounding metadata via similarity (similar size, similar visual weight) — hiding that the badge is the *primary* trust signal, not just another metadata field. Lab 06 audit will confirm by asking whether a naïve reviewer's eye lands on the badge first or treats it as equivalent to surrounding fields. Expected fix: visual elevation of the badge (size, contrast, position) so similarity stops grouping it with surrounding metadata. Tag: v1.1.x (likely; the rule sheet already specifies the badge as the primary trust signal — only the visual treatment needs to match).
+
+(Four more anticipated violations are listed in deep-reading §9.2: active-filter summary bleed; sortable column header similarity; caution-chip conflict; density-compromise alignment-only grouping. Lab 06 will audit all six.)
+
+*Examiner push: "What if Lab 06 finds the anticipated violations don't actually exist?"*
+
+That's a valid outcome and a useful one. The deep-reading doc explicitly says the §9.2 list is "to be confirmed or refuted by Lab 06" — anticipating violations is *not* the same as having found them. If the audit refutes one, that's evidence the visual treatment is doing more work than expected, and the refutation becomes part of the audit findings (a *strength* rather than a violation). The discipline is to run the audit against every region against every relevant principle and let the cells decide, not to confirm a pre-baked list.
+
+## How the Topic 6 answers were defended
+
+Each Topic 6 answer cites at least one specific source (Wertheimer/Koffka/Köhler via secondary, IxDF, NN/g, Smashing — sometimes E1–E5 extensions), at least one specific v1.1 region, and connects to the canonical hierarchy (Gestalt underneath Topic 2). The examiner-push lines target the points where Topic 6's argument is most likely to slip — the "constraint vs style" framing is the most often weakened in practice (drift toward style), the task-driven adjudication is the most often misread as relativism (it's not — it's principled), and the deferred cognitive-science depth is the most often used as ammunition to dismiss the principles. The follow-ups defend the substantive position: Gestalt is constraint, adjudication is principled, the deferred depth is named not hidden.

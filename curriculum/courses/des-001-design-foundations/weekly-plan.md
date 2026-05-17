@@ -62,11 +62,37 @@ Closed by two PRs (PR A — reading; PR B — Lab 05 HCD audit):
 - `submissions/lab-05-hcd-audit-results.md` — formal lab submission (PR B)
 - `design/checklists/master-browser-design-checklist.md` §26 (four HCD gates) + §27 (four anti-patterns) + §28 (canonical audit pointer) (PR B)
 
-## Week 6 — Gestalt principles (planned for Topic 6)
+## Week 6 — Gestalt principles ⏳ active (2026-05-17)
 
-- Study Gestalt principles (Wertheimer / Koffka / Köhler via secondary)
-- Apply grouping principles to dashboard controls
-- Re-audit the browser for proximity, similarity, continuity, closure, common region, common fate violations
+PR A landed; Lab 06 (PR B) is the open work item that closes the three-topic push.
+
+PR A complete:
+
+- Lecture (`lectures/lecture-06-gestalt-principles.md`)
+- Reading pack (`readings/topic-06-gestalt-principles-reading-pack.md`)
+- Quiz + answer key + worked answers (`quizzes/quiz-06-gestalt-principles*.md`)
+- Lab brief (`labs/lab-06-gestalt-audit.md`)
+- 15-section deep-reading doc (`design/foundations/topic-06-gestalt.md`) — six principles + Prägnanz + source comparison + violation taxonomy + perceptual-constraint-vs-aesthetic-rule critique + canonical hierarchy extension (Gestalt underneath Topic 2) + browser application + anti-patterns
+- Eight Topic 6 viva questions + answers (`viva/DES-001-viva-questions.md` + `-answers.md`)
+- Dashboard module flipped to `done` (`docs/design-foundations-app/data.js`) — 12 modules, 6 done
+
+PR B planned (Lab 06):
+
+- Per-region per-principle audit of v1.1 (cards, table, toolbar, active-filter summary, banners, drawer)
+- Conflict adjudication per region
+- Density-vs-grouping audit
+- Findings + prioritised v1.1.x / v1.2 fix list
+- `design/foundations/topic-06-gestalt-audit.md` (Audit 1)
+- `submissions/lab-06-gestalt-audit-results.md`
+- Master-browser checklist §29 (three Gestalt gates) + §30 (three data-review anti-patterns) + §31 (canonical audit pointer)
+
+End-of-Topic-6 closure:
+
+- Lyra + Aurelius graded reviews on PR B
+- Merge PR A (Topic 6 reading) + PR B (Lab 06)
+- Catch up Aurelius governance debt (SKILL_MAP, CAPABILITIES, PROJECT_LOG x3, NEXT_ACTIONS)
+- **Grade report v3** at `feedback/DES-001-grade-report-v3.md` — cumulative DES-001 grade after Topics 1–6
+- STOP per ratified three-topic-push goal
 
 ## Week 5 — Visual Foundations
 
