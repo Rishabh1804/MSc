@@ -37,6 +37,8 @@ docs/design-foundations.html
 | Topic 4 deep reading + source comparison | `design/foundations/topic-04-design-thinking.md` | Complete |
 | Topic 4 quiz answers | `courses/des-001-design-foundations/quizzes/quiz-04-design-thinking-answers.md` | Submitted |
 | Topic 4 viva answers | `courses/des-001-design-foundations/viva/DES-001-viva-answers.md` (Topic 4) | Submitted |
+| Topic 4 Lab 04 loop output | `design/foundations/topic-04-design-thinking-loop.md` (Loop 1; batch-promote-confirm; 8 steps; 4 candidates; B chosen) | Complete |
+| Topic 4 Lab 04 submission | `courses/des-001-design-foundations/submissions/lab-04-design-thinking-loop-results.md` | Submitted |
 | Topic 3 Lab 03 journey map + criteria + need-audit + gap analysis | `design/foundations/topic-03-ux-design-journey-map.md` | Complete |
 | Topic 3 UX acceptance-criteria sheet (Browser v1.1 UX gate) | `design/foundations/ux-acceptance-criteria.md` | Complete |
 | Topic 3 Lab 03 submission | `courses/des-001-design-foundations/submissions/lab-03-ux-design-journey-map-results.md` | Submitted |

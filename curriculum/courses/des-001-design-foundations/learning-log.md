@@ -346,3 +346,48 @@ For DES-001 specifically: Topic 4 sits *upstream* of Topic 3. The decision tree 
 
 Open Topic 4 PR A (this commit set), then start Lab 04 on a fresh branch for PR B.
 
+---
+
+## 2026-05-17 — Lab 04 executed (Topic 4 closed)
+
+### What was executed
+
+All eight steps of Lab 04 against the **batch-promote-with-confirm** v1.2-candidate pain-point (chosen from Lab 03's three deferred items; collapsible-filter and faceted-panel rejected for Loop 1 with reasons recorded).
+
+### Loop output highlights
+
+- **Empathize**: three-persona synthesis (first-time / power / accessibility-need) converged on a non-obvious shared requirement: *the modal must work for any-N batches from the start*. Designing for the "interesting" case (large batch) and bolting on the small-batch case is the trap Loop 1 avoided.
+- **Define**: POV statement rewritten three times; final form locks **asymmetric cost** as the design constraint (cost of a wrong promotion >> cost of an interruption to a correct one).
+- **Ideate**: four meaningfully different candidates (inline-preview-toast / two-stage modal / approval-step / eliminate batch).
+- **Triage**: all four × Tim Brown's three constraints with sourced cells. Candidate B (two-stage confirm modal with named records) chosen with explicit comparative reasoning vs A (viability concern), C (better long-term but needs Topic 5-level workflow redesign), D (solves wrong problem by removing the user need).
+- **Prototype**: ASCII modal anatomy + three-state machine + accessibility commitments (focus trap, focus restoration, Esc cancels, default-focused Cancel, aria-labelledby/describedby).
+- **Test specification**: three personas × five testable metrics + six falsification criteria that would trigger Loop 2.
+- **Decision**: Ship Candidate B to v1.2 backlog with Topic 3 handoff (four `U-CONF-*` criteria) + Topic 2 component-rules note + falsification criteria as the v1.2 test plan.
+
+### Key findings
+
+1. **Asymmetric cost as the design constraint** for destructive actions. The right modal-design optimises for catching wrong actions, not for minimising friction on correct ones.
+2. **Three-persona synthesis is a workable solo-workspace substitute** for facilitated empathy work. It doesn't replace real Sponsor-Reviewer testing (Loop 2 input), but it produces honest Empathize evidence.
+3. **The best long-term answer was not the chosen candidate.** Candidate C (approval-step) would be better if the workflow itself moved toward an approval-stage model — but it requires Topic 5-level workflow rework. Choosing the shippable-now over the better-but-needs-rework option is the kind of explicit *shortest-path* decision Brown's triage forces.
+4. **Three new reusable design capabilities extracted** (three-persona synthesis pattern; asymmetric-cost framing; Topic 4 → Topic 3 handoff format). Combined with the three from the deep-reading doc, the workspace now has fifteen reusable design capabilities at maturity ≥ 3.
+
+### Repository outputs created
+
+- `design/foundations/topic-04-design-thinking-loop.md` — Loop 1 evidence (Steps 1–8)
+- `curriculum/courses/des-001-design-foundations/submissions/lab-04-design-thinking-loop-results.md` — formal lab submission
+- `design/checklists/master-browser-design-checklist.md` §23 (four gates) + §24 (five anti-patterns) + §25 (canonical loop-output pointer)
+
+### What changed in understanding
+
+Lab 04 turned design thinking from a *process to read about* into a *process to run*. The eight-step worked example produces a concrete v1.2-backlog item with acceptance criteria, component rules, and falsification criteria — exactly the handoff Topic 4 deep-reading doc §10 specified. The discipline is now operational, not theoretical.
+
+The single most important meta-finding: **Loop 1's three-persona substitute for real empathy work is honest but limited**. Loop 2, when it runs, needs at least one real Sponsor Reviewer to test against the six falsification criteria. The discipline isn't complete until that happens.
+
+### Topic 4 status
+
+**Closed.** Both PR A (deep reading + scaffold + quiz + viva + data.js) and PR B (this entry's Lab 04 + loop output + checklist gates + submission) are complete.
+
+### Next action
+
+Start **DES-001 Topic 5 — Human-centred design** per the ratified three-topic push (Topics 4 → 5 → 6 ending in grade report v3).
+
