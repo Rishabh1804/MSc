@@ -123,7 +123,7 @@ Grade reports:
 | Append Topic 5 gates to master-browser checklist | `design/checklists/master-browser-design-checklist.md` §26 (four HCD gates) + §27 (four anti-patterns) + §28 (canonical audit pointer) | Complete |
 | Submit Lab 05 | `submissions/lab-05-hcd-audit-results.md` | Complete |
 
-## Topic 6 — Gestalt principles (PR A scaffolded + deep reading complete; Lab 06 pending)
+## Topic 6 — Gestalt principles (closed)
 
 | Competency | Evidence | Status |
 |---|---|---|
@@ -140,14 +140,22 @@ Grade reports:
 | Topic 6 quiz answers | `quizzes/quiz-06-gestalt-principles-answers.md` | Complete |
 | Topic 6 viva answers | `viva/DES-001-viva-answers.md` Topic 6 section | Complete |
 | Update Topic 6 dashboard module | `docs/design-foundations-app/data.js` (status flipped to `done`, five sources, full notes) | Complete |
-| Run full Gestalt audit of v1.1 | `design/foundations/topic-06-gestalt-audit.md` (Audit 1: six regions × six principles + conflict adjudication + density-vs-grouping + prioritised v1.1.x/v1.2 fix list) | Pending Lab 06 (PR B) |
-| Produce Gestalt audit doc | `design/foundations/topic-06-gestalt-audit.md` | Pending Lab 06 (PR B) |
-| Append Topic 6 gates to master-browser checklist | `design/checklists/master-browser-design-checklist.md` §29 (three Gestalt gates) + §30 (three data-review-tool anti-patterns) + §31 (canonical audit pointer) | Pending Lab 06 (PR B) |
-| Submit Lab 06 | `submissions/lab-06-gestalt-audit-results.md` | Pending Lab 06 (PR B) |
+| Run full Gestalt audit of v1.1 | `design/foundations/topic-06-gestalt-audit.md` (Audit 1: six regions × six principles + conflict adjudication + density-vs-grouping + prioritised v1.1.x/v1.2 fix list) | Complete |
+| Produce Gestalt audit doc | `design/foundations/topic-06-gestalt-audit.md` | Complete |
+| Append Topic 6 gates to master-browser checklist | `design/checklists/master-browser-design-checklist.md` §29 (three Gestalt gates) + §30 (three data-review-tool anti-patterns) + §31 (canonical audit pointer) | Complete |
+| Submit Lab 06 | `submissions/lab-06-gestalt-audit-results.md` | Complete |
 
 ## Next recommended action
 
-Execute **Lab 06 — Gestalt audit of v1.1** (PR B of Topic 6). After Lab 06 closes, the three-topic push (Topics 4 → 5 → 6) terminates and grade report v3 covers the cumulative DES-001 grade after Topics 1–6.
+**End-of-Topic-6 closure** — per the ratified three-topic push (Topics 4 → 5 → 6):
+
+1. Lyra + Aurelius graded reviews on PR B (Lab 06)
+2. Merge PR A (Topic 6 reading) + PR B (Lab 06)
+3. Catch up Aurelius governance debt accumulated across Topics 4 + 5 + 6 (SKILL_MAP, CAPABILITIES, PROJECT_LOG × 3, NEXT_ACTIONS)
+4. Write **grade report v3** at `feedback/DES-001-grade-report-v3.md` — cumulative DES-001 grade after Topics 1–6 (including HCD compliance verdict from Topic 5 + Gestalt compliance verdict from Topic 6 + scope-incompleteness adjustment scaled down from −6 toward 0 as 6 / 12 topics now closed)
+5. **STOP** per ratified three-topic push goal
+
+After closure, the v1.2 implementation PR inherits work from three labs (Lab 04 Loop 1 + Lab 05 prioritised HCD list + Lab 06 prioritised v1.1.x / v1.2 fix list).
 
 Rationale:
 

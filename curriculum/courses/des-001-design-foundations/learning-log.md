@@ -537,3 +537,65 @@ Third meta-finding: principle conflicts are adjudicated *by user task*, not by a
 
 Execute **Lab 06 — Gestalt audit of v1.1** (Topic 6 PR B) on a fresh branch. After Lab 06 closes, the three-topic push terminates and grade report v3 (cumulative DES-001 grade after Topics 1–6) is the final closure deliverable.
 
+---
+
+## 2026-05-17 — Lab 06 executed (Topic 6 closed)
+
+### What was executed
+
+Full Gestalt audit (Audit 1) of v1.1 against the six core principles (proximity, similarity, continuity, closure, common region, common fate) across six screen regions (cards, table, toolbar, active-filter summary, banners stack, drawer). Six findings identified plus one audit-level meta-finding; six-item prioritised v1.1.x / v1.2 fix list produced.
+
+### Verdict summary
+
+| Dimension | Result |
+|---|---|
+| Audited regions | 6 / 6 |
+| Principle-cells graded | 36 (6 regions × 6 principles) |
+| Pass cells | 22 |
+| Trade-off cells (with named compensation) | 5 |
+| Violation cells (findings) | 7 |
+| N/A cells | 4 |
+| Findings (consolidated, distinct) | 6 (F-GES-1..6) plus 1 meta-finding (F-GES-7) |
+| Strengths | 6 (R5 banners + R6 drawer + 4 cross-cutting) |
+| Conflicts adjudicated | 4 (R1 caution-chips; R3 view-toggle; R3 search-vs-selects; R4 summary-vs-toolbar) — zero left unresolved |
+| Prioritised fix list | 6 items (5 v1.1.x + 1 v1.2) |
+| Decision-gate satisfaction | All 5 Lab 06 decision-gate conditions met |
+
+**Overall**: v1.1 is *Gestalt-substantial*. Two regions (R5 + R6) are exemplary; the other four have a small consistent pattern of findings, all closable with visual-treatment-only changes. Five of six fixes tag as v1.1.x; one (search-vs-select grammar unification) tags as v1.2 pending Sponsor Reviewer input. No fix requires a Topic 2 component-rule change.
+
+### Key findings
+
+- **F-GES-1 + F-GES-2 (High leverage)**: Verification *text* duplicated inside card meta-grid + table column at equivalent visual weight to non-trust fields — partially undoing the trust badge's elevation via similarity-collapse. Single visual-treatment fix closes both occurrences across both views.
+- **F-GES-3 (R2 Table)**: Sortable column headers don't visually signal interactivity; similarity to non-sortable headers creates false-negative interactivity grouping. The `aria-sort` accessibility work is correct but lacks a visual counterpart.
+- **F-GES-4 + F-GES-5 (R3 Toolbar)**: Two false-positive groupings in the toolbar — view-toggle incorrectly included in narrowing-controls common-region (F-GES-4); search + selects share styling but have different interaction grammars (live-update vs commit-on-change) — F-GES-5 confirms the primary anticipated violation from the deep-reading doc §9.2.
+- **F-GES-6 (R4 Active-filter summary)**: Summary bleeds into toolbar via proximity + weak tint differential.
+- **F-GES-7 (Cross-cutting meta-finding)**: Three of six regions silently collapse on whitespace; pattern is structural, not three isolated bugs. Closed by fixes for the component findings.
+
+### Repository outputs created
+
+- `design/foundations/topic-06-gestalt-audit.md` — Audit 1 (Steps 1–6 evidence; reusable capabilities; honest limitations)
+- `curriculum/courses/des-001-design-foundations/submissions/lab-06-gestalt-audit-results.md` — formal lab submission
+- `design/checklists/master-browser-design-checklist.md` §29 + §30 + §31 (Topic 6 Gestalt gates + anti-patterns + canonical pointer)
+
+### What changed in understanding
+
+The audit-shape's most operationally important contribution is the *cross-cutting pattern surfacing*. Three observations would have read as separate small issues under introspection alone: "verification text in cards looks plain", "verification column in table looks plain", "trust badge elevation feels partial". The per-region per-principle matrix instead surfaced them as a *single root cause*: similarity-collapse against the four-depth trust signal specification. One visual-treatment fix closes the pattern wherever it appears.
+
+Second meta-finding: the audit *cross-validated Topic 2's specifications*. The four-depth trust signal (Topic 2 §6.2) is correctly implemented in three of four depths (banner + drawer + confirm-modal) and in the *badge* element of cards + table. The findings are about the *duplicate verification text*, not the badge itself — meaning the Topic 2 rule is right; the implementation is partially under-honouring it. Without the Gestalt audit, this nuance would have been invisible.
+
+Third meta-finding: principle conflicts can be adjudicated even when v1.1 hasn't explicitly resolved them. The R1 caution-chip case is currently a "soft" win for similarity (colour distinction does most of the work); the audit names it as Trade-off rather than Violation but flags the upgrade (visual divider) as a Pass-promotion item. The discipline is to be explicit about which adjudications are full vs partial — and the matrix forces that explicitness.
+
+### Topic 6 status
+
+**Closed.** Both PR A (deep reading + scaffold + quiz + viva + data.js) and PR B (this entry's Lab 06 + audit + checklist gates + submission) are complete. The three-topic push (Topics 4 → 5 → 6) is one closure-cycle away from terminating with grade report v3.
+
+### Next action
+
+**End-of-Topic-6 closure** per the ratified three-topic push:
+
+1. Lyra + Aurelius graded reviews on PR B (review-and-grade-only pattern)
+2. Merge PR A + PR B
+3. Catch up Aurelius governance debt accumulated across Topics 4 + 5 + 6 (SKILL_MAP, CAPABILITIES, PROJECT_LOG × 3, NEXT_ACTIONS)
+4. Write **grade report v3** at `feedback/DES-001-grade-report-v3.md` — cumulative DES-001 grade after Topics 1–6 (HCD compliance from Topic 5 + Gestalt compliance from Topic 6 + scope-incompleteness adjustment scaled down from −6 toward 0 as 6 / 12 topics now closed)
+5. **STOP** per ratified three-topic push goal
+

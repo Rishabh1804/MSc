@@ -350,3 +350,39 @@ design/foundations/topic-05-hcd-audit.md
 Audit 1 (v1.1 + Lab 04 Loop 1) is the workspace's first formal HCD audit. Future audits follow the same seven-step shape (Activity 1 / 2 / 3 / 4 / six-principle / W3C-triad / Findings + prioritised list) and produce the same prioritised-by-leverage closure list. Lab 05's submission (`submissions/lab-05-hcd-audit-results.md`) is the formal lab evidence for Audit 1.
 
 The prioritised v1.2 HCD list from Audit 1 (Sponsor Reviewer + U-CONF criteria landing + systems-context-of-use doc + inclusion requirements + screen-reader test + heuristic re-audit) is inherited work for the v1.2 implementation PR.
+
+## 29. Topic 6 Gestalt gates
+
+Source topic: DES-001 Topic 6 — Gestalt principles. Added 2026-05-17 from Lab 06 (`design/foundations/topic-06-gestalt-audit.md`).
+
+Every visual-treatment change must pass all three gates. They are the perceptual-layer companion to §3 (Topic 1 UI-vs-UX), §18 (Topic 2 components), §20 (Topic 3 UX), §23 (Topic 4 design-thinking), §26 (Topic 5 HCD). Gestalt sits *underneath* Topic 2 in the canonical hierarchy — these gates audit how Topic 2's components will be perceived together by the visual system.
+
+| Gate | Pass criteria | Source |
+|---|---|---|
+| Perceptual-constraint gate | Every visual-treatment change names (a) the Gestalt principle(s) the change satisfies AND (b) the Gestalt principle(s) the change violates. Empty either cell = the change is taste-driven and returned. | Topic 6 deep-reading doc §1 + §7 (perceptual constraint vs aesthetic rule); quiz Q10 |
+| Principle-conflict adjudication gate | For every region with competing principles (e.g., proximity vs similarity), the winning principle is named with a comparative reason rooted in the user's task. Unresolved conflicts are findings (deep-reading doc §6 violation taxonomy sub-type 3). | Smashing — task-driven adjudication; Topic 6 deep-reading doc §6 |
+| Density-vs-grouping gate | For any region where whitespace is compressed (data-density requirement), the compensating grouping signal (divider, tint, alignment) must be named explicitly. Silent collapse is refused. | Smashing — density-vs-grouping framing; Topic 6 deep-reading doc §10 anti-pattern 1 |
+
+A visual-treatment PR that fails any gate does not merge. These gates compound on top of §3 / §18 / §20 / §23 / §26 — they don't replace them. The four-cell perceptual-constraint check (principle satisfied + principle violated + compensating signal for any violation + user task served by the trade-off) is the operational shape; quiz Q10 captures the full form.
+
+## 30. Topic 6 Gestalt anti-patterns
+
+Three Gestalt anti-patterns specific to data-review tools. Every visual-treatment decision must refuse all three.
+
+1. **Silent density collapse** — compressing whitespace silently to fit more information; proximity-based grouping degrades; user gets a denser screen but a weaker grouping signal. Mitigation: when whitespace must compress, substitute a different grouping signal (divider, tint, alignment) and *name* the substitution. (Source: Smashing; deep-reading doc §10.)
+2. **Decorative motion** — animation used for visual polish rather than as a grouping or feedback signal. Violates common-fate (motion implies relationship). Mitigation: every animation must serve grouping or feedback; decorative-only motion is refused. The PR #12 result-count flash is the canonical correct example. (Source: Smashing; deep-reading doc §10.)
+3. **Too many similarity signals** — using colour / shape / size for too many categories at once; collapses the categorical signal because the user can no longer distinguish which similarity-difference matters. Mitigation: the rule is *fewer categories, more distinct* — a small palette of similarity-classes beats a large one where the differences blur. (Source: NN/g + Smashing; deep-reading doc §10.)
+
+A fourth implicit anti-pattern — *treating Gestalt as aesthetic rule* (stripping the principles of perceptual-constraint authority and reducing them to style advice) — is caught by §29's perceptual-constraint gate at the per-change level. Each is sourced from Topic 6 deep-reading doc §10 (which cites ≥ 1 of the four required Topic 6 sources per anti-pattern).
+
+## 31. Gestalt audit canonical pointer
+
+The canonical Gestalt audit lives at:
+
+```text
+design/foundations/topic-06-gestalt-audit.md
+```
+
+Audit 1 (v1.1) is the workspace's first formal Gestalt audit. Future audits follow the same six-step shape (region selection → per-region per-principle matrix → conflict adjudication → density-vs-grouping audit → findings + prioritised v1.1.x/v1.2 fix list → checklist appendix) and produce the same leverage-ranked closure list. Lab 06's submission (`submissions/lab-06-gestalt-audit-results.md`) is the formal lab evidence for Audit 1.
+
+The prioritised Lab 06 fix list (verification-signal elevation + view-toggle separation + active-filter summary separation + sortable-header affordance + search-vs-selects separation + caution-chip divider) is inherited work for the v1.1.x polish PR, joining the Lab 04 + Lab 05 v1.2 inherited work for the v1.2 implementation PR. Five of six fixes tag as v1.1.x (visual-treatment-only); one (search-vs-select grammar unification) tags as v1.2 pending Sponsor Reviewer input.

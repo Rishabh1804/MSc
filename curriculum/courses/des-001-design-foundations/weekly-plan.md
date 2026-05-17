@@ -62,9 +62,9 @@ Closed by two PRs (PR A — reading; PR B — Lab 05 HCD audit):
 - `submissions/lab-05-hcd-audit-results.md` — formal lab submission (PR B)
 - `design/checklists/master-browser-design-checklist.md` §26 (four HCD gates) + §27 (four anti-patterns) + §28 (canonical audit pointer) (PR B)
 
-## Week 6 — Gestalt principles ⏳ active (2026-05-17)
+## Week 6 — Gestalt principles ✓ complete (2026-05-17)
 
-PR A landed; Lab 06 (PR B) is the open work item that closes the three-topic push.
+Closed by two PRs (PR A — reading; PR B — Lab 06 Gestalt audit). The final topic in the ratified three-topic push.
 
 PR A complete:
 
@@ -76,17 +76,17 @@ PR A complete:
 - Eight Topic 6 viva questions + answers (`viva/DES-001-viva-questions.md` + `-answers.md`)
 - Dashboard module flipped to `done` (`docs/design-foundations-app/data.js`) — 12 modules, 6 done
 
-PR B planned (Lab 06):
+PR B complete (Lab 06):
 
-- Per-region per-principle audit of v1.1 (cards, table, toolbar, active-filter summary, banners, drawer)
-- Conflict adjudication per region
-- Density-vs-grouping audit
-- Findings + prioritised v1.1.x / v1.2 fix list
+- Per-region per-principle audit of v1.1 (cards, table, toolbar, active-filter summary, banners, drawer) — 36 cells: 22 Pass, 5 Trade-off, 7 Violation, 4 N/A
+- Conflict adjudication for four cross-principle conflicts (R1 caution-chips; R3 view-toggle; R3 search-vs-selects; R4 summary-vs-toolbar) — zero left unresolved
+- Density-vs-grouping audit with F-GES-7 meta-finding
+- Findings: 6 distinct (F-GES-1..6) + 1 meta-finding (F-GES-7); 6-item leverage-ranked prioritised fix list (5 v1.1.x + 1 v1.2)
 - `design/foundations/topic-06-gestalt-audit.md` (Audit 1)
 - `submissions/lab-06-gestalt-audit-results.md`
 - Master-browser checklist §29 (three Gestalt gates) + §30 (three data-review anti-patterns) + §31 (canonical audit pointer)
 
-End-of-Topic-6 closure:
+End-of-Topic-6 closure (remaining work for the three-topic push):
 
 - Lyra + Aurelius graded reviews on PR B
 - Merge PR A (Topic 6 reading) + PR B (Lab 06)
