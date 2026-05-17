@@ -267,3 +267,114 @@ They could, and reviewers do, and that's exactly the problem. A working UX shoul
 ## How the Topic 3 answers were defended
 
 Each Topic 3 answer cites at least one specific source (Norman, NN/g, IDEO, GOV.UK, IxDF), at least one specific Lab 01 / Lab 02 finding or reviewer task, and ties to the seven-step journey or the acceptance-criteria framework. The examiner-push lines are the points where Topic 3's argument is least obvious — typically where the discipline (user-need form, criteria reproducibility, non-happy-path priority) is most likely to slip back into looser practice. The follow-ups hold the line.
+
+## Topic 4 — Design thinking
+
+### 1. Define design thinking as a discipline (not a worldview)
+
+Design thinking is the iterative *process* of moving from a fuzzy human problem to a tested solution through five stages — empathize, define, ideate, prototype, test — with each stage producing a tangible artifact and the whole loop running many times. What it *produces* that "thinking about design" does not is *evidence at every stage*: field notes, POV statements, candidate lists, prototypes, test results. The artifacts are the falsifiability surface: a team that did design thinking can show you the seven artifacts; a team that thought about design cannot.
+
+*Examiner push: "Couldn't a skilled designer produce the same outcome without going through the named stages?"*
+
+A skilled designer doing their best work probably does go through the stages; they may not name them. The discipline matters for two reasons: it makes the process *teachable* (others can do it without years of intuition-building) and it makes the process *auditable* (the seven artifacts are the audit trail). Norman's *Useful Myth* critique sits exactly here: the discipline isn't necessary for an excellent solo designer; it's necessary for organisations that want their design to be repeatable, reviewable, and not dependent on a single person's intuition.
+
+### 2. d.school 5-stage vs IBM Loop 3-activity — what each hides
+
+The d.school 5-stage **helps** by separating the artifacts (each stage has its own product) and **hides** the iteration (the diagram is linear; teams that take the diagram literally do one pass and ship).
+
+The IBM Loop **helps** by making iteration explicit (the word "Loop" carries the meaning) and adding team-coordination devices (Hills, Playbacks) and **hides** the boundary moments where the heavy thinking happens (the transition from Reflect to Make is where Ideate's triage actually lives, but IBM doesn't draw that as a separate activity).
+
+For a single-person workspace: use d.school for the named methods (Bootleg cards); use IBM's iteration language to keep yourself honest about looping; use NN/g's evidence-per-stage rule to falsify "I did design thinking" claims.
+
+*Examiner push: "Wouldn't a 7-stage or 10-stage framing be even more useful?"*
+
+No — at some point granularity becomes ceremony. d.school's 5 is enough resolution to separate the artifacts; finer-grained framings start to multiply micro-stages that don't have their own artifacts. The honest test of stage-count is: does each stage produce an artifact a reviewer can hold? IBM compresses to 3 and still satisfies this. Going to 7 or 10 would split artifacts across stages and produce stages that don't earn their place.
+
+### 3. Tim Brown's three constraints applied
+
+The three constraints: **desirability** (does a real user want this?), **feasibility** (can it be built?), **viability** (does it fit the surrounding context?).
+
+Applied to v1.2-candidate **batch-promote-to-Planner with confirm modal**:
+
+- Desirability: **strong**. Reviewers explicitly fear silently shipping the wrong record (Lab 01 finding); confirm-modal-with-undo is the standard mitigation.
+- Feasibility: **strong**. Modality rules from Topic 2 rule sheet §3.5 cover the case; the single-file canonical HTML supports modals.
+- Viability: **partial**. The "approve and promote" workflow state isn't yet in the master CSV schema. The candidate requires upstream data-model work before it ships.
+
+Weakest constraint: **viability**. The candidate is *correct* design-thinking work, but requires Topic 5 (HCD) and a master-schema extension before it can ship. Decision: refine — not ship-now, but high-value to scope properly.
+
+*Examiner push: "Couldn't you ship a half-version that just shows the confirm modal without the workflow integration?"*
+
+You could, but then the modal would do nothing meaningful — the reviewer confirms, and the record's state doesn't change because the schema doesn't support the new state. That's worse than not shipping; it's a *broken-by-design* trust signal in a tool whose whole purpose is data trust. Brown's framing makes this visible: a candidate that fails viability isn't a candidate to ship-with-asterisks; it's a candidate to refine.
+
+### 4. Healthy jump vs evidence-skipping jump
+
+**Healthy:** Test → Empathize. Testing the prototype with a reviewer surfaces a need we didn't know about; we return to learn more. The principle: jumps that *gather more evidence* are healthy.
+
+**Evidence-skipping:** Empathize → Prototype. Skipping Define + Ideate. "We already know what to build" commits to the first plausible solution. The principle: jumps that *skip evidence-collection* are anti-patterns.
+
+The single rule that distinguishes them is the *evidence flow*. Healthy jumps move *backward* in the loop to collect more evidence at an earlier stage. Anti-pattern jumps move *forward* to bypass evidence-collection at the stages being skipped. NN/g's *Design Thinking 101* makes this explicit; the d.school cards leave it implicit.
+
+*Examiner push: "Couldn't a very fast Empathize → Prototype be efficient rather than evidence-skipping?"*
+
+In small, well-framed problems — yes. But that's exactly the case where you should skip to Topic 3 entirely, not pretend you ran a Topic 4 loop. The honest move: name the problem as well-framed, skip the loop, go straight to criteria-writing. Pretending to run a loop while actually skipping it is what the discipline most needs to defend against.
+
+### 5. Norman's *Useful Myth* critique — sharpen or undermine?
+
+**Sharpens.** Norman's two prongs — design thinking risks being a brand for what skilled designers already do, and risks devaluing domain expertise — are *boundary conditions* on the discipline. They tell the discipline what it is *not*: it is not a substitute for hiring experts; it is not a process organisations can attend instead of practising. Sources that ignore the critique end up overselling. Sources that engage with it (d.school's classroom framing, IBM's Sponsor User integration) end up *more* defensible, not less.
+
+For DES-001 specifically: the critique tells CodeMike that design thinking is a *complement* to deep domain knowledge of the data-review work, not a *substitute* for it. The Destination Master Browser would not be improved by more design-thinking workshops; it is improved by design thinking *applied to real reviewer evidence by someone who understands the data*.
+
+*Examiner push: "Doesn't 'sharpens' just mean 'we ignored the strongest part of the critique'?"*
+
+The strongest part of Norman's critique is that the discipline risks substituting for expertise. We defend against it by *naming the substitution risk explicitly* in CodeMike's interpretation (deep-reading doc §8) and by structuring the Topic 4/Topic 3 pairing so that loops only run when the problem isn't well-framed (i.e., when domain expertise alone is insufficient). That's engagement, not avoidance.
+
+### 6. Test that tells you a problem is well-framed enough to skip Topic 4
+
+Three conditions (deep-reading doc §9):
+
+1. The user-need statement (GOV.UK form: `As a [reviewer], I need [outcome], so that [goal]`) is writable without speculation
+2. The "what would tested success look like" question is answerable
+3. The criterion is measurable (interaction count / time / scroll / visibility)
+
+If any of those three fail, the problem isn't well-framed; run a loop. If all three pass, write the criterion (Topic 3) and skip Topic 4.
+
+Example of a well-framed problem (skip Topic 4): "the empty state silently fails — fix it". All three conditions hold; the criterion `U-REC-1: recovery in ≤ 1 interaction` follows directly.
+
+Example of a not-well-framed problem (Topic 4 first): "reviewers feel slow on Planner-promotion". The user-need is writable but the *outcome* is unclear (faster how? safer how? with what guard-rails?). Loop first.
+
+*Examiner push: "Couldn't the criterion-writing process itself surface that the problem isn't well-framed, and the loop happens then?"*
+
+Yes — and the cleanest version of the discipline catches it both ways. Either the framing-check fails before Topic 3 starts, or Topic 3 surfaces an unanswerable criterion and recursively triggers Topic 4. Both paths converge to the same outcome: a loop runs when domain expertise alone is insufficient.
+
+### 7. Topic 4 disciplines in single-person workspaces
+
+**Transfer directly:**
+- Evidence-per-stage rule (NN/g) — works regardless of team size; writing artifacts is a one-person task
+- Three-constraint triage (Brown) — works for one designer assessing one set of constraints
+- POV statement form (d.school) — works for one-person framing
+- The decision tree (Topic 4 first vs Topic 3 first) — works regardless of team size
+
+**Need translation:**
+- IBM Hills + Playbacks — Hills work fine as solo-written outcome statements; Playbacks need translation to "regular self-imposed check-in artifacts" because there's no sponsor to demo to. Lab 04 effectively *is* a Playback for a solo workspace.
+- Empathy methods — co-located interview techniques don't apply; three-persona synthesis (deep-reading doc §11 anti-pattern 3) substitutes
+- IBM Sponsor Users — translate to "Sponsor Reviewer concept" (deep-reading doc §12 item 4); if no real Sponsor Reviewer is available, stay in self-as-user mode but name the limitation explicitly
+
+*Examiner push: "Doesn't the lack of a sponsor mean the discipline is degraded for solo workspaces?"*
+
+It's degraded relative to a team with embedded sponsor users — yes. But it's also degraded relative to design thinking that doesn't run at all. The honest move is to *name* the degradation (self-as-user is not equivalent to real-user-tested) and to defer the heaviest decisions until a real sponsor reviewer is available. That keeps the discipline honest at the scale we have.
+
+### 8. Evidence-free version of a stage + consequence
+
+**Evidence-free Define:** "The problem is the browser is bad."
+
+**Consequence for Ideate:** the next stage has no constraint. "Browser is bad" can be ideated against in a thousand directions; the team commits to whichever direction sounded best in the room. Without a sharpened POV ("[reviewer] needs a way to [specific need] because [insight from Empathize]"), Ideate produces undirected output. The chosen candidate is the one with the strongest advocate in the room, not the one that best serves the (unframed) problem.
+
+Other valid examples:
+- Evidence-free Empathize ("we talked to some users", no notes) → Define has no insight to sharpen
+- Evidence-free Ideate ("we brainstormed", no list) → Prototype defaults to "the obvious one"
+- Evidence-free Prototype ("we described what we'd build") → Test runs on imagination
+- Evidence-free Test ("users liked it") → next loop has no input; the loop becomes one-pass design thinking
+
+## How the Topic 4 answers were defended
+
+Each Topic 4 answer cites at least one specific source (d.school, IBM, Brown, NN/g; sometimes Norman from the extension), at least one specific reviewer-task or v1.2-candidate, and connects to Topics 1–3's framework (user-need form, acceptance criteria, journey-step). The examiner-push lines target the points where Topic 4's argument is most likely to slip back into either pure-process advocacy (over-selling) or pure-skepticism (under-selling). The follow-ups defend the middle position the deep-reading doc takes: design thinking is a *tool*, useful when paired with domain expertise, evidence-shaped at every stage.

@@ -167,11 +167,59 @@ window.DES001_TOPICS = [
       ]
     },
     further: ['design/foundations/topic-03-ux-design.md — Topic 3 deep reading + source comparison', 'design/foundations/ux-acceptance-criteria.md — Lab 03 acceptance-criteria sheet (Browser v1.1 UX gate; PR B)', 'Kim Goodwin — Designing for the Digital Age (personas + scenarios)', 'Indi Young — Mental Models', 'Jeff Patton — User Story Mapping', 'ISO 9241-210 — Human-centred design lifecycle']
+  },
+  {
+    title: 'Design thinking',
+    status: 'done',
+    summary: 'Design thinking is the iterative process of moving from a fuzzy human problem to a tested solution. Five canonical stages (Empathize / Define / Ideate / Prototype / Test) or three IBM Loop activities (Observe / Reflect / Make); evidence-per-stage discipline (NN/g); three-constraint triage (desirability / feasibility / viability — Brown). The loop is the point: single-pass design thinking is design thinking only by accident. Sits upstream of Topic 3 — used when the problem is NOT well-framed; skipped when Topic 3 criteria can be written directly.',
+    sources: [
+      ['Primary', 'Stanford d.school — Bootleg Bootcamp (method cards)', 'https://dschool.stanford.edu/resources/the-bootcamp-bootleg', 'Canonical 5-stage diagram plus per-stage methods catalogue. Most-cited single source on the discipline; equips the loop with concrete techniques (5 Whys, "I like / I wish / what if", bodystorm).'],
+      ['Applied', 'IBM Design Thinking — The Loop, Hills, Playbacks', 'https://www.ibm.com/design/thinking/', 'Compresses 5 stages into 3 (Observe / Reflect / Make) and adds team-coordination devices: Hills (outcome statements), Playbacks (demo gates), Sponsor Users (embedded domain experts). Enterprise-scale operationalisation.'],
+      ['Primary', 'Tim Brown — Change by Design + HBR essay "Design Thinking" (2008)', 'https://hbr.org/2008/06/design-thinking', 'The three-constraint frame: desirability / feasibility / viability. The most-cited disciplining device for the Ideate → Prototype transition.'],
+      ['Cross', 'Nielsen Norman Group — Design Thinking 101', 'https://www.nngroup.com/articles/design-thinking/', 'The iterative/non-linear discipline: the loop is the point, not the linear diagram. Evidence-per-stage rule: a stage that produced no artifact has not been done.'],
+      ['Extension', 'CodeMike — Topic 4 deep reading', 'https://github.com/Rishabh1804/MSc/blob/main/design/foundations/topic-04-design-thinking.md', 'Beyond-scope source comparison plus the Norman Useful-Myth critique, IDEO/Liedtka/Goodwin extensions, and the Topic 4-vs-Topic 3 routing rule.']
+    ],
+    notes: {
+      summary: 'Design thinking is decision-shaped process work that turns fuzzy human problems into tested solutions. The process is iterative (the loop is the point), evidence-shaped at every stage (NN/g rule), and disciplined by the three-constraint triage (Brown). Stages: Empathize / Define / Ideate / Prototype / Test (d.school) or Observe / Reflect / Make (IBM compression). For CodeMike, design thinking is the upstream pairing for Topic 3 — run a loop when the problem is not well-framed; skip to criteria-writing when it is.',
+      principles: [
+        'The loop is the point — one pass is design thinking only by accident.',
+        'Every stage produces an artifact (NN/g evidence rule); a stage that produced no artifact has not been done.',
+        'Generate ≥ 3 meaningfully different candidates in Ideate; "we already know what to build" is the most common practical failure (skipping Ideate).',
+        'Use Tim Brown\'s three-constraint triage (desirability / feasibility / viability) to disciplining the Ideate → Prototype transition.',
+        'Test specifications must include falsification criteria — what would change our mind. A Test without falsification criteria is a rubber-stamp.',
+        'For single-person workspaces: empathy-by-introspection is the default failure; mitigate with three-persona synthesis (first-time / power / accessibility-need).',
+        'Design thinking complements deep domain knowledge; it does not substitute for it (Norman Useful-Myth critique).'
+      ],
+      comparison: 'All four required sources agree on the shape (understand → frame → generate → make → test) and on iteration as central. They differ on emphasis: d.school is operational (Bootleg method cards), IBM is organisational (Hills + Playbacks + Sponsor Users), Brown is strategic (three constraints), NN/g is epistemic (iteration + evidence). The four together cover the topic; one or two would have known gaps. The Norman extension (Useful Myth) functions as a critique that sharpens the discipline by naming what it must defend against (branding hazard, domain-expertise hazard).',
+      disagreements: 'Stage count: d.school 5 vs IBM 3 vs (Brown implicit) vs NN/g 5. Iteration emphasis: NN/g explicit + diagrammed jumps vs others implicit. Team scale: IBM enterprise vs d.school small/co-located vs Brown strategic/cross-functional vs NN/g operational. Per-stage method catalogue: only d.school publishes named time-boxed methods. Three-constraint frame: only Brown publishes it. For solo CodeMike workspace, d.school + Brown + NN/g matter most; IBM is translated (Hills/Playbacks become "regular self-imposed check-in artifacts").',
+      interpretation: 'CodeMike treats design thinking as: identify the problem, check well-framed conditions (user-need form writable + tested success answerable + criterion measurable). If well-framed → Topic 3 (skip Topic 4). If not → Topic 4 loop (Empathize → Define → Ideate ≥3 candidates → triage by 3 constraints → Prototype cheap form → Test specification with falsification criteria → loop result). Every stage produces an artifact or the stage hasn\'t been done.',
+      application: 'The v1.2 backlog has three candidates from Lab 03\'s deferred list (collapsible filter panel, confirm modal for destructive batch actions, faceted filter panel) — all three need Topic 4 loops first because their underlying problems are not yet well-framed. The v1.1 polish items + acceptance-criteria sheet items go straight to Topic 3 criteria-writing when v1.2 starts. Lab 04 picks ONE of the three Topic-4 candidates and runs a full worked loop; the other two stay in the v1.2 backlog with "needs Topic 4 loop" annotation. Pairing with Topic 5 (HCD): HCD will provide the standards-grade vocabulary that names the same four activities; Topic 4 provides the practical toolkit.',
+      antiPatterns: [
+        'Skipping Ideate — committing to the first plausible solution. The single most common practical failure. Discipline: always generate ≥ 3 meaningfully different candidates.',
+        'Single-pass design thinking — doing one loop and shipping. The full benefit compounds across loops.',
+        'Empathy-by-introspection — single-person workspaces are particularly prone to "I am the user". Mitigation: three-persona synthesis in writing.',
+        'Workshop theatre — producing no per-stage evidence. NN/g evidence-per-stage rule is the corrective.',
+        'Triage by taste — picking the chosen candidate without sourced desirability / feasibility / viability assessment. Brown three-constraint frame is the corrective.'
+      ],
+      implementation: [
+        'Add a "Topic 4 first?" gate to the v1.2 backlog — every candidate annotated well-framed (Topic 3 only) or not well-framed (Topic 4 loop first).',
+        'Adopt the three-constraint triage as the default decision form for choosing between v1.2 candidates.',
+        'Adopt the evidence-per-stage rule for any loop run in the workspace.',
+        'Add a Sponsor Reviewer concept to v1.2 (IBM translation for solo workspace) — if no real Sponsor Reviewer available, stay in self-as-user mode and name the limitation explicitly.',
+        'Run Lab 04 on one chosen pain point from the deferred v1.2 candidates as the worked example.'
+      ],
+      checklist: [
+        'Add a problem-framing gate: every v1.2 backlog item annotated well-framed (skip Topic 4) or not well-framed (run a loop first).',
+        'Add a "≥3 meaningfully different candidates" gate at the Ideate → Prototype boundary; <3 candidates means re-ideate.',
+        'Add a sourced-triage gate: desirability / feasibility / viability cells must cite evidence, not opinion.',
+        'Add a falsification-criteria gate to Test specifications: a Test without "what would change our mind" criteria is a rubber-stamp.'
+      ]
+    },
+    further: ['design/foundations/topic-04-design-thinking.md — Topic 4 deep reading + source comparison', 'design/foundations/topic-04-design-thinking-loop.md — Lab 04 single-pain-point loop (PR B)', 'IDEO Field Guide (different chapters than Topic 3)', 'Jeanne Liedtka — Design Thinking for the Greater Good', 'Kim Goodwin — Designing for the Digital Age (scenarios + personas)', 'Don Norman — Design Thinking: A Useful Myth (2010 essay; critique)', 'GOV.UK Service Manual — Discovery phase']
   }
 ];
 
 window.DES001_TOPIC_STUBS = [
-  'Design thinking',
   'Human-centered design',
   'Gestalt principles',
   "Fitts' law",
@@ -182,7 +230,7 @@ window.DES001_TOPIC_STUBS = [
   'Design systems'
 ].map((title) => ({
   title,
-  status: title === 'Design thinking' || title === 'Gestalt principles' ? 'partial' : 'todo',
+  status: title === 'Gestalt principles' ? 'partial' : 'todo',
   summary: 'Source scaffold carried forward from v1. Full deep-reading notes pending.',
   sources: [],
   notes: window.DES001_PENDING_NOTES,

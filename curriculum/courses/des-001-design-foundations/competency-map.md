@@ -79,9 +79,31 @@ Grade reports:
 | Update master-browser checklist with Topic 3 gates | `design/checklists/master-browser-design-checklist.md` §20 (four UX gates) + §21 (four anti-patterns) + §22 (canonical pointer) | Complete |
 | Submit Lab 03 | `submissions/lab-03-ux-design-journey-map-results.md` | Complete |
 
+## Topic 4 — Design thinking (deep reading complete; Lab 04 pending)
+
+| Competency | Evidence | Status |
+|---|---|---|
+| Define design thinking as a discipline (not a worldview) | `design/foundations/topic-04-design-thinking.md` §1 | Complete |
+| Map d.school 5-stage ↔ IBM Loop 3-activity ↔ NN/g 5-stage | Deep-reading doc §2 (mapping table) | Complete |
+| Multi-source reading across design-thinking traditions | Deep-reading doc §3 (d.school, IBM, Brown, NN/g) + 5 extension sources incl. Norman critique | Complete |
+| Compare source framings | Deep-reading doc §5 (agreement + difference-by-emphasis + per-source omissions) | Complete |
+| Three-constraint triage frame (desirability / feasibility / viability) | Deep-reading doc §6 with browser-applied table | Complete |
+| Iterative / non-linear discipline (healthy jumps vs evidence-skipping) | Deep-reading doc §7 (jump table) | Complete |
+| Engage with Norman's *Useful Myth* critique | Deep-reading doc §8 (per-source responses) | Complete |
+| Topic 4 vs Topic 3 routing rule | Deep-reading doc §9 (decision tree) | Complete |
+| Application to v1.2 backlog | Deep-reading doc §10 (3 v1.2 candidates triaged) | Complete |
+| List Topic 4 anti-patterns | Deep-reading doc §11 (five anti-patterns; single-person-workspace specifics) | Complete |
+| Topic 4 quiz answers | `quizzes/quiz-04-design-thinking-answers.md` | Complete |
+| Topic 4 viva answers | `viva/DES-001-viva-answers.md` Topic 4 section | Complete |
+| Update Topic 4 dashboard module | `docs/design-foundations-app/data.js` (status flipped to `done`, full notes attached, five sources) | Complete |
+| Run one full design-thinking loop on a chosen pain-point | Lab 04 Steps 1–8 | Pending — PR B |
+| Produce loop output doc | `design/foundations/topic-04-design-thinking-loop.md` | Pending — PR B |
+| Append Topic 4 gates to master-browser checklist | `design/checklists/master-browser-design-checklist.md` §23 + §24 | Pending — PR B |
+| Submit Lab 04 | `submissions/lab-04-design-thinking-loop-results.md` | Pending — PR B |
+
 ## Next recommended action
 
-**Implement Browser v1.1.** Topic 2 (component rule sheet) + Topic 3 (UX acceptance-criteria sheet) + checklist §3 + §18 + §20 together form the complete v1.1 specification. Per the ratified execution plan §3 (gate 1), v1.1 implementation begins now — between Lab 03 close and Topic 4 open.
+Run **Lab 04** (PR B). One full design-thinking loop on a chosen v1.2-candidate pain-point (likely *confirm modal for destructive batch actions*, *collapsible filter panel*, or *faceted filter panel* — three candidates deferred from Lab 03's gap analysis). After Lab 04 closes, Topic 4 is fully closed and Topic 5 (Human-centred design) begins. Per the ratified execution plan §3, Topics 4–6 form one sequenced push ending in grade report v3.
 
 Rationale:
 

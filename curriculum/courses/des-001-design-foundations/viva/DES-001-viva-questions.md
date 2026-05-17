@@ -33,6 +33,17 @@
 7. Topic 2 ended at a component rule sheet; Topic 3 ends at an acceptance-criteria sheet. Give one v1.1 decision that needs both, and explain what fails if either is missing.
 8. The Topic 3 "happy path only" anti-pattern is specifically dangerous in data-review tools. Why?
 
+## Topic 4 — Design thinking
+
+1. Define design thinking as a discipline (not a worldview). What does it *produce* that "thinking about design" does not?
+2. The d.school 5-stage and IBM Loop 3-activity describe the same process at different compressions. Where does each framing's *structure* help, and where does it hide something the other surfaces?
+3. State Tim Brown's three constraints. For a v1.2-candidate of your choice on the Destination Master Browser, walk it through the triage and report the constraint it is weakest on.
+4. NN/g insists the process is iterative and non-linear. Name one healthy jump and one evidence-skipping jump, and explain the principle that distinguishes them.
+5. Don Norman's *Useful Myth* critique argues design thinking risks devaluing domain expertise. Does the critique sharpen the discipline or undermine it? Defend either position.
+6. The execution plan pairs Topic 4 with Topic 3: do a design-thinking loop when the problem isn't well-framed; skip to criteria-writing when it is. What test would tell you a problem is "well-framed enough" to skip Topic 4?
+7. The CodeMike workspace is single-person today. Which Topic 4 disciplines transfer directly to single-person work, and which need translation?
+8. Give one example of an evidence-free version of any of the five stages, and explain what the *next* stage suffers as a consequence.
+
 ## Answer file
 
 Answers should be stored in:

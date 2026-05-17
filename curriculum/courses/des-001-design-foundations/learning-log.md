@@ -306,3 +306,43 @@ The most operationally consequential discipline Topic 3 introduces is the user-n
 
 **Implement Browser v1.1** against the consolidated specification: Topic 2 rule sheet + Topic 3 acceptance-criteria sheet + master-browser checklist §3 + §18 + §20.
 
+---
+
+## 2026-05-17 — Topic 4 scaffolded + deep reading executed (PR A)
+
+### What was scaffolded and executed
+
+Topic 4 (Design thinking) artifacts created in the Topic 3 shape (scaffold + deep reading + quiz + viva + data.js + tracking all in one PR per the established pattern).
+
+Scaffolding:
+- `lectures/lecture-04-design-thinking.md` — design thinking as iterative process; d.school 5-stage / IBM 3-activity / NN/g 5-stage mappings; Tim Brown's three constraints; iterative-non-linear discipline; common failure modes; application to the browser.
+- `readings/topic-04-design-thinking-reading-pack.md` — four required sources (d.school Bootleg, IBM Design Thinking, Brown HBR + *Change by Design*, NN/g *Design Thinking 101*) + five extension sources (IDEO Field Guide chapters, Liedtka HBR, Goodwin scenarios+personas, Norman *Useful Myth* critique, GOV.UK Service Manual Discovery). Eight reading questions + extraction target + linked extension at `design/foundations/topic-04-design-thinking-loop.md` (Lab 04 PR B output).
+- `quizzes/quiz-04-design-thinking.md` and `quiz-04-design-thinking-answer-key.md` — ten questions covering definition, stage-mappings, three-constraint triage, iteration jumps, evidence-per-stage rule, Norman critique, user-need vs POV statement, single-person-workspace anti-patterns, Topic 4-vs-Topic 3 routing, design-decision gate before exiting Ideate.
+- `labs/lab-04-design-thinking-loop.md` — eight-step lab brief: pick pain-point + reject two alternatives, Empathize (3-perspective synthesis), Define (POV + HMW; rewrite twice), Ideate (≥ 3 meaningfully different), triage by three constraints, Prototype (cheap form), Test specification (with falsification criteria), loop result + decision.
+
+Deep reading executed:
+- `design/foundations/topic-04-design-thinking.md` — 16-section deep-reading doc: topic definition (+ non-definition), the 5-stage canonical + IBM/NN/g compressions with mapping table, source list + type classification, source-by-source notes (what each teaches / under-emphasises / strongest takeaway), structured source comparison (agreement + emphasis-difference + per-source omissions), three-constraint triage frame with browser-applied table, iterative/non-linear discipline (jump table: healthy vs evidence-skipping), Norman *Useful Myth* critique + how each other source responds, CodeMike interpretation (Topic 4 vs Topic 3 routing), application to v1.2 backlog, five anti-patterns (single-person specifics), implementation implications, three reusable CodeMike capabilities, source-set reflection, open work.
+
+Topic 4 quiz answers (ten worked answers, self-marked against the key).
+Topic 4 viva questions (eight) + answers (eight, each with examiner-push follow-up) appended.
+
+Dashboard module: `docs/design-foundations-app/data.js` Topic 4 promoted from stub to full module entry with status `done`. Sources expanded from 0 to 5 (four required + extension link). Full notes object mirroring Topic 1/2/3 structure. Playwright re-verified: 12 modules render, zero console errors, four of twelve now `done`.
+
+### What changed in understanding
+
+Design thinking is *process discipline*, not creativity or workshop attendance. The four required sources have different centres of gravity (d.school operational, IBM organisational, Brown strategic, NN/g epistemic) and a single-source stop costs differently per source. The most operationally important corrective is the *evidence-per-stage* rule (NN/g) combined with the *three-constraint triage* (Brown) — together they distinguish design thinking from design-by-opinion at every stage. The Norman *Useful Myth* critique sharpens the discipline by naming what it must defend against (branding hazard, domain-expertise hazard) — sources that ignore the critique end up overselling.
+
+For DES-001 specifically: Topic 4 sits *upstream* of Topic 3. The decision tree is — if the problem is well-framed (user-need writable + tested success answerable + criterion measurable), skip to Topic 3 criteria-writing; if not, run a Topic 4 loop first. Three v1.2 candidates from Lab 03's gap analysis (collapsible filter panel, confirm modal for destructive batch actions, faceted filter panel) need Topic 4 loops first because their underlying problems are not yet well-framed.
+
+### Open work after Topic 4 reading
+
+- Execute Lab 04 against ONE chosen v1.2 pain-point (Lab 04 PR B)
+- Produce `design/foundations/topic-04-design-thinking-loop.md` (full loop with evidence per stage)
+- Submit `submissions/lab-04-design-thinking-loop-results.md`
+- Append Topic 4 §23 + §24 to `design/checklists/master-browser-design-checklist.md`
+- Move on to Topic 5 (HCD) per the ratified three-topic push (Topics 4 → 5 → 6 ending in grade report v3)
+
+### Next action
+
+Open Topic 4 PR A (this commit set), then start Lab 04 on a fresh branch for PR B.
+
