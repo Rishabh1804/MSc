@@ -18,7 +18,7 @@ This file tracks the current operational queue for CodeMike. It is intentionally
 |---:|---|---|---|---|
 | 1 | Master validation report clean | User + Assistant | done | `master_structurally_valid_not_planner_ready` |
 | 2 | Create master HTML browser | Assistant / GitHub connector | done | `docs/destination-master-browser.html` |
-| 3 | Verify GitHub Pages browser | User / Browser | todo | Open Pages URL after deployment delay |
+| 3 | Verify v1.1 GitHub Pages render at canonical URL | User / Browser | todo | Open `https://rishabh1804.github.io/MSc/destination-master-browser.html` after deployment delay. Then verify the v1.0 archive renders at `…/destination-master-browser-v1.0.html`. Both URLs were updated 2026-05-16 by the v1.1 ship. |
 | 4 | Implement Destination Master Browser v1.1 | Assistant / CodeMike | **done** | Landed across two PRs (#10 core + this PR polish/walk-through). Canonical at `docs/destination-master-browser.html`; v1 archived at `-v1.0.html`. Full 13-gate Playwright walk-through: **15/15 pass** with zero console errors. Capability transfer recorded in `operations/TRANSFER_LOG.md` (Transfer 1); SKILL_MAP UI/UX skill promoted to level 5; six CAPABILITIES rows promoted to maturity 4. |
 | 5 | Design master enrichment strategy | Assistant / GitHub connector | todo | Define fields and rules before scoring |
 | 6 | Start destination scoring v1 | Assistant / GitHub connector | deferred | After enrichment strategy exists |

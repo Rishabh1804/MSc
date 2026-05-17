@@ -17,18 +17,28 @@ CodeMike is not finished when he learns something. CodeMike is finished when the
 
 ## Transfer Entry Template
 
-```md
-## Transfer: <source capability> → <target project>
+Entries use the form `### Transfer N — <source capability> → <target project>` so the register reads as a numbered sequence; the body covers the same eight fields as the original template.
 
-Date:
-Source capability:
-Target project:
-Problem solved:
-Artifact transferred:
-Evidence:
-Outcome:
-Limitations:
-Next action:
+```md
+### Transfer N — <source capability> → <target project>
+
+**Date:** YYYY-MM-DD
+
+**Source capability:** which SKILL_MAP / CAPABILITIES rows are being transferred
+
+**Target project:** the receiving project + one-line context
+
+**Problem solved:** what gap in the target project the transfer closes
+
+**Artifact transferred:** the concrete file / build / module that landed
+
+**Evidence:** verification artifacts (test results, screenshots, PR links)
+
+**Outcome:** what is true now that wasn't true before
+
+**Limitations:** what this transfer does *not* cover; what is intentionally deferred
+
+**Next action:** the smallest next step that this transfer unblocks
 ```
 
 ## Transfer Register

@@ -31,6 +31,50 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-17 — v1.1 polish follow-up: walk-through script committed, four polish items behaviourally tested, governance freshness restored
+
+Type: review-followup / governance
+
+Summary:
+
+Closes the Lyra and Aurelius missed opportunities from the PR #11 review. The work is small but each item closes a real loose end:
+
+**Walk-through script committed (Lyra + Aurelius).** Previously orphaned at `/tmp/walkthrough-v1.1.js`. Now at `curriculum/courses/des-001-design-foundations/verification/v1.1-walkthrough/walkthrough.js` with screenshot output paths anchored via `__dirname` + a `path.join` helper so it can be run from anywhere and writes screenshots back into the verification folder. Reproducibility is now a property of the repo, not the container.
+
+**Four new behavioural gate-tests added** (Lyra observation 3-4 + missed a11y coverage): POLISH-1 (focus restoration on drawer close → asserts `document.activeElement` is the opener row), POLISH-2 (count-flash CSS class fires on filter change), POLISH-3 (drawer `aria-describedby` resolves to the trust-state line), POLISH-4 (taxonomy-drift `console.warn` fires on a synthetic unmapped `verification_status` row + the row still renders via the safe-default fallback). Walk-through now produces **19/19 pass** (15 original + 4 new). The polish items shipped in PR #11 are now defended against regression.
+
+One small bug found and fixed during the polish-test additions: POLISH-1 initially failed because U-LEA-1 left the page in cards view, and `.focus()` on a hidden TR silently fails. Test switches back to table view before asserting; implementation was correct.
+
+**Tracking-file freshness (Aurelius observations 2 + 5).** `README.md` "Active artifacts" split into v1.1 (canonical) + v1.0 (archived) rows. `NEXT_ACTIONS.md` priority 3 rewritten to name the canonical URL and the archive URL explicitly, dated to the 2026-05-16 ship.
+
+**TRANSFER_LOG template aligned (Aurelius observation 4).** Updated the template at the top of TRANSFER_LOG.md to match the `### Transfer N — <source> → <target>` form Transfer 1 used, with the eight standard fields. Future transfer entries follow the same shape.
+
+**First formal capability card written (Aurelius observation 3).** `capabilities/seven-step-reviewer-journey.md` — the canonical statement of the highest-leverage DES-001-derived design capability, with method, current maturity (4), evidence, limitations, reusable-in list, transfer history, and next action. Mirrors the format of the existing capability cards (`dashboard-insight-design.md` etc). Sets the template for future cards as the remaining five capabilities promote to maturity 5.
+
+Files changed:
+
+- `curriculum/courses/des-001-design-foundations/verification/v1.1-walkthrough/walkthrough.js` (new — committed from /tmp; extended with four polish gates; paths anchored to __dirname)
+- `curriculum/courses/des-001-design-foundations/verification/v1.1-walkthrough/walkthrough-results.json` (refreshed; 19 entries)
+- `curriculum/courses/des-001-design-foundations/verification/v1.1-walkthrough/walkthrough-*.png` (refreshed)
+- `curriculum/courses/des-001-design-foundations/verification/v1.1-walkthrough/v1.1-walkthrough-verification-2026-05-16.md` (updated: 15/15 → 19/19; script-path note)
+- `capabilities/seven-step-reviewer-journey.md` (new — first canonical card)
+- `README.md` (active-artifacts split)
+- `operations/NEXT_ACTIONS.md` (priority 3 refreshed for v1.1 vs v1.0)
+- `operations/TRANSFER_LOG.md` (template aligned with Transfer 1 form)
+
+Evidence produced:
+
+- 19/19 walk-through pass with zero console errors — including the four behavioural tests Lyra flagged as missing
+- A canonical capability card other future cards can mirror
+- Reproducibility of the walk-through preserved across container restarts
+- Workspace tracking files refreshed to reflect post-v1.1 state
+
+Operating-loop implication: the *Improve* step of the CodeMike loop is genuinely closing now — review caught real misses, the misses were fixed, the fixes were verified. The loop's last step is not ceremonial.
+
+Next action:
+
+Start DES-001 Topic 4 — Design thinking — per the ratified execution plan §3. User can also verify the production GitHub Pages render of v1.1 at convenience (NEXT_ACTIONS priority 3).
+
 ## 2026-05-16 — Destination Master Browser v1.1 shipped (polish + walk-through + transfer)
 
 Type: capability / transfer / governance

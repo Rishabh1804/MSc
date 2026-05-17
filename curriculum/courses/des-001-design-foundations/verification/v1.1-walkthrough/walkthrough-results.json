@@ -4,7 +4,7 @@
     "label": "Orient within 5s — tool + dataset + trust state visible without scroll",
     "pass": true,
     "evidence": {
-      "arriveDurationMs": 853,
+      "arriveDurationMs": 860,
       "bannerVisible": true,
       "headerVisible": true,
       "subtitleHasDataset": true
@@ -37,7 +37,7 @@
     "evidence": {
       "activeChips": 2,
       "countVisibleNoScroll": true,
-      "responseMs": 10,
+      "responseMs": 12,
       "chipsBeforeRemove": 3,
       "chipsAfterRemove": 2
     }
@@ -67,7 +67,7 @@
     "pass": true,
     "evidence": {
       "sortableCount": 8,
-      "compareMs": 110,
+      "compareMs": 114,
       "firstThreeTrust": [
         "planner-ready",
         "planner-ready",
@@ -153,6 +153,45 @@
       "cardTrust": "unverified",
       "drawerTrust": "unverified",
       "drawerName": "Bali Beach"
+    }
+  },
+  {
+    "id": "POLISH-1",
+    "label": "Focus restoration on drawer close — returns to the opener row",
+    "pass": true,
+    "evidence": {
+      "restoredIndex": {
+        "tag": "TR",
+        "idx": "0"
+      }
+    }
+  },
+  {
+    "id": "POLISH-2",
+    "label": "Result-count flash animation fires on count change (U-NAR-1 \"perceptible\")",
+    "pass": true,
+    "evidence": {
+      "flashedAfterFilter": true
+    }
+  },
+  {
+    "id": "POLISH-3",
+    "label": "Drawer has aria-describedby referencing the trust-state line",
+    "pass": true,
+    "evidence": {
+      "ariaDescribedby": "drawerTrustText",
+      "trustTextId": "drawerTrustText"
+    }
+  },
+  {
+    "id": "POLISH-4",
+    "label": "Taxonomy-drift console.warn fires on unmapped verification_status; row still renders",
+    "pass": true,
+    "evidence": {
+      "driftWarnings": [
+        "[trustStateOf] unmapped status combination: v=unknown_drift_status|p=promoted — defaulting to 'unverified'"
+      ],
+      "driftWarnFired": true
     }
   },
   {
