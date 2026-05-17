@@ -44,6 +44,11 @@ docs/design-foundations.html
 | Topic 5 viva answers | `courses/des-001-design-foundations/viva/DES-001-viva-answers.md` (Topic 5) | Submitted |
 | Topic 5 Lab 05 HCD audit (v1.1 + Lab 04 Loop 1) | `design/foundations/topic-05-hcd-audit.md` (Audit 1; 4 activities + 6 principles + W3C triad; 7 findings; 6-item prioritised v1.2 list) | Complete |
 | Topic 5 Lab 05 submission | `courses/des-001-design-foundations/submissions/lab-05-hcd-audit-results.md` | Submitted |
+| Topic 6 deep reading + source comparison | `design/foundations/topic-06-gestalt.md` (15 sections; 4 required + 5 extension sources; violation taxonomy; perceptual-constraint critique; canonical hierarchy extension) | Complete |
+| Topic 6 quiz answers | `courses/des-001-design-foundations/quizzes/quiz-06-gestalt-principles-answers.md` | Submitted |
+| Topic 6 viva answers | `courses/des-001-design-foundations/viva/DES-001-viva-answers.md` (Topic 6) | Submitted |
+| Topic 6 Lab 06 Gestalt audit of v1.1 | `design/foundations/topic-06-gestalt-audit.md` (Audit 1; six regions × six principles; conflict adjudication; density-vs-grouping; prioritised v1.1.x/v1.2 fix list) | Pending Lab 06 (PR B) |
+| Topic 6 Lab 06 submission | `courses/des-001-design-foundations/submissions/lab-06-gestalt-audit-results.md` | Pending Lab 06 (PR B) |
 | Topic 3 Lab 03 journey map + criteria + need-audit + gap analysis | `design/foundations/topic-03-ux-design-journey-map.md` | Complete |
 | Topic 3 UX acceptance-criteria sheet (Browser v1.1 UX gate) | `design/foundations/ux-acceptance-criteria.md` | Complete |
 | Topic 3 Lab 03 submission | `courses/des-001-design-foundations/submissions/lab-03-ux-design-journey-map-results.md` | Submitted |

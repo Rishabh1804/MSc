@@ -485,3 +485,55 @@ The single most important meta-finding: *honest naming of limitations is the dis
 
 Start **DES-001 Topic 6 — Gestalt principles** — the final topic in the ratified three-topic push (Topics 4 → 5 → 6 ending in grade report v3).
 
+---
+
+## 2026-05-17 — Topic 6 PR A scaffolded + deep reading complete
+
+### What was executed
+
+Topic 6 (Gestalt principles) reading + scaffold landed on branch `claude/des-001-topic-06-reading`:
+
+- Lecture (`lectures/lecture-06-gestalt-principles.md`) — Gestalt as perceptual constraints (not aesthetic rules); Prägnanz + six core principles with UI consequences; canonical hierarchy extension (Topic 6 sits underneath Topic 2)
+- Reading pack (`readings/topic-06-gestalt-principles-reading-pack.md`) — 4 required sources (Wertheimer/Koffka/Köhler via secondary; IxDF; NN/g; Smashing) + 5 extensions
+- Quiz + answer key + worked answers (`quizzes/quiz-06-gestalt-principles*.md`) — 10 questions including definition, Prägnanz, six principles, violation, conflict adjudication, hierarchy, critique, scope defence, anti-pattern, design-decision gate
+- Lab 06 brief (`labs/lab-06-gestalt-audit.md`) — six-step audit (regions → per-principle matrix → conflict adjudication → density audit → findings + prioritised v1.1.x/v1.2 fix list → checklist §29/§30/§31)
+- 15-section deep-reading doc (`design/foundations/topic-06-gestalt.md`) — topic definition, Prägnanz + corollary, source list + per-source notes, source comparison, violation taxonomy (false-positive / false-negative / unresolved conflict), perceptual-constraint vs aesthetic-rule critique, canonical hierarchy extension (Gestalt underneath Topic 2), browser application with six anticipated violations, three anti-patterns, implementation implications
+- Eight Topic 6 viva questions + answers (`viva/DES-001-viva-questions.md` + `-answers.md`) — each with examiner-push follow-up
+- Dashboard module flipped from `partial` (stub) to `done` (`docs/design-foundations-app/data.js`) — 12 modules, 6 done, 6 todo; Cipher verified zero errors
+
+### Verdict summary
+
+| Dimension | Result |
+|---|---|
+| Required sources read | 4/4 (Wertheimer/Koffka/Köhler via secondary; IxDF; NN/g; Smashing) |
+| Extension sources noted | 5/5 (Rutledge, Refactoring UI, Tufte, Goldstein, Krug) |
+| Six principles documented with browser-specific example | 6/6 |
+| Source comparison (agreement + difference-by-emphasis + per-source omissions) | Complete (§5) |
+| Violation taxonomy | 3 sub-types defined (§6) |
+| Critique engagement | Complete (§7 — perceptual constraint vs aesthetic rule) |
+| Canonical hierarchy extension | Complete (§8 — Gestalt underneath Topic 2) |
+| Browser application | Complete (§9 — six audit regions + six anticipated violations) |
+| Anti-patterns specific to data-review tools | 3 documented (§10) |
+| Lecture | Complete |
+| Quiz + key + worked answers | Complete |
+| Lab brief | Complete |
+| Viva questions + answers (with examiner-push) | 8 / 8 |
+| Dashboard module promoted | Complete |
+| Cipher verification (`/tmp/verify-canonical.js`) | 12 modules, 0 errors |
+
+### What changed in understanding
+
+The single most operationally important discipline Topic 6 introduces is the *perceptual constraint vs aesthetic rule* distinction. The style reading lets designers override the principles on taste ("use whitespace generously" is unfalsifiable); the constraint reading forces every visual choice to defend itself against what the visual system *will* do ("we used 16px between unrelated controls and 4px within related ones, defending the proximity signal for the toolbar's narrowing-controls group" is falsifiable). The constraint framing is what makes Lab 06's audit possible at all — without it, "feels off" is the strongest finding language available.
+
+Second meta-finding: Gestalt sits *underneath* Topic 2, not alongside. A design can be Topic-2-compliant (right components, right states, right modality) and still Gestalt-violating (wrong perceived grouping). The two audits run different tests and produce different fix lists; keeping them distinct preserves both audit-shapes.
+
+Third meta-finding: principle conflicts are adjudicated *by user task*, not by a fixed principle hierarchy. The same proximity-vs-similarity conflict can resolve in opposite directions depending on whether the task is "treat these as one group" or "distinguish these categories". Smashing is the only required source that publishes this rule explicitly, and it's the most operationally important piece of guidance for the dense regions of the v1.1 browser.
+
+### Topic 6 PR A status
+
+**Complete and ready to push.** Six files written + tracking files updated + Cipher verified. PR #17 will be cut as draft against `main`.
+
+### Next action
+
+Execute **Lab 06 — Gestalt audit of v1.1** (Topic 6 PR B) on a fresh branch. After Lab 06 closes, the three-topic push terminates and grade report v3 (cumulative DES-001 grade after Topics 1–6) is the final closure deliverable.
+

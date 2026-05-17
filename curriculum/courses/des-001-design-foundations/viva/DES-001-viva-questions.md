@@ -55,6 +55,17 @@
 7. Lab 05's audit will surface gaps. Name two anticipated gaps and explain how each would be closed in v1.2.
 8. The HCD self-audit gate has four cells. Pick a v1.2 candidate (your choice) and run the gate. What's the weakest cell?
 
+## Topic 6 — Gestalt principles
+
+1. Define Gestalt principles as a discipline. Explain the *perceptual constraint vs aesthetic rule* distinction and why the constraint framing is operationally different from the style framing.
+2. State *Prägnanz* and explain why every specific Gestalt principle is a corollary. Walk through at least three of the six principles as worked corollaries.
+3. Name the six core Gestalt principles. For each, give one Destination Master Browser example where the principle is currently honoured.
+4. Define a *Gestalt violation*. Give one v1.1 region where you believe a *false-positive grouping* violation exists, name the principle(s), and explain the reviewer-task consequence.
+5. The six principles can conflict. Name two principles that pull in different directions in v1.1's cards view and adjudicate. State the general rule you applied and cite the source.
+6. Where does Gestalt sit in the canonical hierarchy relative to Topics 2 / 3 / 4 / 5? Why is it positioned *underneath* Topic 2 rather than alongside?
+7. The execution plan estimates Topic 6 at ~4–5h, smaller than Topic 4/5's 5–7h. Defend the scoping decision; name two things the smaller scope deliberately doesn't cover.
+8. Lab 06 produces a per-region per-principle audit. Name two anticipated violations the audit will need to confirm/refute and the principle(s) involved in each.
+
 ## Answer file
 
 Answers should be stored in:

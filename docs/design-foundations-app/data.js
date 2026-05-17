@@ -264,11 +264,58 @@ window.DES001_TOPICS = [
       ]
     },
     further: ['design/foundations/topic-05-hcd.md — Topic 5 deep reading + source comparison', 'design/foundations/topic-05-hcd-audit.md — Lab 05 HCD audit of v1.1 (PR B)', 'ISO 9241-11 — Usability: Definitions and concepts', 'WCAG 2.2 success criteria', 'Microsoft Inclusive Design Toolkit', 'Jakob Nielsen — Why You Only Need to Test with 5 Users', 'GOV.UK Service Manual — Accessibility and assisted digital']
+  },
+  {
+    title: 'Gestalt principles',
+    status: 'done',
+    summary: 'Gestalt principles are perceptual constraints on how the human visual system groups visual elements — empirical facts from Wertheimer 1912 / Koffka 1935 / Köhler 1929 that any visual interface must accommodate. Six core principles (proximity, similarity, continuity, closure, common region, common fate), each a corollary of the underlying Prägnanz claim (the visual system organises perception toward the simplest stable interpretation). Sits underneath Topic 2\'s component rules as the perceptual constraint layer: Topic 2 says which components exist; Gestalt audits how those components will be perceived together. The discipline\'s job is to make perceived grouping match intended grouping; mismatches are violations that the Lab 06 audit surfaces.',
+    sources: [
+      ['Primary', 'Wertheimer / Koffka / Köhler — Gestalt papers (via authoritative secondary)', 'https://plato.stanford.edu/entries/gestalt/', 'The empirical foundation: Wertheimer\'s 1912 apparent-motion experiments + Koffka 1935 + Köhler 1929. Establishes Prägnanz and the foundational principles. Read via secondary (Stanford Encyclopedia of Philosophy / Goldstein cognitive psychology textbook).'],
+      ['Authority', 'Interaction Design Foundation — Gestalt principles for interaction designers', 'https://www.interaction-design.org/literature/topics/gestalt-principles', 'Educational source: each principle with brief psychological grounding, definition, multiple UI examples, common violations. The discipline\'s standard educational treatment.'],
+      ['Authority', 'Nielsen Norman Group — Gestalt principles in UI design', 'https://www.nngroup.com/articles/gestalt-principles-of-perception/', 'Diagnostic source: specific named violations in real product designs with annotated screenshots + fixes. The most-cited treatment for working designers.'],
+      ['Cross', 'Smashing Magazine — Gestalt principles in interface design', 'https://www.smashingmagazine.com/2014/03/design-principles-visual-perception-and-the-principles-of-gestalt/', 'Adjudicative source: where Gestalt meets real product constraints (density, accessibility, multi-screen) and how to resolve principle conflicts. Task-driven adjudication framing.'],
+      ['Extension', 'CodeMike — Topic 6 deep reading', 'https://github.com/Rishabh1804/MSc/blob/main/design/foundations/topic-06-gestalt.md', 'Beyond-scope source comparison + Gestalt violation taxonomy (false-positive / false-negative / unresolved conflict) + perceptual-constraint vs aesthetic-rule critique + canonical hierarchy extension (Gestalt underneath Topic 2) + browser-specific anticipated violations.']
+    ],
+    notes: {
+      summary: 'Gestalt principles are perceptual constraints on how the human visual system groups visual elements. Six core principles (proximity, similarity, continuity, closure, common region, common fate) each a corollary of Prägnanz (the system organises toward simplest stable interpretation). Sits underneath Topic 2 in the canonical hierarchy: Topic 2 says which components exist; Gestalt audits how they will be perceived together. Four sources play four roles: Wertheimer/Koffka/Köhler give empirical grounding; IxDF gives educational treatment; NN/g gives diagnostic discipline (named-violations-with-fixes); Smashing gives adjudicative framing for conflict resolution. The perceptual-constraint reading (vs the aesthetic-rule reading) is the operational difference that makes Gestalt defensible per region rather than overridable on taste.',
+      principles: [
+        'Gestalt principles are perceptual constraints, not aesthetic rules. The human will perceive grouping whether the designer intended it or not.',
+        'Prägnanz (simplest stable interpretation) is the underlying claim; every specific principle is a corollary.',
+        'Six core principles cover the working set for interface design: proximity, similarity, continuity, closure, common region, common fate.',
+        'A Gestalt violation is the gap between perceived and intended grouping (false-positive, false-negative, or unresolved conflict).',
+        'When two principles conflict, the winning one is the one that better serves the user\'s task — no fixed hierarchy.',
+        'Density-vs-grouping is the central data-review-tool conflict; silent collapse is the failure mode, explicit substitution is acceptable.',
+        'Gestalt sits underneath Topic 2: components can be Topic-2-compliant and still Gestalt-violating.'
+      ],
+      comparison: 'All four required sources agree the six core principles are perceptual constraints, not aesthetic rules; Prägnanz is the underlying claim; perceived grouping must match intended grouping. They differ on role: Wertheimer/Koffka/Köhler give empirical grounding (the principles are facts); IxDF gives educational treatment (the discipline\'s standard pedagogy); NN/g gives diagnostic discipline (the audit-shape: named violations + fixes + screenshots); Smashing gives adjudicative framing (which principle wins when two conflict, by user task). A team that stopped at one would have a known gap — originals without modern UI application, IxDF without diagnostic discipline, NN/g without conflict resolution, Smashing without per-principle pedagogy. The four together cover Gestalt; one or two would have known gaps.',
+      disagreements: 'Mode: Wertheimer/Koffka/Köhler empirical; IxDF educational; NN/g diagnostic; Smashing adjudicative. Modern UI application: NN/g + Smashing high, IxDF medium, originals low (translation needed). Conflict-resolution guidance: Smashing strong (task-driven explicit), others light. Density-vs-grouping: Smashing strong, NN/g medium, IxDF + originals not addressed. Cognitive-science grounding: originals strong, IxDF medium, NN/g + Smashing light. Strength order across principles: only Smashing publishes explicit (task-driven); others implicit. For the Destination Master Browser, Smashing is the most operationally important source (density forces conflicts constantly); NN/g is the audit-shape template for Lab 06; the originals supply the constraint-vs-style authority.',
+      interpretation: 'CodeMike treats Gestalt as the perceptual constraint layer underneath Topic 2. The canonical hierarchy extends: Topic 5 — HCD (umbrella) ⊃ Topic 4 — Design thinking ⊃ Topic 3 — UX design ⊃ Topic 2 — UI design ⊃ Topic 6 — Gestalt (perceptual constraint layer). A design can satisfy Topic 2 (correct components per rule sheet) and Topic 3 (correct acceptance criteria) and still violate Gestalt (wrong perceived grouping) — producing a feels-off reaction that Topic 2/3 alone can\'t catch. Topic 6\'s audit-shape (per-region per-principle matrix + conflict adjudication + density-vs-grouping audit + prioritised v1.1.x/v1.2 fix list) is the perceptual audit Lab 06 runs.',
+      application: 'Lab 06 runs a Gestalt audit of v1.1 against the six principles, focused on six regions: cards view, table view, toolbar, active-filter summary, trust banner + header + stats, drawer. Each region × each principle is graded Pass / Trade-off / Violation / N/A; trade-offs name a compensating signal; conflicts are adjudicated explicitly; violations get a fix tagged v1.1.x (small visual treatment change) or v1.2 (component-rule-affecting change). Anticipated violations: toolbar false-positive (search + selects look like one group, behave differently); cards trust-badge false-negative (badge blends with surrounding metadata via similarity); active-filter summary bleed into toolbar; sortable column headers may not signal interactivity; cards caution-chip proximity-vs-similarity conflict unresolved; toolbar density compromise (alignment-only grouping). Lab 06 confirms/refutes each and produces the prioritised fix list.',
+      antiPatterns: [
+        'Silent density collapse: compressing whitespace silently to fit more information; proximity-based grouping degrades; user gets denser screen but weaker grouping signal. Mitigation: when whitespace must compress, substitute a different grouping signal (divider, tint, alignment) and name the substitution.',
+        'Decorative motion: animation used for visual polish rather than grouping signal; violates common fate (motion implies relationship). Mitigation: every animation must serve grouping or feedback; decorative-only motion is refused.',
+        'Too many similarity signals: using colour/shape/size for too many categories at once; collapses the categorical signal. Mitigation: the rule is fewer categories, more distinct — a small palette of similarity-classes beats a large one where the differences blur.',
+        'Treating Gestalt as aesthetic rule: stripping the principles of their perceptual-constraint authority and reducing them to style advice. Mitigation: name the principle, name the trade-off if any, defend the choice — every visual-treatment change passes the Q10 four-cell gate.'
+      ],
+      implementation: [
+        'Every visual-treatment change passes the Gestalt-gate: name (a) principles satisfied, (b) principles violated, (c) compensating signal for any violation, (d) user task served by the trade-off. Empty cell = return for redesign.',
+        'The v1.1.x fix list from Lab 06 covers small visual-treatment-only changes that can ship without changing component rules.',
+        'The v1.2 fix list from Lab 06 covers component-rule-affecting changes that bundle with the existing v1.2 backlog (already inheriting Topic 4 + Topic 5 v1.2 items).',
+        'Append Topic 6 section (§29 + §30 + §31) to master-browser checklist: three Gestalt gates + three data-review-tool anti-patterns + canonical pointer to the Gestalt audit doc.',
+        'Grade report v3 (after Topic 6) incorporates Gestalt compliance as a marking criterion alongside the existing rubric and the Topic 5 HCD criterion.'
+      ],
+      checklist: [
+        'Add a perceptual-constraint gate to every visual-treatment change: name principle(s) satisfied + violated; without both, the change is taste-driven and returned.',
+        'Add a principle-conflict adjudication gate to every region with competing principles: the winning principle must be named with a comparative reason rooted in the user task.',
+        'Add a density-vs-grouping gate to any region where whitespace is compressed: the compensating grouping signal must be named explicitly; silent collapse is refused.',
+        'Add a canonical pointer in the checklist to design/foundations/topic-06-gestalt-audit.md so every audit cycle re-checks the per-region per-principle matrix.'
+      ]
+    },
+    further: ['design/foundations/topic-06-gestalt.md — Topic 6 deep reading + source comparison', 'design/foundations/topic-06-gestalt-audit.md — Lab 06 Gestalt audit of v1.1 (PR B)', 'Andy Rutledge — Design and Gestalt theory', 'Schoger & Wathan — Refactoring UI (Gestalt + visual hierarchy)', 'Tufte — The Visual Display of Quantitative Information', 'Goldstein — Cognitive Psychology (perception chapters)', 'Steve Krug — Don\'t Make Me Think']
   }
 ];
 
 window.DES001_TOPIC_STUBS = [
-  'Gestalt principles',
   "Fitts' law",
   'Button states',
   'Typography',
@@ -277,7 +324,7 @@ window.DES001_TOPIC_STUBS = [
   'Design systems'
 ].map((title) => ({
   title,
-  status: title === 'Gestalt principles' ? 'partial' : 'todo',
+  status: 'todo',
   summary: 'Source scaffold carried forward from v1. Full deep-reading notes pending.',
   sources: [],
   notes: window.DES001_PENDING_NOTES,
