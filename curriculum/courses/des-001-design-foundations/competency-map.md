@@ -79,7 +79,7 @@ Grade reports:
 | Update master-browser checklist with Topic 3 gates | `design/checklists/master-browser-design-checklist.md` §20 (four UX gates) + §21 (four anti-patterns) + §22 (canonical pointer) | Complete |
 | Submit Lab 03 | `submissions/lab-03-ux-design-journey-map-results.md` | Complete |
 
-## Topic 4 — Design thinking (deep reading complete; Lab 04 pending)
+## Topic 4 — Design thinking (closed)
 
 | Competency | Evidence | Status |
 |---|---|---|
@@ -96,14 +96,14 @@ Grade reports:
 | Topic 4 quiz answers | `quizzes/quiz-04-design-thinking-answers.md` | Complete |
 | Topic 4 viva answers | `viva/DES-001-viva-answers.md` Topic 4 section | Complete |
 | Update Topic 4 dashboard module | `docs/design-foundations-app/data.js` (status flipped to `done`, full notes attached, five sources) | Complete |
-| Run one full design-thinking loop on a chosen pain-point | Lab 04 Steps 1–8 | Pending — PR B |
-| Produce loop output doc | `design/foundations/topic-04-design-thinking-loop.md` | Pending — PR B |
-| Append Topic 4 gates to master-browser checklist | `design/checklists/master-browser-design-checklist.md` §23 + §24 | Pending — PR B |
-| Submit Lab 04 | `submissions/lab-04-design-thinking-loop-results.md` | Pending — PR B |
+| Run one full design-thinking loop on a chosen pain-point | `design/foundations/topic-04-design-thinking-loop.md` (Loop 1: batch-promote-confirm; 8 steps; 4 candidates triaged; Candidate B chosen) | Complete |
+| Produce loop output doc | `design/foundations/topic-04-design-thinking-loop.md` | Complete |
+| Append Topic 4 gates to master-browser checklist | `design/checklists/master-browser-design-checklist.md` §23 (four gates) + §24 (five anti-patterns) + §25 (canonical loop-output pointer) | Complete |
+| Submit Lab 04 | `submissions/lab-04-design-thinking-loop-results.md` | Complete |
 
 ## Next recommended action
 
-Run **Lab 04** (PR B). One full design-thinking loop on a chosen v1.2-candidate pain-point (likely *confirm modal for destructive batch actions*, *collapsible filter panel*, or *faceted filter panel* — three candidates deferred from Lab 03's gap analysis). After Lab 04 closes, Topic 4 is fully closed and Topic 5 (Human-centred design) begins. Per the ratified execution plan §3, Topics 4–6 form one sequenced push ending in grade report v3.
+Start **Topic 5 (Human-centred design)** per the ratified three-topic push (Topics 4 → 5 → 6 ending in grade report v3). Topic 5 provides the standards-grade vocabulary (ISO 9241-210) that names the same four activities Topic 4 compresses; both pair with Topic 3 (criteria) and Topic 2 (components) to give the workspace a complete design-discipline frame.
 
 Rationale:
 

@@ -38,24 +38,17 @@ Closed by two PRs (PR A — reading; PR B — Lab 03):
 - `submissions/lab-03-ux-design-journey-map-results.md` — formal lab submission (PR B)
 - `design/checklists/master-browser-design-checklist.md` §20 (four UX gates) + §21 (four anti-patterns) + §22 (canonical sheet pointer) (PR B)
 
-## Week 4 — Design thinking (active)
+## Week 4 — Design thinking ✓ complete (2026-05-17)
 
-Scaffolded + deep-reading executed (PR A):
+Closed by two PRs (PR A — reading; PR B — Lab 04):
 
-- `lectures/lecture-04-design-thinking.md`
-- `readings/topic-04-design-thinking-reading-pack.md`
-- `quizzes/quiz-04-design-thinking.md` + answer key + worked answers
-- `labs/lab-04-design-thinking-loop.md`
-- `design/foundations/topic-04-design-thinking.md` (16-section deep-reading doc)
-- Topic 4 viva questions + answers appended
-- `docs/design-foundations-app/data.js` Topic 4 → `done`
-
-To execute (PR B):
-
-- Run Lab 04 against one chosen v1.2 pain-point
-- Produce `design/foundations/topic-04-design-thinking-loop.md` (full Empathize→Test loop with evidence per stage)
-- Submit `submissions/lab-04-design-thinking-loop-results.md`
-- Append Topic 4 §23 + §24 to `design/checklists/master-browser-design-checklist.md`
+- Lecture, reading pack, quiz + key + worked answers, lab brief (PR A)
+- `design/foundations/topic-04-design-thinking.md` — 16-section deep-reading doc (PR A)
+- `viva/DES-001-viva-questions.md` + `-answers.md` — eight Topic 4 questions + answers (PR A)
+- `docs/design-foundations-app/data.js` — Topic 4 flipped to `done` (PR A)
+- `design/foundations/topic-04-design-thinking-loop.md` — Loop 1 (batch-promote-confirm; eight steps; four candidates triaged; Candidate B chosen) (PR B)
+- `submissions/lab-04-design-thinking-loop-results.md` — formal lab submission (PR B)
+- `design/checklists/master-browser-design-checklist.md` §23 (four design-thinking gates) + §24 (five anti-patterns) + §25 (canonical loop-output pointer) (PR B)
 
 ## Week 5 — Perception and Interaction Laws (planned for Topics 6 + 7)
 

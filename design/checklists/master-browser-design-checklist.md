@@ -275,3 +275,40 @@ design/foundations/ux-acceptance-criteria.md
 ```
 
 That sheet is Browser v1.1's UX gate. Together with `design/foundations/ui-design-component-rules.md` (the component gate), it forms the complete v1.1 specification. Any change to the 14 criteria, the 13 gate-tests, or the four anti-patterns must update both the sheet and this checklist.
+
+## 23. Topic 4 design-thinking-loop gates
+
+Source topic: DES-001 Topic 4 — Design thinking. Added 2026-05-17 from Lab 04 (`design/foundations/topic-04-design-thinking-loop.md`).
+
+Every v1.2+ backlog item must pass all four gates. They are the process-level companion to §3 (Topic 1 UI-vs-UX gate), §18 (Topic 2 component gates), and §20 (Topic 3 UX gates).
+
+| Gate | Pass criteria | Source |
+|---|---|---|
+| Problem-framing gate | Every backlog item is annotated either *well-framed* (skip Topic 4; write Topic 3 criterion directly) or *not well-framed* (run a Topic 4 loop first). The three well-framed conditions are: user-need statement writable without speculation; "what would tested success look like" answerable; criterion measurable. | Topic 4 deep-reading doc §9 (decision tree) |
+| Ideate-count gate | Every loop that reaches Prototype has documented ≥ 3 meaningfully different candidates at the Ideate → Prototype boundary. "Meaningfully different" means not three variants of the same approach. | Topic 4 deep-reading doc §11 anti-pattern 1 + Lab 04 §Step 4 |
+| Sourced-triage gate | Every triage table cites *sourced evidence* in the desirability / feasibility / viability cells, not opinion. A cell saying "users will love it" without an Empathize source is a finding. | Brown's three-constraint frame + NN/g evidence-per-stage rule |
+| Falsification-criteria gate | Every Test specification names explicit falsification criteria — concrete observations that would change the design's verdict. A Test without falsification criteria is a rubber-stamp. | Topic 4 deep-reading doc §11 anti-pattern 4 + Lab 04 §Step 7 |
+
+A loop that fails any gate is incomplete; the gate's stage must be re-run before the loop closes. These gates compound on top of §3 / §18 / §20 — they do not replace them.
+
+## 24. Topic 4 design-thinking anti-patterns
+
+Five anti-patterns specific to design thinking, with attention to the single-person-workspace case. Every loop must refuse all five.
+
+1. **Skipping Ideate** — committing to the first plausible solution. The most common practical failure. Discipline: always generate ≥ 3 meaningfully different candidates.
+2. **Single-pass design thinking** — doing one loop and shipping. The full benefit compounds across loops; one loop is design thinking only by accident.
+3. **Empathy-by-introspection** — single-person workspaces are prone to "I am the user" using self as data. Mitigation: three-persona synthesis in writing (first-time / power / accessibility-need).
+4. **Workshop theatre** — producing no per-stage evidence. NN/g evidence-per-stage rule is the corrective.
+5. **Triage by taste** — picking the chosen candidate without sourced desirability / feasibility / viability assessment. Brown three-constraint frame is the corrective.
+
+Each is sourced from Topic 4 deep-reading doc §11 (which cites ≥ 1 of the four required Topic 4 sources per anti-pattern).
+
+## 25. Design-thinking loop output (canonical example)
+
+The canonical worked example of a loop output lives at:
+
+```text
+design/foundations/topic-04-design-thinking-loop.md
+```
+
+Loop 1 (batch-promote-confirm modal) is the workspace's first run of the discipline. Future loops follow the same eight-step shape (Pick → Empathize → Define → Ideate → Triage → Prototype → Test-spec → Decision) and produce the same handoff format to Topic 3 criteria + Topic 2 components. Lab 04's submission (`submissions/lab-04-design-thinking-loop-results.md`) is the formal lab evidence for Loop 1.
