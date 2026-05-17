@@ -35,7 +35,7 @@ Accepted evidence includes notebooks, scripts, reports, benchmarks, evaluations,
 | Reproducible experimentation | 0 | None yet | Create experiment log format |
 | Productisation | 0 | None yet | Define notebook-to-product path |
 | Responsible AI | 0 | None yet | Create policy and checklist |
-| UI / UX design for data-review tools | 4 | DES-001 Topics 1–3 closed: deep-reading docs at `design/foundations/topic-01-ui-vs-ux-exercise-results.md`, `topic-02-what-is-ui-design.md`, `topic-03-ux-design.md`; component rule sheet at `ui-design-component-rules.md` and UX acceptance-criteria sheet at `ux-acceptance-criteria.md` (both signed off as Browser v1.1 input); Lab 01 heuristic audit + Lab 02 component inventory + Lab 03 journey map executed; cumulative grade report v2 = 87/100 Excellent/Distinction | Implement Destination Master Browser v1.1 against both sheets to reach level 5 (transferred to project) |
+| UI / UX design for data-review tools | 5 | DES-001 Topics 1–3 closed (cumulative grade v2 87/100 Excellent / Distinction); component rule sheet + UX acceptance-criteria sheet signed off; **Destination Master Browser v1.1 shipped 2026-05-16 against both sheets and verified with a 15/15 Playwright walk-through** (`curriculum/courses/des-001-design-foundations/verification/v1.1-walkthrough/`). The skill is now reusable / teachable: any future data-review tool inherits the master-detail-with-faceted-search pattern, the four-depth trust signal, the nine-state interactive checklist, and the seven-step reviewer-journey template. | Transfer the pattern to the next data-review tool (datasets browser, validator review, Planner review) when the need arises; record transfers in `operations/TRANSFER_LOG.md` |
 
 ## Skill Entry Template
 

@@ -1,0 +1,167 @@
+[
+  {
+    "id": "U-ARR-1",
+    "label": "Orient within 5s — tool + dataset + trust state visible without scroll",
+    "pass": true,
+    "evidence": {
+      "arriveDurationMs": 853,
+      "bannerVisible": true,
+      "headerVisible": true,
+      "subtitleHasDataset": true
+    }
+  },
+  {
+    "id": "U-ARR-2",
+    "label": "Trust banner persistent on scroll (sticky)",
+    "pass": true,
+    "evidence": {
+      "bannerAfterScroll": true,
+      "bannerY": 0
+    }
+  },
+  {
+    "id": "U-UND-1",
+    "label": "Trust state via text + colour + icon",
+    "pass": true,
+    "evidence": {
+      "bannerHasText": true,
+      "bannerHasIcon": true,
+      "bg": "rgb(254, 243, 199)",
+      "color": "rgb(120, 53, 15)"
+    }
+  },
+  {
+    "id": "U-NAR-1",
+    "label": "Filters reversible without leaving result list; count updates ≤300ms; visible without scroll",
+    "pass": true,
+    "evidence": {
+      "activeChips": 2,
+      "countVisibleNoScroll": true,
+      "responseMs": 10,
+      "chipsBeforeRemove": 3,
+      "chipsAfterRemove": 2
+    }
+  },
+  {
+    "id": "U-NAR-2",
+    "label": "Filter controls visibly distinguish default vs applied state",
+    "pass": true,
+    "evidence": {
+      "sourceFieldClass": "field",
+      "regionFieldClass": "field has-value",
+      "scaleFieldClass": "field has-value"
+    }
+  },
+  {
+    "id": "U-NAR-3",
+    "label": "Trust badge visible across the result list after narrowing",
+    "pass": true,
+    "evidence": {
+      "rowsAfterFilter": 1,
+      "badgesAfterFilter": 1
+    }
+  },
+  {
+    "id": "U-COM-1",
+    "label": "Sortable columns present (≥4 for high-frequency attributes); first comparison pass under 60s",
+    "pass": true,
+    "evidence": {
+      "sortableCount": 8,
+      "compareMs": 110,
+      "firstThreeTrust": [
+        "planner-ready",
+        "planner-ready",
+        "planner-ready"
+      ]
+    }
+  },
+  {
+    "id": "U-COM-2",
+    "label": "Card/table toggle present; table is the default",
+    "pass": true,
+    "evidence": {
+      "tableDefault": true,
+      "cardsHidden": true,
+      "togglePresent": true,
+      "tablePressed": true
+    }
+  },
+  {
+    "id": "U-INS-1",
+    "label": "Drawer ≤2 interactions to open; 1 to close; scroll position preserved",
+    "pass": true,
+    "evidence": {
+      "scrollBeforeOpen": 200,
+      "scrollAfterOpen": 200,
+      "scrollAfterClose": 200,
+      "drawerOpenedFast": true,
+      "drawerClosedFast": true
+    }
+  },
+  {
+    "id": "U-INS-2",
+    "label": "Trust banner persistent in drawer header (does not scroll out)",
+    "pass": true,
+    "evidence": {
+      "drawerTrustVisible": true,
+      "drawerTrustText": "Unverified — verification: seed_unverified; Planner: needs_verification. Treat p",
+      "drawerTrustStillVisible": true
+    }
+  },
+  {
+    "id": "U-INS-3",
+    "label": "Prev/Next navigates between records without re-opening from list",
+    "pass": true,
+    "evidence": {
+      "nameBefore": "Bali Beach",
+      "nameAfterNext": "Disputed Place",
+      "nameAfterPrev": "Bali Beach"
+    }
+  },
+  {
+    "id": "U-REC-1",
+    "label": "Empty-state recovery in ≤1 interaction; active filters listed; Clear-all visible",
+    "pass": true,
+    "evidence": {
+      "emptyVisible": true,
+      "filtersListed": 1,
+      "clearAllVisible": true,
+      "rowsAfterClear": 10,
+      "emptyHiddenAfterClear": true
+    }
+  },
+  {
+    "id": "U-REC-2",
+    "label": "Empty / loading / error are distinct components; empty is content-rich",
+    "pass": true,
+    "evidence": {
+      "threeDistinct": true,
+      "skeletonRowCount": 6,
+      "errorHasRetry": true,
+      "emptyHasFilters": true,
+      "emptyHasSuggestion": true,
+      "emptyHasCTA": true
+    }
+  },
+  {
+    "id": "U-LEA-1",
+    "label": "Trust signal consistent across list-row, card, and drawer-header for the same record",
+    "pass": true,
+    "evidence": {
+      "targetName": "Bali Beach",
+      "listRowTrust": "unverified",
+      "cardTrust": "unverified",
+      "drawerTrust": "unverified",
+      "drawerName": "Bali Beach"
+    }
+  },
+  {
+    "id": "CONSOLE",
+    "label": "Zero console errors / pageerrors / requestfailed across the full walk-through",
+    "pass": true,
+    "evidence": {
+      "count": 0,
+      "sample": []
+    }
+  }
+]

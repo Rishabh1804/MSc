@@ -31,6 +31,52 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-16 — Destination Master Browser v1.1 shipped (polish + walk-through + transfer)
+
+Type: capability / transfer / governance
+
+Summary:
+
+Closes the v1.1 implementation. This PR ships the polish items Lyra flagged on PR #10, runs the full 13-gate Playwright walk-through against the live build (**15/15 pass** including the cross-cutting CONSOLE check; zero console errors), and promotes the workspace's UI/UX skill and design capabilities per CLAUDE.md governance.
+
+Walk-through coverage: every one of the 13 v1.1 UX gate-criteria in `design/foundations/ux-acceptance-criteria.md` has an explicit machine-evaluated pass/fail test. The deferred-but-implemented U-INS-3 (drawer Prev/Next) is also verified. The CONSOLE check confirms no `console.error`, `pageerror`, or `requestfailed` events across the full walk-through. Two evaluators running the same script against the same build reach the same 15 verdicts — that is the reproducibility property the acceptance-criteria sheet was designed to deliver.
+
+Polish edits (every Lyra observation from PR #10 closed):
+
+- Drawer ARIA: kept `role="dialog"` + `aria-modal="false"` per WAI-ARIA APG's non-modal-dialog pattern; added `aria-describedby="drawerTrustText"` so screen readers announce the trust state when the dialog gains focus; HTML comment documents the choice.
+- Focus restoration on drawer close: `state.lastOpener` captures the row/card on first open; `closeDrawer` calls `opener.focus()` after the slide-out completes. Keyboard users resume at their journey position rather than at the document body.
+- Result-count perceptibility (U-NAR-1 "perceptible" requirement): added `#resultCount.flash` with a brief `--accent-soft` background flash; reflow-forced so the transition restarts cleanly on every count change.
+- CSV URL override: `?csv=<url>` query-param overrides the default GitHub raw URL. Production loads unchanged; staging / offline URLs supported without code changes.
+- Taxonomy-drift detection: `console.warn` (deduped via `_warnedTrustValues` set) fires on any unmapped `verification_status` / `planner_use_status` combination so QA spots master-CSV drift.
+
+Governance promotions (per CLAUDE.md "New reusable skills require updates to SKILL_MAP.md", "New reusable capabilities require updates to CAPABILITIES.md", "Transfers require updates to TRANSFER_LOG.md"):
+
+- `operations/SKILL_MAP.md` — "UI / UX design for data-review tools" promoted from level 4 (Applied to real project) → level 5 (Reusable / teachable / template-ready). Evidence: the v1.1 walk-through demonstrates the pattern is reproducible and the transfer is complete.
+- `operations/CAPABILITIES.md` — all six DES-001-derived design capabilities promoted from maturity 3 (Reusable pattern) → maturity 4 (Transferred to project). Each row's evidence column now cites the v1.1 walk-through.
+- `operations/TRANSFER_LOG.md` — new "Transfer 1" entry recording the full DES-001 → Browser v1.1 transfer with date, source capabilities, target project, problem solved, artifact transferred, evidence, outcome, limitations, and next action.
+- `operations/NEXT_ACTIONS.md` — priority 4 (Implement Destination Master Browser v1.1) flipped from `doing` to `done`.
+
+Files changed:
+
+- `docs/destination-master-browser.html` (polish edits — drawer focus restoration, count-flash CSS + JS, CSV override, console-warn taxonomy guard, drawer aria-describedby + HTML comment)
+- `curriculum/courses/des-001-design-foundations/verification/v1.1-walkthrough/` (new — verification report + 4 screenshots + raw JSON results)
+- `operations/SKILL_MAP.md` — UI/UX skill row updated to level 5 with v1.1 evidence
+- `operations/CAPABILITIES.md` — six capability rows promoted to maturity 4 with transfer evidence
+- `operations/TRANSFER_LOG.md` — Transfer 1 recorded
+- `operations/NEXT_ACTIONS.md` — priority 4 marked `done`
+
+Evidence produced:
+
+- 15/15 walk-through pass against the v1.1 build (machine-evidenced)
+- Four screenshots (table / cards / empty / drawer) capturing the implementation in each major state
+- Raw JSON walk-through results for reproducibility
+- The Destination Master Browser as the workspace's first real applied-design transfer
+- The CodeMike operating loop completes for the design-discipline domain: Orient → Learn → Prove → Package → **Transfer (this PR)** → Improve (future v1.2 if needed)
+
+Next action:
+
+User to verify production GitHub Pages render at convenience (NEXT_ACTIONS.md priority 3). Then start DES-001 Topic 4 (Design thinking) per the ratified execution plan §3.
+
 ## 2026-05-16 — Destination Master Browser v1.1 core implementation
 
 Type: capability / transfer

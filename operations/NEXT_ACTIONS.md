@@ -19,7 +19,7 @@ This file tracks the current operational queue for CodeMike. It is intentionally
 | 1 | Master validation report clean | User + Assistant | done | `master_structurally_valid_not_planner_ready` |
 | 2 | Create master HTML browser | Assistant / GitHub connector | done | `docs/destination-master-browser.html` |
 | 3 | Verify GitHub Pages browser | User / Browser | todo | Open Pages URL after deployment delay |
-| 4 | **Implement Destination Master Browser v1.1** | Assistant / CodeMike | **doing** | Core implementation landed at `docs/destination-master-browser.html` (canonical); v1 archived to `docs/destination-master-browser-v1.0.html`. Playwright smoke test passes 26/26 checks. Full 13-gate walk-through verification + screenshots + TRANSFER_LOG entry pending in PR B (polish + verification). |
+| 4 | Implement Destination Master Browser v1.1 | Assistant / CodeMike | **done** | Landed across two PRs (#10 core + this PR polish/walk-through). Canonical at `docs/destination-master-browser.html`; v1 archived at `-v1.0.html`. Full 13-gate Playwright walk-through: **15/15 pass** with zero console errors. Capability transfer recorded in `operations/TRANSFER_LOG.md` (Transfer 1); SKILL_MAP UI/UX skill promoted to level 5; six CAPABILITIES rows promoted to maturity 4. |
 | 5 | Design master enrichment strategy | Assistant / GitHub connector | todo | Define fields and rules before scoring |
 | 6 | Start destination scoring v1 | Assistant / GitHub connector | deferred | After enrichment strategy exists |
 
