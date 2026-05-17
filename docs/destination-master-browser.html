@@ -168,7 +168,8 @@
     }
     .active-filters .chip-active button:hover { background: rgba(29, 78, 216, .15); }
     .active-filters .label { font-weight: 600; color: var(--ink); }
-    .active-filters .count { font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 600; }
+    .active-filters .count { font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 600; padding: 2px 6px; border-radius: 6px; transition: background-color .35s ease-out; }
+    .active-filters .count.flash { background-color: var(--accent-soft); }
     .clear-all {
       margin-left: auto;
       padding: 6px 12px;
@@ -578,7 +579,11 @@
 
   <!-- Record-detail drawer: U-INS-1, U-INS-2 -->
   <div class="drawer-overlay" id="drawerOverlay" hidden></div>
-  <aside class="drawer" id="drawer" role="dialog" aria-modal="false" aria-labelledby="drawerName" hidden>
+  <!-- role="dialog" + aria-modal="false" follows WAI-ARIA APG's non-modal-dialog pattern:
+       the panel is reviewer-initiated (row/card click), but it does not trap focus or
+       block underlying content. aria-describedby points at the trust-state line so
+       screen readers announce the trust context when the dialog gains focus. -->
+  <aside class="drawer" id="drawer" role="dialog" aria-modal="false" aria-labelledby="drawerName" aria-describedby="drawerTrustText" hidden>
     <div class="drawer-header">
       <div>
         <div class="name" id="drawerName"></div>
@@ -604,7 +609,8 @@
   </aside>
 
   <script>
-    const CSV_URL = 'https://raw.githubusercontent.com/Rishabh1804/MSc/main/datasets/reference/destinations_master_v2.csv';
+    const DEFAULT_CSV_URL = 'https://raw.githubusercontent.com/Rishabh1804/MSc/main/datasets/reference/destinations_master_v2.csv';
+    const CSV_URL = new URLSearchParams(location.search).get('csv') || DEFAULT_CSV_URL;
 
     const state = {
       rows: [],
@@ -612,7 +618,8 @@
       sortKey: 'canonical_name',
       sortDir: 'ascending',
       view: 'table',
-      drawerIndex: -1
+      drawerIndex: -1,
+      lastOpener: null
     };
 
     const els = {
@@ -715,6 +722,7 @@
     }
 
     /* ---------- Trust badge: maps record → state + label + icon ---------- */
+    const _warnedTrustValues = new Set();
     function trustStateOf(row) {
       const v = row.verification_status || '';
       const p = row.planner_use_status || '';
@@ -725,6 +733,13 @@
       if (v === 'missing_fields') return 'missing-fields';
       if (v === 'seed_unverified' || v === 'candidate' || p === 'needs_verification') return 'unverified';
       if (!v && !p) return 'unassigned';
+      // Unmapped values fall through to 'unverified' as a safe default; warn once per
+      // unique combination so QA can spot taxonomy drift in the master CSV.
+      const key = `v=${v}|p=${p}`;
+      if (!_warnedTrustValues.has(key)) {
+        _warnedTrustValues.add(key);
+        console.warn(`[trustStateOf] unmapped status combination: ${key} — defaulting to 'unverified'`);
+      }
       return 'unverified';
     }
 
@@ -841,7 +856,17 @@
       const active = getActiveFilters();
       els.activeFilters.classList.toggle('empty', active.length === 0);
       els.totalCount.textContent = state.rows.length;
-      els.resultCount.textContent = state.filtered.length;
+      const previous = els.resultCount.textContent;
+      const next = String(state.filtered.length);
+      els.resultCount.textContent = next;
+      if (previous !== next) {
+        // U-NAR-1 perceptibility: brief background flash so the count change is visible
+        els.resultCount.classList.remove('flash');
+        // Force reflow so re-adding the class restarts the transition
+        void els.resultCount.offsetWidth;
+        els.resultCount.classList.add('flash');
+        setTimeout(() => els.resultCount.classList.remove('flash'), 380);
+      }
       els.activeFilterChips.innerHTML = active.map(f => `
         <span class="chip-active">${escapeHtml(f.label)}: ${escapeHtml(f.value)}
           <button type="button" data-remove="${f.key}" aria-label="Remove ${escapeHtml(f.label)} filter">
@@ -964,8 +989,12 @@
     }
 
     /* ---------- Drawer ---------- */
-    function openDrawer(index) {
+    function openDrawer(index, opener) {
       if (index < 0 || index >= state.filtered.length) return;
+      // Capture the opener only on the first transition from closed→open. Prev/Next
+      // navigation calls openDrawer without passing an opener; we keep the original
+      // so close-restore returns focus to the row/card that began the journey.
+      if (state.drawerIndex < 0 && opener) state.lastOpener = opener;
       state.drawerIndex = index;
       const r = state.filtered[index];
       els.drawerName.textContent = r.canonical_name;
@@ -987,11 +1016,18 @@
     function closeDrawer() {
       els.drawer.classList.remove('open');
       els.drawerOverlay.classList.remove('open');
+      const opener = state.lastOpener;
       setTimeout(() => {
         els.drawer.hidden = true;
         els.drawerOverlay.hidden = true;
+        // Restore focus to the row/card that opened the drawer so keyboard users
+        // resume at their journey position rather than at the document body.
+        if (opener && document.contains(opener)) {
+          try { opener.focus(); } catch (_) { /* element removed */ }
+        }
       }, 200);
       state.drawerIndex = -1;
+      state.lastOpener = null;
     }
 
     function trustExplanation(r) {
@@ -1091,24 +1127,24 @@
       // Row click → drawer
       els.tableBody.addEventListener('click', e => {
         const tr = e.target.closest('tr[data-index]');
-        if (tr) openDrawer(Number(tr.dataset.index));
+        if (tr) openDrawer(Number(tr.dataset.index), tr);
       });
       els.tableBody.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') {
           const tr = e.target.closest('tr[data-index]');
-          if (tr) { e.preventDefault(); openDrawer(Number(tr.dataset.index)); }
+          if (tr) { e.preventDefault(); openDrawer(Number(tr.dataset.index), tr); }
         }
       });
 
       // Card click → drawer
       els.cardsBody.addEventListener('click', e => {
         const card = e.target.closest('.card[data-index]');
-        if (card) openDrawer(Number(card.dataset.index));
+        if (card) openDrawer(Number(card.dataset.index), card);
       });
       els.cardsBody.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') {
           const card = e.target.closest('.card[data-index]');
-          if (card) { e.preventDefault(); openDrawer(Number(card.dataset.index)); }
+          if (card) { e.preventDefault(); openDrawer(Number(card.dataset.index), card); }
         }
       });
 
