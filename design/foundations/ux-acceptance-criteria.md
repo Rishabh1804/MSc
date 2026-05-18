@@ -33,7 +33,7 @@ A criterion is **passed** when two independent evaluators applying the test to t
 
 ---
 
-## 2. The criteria (14 total; 13 are v1.1 UX gates; 1 deferred to v1.1.x)
+## 2. The criteria (18 total; 13 are v1.1 UX gates; 1 deferred to v1.1.x; 4 are v1.2 UX gates from Lab 04 Loop 1 — U-CONF-1..4)
 
 ### Arrive
 
@@ -175,6 +175,51 @@ A criterion is **passed** when two independent evaluators applying the test to t
 - **Lab 01 closure**: "Trust signal must survive the journey"
 - **v1.1 UX gate**: **yes**
 
+### Batch confirm (v1.2 candidate from Lab 04 Loop 1; landed here to close Lab 05 F-REQ-1)
+
+Lab 04's Loop 1 (batch-promote-confirm modal anatomy) produced four U-CONF-* acceptance criteria in prose at `design/foundations/topic-04-design-thinking-loop.md` §8. Lab 05 F-REQ-1 (Medium severity) recorded that these criteria were *not* landed in this canonical sheet. This section closes that finding by formalising them in the same schema as the other criteria. They are **v1.2 UX gates** (not v1.1) because v1.1 has no destructive batch actions per the rule sheet's modality rule — the confirm-modal lands with the v1.2 batch-promote feature.
+
+#### U-CONF-1 — Modal body shows the records being promoted
+
+> The reviewer can verify which records are about to be promoted *without scrolling past the records list*. The modal body shows record canonical-names + a count of records selected. The list is virtualised or paginated only if N > 25; below that, all names are visible at once.
+
+- **Journey step**: Compare → Inspect → (new) Confirm
+- **Rule-sheet ref**: §3.5 modality (modal for blocking destructive actions); §6.2 trust signal at depth 4 (confirm-modal carries the trust badge per record)
+- **Lab 04 closure**: Loop 1 §6 Candidate B prototype-spec
+- **v1.1 UX gate**: no (v1.2 gate)
+- **v1.2 UX gate**: **yes**
+
+#### U-CONF-2 — Cancel a wrong batch in ≤ 1 interaction
+
+> The reviewer can cancel an in-flight batch in **≤ 1 interaction** from any focused state inside the modal. Cancel is the default-focused button; Esc cancels; clicking the overlay cancels. The cancel path requires no confirmation (cancelling a cancel is friction without benefit).
+
+- **Journey step**: Confirm → Recover
+- **Rule-sheet ref**: §3.5 modality + §3 anti-pattern (no nested confirm-of-cancel)
+- **Lab 04 closure**: Loop 1 §6 Candidate B prototype-spec; asymmetric-cost-of-error framing (false-promote >> false-cancel)
+- **v1.1 UX gate**: no
+- **v1.2 UX gate**: **yes**
+
+#### U-CONF-3 — Screen-reader accessible
+
+> The modal is fully usable with a screen reader: the dialog announces *N records are about to be promoted to Planner*, names each record (or summarises if N > 10 with a "show all" affordance), and exposes Confirm/Cancel as accessible buttons that the screen-reader user can activate via keyboard alone.
+
+- **Journey step**: Confirm (accessibility cross-cutting)
+- **Rule-sheet ref**: §3.5 modality (`role="dialog"` + `aria-modal="true"` + `aria-labelledby` + `aria-describedby`)
+- **Lab 04 closure**: Loop 1 §3 three-persona synthesis (accessibility-need reviewer)
+- **Lab 05 closure (partial)**: addresses W3C accessibility lens for the confirm flow
+- **v1.1 UX gate**: no
+- **v1.2 UX gate**: **yes**
+
+#### U-CONF-4 — Focus trap + focus restoration
+
+> When the modal opens, focus moves to the default-focused button (Cancel per U-CONF-2). Focus is trapped inside the modal while it is open (Tab cycles among modal-internal focusables only; Shift+Tab cycles in reverse; focus does not escape to the underlying list). On close (whether via Confirm, Cancel, Esc, or overlay-click), focus restores to the trigger element that opened the modal.
+
+- **Journey step**: Confirm (accessibility cross-cutting)
+- **Rule-sheet ref**: §3.5 modality; §5 affordance/signifier/feedback for keyboard users
+- **Lab 04 closure**: Loop 1 §6 Candidate B + Lab 04 anti-pattern 3 (empathy-by-introspection mitigation: accessibility-need persona)
+- **v1.1 UX gate**: no
+- **v1.2 UX gate**: **yes**
+
 ---
 
 ## 3. v1.1 UX gates — the must-pass subset
@@ -221,6 +266,12 @@ Every criterion is traceable to at least one Topic 3 source, one Topic 2 rule, a
 | U-REC-1 | Norman gulfs; GOV.UK service-recovery | §3 / §8 | Reset/recovery finding |
 | U-REC-2 | Norman gulf-of-evaluation; GOV.UK content | §6 / §8 | Lab 02 F3 |
 | U-LEA-1 | Norman (mental model); Topic 1 trust framing | §7 four-depth | Trust-through-journey finding |
+| U-CONF-1 | Norman (gulf-of-execution); GOV.UK service-confirm pattern | §3.5 / §6.2 | (v1.2; not a Lab 01 closure) |
+| U-CONF-2 | NN/g undo-vs-confirm; Brown's three-constraint (asymmetric cost) | §3.5 / §3 anti-pattern | (v1.2) |
+| U-CONF-3 | W3C accessibility (`role="dialog"` + ARIA); HIG dialog spec | §3.5 ARIA | (v1.2 — accessibility cross-cutting) |
+| U-CONF-4 | Norman (signifier for keyboard users); Carbon modal focus-trap | §3.5 / §5 | (v1.2 — accessibility cross-cutting) |
+
+The U-CONF-* criteria target v1.2 (batch-promote feature), not v1.1; the v1.1 gate set (§3) is unchanged. Landing them here closes Lab 05 F-REQ-1 (Medium severity) and gives the v1.2 implementation PR a concrete acceptance target.
 
 ---
 

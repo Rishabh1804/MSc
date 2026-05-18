@@ -55,27 +55,91 @@ Evidence produced
 
 - **U-CONF walkthrough**: **10 / 10 pass** (`walkthrough-conf.js`)
 - **v1.1 regression check**: **19 / 19 pass** on the existing v1.1 walkthrough — zero regression from the v1.2 additions
-- **Per-criterion verdict**:
-  - U-CONF-1: modal body shows N records (count + names; "+ N more" overflow for N > 25) — ✓
-  - U-CONF-2a: Cancel default-focused — ✓
-  - U-CONF-2b: Esc cancels in 1 interaction — ✓
-  - U-CONF-2c: Overlay-click cancels in 1 interaction — ✓
-  - U-CONF-3: ARIA attributes correct (`role="dialog"` + `aria-modal="true"` + `aria-labelledby` + `aria-describedby`) — ✓
-  - U-CONF-4a: focus trap cycles Cancel ↔ Confirm — ✓
-  - U-CONF-4b: focus restoration to the trigger Promote button — ✓
-  - SETUP + CONFIRM-PATH + CONSOLE: ✓ all
-- **State machine compliance** (Lab 04 §State machine): `default` + `busy` (disabled-confirm) + `done` (toast + selection-clear + row-state-update) implemented; `error` state intentionally absent because there's no real Planner backend in v1.2
+- **State machine compliance** (Lab 04 §State machine): `default` + `busy` + `done` implemented; `error` state intentionally absent (no real backend in v1.2)
 
 Honest limitations (named per HCD discipline)
 
-- No real Planner backend — promotion is session-scoped (in-memory state change). v1.3 with a real backend will add the `error` state.
+- No real Planner backend — promotion is session-scoped. v1.3 with a real backend will add the `error` state.
 - Screen-reader actual usability untested (ARIA presence verified; usefulness needs Sponsor Reviewer accessibility-need persona session)
 - N > 25 overflow path code-tested only (walkthrough used N=3)
-- Mobile / touch / narrow-viewport untested (desktop-shaped; v2.x scope per Lab 05 inclusion-lens)
+- Mobile / touch / narrow-viewport untested (Lab 05 inclusion-lens v2.x)
 
 Next action
 
 End-of-PR closure: Lyra + Aurelius graded reviews on this PR. Merge. Then Sponsor Reviewer recruitment (priority 9) unlocks Audit 1.5 cycle which can test the modal against the four acceptance criteria with a real reviewer.
+
+## 2026-05-18 — Sponsor Reviewer recruitment framework + U-CONF-1..4 acceptance criteria landed
+
+Type: governance / capability / review-followup
+
+Summary:
+
+Closes the recruitment-infrastructure side of NEXT_ACTIONS priority 9 (Sponsor Reviewer for v1.2) and the Lab 05 F-REQ-1 finding (Medium severity: U-CONF-1..4 in prose but not landed in the canonical acceptance-criteria sheet). Without a real reviewer to evaluate v1.1, Lab 05's Principle 2 Fail (Users involved throughout) and Lab 06's Fix #5b (search-vs-select grammar unification) stay open indefinitely. This PR builds the framework so the recruitment can happen quickly when authorised.
+
+Files changed
+
+- `design/foundations/sponsor-reviewer-brief.md` (new) — eight-section recruitment + onboarding brief covering: why the role exists, who the reviewer should be (required + preferred profile), the 3-hour session shape (orient 30min / Task A find-promotion-candidates 45min / Task B find-caution-records 45min / structured debrief 60min with 8 questions), feedback format (annotated screenshot bundle + debrief responses + confidence table), how feedback feeds into v1.2 closures (per-finding closure map), recruitment process (4 sources including self-as-Sponsor fallback), honest limitations (one reviewer ≠ full inclusion closure; self-as-Sponsor partial only; brief itself is single-person work).
+- `design/foundations/ux-acceptance-criteria.md` — U-CONF-1..4 landed as v1.2 UX gates closing Lab 05 F-REQ-1; traceability table updated; criterion count updated from "14 total" to "18 total (13 v1.1 gates + 1 v1.1.x deferred + 4 v1.2 from Lab 04)".
+- `operations/PROJECT_LOG.md` — this entry
+- `operations/NEXT_ACTIONS.md` — priority 9 status flipped from `todo` to `doing` with the framework landed
+
+Evidence produced
+
+- Sponsor Reviewer brief — operationally ready: Rishabh can forward the §6 recruitment ask and run a session against the §3 task spec
+- Four v1.2 acceptance criteria (U-CONF-1..4) formally landed in the canonical sheet with traceability + Lab 04 Loop 1 closure citation
+- Lab 05 F-REQ-1 closure path executed (was Medium severity; now closed)
+- Three honest limitations named per HCD discipline (one reviewer ≠ full inclusion; self-as-Sponsor fallback partial only; brief itself is single-person work)
+
+Closure mapping
+
+- Lab 05 F-PRIN-1 (High; Principle 2: Users involved throughout) → closes on first Sponsor Reviewer session
+- Lab 05 F-EVAL-1 (High; human-grade evaluation absent) → closes on first session
+- Lab 05 F-W3C-1 (High; Inclusion lens Fail) → 1 reviewer per sub-dimension; full closure is v2.x
+- Lab 06 Fix #5b (search-vs-select grammar unification) → adjudicated by debrief Q2 answer
+- Lab 05 F-REQ-1 (Medium; U-CONF criteria not landed) → **closed in this PR**
+
+Next action
+
+End-of-PR closure: Lyra + Aurelius graded reviews on this PR. Merge. Then Rishabh decides recruitment source. First reviewer session unblocks Audit 1.5 cycle (named here for the first time as the real-user evaluation grade running between Audit 1 introspective + Audit 2 post-v1.2-closure).
+
+## 2026-05-18 — Browser v1.1.x polish: six Lab 06 Gestalt fixes shipped (visual-treatment only)
+
+Type: implementation / capability / review-followup
+
+Summary:
+
+Closes the v1.1.x polish PR queued at NEXT_ACTIONS priority 8. All six Lab 06 fixes shipped as visual-treatment-only changes to `docs/destination-master-browser.html` (zero behavioural changes; 19/19 walk-through pass with no regression). Closes six Gestalt findings (F-GES-1 through F-GES-6 except the v1.2-deferred F-GES-5 behaviour half) and upgrades the R1 caution-chip Trade-off to Pass. Completes Transfer 2 (pre-recorded in the three-topic-push closure PR) with the "Outcome (shipped)" section filled in.
+
+Fixes shipped:
+
+- **Fix #1** — `.verif-pill` component added; renderCards meta-grid + renderTable column 6 use it; verification signal now elevated to a coloured pill at both card + table depths, no longer collapsing into surrounding metadata via similarity (closes F-GES-1 + F-GES-2)
+- **Fix #2** — view-toggle separated from narrowing-controls common-region via `margin-left + padding-left + border-left` (closes F-GES-4)
+- **Fix #3** — active-filter summary moved 20px below toolbar with stronger tint differential (background `#eef2f7`, border solid `#cbd5e1`) (closes F-GES-6)
+- **Fix #4** — sortable column headers get a faint ` ↕` glyph in the unsorted state via `aria-sort="none"::after` (closes F-GES-3)
+- **Fix #5a** — search field gets `padding-right + border-right` to visually separate it from the selects (closes F-GES-5 visual half)
+- **Fix #6** — caution-chip divider via `.card-chips .chip.warn:first-of-type::before` (R1 Trade-off → Pass upgrade)
+
+Plus two Lyra missed-opportunity closures from PR #18:
+
+- Computed leverage scores per fix added to the audit doc; Fix #1's score (2.8) confirms its #1 rank
+- Five after-screenshots captured via Playwright (`curriculum/courses/des-001-design-foundations/verification/v1.1.x-polish/capture-fixes.js`) and indexed in the audit doc
+
+Files changed:
+
+- `docs/destination-master-browser.html` — six CSS additions + two helper-function rewires (`renderCards` + `renderTable`) + one new helper (`verifPill`)
+- `design/foundations/topic-06-gestalt-audit.md` — addendum with computed leverage scores + screenshot index + walk-through regression result
+- `curriculum/courses/des-001-design-foundations/verification/v1.1.x-polish/` (new) — capture script + five after-screenshots
+
+Evidence produced:
+
+- Six Gestalt findings closed at visual-treatment scope (one v1.2-deferred — F-GES-5 behaviour half pending Sponsor Reviewer)
+- 19/19 walk-through pass on polished build (zero regression)
+- Five annotated after-screenshots in the audit doc
+- Leverage-score formula computed per fix; ranking confirmed
+
+Next action:
+
+End-of-polish closure: Lyra + Aurelius graded reviews on this PR. Merge. Then the v1.1.x polish queue is empty; v1.2 implementation is the next implementation move (NEXT_ACTIONS priority 10) once Sponsor Reviewer recruitment lands.
 
 ## 2026-05-17 — DES-001 three-topic push complete (Topics 4 + 5 + 6 closed; grade report v3 next)
 
