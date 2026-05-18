@@ -65,6 +65,45 @@ Next action
 
 End-of-PR closure: Lyra + Aurelius graded reviews on this PR. Merge. Then Rishabh decides recruitment source. First reviewer session unblocks Audit 1.5 cycle (named here for the first time as the real-user evaluation grade running between Audit 1 introspective + Audit 2 post-v1.2-closure).
 
+## 2026-05-18 — Browser v1.1.x polish: six Lab 06 Gestalt fixes shipped (visual-treatment only)
+
+Type: implementation / capability / review-followup
+
+Summary:
+
+Closes the v1.1.x polish PR queued at NEXT_ACTIONS priority 8. All six Lab 06 fixes shipped as visual-treatment-only changes to `docs/destination-master-browser.html` (zero behavioural changes; 19/19 walk-through pass with no regression). Closes six Gestalt findings (F-GES-1 through F-GES-6 except the v1.2-deferred F-GES-5 behaviour half) and upgrades the R1 caution-chip Trade-off to Pass. Completes Transfer 2 (pre-recorded in the three-topic-push closure PR) with the "Outcome (shipped)" section filled in.
+
+Fixes shipped:
+
+- **Fix #1** — `.verif-pill` component added; renderCards meta-grid + renderTable column 6 use it; verification signal now elevated to a coloured pill at both card + table depths, no longer collapsing into surrounding metadata via similarity (closes F-GES-1 + F-GES-2)
+- **Fix #2** — view-toggle separated from narrowing-controls common-region via `margin-left + padding-left + border-left` (closes F-GES-4)
+- **Fix #3** — active-filter summary moved 20px below toolbar with stronger tint differential (background `#eef2f7`, border solid `#cbd5e1`) (closes F-GES-6)
+- **Fix #4** — sortable column headers get a faint ` ↕` glyph in the unsorted state via `aria-sort="none"::after` (closes F-GES-3)
+- **Fix #5a** — search field gets `padding-right + border-right` to visually separate it from the selects (closes F-GES-5 visual half)
+- **Fix #6** — caution-chip divider via `.card-chips .chip.warn:first-of-type::before` (R1 Trade-off → Pass upgrade)
+
+Plus two Lyra missed-opportunity closures from PR #18:
+
+- Computed leverage scores per fix added to the audit doc; Fix #1's score (2.8) confirms its #1 rank
+- Five after-screenshots captured via Playwright (`curriculum/courses/des-001-design-foundations/verification/v1.1.x-polish/capture-fixes.js`) and indexed in the audit doc
+
+Files changed:
+
+- `docs/destination-master-browser.html` — six CSS additions + two helper-function rewires (`renderCards` + `renderTable`) + one new helper (`verifPill`)
+- `design/foundations/topic-06-gestalt-audit.md` — addendum with computed leverage scores + screenshot index + walk-through regression result
+- `curriculum/courses/des-001-design-foundations/verification/v1.1.x-polish/` (new) — capture script + five after-screenshots
+
+Evidence produced:
+
+- Six Gestalt findings closed at visual-treatment scope (one v1.2-deferred — F-GES-5 behaviour half pending Sponsor Reviewer)
+- 19/19 walk-through pass on polished build (zero regression)
+- Five annotated after-screenshots in the audit doc
+- Leverage-score formula computed per fix; ranking confirmed
+
+Next action:
+
+End-of-polish closure: Lyra + Aurelius graded reviews on this PR. Merge. Then the v1.1.x polish queue is empty; v1.2 implementation is the next implementation move (NEXT_ACTIONS priority 10) once Sponsor Reviewer recruitment lands.
+
 ## 2026-05-17 — DES-001 three-topic push complete (Topics 4 + 5 + 6 closed; grade report v3 next)
 
 Type: learning / assignment / milestone / governance

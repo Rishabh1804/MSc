@@ -139,3 +139,7 @@ Plus the workspace-level design-discipline meta-skill (SKILL_MAP.md row added).
 3. Attach screenshots + computed leverage scores to the audit doc retroactively
 4. Re-verify the existing 19-gate walk-through (no regression)
 5. Update this Transfer 2 entry's "Outcome" section with the actual results once shipped
+
+**Outcome (shipped 2026-05-18):**
+
+All six fixes shipped in the v1.1.x polish PR. Visual-treatment-only — zero behavioural changes. 19/19 walk-through pass on polished build (no regression). All six Gestalt findings (F-GES-1 through F-GES-6) closed at v1.1.x scope except F-GES-5's behaviour half (Fix #5b, deferred to v1.2 pending Sponsor Reviewer). R1 caution-chip Trade-off upgraded to Pass via the divider (Fix #6). Audit doc now has empirical (screenshot) grounding via the addendum's five after-screenshots + computed leverage scores per fix. Lyra missed-opportunities from PR #18 (no screenshots; no leverage scores) both closed.

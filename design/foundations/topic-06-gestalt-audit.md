@@ -291,3 +291,43 @@ These three combine with prior topics' capabilities to grow the workspace's reus
 **Overall**: v1.1 is *Gestalt-substantial*. Two regions (R5 banners + R6 drawer) are exemplary; the other four have a small consistent pattern of findings, all closable with visual-treatment-only changes (five of six fixes tag v1.1.x). The audit-shape itself surfaced one cross-cutting pattern (the verification false-negative at both card + table scale via similarity collapse) and one structural conflict (toolbar over-grouping) that introspection alone would have missed without the per-region per-principle matrix.
 
 The single most operationally important finding: **the trust badge is correctly used as the primary trust signal at four depths (R1/R2/R6 + confirm-modal), but the verification *text* is duplicated inside meta-grid + table-column at equivalent visual weight to non-trust fields, partially undoing the badge's elevation**. Fix #1 closes both occurrences with a single visual-treatment change.
+
+---
+
+## Audit Addendum (v1.1.x polish PR, 2026-05-18)
+
+Closes two Lyra missed-opportunities from PR #18 review (no screenshot evidence; no computed leverage scores).
+
+### Computed leverage scores per fix
+
+Leverage rubric: `(findings closed) × (journey steps served) × (cost-of-implementation inverse)` where cost-inverse = 1 for trivial CSS, 0.7 for component-level change, 0.4 for behaviour change. Scaled to 0–10.
+
+| Rank | Fix | Findings closed | Journey steps served | Cost-inv | Score |
+|---:|---|---:|---:|---:|---:|
+| 1 | Verification-signal elevation (card + table) | 2 (F-GES-1, F-GES-2) | 2 (Inspect, Compare) | 0.7 (new component) | **2.8** |
+| 2 | View-toggle separator | 1 (F-GES-4) | 1 (Narrow) | 1.0 (trivial CSS) | **1.0** |
+| 3 | Active-filter summary separation | 1 (F-GES-6) | 1 (Recover) | 1.0 (trivial CSS) | **1.0** |
+| 4 | Sortable-header affordance | 1 (F-GES-3) | 1 (Compare) | 1.0 (trivial CSS) | **1.0** |
+| 5a | Search-vs-selects visual separation | 1 (F-GES-5 visual half) | 1 (Narrow) | 1.0 (trivial CSS) | **1.0** |
+| 6 | Caution-chip divider | 0 (Trade-off → Pass upgrade) | 1 (Compare) | 1.0 (trivial CSS) | **0.7** (non-finding-closure; scaled 0.7×) |
+| 5b | Search-vs-selects grammar unification | 1 (F-GES-5 behaviour half) | 1 (Narrow) | 0.4 (behaviour change + Sponsor Reviewer gating) | **0.4** (v1.2 only) |
+
+Fix #1's score (2.8) is roughly triple the next-ranked fix, confirming the prior ranking. The fix order in the audit's prioritised list matches the leverage-score order.
+
+### Screenshot evidence (after polish)
+
+Captured by `curriculum/courses/des-001-design-foundations/verification/v1.1.x-polish/capture-fixes.js` against the polished build (commit on `claude/des-001-browser-v1.1.x-polish`). Before-screenshots: the existing PR #12 walkthrough captures (`v1.1-walkthrough/walkthrough-table.png` + `walkthrough-cards.png`) show v1.1 pre-polish.
+
+| Fix | After screenshot |
+|---|---|
+| Fix #1 (verification pill, table view) | `curriculum/courses/des-001-design-foundations/verification/v1.1.x-polish/fix-1-verif-pill-table-after.png` |
+| Fix #1 + Fix #6 (verification pill in card meta-grid + caution-chip divider) | `.../fix-1-6-card-after.png` |
+| Fix #2 + Fix #5a (view-toggle + search separators in toolbar) | `.../fix-2-5a-toolbar-separators-after.png` |
+| Fix #3 (active-filter summary tint differential) | `.../fix-3-active-filters-after.png` |
+| Fix #4 (sortable-header ↕ glyph) | `.../fix-3-4-table-headers-after.png` |
+
+Five after-screenshots cover all six v1.1.x fixes. The audit doc now has empirical visual grounding alongside the prose findings.
+
+### Walk-through regression check
+
+The existing 19-gate Playwright walk-through (`v1.1-walkthrough/walkthrough.js`) was re-run against the polished build: **19/19 pass, zero console errors**. The visual-treatment changes introduced zero behavioural regressions.
