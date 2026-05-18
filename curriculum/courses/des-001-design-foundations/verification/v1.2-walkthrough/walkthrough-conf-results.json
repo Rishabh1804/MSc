@@ -1,0 +1,94 @@
+[
+  {
+    "id": "SETUP",
+    "label": "Batch action bar shows after selecting rows",
+    "pass": true,
+    "evidence": {
+      "barVisible": 1
+    }
+  },
+  {
+    "id": "U-CONF-1",
+    "label": "Modal body shows record names + count without scrolling past list",
+    "pass": true,
+    "evidence": {
+      "titleText": "Confirm: promote 3 records to Planner",
+      "recordsListItems": 3,
+      "moreText": "",
+      "noScrollNeeded": true
+    }
+  },
+  {
+    "id": "U-CONF-2a",
+    "label": "Cancel button is default-focused when modal opens",
+    "pass": true,
+    "evidence": {
+      "focusedAfterOpen": "promoteCancelBtn"
+    }
+  },
+  {
+    "id": "U-CONF-2b",
+    "label": "Esc closes the modal in 1 interaction",
+    "pass": true,
+    "evidence": {
+      "modalHiddenAfterEsc": 1
+    }
+  },
+  {
+    "id": "U-CONF-2c",
+    "label": "Overlay-click closes the modal in 1 interaction",
+    "pass": true,
+    "evidence": {
+      "modalHiddenAfterOverlay": 1
+    }
+  },
+  {
+    "id": "U-CONF-3",
+    "label": "Modal exposes role=\"dialog\" + aria-modal=\"true\" + aria-labelledby + aria-describedby",
+    "pass": true,
+    "evidence": {
+      "role": "dialog",
+      "ariaModal": "true",
+      "labelledby": "promoteModalTitle",
+      "describedby": "promoteModalDesc",
+      "titleText": "Confirm: promote 3 records to Planner",
+      "descTextFirstLine": "You are about to send these records downstream to the Planner:"
+    }
+  },
+  {
+    "id": "U-CONF-4a",
+    "label": "Focus trap cycles among modal footer buttons (Cancel ↔ Confirm)",
+    "pass": true,
+    "evidence": {
+      "focusedAfterTab": "promoteConfirmBtn",
+      "focusedAfterTab2": "promoteCancelBtn"
+    }
+  },
+  {
+    "id": "U-CONF-4b",
+    "label": "Focus restores to the trigger (Promote button) after close",
+    "pass": true,
+    "evidence": {
+      "focusedAfterClose": "batchPromoteBtn"
+    }
+  },
+  {
+    "id": "CONFIRM-PATH",
+    "label": "Confirm path closes modal + shows toast + clears selection",
+    "pass": true,
+    "evidence": {
+      "modalHiddenAfterConfirm": 1,
+      "toastShown": 1,
+      "selectedAfterConfirm": 0
+    }
+  },
+  {
+    "id": "CONSOLE",
+    "label": "Zero console errors / pageerrors / requestfailed across the modal walk-through",
+    "pass": true,
+    "evidence": {
+      "count": 0,
+      "sample": []
+    }
+  }
+]

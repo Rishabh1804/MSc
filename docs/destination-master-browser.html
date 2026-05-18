@@ -374,6 +374,114 @@
       display: flex; align-items: center; gap: 10px;
     }
     .drawer-body { overflow-y: auto; padding: 14px 18px; }
+
+    /* === Lab 04 Loop 1 — batch-promote-confirm modal (v1.2 feature) === */
+    /* Honours U-CONF-1..4 acceptance criteria from `design/foundations/
+       ux-acceptance-criteria.md`. Modal is the right container per the rule
+       sheet §3.5: blocking + destructive + small fixed task. */
+    .row-select-col { width: 36px; text-align: center; }
+    .row-select-col input[type="checkbox"] { cursor: pointer; }
+    .row-select-cell { text-align: center; }
+    .row-select-cell input[type="checkbox"] { cursor: pointer; }
+    table.records tbody tr.selected { background: var(--accent-soft); }
+
+    .batch-action-bar {
+      display: flex; align-items: center; gap: 12px;
+      margin: 12px 0;
+      padding: 10px 14px;
+      background: var(--accent-soft);
+      border: 1px solid #bfdbfe;
+      border-radius: var(--radius);
+      font-size: 13px;
+      color: var(--info);
+    }
+    .batch-action-bar.hidden { display: none; }
+    .batch-action-bar .count { font-weight: 700; }
+    .batch-action-bar button {
+      padding: 6px 12px; border-radius: 8px;
+      border: 1px solid #bfdbfe;
+      background: var(--panel); color: var(--info);
+      cursor: pointer; font: inherit; font-weight: 600;
+    }
+    .batch-action-bar button:hover { background: #eff6ff; }
+    .batch-action-bar button.primary {
+      background: var(--info); color: #fff; border-color: var(--info);
+    }
+    .batch-action-bar button.primary:hover { background: #1d4ed8; }
+    .batch-action-bar button.primary:disabled { opacity: 0.6; cursor: progress; }
+    .batch-action-bar .spacer { margin-left: auto; }
+
+    /* Modal — blocking dialog for batch-promote-confirm */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(15, 23, 42, 0.45);
+      opacity: 0; transition: opacity .15s ease-out;
+      z-index: 999;
+    }
+    .modal-overlay.open { opacity: 1; }
+    .modal-overlay[hidden] { display: none !important; }
+    .confirm-modal {
+      position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: min(520px, calc(100vw - 32px));
+      max-height: calc(100vh - 32px);
+      display: flex; flex-direction: column;
+      background: var(--panel); border: 1px solid var(--line);
+      border-radius: var(--radius); box-shadow: 0 20px 50px rgba(15, 23, 42, .35);
+      z-index: 1000;
+    }
+    .confirm-modal[hidden] { display: none !important; }
+    .confirm-modal-header {
+      padding: 16px 20px; border-bottom: 1px solid var(--line);
+      font-size: 16px; font-weight: 700;
+    }
+    .confirm-modal-body {
+      padding: 16px 20px; overflow-y: auto; font-size: 14px; color: var(--ink);
+    }
+    .confirm-modal-body .lead { margin: 0 0 10px; }
+    .confirm-modal-body ul.records-list {
+      margin: 0 0 12px; padding-left: 18px; list-style: disc;
+      max-height: 180px; overflow-y: auto;
+    }
+    .confirm-modal-body ul.records-list li { padding: 2px 0; line-height: 1.4; }
+    .confirm-modal-body .records-list li .rec-id {
+      color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px; margin-left: 4px;
+    }
+    .confirm-modal-body .records-list-more { margin-top: 4px; color: var(--muted); font-size: 12px; }
+    .confirm-modal-body .consequence {
+      margin: 8px 0; padding: 10px 12px;
+      background: var(--warn-soft); border: 1px solid var(--warn-line);
+      border-radius: 8px; color: var(--warn); font-size: 13px;
+    }
+    .confirm-modal-body .asymmetric-cost {
+      margin: 8px 0 0; padding: 8px 12px;
+      background: var(--soft); border-left: 3px solid var(--info);
+      border-radius: 4px; color: var(--ink); font-size: 13px; font-style: italic;
+    }
+    .confirm-modal-footer {
+      display: flex; justify-content: flex-end; gap: 10px;
+      padding: 12px 20px; border-top: 1px solid var(--line);
+    }
+    .confirm-modal-footer button {
+      padding: 8px 16px; border-radius: 8px;
+      border: 1px solid var(--line); background: var(--panel);
+      cursor: pointer; font: inherit; font-weight: 600;
+    }
+    .confirm-modal-footer button:hover { background: var(--soft); }
+    .confirm-modal-footer button:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .confirm-modal-footer button.primary {
+      background: var(--info); color: #fff; border-color: var(--info);
+    }
+    .confirm-modal-footer button.primary:hover { background: #1d4ed8; }
+    .confirm-modal-footer button.primary:disabled { opacity: 0.6; cursor: progress; }
+    .promote-toast {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      padding: 10px 16px; background: var(--good); color: #fff;
+      border-radius: 999px; font-size: 13px; font-weight: 600;
+      box-shadow: 0 6px 20px rgba(16, 185, 129, .35);
+      opacity: 0; transition: opacity .25s ease-out;
+      z-index: 1100; pointer-events: none;
+    }
+    .promote-toast.show { opacity: 1; }
     .drawer-section + .drawer-section { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
     .drawer-section h3 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
     .drawer .row { display: grid; grid-template-columns: 140px 1fr; gap: 8px 14px; font-size: 13px; padding: 4px 0; }
@@ -551,10 +659,19 @@
         </div>
 
         <!-- Table mode (default v1.1): U-COM-1, U-COM-2 -->
+        <!-- Lab 04 Loop 1 batch-action bar (v1.2): shown only when ≥1 row selected -->
+        <div class="batch-action-bar hidden" id="batchActionBar" role="region" aria-label="Batch action">
+          <span><span class="count" id="batchSelectedCount">0</span> records selected</span>
+          <button id="batchPromoteBtn" class="primary" type="button">Promote to Planner</button>
+          <button id="batchClearBtn" type="button">Clear selection</button>
+        </div>
         <div class="result-region" id="resultTable" hidden>
           <table class="records" aria-label="Destination records">
             <thead>
               <tr>
+                <th scope="col" class="row-select-col" aria-label="Select all visible">
+                  <input type="checkbox" id="selectAllVisible" aria-label="Select all visible records" />
+                </th>
                 <th scope="col" data-sort="trust" aria-sort="none">Trust</th>
                 <th scope="col" data-sort="canonical_name" aria-sort="none">Name</th>
                 <th scope="col" data-sort="place" aria-sort="none">Place</th>
@@ -608,6 +725,31 @@
     <div class="drawer-body" id="drawerBody"></div>
   </aside>
 
+  <!-- Lab 04 Loop 1 — batch-promote-confirm modal (v1.2 feature)
+       Honours U-CONF-1..4 acceptance criteria. The drawer is non-modal
+       (aria-modal="false"); this modal is blocking (aria-modal="true")
+       per Topic 2 §3.5 modality rule. -->
+  <div class="modal-overlay" id="promoteOverlay" hidden></div>
+  <div class="confirm-modal" id="promoteModal"
+       role="dialog" aria-modal="true"
+       aria-labelledby="promoteModalTitle"
+       aria-describedby="promoteModalDesc"
+       hidden>
+    <div class="confirm-modal-header" id="promoteModalTitle">Confirm: promote records to Planner</div>
+    <div class="confirm-modal-body" id="promoteModalDesc">
+      <p class="lead" id="promoteModalLead">You are about to send these records downstream to the Planner:</p>
+      <ul class="records-list" id="promoteModalList"></ul>
+      <p class="records-list-more" id="promoteModalMore"></p>
+      <p class="consequence">Once promoted, the records appear in Planner's record-of-truth. Cancelling now keeps them unchanged in the reference layer.</p>
+      <p class="asymmetric-cost">The cost of a wrong promotion is much higher than the cost of cancelling here.</p>
+    </div>
+    <div class="confirm-modal-footer">
+      <button id="promoteCancelBtn" type="button" autofocus>Cancel</button>
+      <button id="promoteConfirmBtn" class="primary" type="button">Promote</button>
+    </div>
+  </div>
+  <div class="promote-toast" id="promoteToast" role="status" aria-live="polite"></div>
+
   <script>
     const DEFAULT_CSV_URL = 'https://raw.githubusercontent.com/Rishabh1804/MSc/main/datasets/reference/destinations_master_v2.csv';
     const CSV_URL = new URLSearchParams(location.search).get('csv') || DEFAULT_CSV_URL;
@@ -619,7 +761,11 @@
       sortDir: 'ascending',
       view: 'table',
       drawerIndex: -1,
-      lastOpener: null
+      lastOpener: null,
+      // Lab 04 Loop 1 batch-promote-confirm (v1.2) — selection state + modal
+      selectedIds: new Set(),
+      promotedIds: new Set(),
+      promoteOpener: null
     };
 
     const els = {
@@ -660,6 +806,19 @@
       drawerPrev: document.getElementById('drawerPrev'),
       drawerNext: document.getElementById('drawerNext'),
       drawerClose: document.getElementById('drawerClose'),
+      // Lab 04 Loop 1 batch-promote-confirm (v1.2)
+      batchActionBar: document.getElementById('batchActionBar'),
+      batchSelectedCount: document.getElementById('batchSelectedCount'),
+      batchPromoteBtn: document.getElementById('batchPromoteBtn'),
+      batchClearBtn: document.getElementById('batchClearBtn'),
+      selectAllVisible: document.getElementById('selectAllVisible'),
+      promoteOverlay: document.getElementById('promoteOverlay'),
+      promoteModal: document.getElementById('promoteModal'),
+      promoteModalList: document.getElementById('promoteModalList'),
+      promoteModalMore: document.getElementById('promoteModalMore'),
+      promoteCancelBtn: document.getElementById('promoteCancelBtn'),
+      promoteConfirmBtn: document.getElementById('promoteConfirmBtn'),
+      promoteToast: document.getElementById('promoteToast'),
     };
 
     const FILTER_FIELDS = [
@@ -802,6 +961,8 @@
       sortRows();
       reflectFieldStates();
       render();
+      updateBatchActionBar();
+      syncSelectAllVisibleCheckbox();
     }
 
     function reflectFieldStates() {
@@ -921,8 +1082,13 @@
 
     function renderTable() {
       const rows = state.filtered;
-      els.tableBody.innerHTML = rows.map((r, i) => `
-        <tr tabindex="0" data-index="${i}" role="button" aria-label="Open ${escapeHtml(r.canonical_name)}">
+      els.tableBody.innerHTML = rows.map((r, i) => {
+        const id = r.destination_master_id;
+        const checked = state.selectedIds.has(id) ? 'checked' : '';
+        const selectedCls = state.selectedIds.has(id) ? ' class="selected"' : '';
+        return `
+        <tr tabindex="0" data-index="${i}" data-id="${escapeHtml(id)}" role="button" aria-label="Open ${escapeHtml(r.canonical_name)}"${selectedCls}>
+          <td class="row-select-cell"><input type="checkbox" data-select-id="${escapeHtml(id)}" ${checked} aria-label="Select ${escapeHtml(r.canonical_name)}" /></td>
           <td>${trustBadge(r)}</td>
           <td class="name">${escapeHtml(r.canonical_name)}</td>
           <td class="place">${escapeHtml(placeOf(r))}</td>
@@ -930,15 +1096,17 @@
           <td>${escapeHtml(r.source_layer)}</td>
           <td>${escapeHtml(r.verification_status)}</td>
           <td>${plannerPill(r)}</td>
-          <td class="id">${escapeHtml(r.destination_master_id)}</td>
-        </tr>
-      `).join('');
+          <td class="id">${escapeHtml(id)}</td>
+        </tr>`;
+      }).join('');
 
       // Reflect current sort state on headers
       document.querySelectorAll('table.records thead th[data-sort]').forEach(th => {
         const k = th.dataset.sort;
         th.setAttribute('aria-sort', k === state.sortKey ? state.sortDir : 'none');
       });
+      // Reflect selectAllVisible header checkbox state after re-render
+      syncSelectAllVisibleCheckbox();
     }
 
     function renderCards() {
@@ -1126,15 +1294,52 @@
 
       // Row click → drawer
       els.tableBody.addEventListener('click', e => {
+        // Row checkbox handled by 'change' listener below; do not open drawer on click in select cell.
+        if (e.target.closest('.row-select-cell')) return;
         const tr = e.target.closest('tr[data-index]');
         if (tr) openDrawer(Number(tr.dataset.index), tr);
       });
       els.tableBody.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') {
+          if (e.target.closest('.row-select-cell')) return;
           const tr = e.target.closest('tr[data-index]');
           if (tr) { e.preventDefault(); openDrawer(Number(tr.dataset.index), tr); }
         }
       });
+      // Row checkbox toggle (event-delegated on tableBody for re-render survival)
+      els.tableBody.addEventListener('change', e => {
+        const cb = e.target.closest('input[data-select-id]');
+        if (!cb) return;
+        const id = cb.dataset.selectId;
+        if (cb.checked) state.selectedIds.add(id);
+        else state.selectedIds.delete(id);
+        const tr = cb.closest('tr');
+        if (tr) tr.classList.toggle('selected', cb.checked);
+        updateBatchActionBar();
+        syncSelectAllVisibleCheckbox();
+      });
+
+      // Lab 04 Loop 1 batch-promote-confirm (v1.2)
+      els.selectAllVisible.addEventListener('change', () => {
+        const visibleIds = state.filtered.map(r => r.destination_master_id);
+        if (els.selectAllVisible.checked) {
+          visibleIds.forEach(id => state.selectedIds.add(id));
+        } else {
+          visibleIds.forEach(id => state.selectedIds.delete(id));
+        }
+        updateBatchActionBar();
+        renderTable();
+      });
+      els.batchClearBtn.addEventListener('click', () => {
+        state.selectedIds.clear();
+        updateBatchActionBar();
+        if (state.view === 'table') renderTable();
+      });
+      els.batchPromoteBtn.addEventListener('click', () => openPromoteModal(els.batchPromoteBtn));
+      els.promoteCancelBtn.addEventListener('click', closePromoteModal);
+      els.promoteOverlay.addEventListener('click', closePromoteModal);
+      els.promoteConfirmBtn.addEventListener('click', performPromote);
+      els.promoteModal.addEventListener('keydown', handlePromoteModalKey);
 
       // Card click → drawer
       els.cardsBody.addEventListener('click', e => {
@@ -1174,6 +1379,114 @@
       els.viewTable.setAttribute('aria-pressed', String(view === 'table'));
       els.viewCards.setAttribute('aria-pressed', String(view === 'cards'));
       render();
+    }
+
+    /* ---------- Lab 04 Loop 1 — batch-promote-confirm (v1.2) ---------- */
+    function updateBatchActionBar() {
+      const count = state.selectedIds.size;
+      els.batchSelectedCount.textContent = count;
+      els.batchActionBar.classList.toggle('hidden', count === 0);
+    }
+    function syncSelectAllVisibleCheckbox() {
+      if (!els.selectAllVisible) return;
+      const visibleIds = state.filtered.map(r => r.destination_master_id);
+      if (visibleIds.length === 0) {
+        els.selectAllVisible.checked = false;
+        els.selectAllVisible.indeterminate = false;
+        return;
+      }
+      const selectedVisible = visibleIds.filter(id => state.selectedIds.has(id)).length;
+      els.selectAllVisible.checked = selectedVisible === visibleIds.length;
+      els.selectAllVisible.indeterminate = selectedVisible > 0 && selectedVisible < visibleIds.length;
+    }
+
+    function openPromoteModal(opener) {
+      const ids = Array.from(state.selectedIds);
+      if (ids.length === 0) return;
+      const rowsById = new Map(state.rows.map(r => [r.destination_master_id, r]));
+      const selected = ids.map(id => rowsById.get(id)).filter(Boolean);
+      // U-CONF-1: modal body shows record names. Show all if ≤ 25; truncate with "+ N more" otherwise.
+      const PREVIEW = 25;
+      const shown = selected.slice(0, PREVIEW);
+      const overflow = selected.length - shown.length;
+      els.promoteModalList.innerHTML = shown.map(r =>
+        `<li>${escapeHtml(r.canonical_name)} <span class="rec-id">(${escapeHtml(r.destination_master_id)})</span></li>`
+      ).join('');
+      els.promoteModalMore.textContent = overflow > 0 ? `+ ${overflow} more (scroll the list to see all)` : '';
+      // U-CONF-1: title reflects exact count
+      document.getElementById('promoteModalTitle').textContent =
+        `Confirm: promote ${selected.length} record${selected.length === 1 ? '' : 's'} to Planner`;
+      // U-CONF-4: focus restoration target
+      state.promoteOpener = opener || document.activeElement;
+      els.promoteOverlay.hidden = false;
+      els.promoteModal.hidden = false;
+      requestAnimationFrame(() => {
+        els.promoteOverlay.classList.add('open');
+        // U-CONF-2: Cancel default-focused (cancel-default for destructive confirm)
+        els.promoteCancelBtn.focus();
+      });
+      els.promoteConfirmBtn.disabled = false;
+    }
+    function closePromoteModal() {
+      els.promoteOverlay.classList.remove('open');
+      els.promoteOverlay.hidden = true;
+      els.promoteModal.hidden = true;
+      // U-CONF-4: focus restoration to trigger
+      const opener = state.promoteOpener;
+      state.promoteOpener = null;
+      if (opener && typeof opener.focus === 'function') {
+        // If the opener is the batch-promote button and it's still visible, focus it; else fall back to clear button or document.
+        try { opener.focus(); } catch (_) {}
+      }
+    }
+    function performPromote() {
+      // No real Planner backend — record promoted ids in session state so the UI reflects the change.
+      els.promoteConfirmBtn.disabled = true;
+      const ids = Array.from(state.selectedIds);
+      ids.forEach(id => state.promotedIds.add(id));
+      const count = ids.length;
+      state.selectedIds.clear();
+      // Update the underlying rows so the trust signal reflects the new state
+      ids.forEach(id => {
+        const r = state.rows.find(x => x.destination_master_id === id);
+        if (r) {
+          r.planner_use_status = 'planner_ready';
+          if (r.promotion_status !== 'promoted') r.promotion_status = 'promoted';
+        }
+      });
+      closePromoteModal();
+      // Re-apply filters + re-render so the trust badges reflect the promotion.
+      applyFilters();
+      updateBatchActionBar();
+      // U-CONF-1 §State machine: toast on success
+      showPromoteToast(`${count} record${count === 1 ? '' : 's'} promoted to Planner`);
+    }
+    function handlePromoteModalKey(e) {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closePromoteModal();
+        return;
+      }
+      // U-CONF-4: focus trap. Cycle focus between cancel and confirm only.
+      if (e.key === 'Tab') {
+        const focusables = [els.promoteCancelBtn, els.promoteConfirmBtn];
+        const i = focusables.indexOf(document.activeElement);
+        if (i === -1) {
+          e.preventDefault();
+          focusables[0].focus();
+          return;
+        }
+        const next = e.shiftKey
+          ? focusables[(i - 1 + focusables.length) % focusables.length]
+          : focusables[(i + 1) % focusables.length];
+        e.preventDefault();
+        next.focus();
+      }
+    }
+    function showPromoteToast(text) {
+      els.promoteToast.textContent = text;
+      els.promoteToast.classList.add('show');
+      setTimeout(() => els.promoteToast.classList.remove('show'), 2200);
     }
 
     /* ---------- Loading ---------- */

@@ -31,6 +31,52 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-18 — Browser v1.2 batch-promote-confirm modal shipped (Lab 04 Loop 1 → real implementation; U-CONF-1..4 verified)
+
+Type: transfer / capability / implementation
+
+Summary:
+
+First Topic-4-loop output to ship as a real implementation. Lab 04 Loop 1 specified the batch-promote-to-Planner confirm modal anatomy (eight steps; Candidate B chosen over A/C/D via three-constraint triage); this PR transfers that spec into `docs/destination-master-browser.html` and verifies it against the U-CONF-1..4 acceptance criteria with a dedicated Playwright walkthrough.
+
+The two-stage confirm modal honours the **asymmetric-cost framing** (Topic 4 §3 insight: the cost of a wrong promotion is much higher than the cost of cancelling) made explicit in the modal copy. Cancel is default-focused; Esc cancels; overlay-click cancels; Enter on Confirm confirms. The trust-signal four-depth specification (Topic 2 §6.2) now has its fourth depth shipped (banner + drawer + card + **confirm-modal**).
+
+Files changed
+
+- `docs/destination-master-browser.html` — table select column + select-all-visible header checkbox + per-row checkboxes + batch action bar (shown when ≥1 row selected) + confirm modal (`role="dialog"` + `aria-modal="true"` + focus trap + focus restoration) + success toast (`role="status"` + `aria-live="polite"`); ~115 new CSS lines + ~105 new JS lines + 25 new HTML lines
+- `curriculum/courses/des-001-design-foundations/verification/v1.2-walkthrough/walkthrough-conf.js` (new) — Playwright walkthrough for U-CONF-1..4 + setup + confirm-path + console-error check
+- `curriculum/.../v1.2-walkthrough/v1.2-walkthrough-verification-2026-05-18.md` (new) — per-criterion verdict table + implementation notes + state-machine compliance + honest limitations
+- `curriculum/.../v1.2-walkthrough/walkthrough-modal-open.png` + `walkthrough-modal-after-confirm.png` (new) — modal-open + post-confirm screenshots
+- `operations/TRANSFER_LOG.md` — Transfer 3 entry (DES-001 Lab 04 Loop 1 → v1.2 batch-promote-confirm modal)
+- `operations/NEXT_ACTIONS.md` — priority 10 (Browser v1.2 implementation PR) flipped to done-subset
+- `operations/PROJECT_LOG.md` — this entry
+
+Evidence produced
+
+- **U-CONF walkthrough**: **10 / 10 pass** (`walkthrough-conf.js`)
+- **v1.1 regression check**: **19 / 19 pass** on the existing v1.1 walkthrough — zero regression from the v1.2 additions
+- **Per-criterion verdict**:
+  - U-CONF-1: modal body shows N records (count + names; "+ N more" overflow for N > 25) — ✓
+  - U-CONF-2a: Cancel default-focused — ✓
+  - U-CONF-2b: Esc cancels in 1 interaction — ✓
+  - U-CONF-2c: Overlay-click cancels in 1 interaction — ✓
+  - U-CONF-3: ARIA attributes correct (`role="dialog"` + `aria-modal="true"` + `aria-labelledby` + `aria-describedby`) — ✓
+  - U-CONF-4a: focus trap cycles Cancel ↔ Confirm — ✓
+  - U-CONF-4b: focus restoration to the trigger Promote button — ✓
+  - SETUP + CONFIRM-PATH + CONSOLE: ✓ all
+- **State machine compliance** (Lab 04 §State machine): `default` + `busy` (disabled-confirm) + `done` (toast + selection-clear + row-state-update) implemented; `error` state intentionally absent because there's no real Planner backend in v1.2
+
+Honest limitations (named per HCD discipline)
+
+- No real Planner backend — promotion is session-scoped (in-memory state change). v1.3 with a real backend will add the `error` state.
+- Screen-reader actual usability untested (ARIA presence verified; usefulness needs Sponsor Reviewer accessibility-need persona session)
+- N > 25 overflow path code-tested only (walkthrough used N=3)
+- Mobile / touch / narrow-viewport untested (desktop-shaped; v2.x scope per Lab 05 inclusion-lens)
+
+Next action
+
+End-of-PR closure: Lyra + Aurelius graded reviews on this PR. Merge. Then Sponsor Reviewer recruitment (priority 9) unlocks Audit 1.5 cycle which can test the modal against the four acceptance criteria with a real reviewer.
+
 ## 2026-05-17 — DES-001 three-topic push complete (Topics 4 + 5 + 6 closed; grade report v3 next)
 
 Type: learning / assignment / milestone / governance
