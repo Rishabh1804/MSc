@@ -31,6 +31,80 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-18 — E1 enrichment pass shipped (P15 → done) + strategy doc §18 amendments
+
+Type: implementation / capability / experiment / governance
+
+Summary:
+
+Closes NEXT_ACTIONS priority 15: the E1 enrichment script + validator + JSON catchment lookup land alongside their generated outputs (enriched CSV, three manual-review queue CSVs, two evidence reports). Strategy doc gets a §18 v1 implementation amendments section captured from running the spec against real data (not edits made silently to the spec — explicit calibration findings).
+
+Code
+
+- `src/codemike/data/destination_master_enrichment_v1.py` (~640 lines, stdlib-only per existing data-script discipline) — deterministic 10-step pipeline implementing strategy doc §10.1 (with two Step 1 sub-steps added per §18.1 to derive `access_complexity` and caution tags from populated fields, since master had caution_tags effectively blank — 3 tags total in 359 rows). Per-row pipeline: derive access → derive cautions → origin_fit (CCU + IXR) → travel_fatigue (band + drivers) → medical_access (with pediatric subset) → planning_complexity → season + weather cautions → suitability (infant 0-100 score + 4 bands) → defaults → manual-review queue assignment.
+- `src/codemike/data/destination_master_enrichment_validation.py` (~280 lines) — structural validator: required columns; controlled-value violations per column; band-vs-score consistency for infant suitability; pediatric ≤ medical confidence ordering; heuristic-default-state checks (heuristic_v1 rows must default to enriched_unverified / needs_verification / source_confidence=low); permit-hint-when-driver-fires consistency; derived-field non-empty check; row-count + join-with-master.
+
+Data + lookup
+
+- `datasets/reference/origin_catchment_v1.json` — CCU + IXR catchment tables. Format changed from the YAML target in the strategy doc to JSON because the workspace's data scripts are pure-stdlib (no YAML dependency). Structure equivalent: per-origin primary / secondary / weak macro_region lists + state-level overrides. The catchment tuning is named explicitly in strategy doc §18.2: first-pass JSON placed only East India + North East India in CCU primary and Queue O exploded to 95 rows of "unknown" origin fit. Aligned with the existing seed-only `destination_enrichment.py` precedent (North India + Central India as CCU secondary). After tuning: **Queue O = 0** ✓.
+
+Outputs (committed as evidence)
+
+- `datasets/reference/destinations_master_v2_enriched.csv` — 359 enriched rows, 39 columns per strategy doc §3 catalogue. Every row at `verification_status=enriched_unverified`, `planner_use_status=needs_verification`, `source_confidence=low`. No row crosses to `planner_ready` in v1 (per spec §11.3).
+- `reports/evidence/destination-master-v2-enrichment-report.md` — pipeline status table; distributions for origin_fit (CCU + IXR), fatigue, planning, medical, pediatric, all four suitability bands, infant-score (min/max/mean); queue sizes; honest limitations.
+- `reports/evidence/destination-master-v2-enrichment-validation-report.md` — readiness=`enriched_structurally_valid_not_planner_ready`; 0 missing columns; 0 duplicate IDs; 0 controlled-value violations; 0 band/score mismatches; 0 pediatric>medical; 0 permit-hint gaps; 0 derived-field blanks. Distributions repeated for sanity comparison against the enrichment report.
+- `reports/evidence/destination-master-v2-enrichment-manual-review-queues/{O,S,M}.csv` — three CSVs ready for E2 sessions; each row has destination_master_id + canonical_name + country + state + reason.
+
+Calibration findings — strategy doc §18 amendments
+
+Spec ran end-to-end against real data; four real findings worth surfacing rather than silently tweaking:
+
+1. **§18.1 — input-data sparseness**: caution_tags (3 total) + context_tags (17 total) + access_complexity (134 of 359 rows) were strategy-doc inputs that were sparse in the master. Script adds Step 1a / Step 1b to derive these from populated fields (location_type / state_or_area / macro_region / destination_scale / vibes). Output column `derived_caution_tags` is written alongside spec fields so downstream consumers can audit the inferred cautions.
+2. **§18.2 — catchment tuning**: Queue O went 95 → 0 after the JSON catchment widened to include North India + Central India in CCU secondary catchment. Lookup-table change, not a spec change.
+3. **§18.3 — Queue S = 155**: dominant trigger is "all four suitability bands identical" (99 of 155). Because suitability-context-tags are nearly empty, the §5.3 band-bumping rules rarely fire, so bands flatten to `medium` for most rows — exactly the flattening signal §5.4 catches. **v1.1 recommendation** (not applied in this PR): drop the flattening trigger; add derived friendliness signals.
+4. **§18.4 — Queue M = 257**: 145 infant_score<50 hits + 45 international (medical=unknown by design) + 67 domestic-region/resort/island (medical=unknown because §8.2 has no `region` / `resort_zone` branch). **v1.1 recommendations**: (a) add region/resort_zone branch returning medium; (b) split M into M-critical (urgent, slow cap) + M-standard (bulk, fast cap).
+
+Plus §18.5 (fatigue band thresholds skew very_high vs high — recalibration target) and §18.7 (reproducibility: deterministic outputs modulo pass_date).
+
+Queue updates
+
+- Priority 15 (E1 script): `todo` → **done**
+- Priority 16 (F-ARC-1): unchanged (still todo)
+- New priority 17: E2 manual-review sessions O / S / M (Rishabh / Reviewer; on hold pending priority 18 decision)
+- New priority 18: E1 v1.1 calibration spec changes (recommended to land before E2 starts — would reshape E2 workload from ~20 sittings to ~5–7)
+- "Next Design Step" block bottom-of-file: updated from "implement E1" to "decide on priority 18 before priority 17"
+
+Files changed
+
+- `datasets/reference/origin_catchment_v1.json` (new)
+- `src/codemike/data/destination_master_enrichment_v1.py` (new)
+- `src/codemike/data/destination_master_enrichment_validation.py` (new)
+- `datasets/reference/destination_master_enrichment_strategy.md` (added §18 amendments section)
+- `datasets/reference/destinations_master_v2_enriched.csv` (new — script output)
+- `reports/evidence/destination-master-v2-enrichment-report.md` (new — script output)
+- `reports/evidence/destination-master-v2-enrichment-validation-report.md` (new — validator output)
+- `reports/evidence/destination-master-v2-enrichment-manual-review-queues/{O,S,M}.csv` (new — script outputs)
+- `operations/NEXT_ACTIONS.md` (P15 done; new P17/P18; Next Design Step updated)
+- `operations/PROJECT_LOG.md` (this entry)
+
+Evidence produced
+
+- 359 enriched rows pass structural validation (`enriched_structurally_valid_not_planner_ready`)
+- Pipeline is deterministic: re-running produces byte-identical CSV (modulo `enrichment_pass_date`) per strategy doc §10.2 reproducibility requirement
+- Four calibration findings documented in strategy doc §18 from running the spec against real data — this is the "experiment → evidence → improvement cycle" the CodeMike operating loop is supposed to produce
+
+Honest limitations (named per HCD discipline)
+
+- The v1.0 spec produces queues 6× and 13× over the per-session caps for S and M; the spec stands but the caps cannot be honoured without either splitting the batches or refining the triggers (priority 18)
+- The medical-access heuristic was already named §8.3 as the weakest formula in v1; running it confirmed the spec gap for `region`-scale destinations (67 domestic rows fell to `unknown` when `medium` is the more honest default)
+- Origin catchment tables are workspace judgement, not verified flight/train data
+- Real-user evaluation of enrichment quality is owed: Lab 05 F-PRIN-1 (Principle 2: Users involved throughout) applies; the Sponsor Reviewer cycle (priority 9) should test enriched-layer outputs against a real planner's judgement before this is treated as decision-grade
+- No row crosses to `planner_ready` in this pass; promotion is the separate E3 step (out of v1 scope)
+
+Next action
+
+End-of-PR closure: Lyra + Aurelius + Cipher graded reviews on this PR. Merge. Then **decide on priority 18 before starting priority 17** — the calibration changes would materially reshape the E2 workload. Workspace remains in STOP per the ratified three-topic-push goal; DES-001 Topics 7–12 (priority 14) stays parked.
+
 ## 2026-05-18 — Master enrichment strategy v1 + Pages-render verification (P3/P5 from resume-handoff)
 
 Type: governance / capability / design

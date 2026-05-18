@@ -780,6 +780,92 @@ Next, in a follow-up PR:
 
 After E1 ships, NEXT_ACTIONS gets new priorities for E2 sessions O / S / M; after E2 ships, NEXT_ACTIONS priority 6 (scoring v1) can begin against a stable enriched layer.
 
+## 18. v1 implementation amendments (added after E1 first-pass run)
+
+Added 2026-05-18 alongside the E1 enrichment script PR. These are findings from actually running the spec against the 359-row master, captured here so future readers of this strategy see the spec **and** the reality of the data it operates on.
+
+### 18.1 Data-inspection findings before script could run
+
+The master dataset has three field populations that the strategy doc above (§4–§10) reads as inputs but which are sparsely populated in practice:
+
+| Field | Strategy doc role | Master reality |
+|---|---|---|
+| `caution_tags` | Major input to fatigue (§6.3), planning (§7.3), medical (§8), suitability (§5.2) | **3 tags total across 359 rows** (2 `border_area_check`, 1 `route_verification_check`) |
+| `context_tags` | Used for `infant_friendly`, `family_friendly`, `senior_friendly`, `couple_friendly` band bumps (§5) | **17 tags total across 359 rows** (14 `gateway_context`, 2 `border_context`, 1 `remote_context`) — none of the suitability-relevant tags |
+| `access_complexity` | Major input to fatigue (§6), suitability (§5), medical (§8) | Populated only for 134 seed rows; **blank for all 225 normalised_candidate rows** |
+
+This is consistent with the master schema (`destinations_master_v2_schema.md` §8): caution_tags are explicitly "generated from heuristics later", not inherited.
+
+**Amendment to §10.1 pipeline order**: insert **Step 1a** (derive `access_complexity` from `destination_scale` / `location_type` / `state_or_area` when blank) and **Step 1b** (derive caution tags from populated fields) before Step 2. The script implements both; output column `derived_caution_tags` is written alongside the spec fields so downstream consumers can audit what cautions the pipeline inferred.
+
+### 18.2 Catchment tuning after first run
+
+The first run of E1 produced **Queue O = 95 rows** because the original `origin_catchment_v1.json` placed only `East India` + `North East India` in CCU primary and only `Central India` + a handful of secondaries — so very-reachable regions like `North India` (97 rows in master) fell through to `unknown`.
+
+**Calibration**: aligned the catchment JSON with the existing seed-only `destination_enrichment.py` precedent — North India and Central India sit in CCU secondary catchment; West India / South India / Island India sit in CCU weak (domestic-far). Same shape for IXR with the eastward bias. After this tuning: **Queue O = 0** (all rows now classify cleanly to strong / moderate / weak from both origins). No spec change; just the lookup table.
+
+### 18.3 Queue S sizing (155 rows; 6× the 25/session cap)
+
+Trigger composition (per the E1 first run):
+
+| Reason | Rows |
+|---|---:|
+| All four suitability bands identical | 99 |
+| Infant score at the 45 boundary | 54 |
+| Infant score at the 50 boundary | 29 |
+| Infant score at the 55 boundary | 25 |
+
+The "all four bands identical" trigger is dominant. **Calibration finding**: because the suitability-context-tags (`family_friendly`, `senior_friendly`, `couple_friendly`, `infant_friendly`) are nearly empty in master, the band-bumping rules in §5.3 rarely fire, so the four bands collapse to `medium` for most rows — exactly the flattening signal §5.4 is designed to catch.
+
+**Recommended v1.1 spec change** (not applied in this PR): keep the seed-vs-heuristic-disagreement trigger (the strongest signal); keep the boundary-score trigger (asymmetric-cost-relevant); **drop the "all four bands identical" trigger** because it fires on data noise rather than judgement noise. Future band-bumping should also derive friendliness signals from populated fields (e.g., `family_friendly` inferred from `family_suitability >= medium` in seed-lineage; `couple_friendly` inferred from `vibe ∈ {romantic, relaxation, wellness}`).
+
+For v1.0 the spec stands as written; the calibration finding is captured here and the queue ships at 155.
+
+### 18.4 Queue M sizing (257 rows; 13× the 20/session cap)
+
+Trigger composition (per the E1 first run):
+
+| Reason | Rows |
+|---|---:|
+| Infant score < 50 (with known medical access) | 145 |
+| Medical access = unknown (international) | 45 |
+| Medical access = unknown (domestic — heuristic insufficient) | 67 |
+
+The 67 domestic-unknown rows are mostly `scale=region` / `scale=resort_zone` / `scale=island_region` — destinations the §8.2 decision table doesn't have an explicit branch for (it covers `metro_city` / `city` / `town` / `village` / `site` / `park` / `high_altitude` but not multi-place `region`-scale entities).
+
+**Two calibration findings**:
+
+(a) **Spec gap in §8.2**: add a `region` / `resort_zone` branch that returns `medium` (district-level care assumed within the broader area) instead of `unknown`. This would reduce the domestic-unknown bucket from 67 → ~10–15 (genuinely-remote `region` rows would still fall through). **Not applied in this PR** — recorded here so v1.1 of the script can address it.
+
+(b) **§11.1 M-cap is too small for the score-<-50 spec in §8.3**. With 145 rows hitting that threshold from the heuristic, the M batch cannot complete in one session at the 20-row cap. **Recommended v1.1 spec change**: split M into:
+
+- **M-critical** — rows where `medical = unknown` OR (`medical = low` AND `infant_score < 35`). Smaller; high-stakes; deserves the slow 20-row cap.
+- **M-standard** — rows where `medical ∈ {medium, high}` AND `35 ≤ infant_score < 50`. Larger; bulk review; 40–50 rows per session at a faster pace.
+
+The asymmetric-cost framing (§0, §12) still applies — M-critical is the cost-asymmetric batch that needs the slow cap; M-standard is the volume work that needs throughput. For v1.0 the spec stands; the calibration finding is captured here.
+
+### 18.5 Travel-fatigue band distribution skew
+
+Observed E1 distribution: `low: 89`, `medium: 233`, `high: 3`, `very_high: 34`. The `high` band almost never fires because the §6.3 formula treats 3+ drivers as `very_high` and 0–2 drivers as `medium`-or-`low`. There is essentially no path to `high` except a narrow "high road difficulty without altitude/remoteness" case.
+
+**Recommended v1.1 spec change**: re-balance §6.3 band thresholds so `high` is reachable. One option: 0 drivers + easy access → `low`; 1 driver → `medium`; 2 drivers → `high`; 3+ drivers OR altitude+remoteness → `very_high`. Calibration only; not applied in v1.0.
+
+### 18.6 What stayed the same as the spec
+
+- All controlled values (§3 catalogue).
+- Conservative-bias direction (every heuristic still biases towards "needs review" rather than "decision-grade").
+- Default after pass: `enriched_unverified` / `needs_verification` / `source_confidence = low` for every row.
+- Manual-review batches O / S / M existence and per-row anchor-pattern notes requirement.
+- Three-phase rollout shape (E1 → E2 → E3).
+- Six honest limitations from §14.
+- §15 audit-shape rules for data-layer PRs (distribution-diff on every formula bump).
+
+### 18.7 Reproducibility
+
+The script (`src/codemike/data/destination_master_enrichment_v1.py`) and the catchment JSON (`datasets/reference/origin_catchment_v1.json`) together produce a byte-identical enriched CSV across runs, modulo the `enrichment_pass_date` column which moves with calendar date. This satisfies the strategy doc §10.2 reproducibility requirement.
+
+---
+
 ## 17. References
 
 - `datasets/reference/destinations_master_v2_schema.md` — master schema; storage-shape decision in §2 above carries it forward
