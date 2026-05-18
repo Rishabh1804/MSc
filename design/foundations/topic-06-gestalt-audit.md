@@ -377,3 +377,13 @@ Both F-MOB-1 and F-MOB-4 share a root cause: **the introspective audit + walkthr
 Provisional rule for future polish PRs: **every visual-treatment change with a CSS-content-character OR a position:absolute layout choice gets a mobile-viewport screenshot before merge**. The screenshot doesn't have to be a full walkthrough — just one mobile-viewport capture of the affected region. The polish PR's `capture-fixes.js` should grow a mobile variant.
 
 This addendum closes the F-MOB-3 audit blind-spot, F-MOB-1 mobile-font issue, and F-MOB-4 wrap-layout issue. F-MOB-2 (table doesn't fit narrow viewport; multi-select awkward on mobile) is structural and stays queued for v2.x per Lab 05 inclusion-lens.
+
+### v1.2.2 follow-up — F-MOB-6 (contrast-not-just-presence)
+
+The v1.2.1 F-MOB-1 fix replaced the failing Unicode `↕` glyph with an inline SVG `background-image`. The SVG rendered correctly across all devices (font-stack-independent) — but the fill colour was `var(--line)` `#e2e8f0`, which at mobile viewport against the toolbar's soft-grey `#f1f5f9` background was visually indistinguishable from the page chrome. User caught this by tapping a PLACE column header on Android: the tap sorted the column (proving the affordance was DOM-reachable), but the sort-indicator next to TRUST + NAME headers was invisible (proving the visual signal failed even though the implementation passed).
+
+**Root cause**: the Lab 06 + v1.2.1 audit-shape checked *whether the indicator renders* but not *whether the indicator achieves its purpose*. The mobile-viewport capture script from v1.2.1 captured evidence of the SVG presence; the reviewer didn't compare against "can a user actually see this?" The contrast gap was visible in the v1.2.1 capture but unflagged.
+
+**v1.2.2 fix**: SVG fill changed from `%23e2e8f0` (line) to `%23cbd5e1` (border-stronger; one ramp-step darker). Re-captured mobile-viewport — stacked-triangle indicators on TRUST + PLACE now clearly visible. The same fix pattern applies to any future small-icon usage: the `--line` token is sized for 1px borders against soft backgrounds, not for icon glyphs with non-linear visual mass.
+
+**Audit-shape rule, extended**: future polish PR mobile-viewport screenshots get a *contrast verdict* alongside the *render verdict*. The provisional rule now reads: "every visual-treatment change with a CSS-content-character OR position:absolute OR icon ≤12px gets a mobile-viewport screenshot before merge, with explicit visibility evaluation (not just presence)."

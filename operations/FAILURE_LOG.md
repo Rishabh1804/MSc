@@ -48,9 +48,25 @@ Reusable warning: **CSS `content: "<glyph>"` is not portable.** Use inline SVG v
 Related anti-pattern: Lab 06 §30 anti-pattern 1 (silent density collapse) at the typographic layer; Lab 05 F-W3C-1 W3C inclusion-lens (Fail on device sub-dimension) — the workspace knew it wasn't testing mobile but shipped CSS-content characters anyway. Both anti-patterns named; the gap was *between* them.
 
 Next action:
-1. v1.2.1 fix: replace `↕` with inline SVG `background-image` (shipped in this PR)
+1. v1.2.1 fix: replace `↕` with inline SVG `background-image` (shipped in PR #23)
 2. Lab 06 audit-shape upgrade: every CSS-content-character OR `position:absolute` change in a future polish PR gets a mobile-viewport screenshot before merge (provisional rule landed in `topic-06-gestalt-audit.md` Audit Addendum 2)
 3. NEXT_ACTIONS: when capture-fixes.js scripts are expanded, add a mobile-viewport variant (priority deferred until next polish PR cycle)
+
+### v1.2.2 follow-up: contrast-not-just-presence (F-MOB-6)
+
+Date: 2026-05-18 (same day as v1.2.1)
+
+**The continuation finding**: v1.2.1's F-MOB-1 fix made the SVG sort-indicator render *correctly* (no more font-fallback failure), but used `fill='%23e2e8f0'` (the design-system `var(--line)` token; the lightest grey in the palette). At mobile resolution against the toolbar's `var(--soft)` `#f1f5f9` background, the indicator was visually indistinguishable from the page chrome — the user couldn't see it without zooming in. F-MOB-1 fix passed the DOM-reachability test (tap-to-sort worked) but failed the visual-reachability test (affordance signal invisible).
+
+**Why introspection missed it (again)**: the Lyra + Aurelius PR #23 reviews evaluated the SVG approach at desktop resolution where `#e2e8f0` against `#f1f5f9` is legible. The mobile-viewport screenshots committed alongside the v1.2.1 PR *did show* this issue but were never compared against a "does the indicator achieve its purpose?" verdict — only against a "does the SVG render?" verdict. The capture script captured evidence; the review didn't verify the evidence achieved the design intent.
+
+**Lesson, extending entry #1**: SVG `background-image` is the right primitive *if and only if* the fill colour passes a contrast check against the target background. The original lesson said "CSS `content` is not portable; use SVG `background-image`". The complete lesson is: **CSS `content` is not portable; SVG `background-image` is portable; design-system `--line` token is not always *visible*; check rendered contrast on the target background, not just rendered-vs-not-rendered.**
+
+**Reusable warning**: when adopting an icon / indicator at small-size (≤12px), pick a fill colour at least one ramp-step darker than `var(--line)` (e.g., `#cbd5e1`). The `--line` token is sized for borders (1px lines visible against soft fill backgrounds); icon glyphs need a stronger contrast because their visual mass is non-linear in pixel count.
+
+**v1.2.2 fix shipped**: SVG fill changed from `%23e2e8f0` to `%23cbd5e1`. Re-captured at 360×740 mobile viewport — the stacked-triangle indicators on TRUST + PLACE are now clearly visible. Same SVG, same path, same DOM — only the fill colour changed.
+
+**Audit-shape upgrade (extends Audit Addendum 2 rule)**: future polish PR mobile-viewport screenshots get a *contrast verdict*, not just a *render verdict*. The reviewer should be able to answer "can a reader see this signal at arm's length from the device?" — if no, the fix isn't complete even if the DOM is correct.
 
 ## Failure: Audit-region with multiple sub-regions audited as one perceptual unit (drawer R6)
 
