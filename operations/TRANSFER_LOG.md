@@ -143,3 +143,50 @@ Plus the workspace-level design-discipline meta-skill (SKILL_MAP.md row added).
 **Outcome (shipped 2026-05-18):**
 
 All six fixes shipped in the v1.1.x polish PR. Visual-treatment-only — zero behavioural changes. 19/19 walk-through pass on polished build (no regression). All six Gestalt findings (F-GES-1 through F-GES-6) closed at v1.1.x scope except F-GES-5's behaviour half (Fix #5b, deferred to v1.2 pending Sponsor Reviewer). R1 caution-chip Trade-off upgraded to Pass via the divider (Fix #6). Audit doc now has empirical (screenshot) grounding via the addendum's five after-screenshots + computed leverage scores per fix. Lyra missed-opportunities from PR #18 (no screenshots; no leverage scores) both closed.
+
+### Transfer 3 — DES-001 Lab 04 Loop 1 → Browser v1.2 batch-promote-confirm modal
+
+**Date:** 2026-05-18
+
+**Source capability:** All five DES-001-derived Topics 4 / 5 / 6 audit-and-loop capabilities now applied to a real implementation (CAPABILITIES.md rows at maturity 4):
+- Design-thinking loop template (8-step) — Lab 04 Loop 1 worked example
+- Three-constraint triage frame — Candidate B chosen via comparative reasoning
+- UX acceptance-criterion form — U-CONF-1..4 landed in `ux-acceptance-criteria.md` by the Sponsor Reviewer framework PR
+- Master-detail-with-faceted-search pattern card — modal is the right container per Topic 2 §3.5
+- Trust-signal four-depth specification — confirm-modal adds the 4th depth (banner + drawer + card + **confirm-modal**)
+
+**Target project:** Destination Master Browser v1.2 — adds the batch-promote feature against the v1.1 reference dataset. First Topic-4-loop output to ship as a real implementation. Implements the modal anatomy specified at `design/foundations/topic-04-design-thinking-loop.md` §6 + §State machine.
+
+**Problem solved:** v1.1 ships read-only (browse, filter, inspect). The reviewer cannot act on the data within the tool. Lab 04 Loop 1 specified the *first* destructive action — batch-promote-to-Planner — with a two-stage confirm modal that honours the asymmetric-cost framing (cost of wrong promotion >> cost of cancelling). v1.2 implements that spec.
+
+**Artifact transferred:**
+- `docs/destination-master-browser.html` — v1.2 batch-promote-confirm feature added (table select column + select-all-visible + batch action bar + confirm modal + success toast + state management for selected and promoted ids)
+- Per-criterion walkthrough at `curriculum/courses/des-001-design-foundations/verification/v1.2-walkthrough/walkthrough-conf.js` (10/10 pass on U-CONF-1..4 + setup + confirm-path + console)
+- Verification report at `.../v1.2-walkthrough/v1.2-walkthrough-verification-2026-05-18.md` (per-criterion verdict table; implementation notes; state-machine compliance; honest limitations)
+- Modal-open + modal-after-confirm screenshots (`walkthrough-modal-open.png`, `walkthrough-modal-after-confirm.png`)
+
+**Evidence:**
+- **U-CONF-1**: modal title reflects count ("Confirm: promote 3 records to Planner"); list shows record names + IDs; overflow handled for N > 25 (tested in code; walkthrough tested with N=3)
+- **U-CONF-2**: Cancel default-focused; Esc cancels; overlay-click cancels; all three paths single-interaction (verified by walkthrough)
+- **U-CONF-3**: `role="dialog"` + `aria-modal="true"` + `aria-labelledby` + `aria-describedby` (verified)
+- **U-CONF-4**: focus trap cycles between Cancel and Confirm only; focus restoration to the batch-promote button on close (verified)
+- **v1.1 regression check**: 19/19 walk-through pass — zero behaviour regression from the v1.2 additions
+- **Console**: zero errors / pageerrors / requestfailed across the full v1.2 walkthrough
+
+**Outcome:**
+- The first Topic-4-loop output has shipped as a real implementation (Loop 1 → real code → walkthrough-verified)
+- v1.2 has its first destructive action with the safety affordances Lab 04 Loop 1's asymmetric-cost framing requires (two-stage confirm; default-focused cancel; multiple cancel paths; in-flight protection via disabled-confirm)
+- The trust-signal four-depth specification (Topic 2 §6.2) now has all four depths shipped: banner + drawer + card + confirm-modal
+- The Topic 4 loop discipline (design-thinking-loop → user-need form → triage → prototype-spec → test-spec → real implementation → walkthrough) is now demonstrably end-to-end. Future loops can follow the same pattern.
+
+**Limitations:**
+- **No real Planner backend.** The promotion is session-scoped (in-memory state change). A real backend integration is a separate scope item; the current implementation is a *behaviour test* for the modal anatomy, not a production promotion path.
+- **Screen-reader actual usability untested.** ARIA attributes are present and walkthrough-verified, but Sponsor Reviewer's accessibility-need persona is the only test that confirms the announcements are useful. Queued for first Sponsor Reviewer session per the brief.
+- **N > 25 overflow path code-tested only.** Walkthrough used N=3.
+- **No error state in the modal state machine.** Lab 04 §State machine specifies `done | error` as the third state; v1.2's implementation has only `done` because there is no real backend that can fail. v1.3 with a real backend would add the error state with retry + report-issue actions.
+- **Mobile / touch / narrow-viewport untested.** Desktop-shaped feature; Lab 05 inclusion-lens findings name these as deferred to v2.x.
+
+**Next action:**
+1. Mark `NEXT_ACTIONS.md` priority 10 status `done` after this PR merges
+2. Sponsor Reviewer recruitment (priority 9) — first session can now test the modal anatomy against U-CONF-1..4 with a real reviewer
+3. Audit 2 trigger (priority 11) — re-audit v1.2 against Lab 06's six findings + Lab 05's prioritised list once a real Sponsor Reviewer session has happened
