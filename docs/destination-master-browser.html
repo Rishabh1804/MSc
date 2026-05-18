@@ -242,14 +242,15 @@
     }
     table.records thead th[aria-sort="ascending"]::after { content: " ▲"; color: var(--accent); }
     table.records thead th[aria-sort="descending"]::after { content: " ▼"; color: var(--accent); }
-    /* Lab 06 F-GES-3 + v1.2.1 F-MOB-1 fix: distinguish sortable headers from
-       non-sortable by showing a faint up/down chevron in the unsorted state.
-       v1.2.1: switched from Unicode ↕ (U+2195) to an inline SVG background
-       because U+2195 doesn't render in all mobile font stacks (rendered as a
-       colon-substitute on Android — see operations/FAILURE_LOG.md). */
+    /* Lab 06 F-GES-3 + v1.2.1 F-MOB-1 + v1.2.2 F-MOB-6: distinguish sortable
+       headers from non-sortable by showing a faint up/down chevron in the
+       unsorted state. v1.2.1 switched from Unicode ↕ (U+2195) to inline SVG
+       (Android font-fallback issue). v1.2.2 darkens the fill from #e2e8f0
+       (line, too faint to see on mobile) to #cbd5e1 (border-stronger) so
+       the affordance is visually reachable, not just DOM-reachable. */
     table.records thead th[data-sort][aria-sort="none"] {
       padding-right: 22px;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='12' viewBox='0 0 8 12'><path d='M4 2L1 5h6L4 2zM4 10L1 7h6L4 10z' fill='%23e2e8f0'/></svg>");
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='12' viewBox='0 0 8 12'><path d='M4 2L1 5h6L4 2zM4 10L1 7h6L4 10z' fill='%23cbd5e1'/></svg>");
       background-repeat: no-repeat;
       background-position: right 6px center;
     }

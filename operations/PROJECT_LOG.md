@@ -31,6 +31,44 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-18 — Browser v1.2.2 sort-indicator contrast fix (F-MOB-6; continuation of v1.2.1 cycle)
+
+Type: review-followup / governance / failure-log
+
+Summary:
+
+Real-device follow-up from Rishabh after v1.2.1 deploy: tapped a PLACE column header on Android — column sorted correctly (F-MOB-1 fix DOM-reachable) but the sort-indicator next to other column headers was visually invisible because the SVG fill colour `var(--line)` `#e2e8f0` blended into the toolbar's soft-grey background at mobile resolution. The v1.2.1 SVG approach was *technically correct* (no font-fallback issue) but *practically invisible* — same end-user effect as the original Unicode bug.
+
+This micro-PR ships a one-line contrast fix and extends the FAILURE_LOG + Audit Addendum with the *contrast-not-just-presence* lesson.
+
+Code fix
+
+- `docs/destination-master-browser.html` — SVG fill changed from `%23e2e8f0` to `%23cbd5e1` (one ramp-step darker; `--border-stronger` equivalent). Same SVG, same path, same DOM — only the fill colour changed.
+
+Governance entries
+
+- **operations/FAILURE_LOG.md** entry #1 extended with v1.2.2 follow-up: SVG `background-image` is portable *if and only if* the fill colour passes a contrast check against the target background. Lesson: `--line` token is sized for borders; icon glyphs need at least one ramp-step darker because visual mass is non-linear in pixel count.
+- **design/foundations/topic-06-gestalt-audit.md** Audit Addendum 2 extended: provisional rule now requires a *contrast verdict* alongside the *render verdict* for mobile-viewport screenshots. Old rule caught "does the icon render?"; new rule catches "can a user see the icon achieve its purpose?".
+
+Evidence
+
+- Re-captured `mobile-table-headers.png` at 360×740 — stacked-triangle indicators on TRUST + PLACE clearly visible at the contrast-bumped fill
+- v1.1 walkthrough: **19/19 pass** (zero regression)
+- v1.2 walkthrough: **10/10 pass** (zero regression)
+- Zero console errors / pageerrors / requestfailed
+
+Files changed
+
+- `docs/destination-master-browser.html` (one-line CSS change × 1 location)
+- `operations/FAILURE_LOG.md` (extended entry #1 with v1.2.2 section)
+- `design/foundations/topic-06-gestalt-audit.md` (extended Audit Addendum 2 with F-MOB-6 section + contrast-verdict rule)
+- `operations/PROJECT_LOG.md` (this entry)
+- `curriculum/.../v1.2.1-mobile/mobile-table-headers.png` (re-captured proving visibility)
+
+Next action
+
+End-of-PR closure: Lyra + Aurelius graded reviews. Merge. Workspace returns to STOP per the ratified three-topic-push goal. F-MOB-2 (structural mobile table layout) + F-MOB-5 (mobile-capture-script extension) remain queued at NEXT_ACTIONS priorities 12 + 13; both v2.x scope. Cycle pattern: real-user finding → root-cause → fix + governance update → reviewed and merged in <2 hours.
+
 ## 2026-05-18 — Browser v1.2.1 mobile-fixes micro-PR (3 mobile-only findings closed + 2 governance entries)
 
 Type: review-followup / governance / failure-log
