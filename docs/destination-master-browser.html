@@ -94,6 +94,20 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow-sm);
     }
+    /* Lab 06 F-GES-5 (visual half): separate search input from selects so the
+       different interaction grammar (live vs commit-on-change) is no longer
+       grouped by proximity + similarity alone. */
+    .toolbar > .field#searchField {
+      padding-right: 14px;
+      border-right: 1px solid var(--line);
+    }
+    /* Lab 06 F-GES-4: separate view-toggle from the narrowing-controls common
+       region; the view-toggle is a different category (view-mode, not narrowing). */
+    .toolbar > .view-toggle {
+      margin-left: 8px;
+      padding-left: 12px;
+      border-left: 1px solid var(--line);
+    }
     .field { display: grid; gap: 4px; }
     .field label { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .02em; text-transform: uppercase; }
     .field .search-row { position: relative; }
@@ -144,12 +158,15 @@
     .view-toggle button[aria-pressed="true"]:hover { background: var(--accent-soft); }
 
     /* === Active filter summary === */
+    /* Lab 06 F-GES-6: strengthen visual separation from toolbar — proximity
+       was bleeding the summary into the toolbar above; widen the gap and
+       deepen the tint differential so common-region grouping is unambiguous. */
     .active-filters {
       display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
-      margin: 6px 0 16px;
-      padding: 10px 12px;
-      background: var(--soft);
-      border: 1px dashed var(--line);
+      margin: 20px 0 16px;
+      padding: 12px 14px;
+      background: #eef2f7;
+      border: 1px solid #cbd5e1;
       border-radius: var(--radius);
       font-size: 13px;
       color: var(--muted);
@@ -225,7 +242,14 @@
     }
     table.records thead th[aria-sort="ascending"]::after { content: " ▲"; color: var(--accent); }
     table.records thead th[aria-sort="descending"]::after { content: " ▼"; color: var(--accent); }
+    /* Lab 06 F-GES-3: distinguish sortable headers from non-sortable by
+       showing a faint ↕ glyph in the unsorted state — interactivity signal
+       is now visible without hovering. */
+    table.records thead th[data-sort][aria-sort="none"]::after {
+      content: " ↕"; color: var(--line); font-weight: 400;
+    }
     table.records thead th[data-sort]:hover { color: var(--ink); }
+    table.records thead th[data-sort]:hover[aria-sort="none"]::after { color: var(--muted); }
     table.records tbody tr {
       cursor: pointer; transition: background-color .12s ease-out;
     }
@@ -300,6 +324,33 @@
     }
     .chip.good { background: var(--good-soft); color: var(--good); border-color: #a7f3d0; }
     .chip.warn { background: var(--warn-soft); color: var(--warn); border-color: var(--warn-line); }
+    /* Lab 06 R1 caution-chip Trade-off → Pass upgrade: a divider before
+       the first warn chip makes the proximity-vs-similarity adjudication
+       explicit (similarity wins for category; the divider lets proximity
+       stop fighting it). */
+    .card-chips .chip.warn:first-of-type { margin-left: 8px; position: relative; }
+    .card-chips .chip.warn:first-of-type::before {
+      content: ""; position: absolute; left: -8px; top: 10%; bottom: 10%;
+      border-left: 1px solid var(--warn-line);
+    }
+
+    /* === Verification pill (Lab 06 F-GES-1 + F-GES-2) === */
+    /* The trust badge already sits at four depths per Topic 2 §6.2; the
+       verification *text* in the card meta-grid + table column was
+       collapsing into surrounding metadata via similarity. A pill component
+       restores the primary-signal role at both depths. */
+    .verif-pill {
+      display: inline-flex; align-items: center;
+      padding: 2px 8px; border-radius: 999px;
+      font-size: 12px; font-weight: 600;
+      border: 1px solid var(--line);
+      background: var(--neutral-soft); color: var(--neutral);
+      white-space: nowrap;
+    }
+    .verif-pill[data-state="verified"]        { background: var(--info-soft); color: var(--info); border-color: #bfdbfe; }
+    .verif-pill[data-state="candidate"]       { background: #fef9c3; color: #854d0e; border-color: #fde68a; }
+    .verif-pill[data-state="seed_unverified"] { background: var(--warn-soft); color: var(--warn); border-color: var(--warn-line); }
+    .verif-pill[data-state="blocked"]         { background: var(--risk-soft); color: var(--risk); border-color: var(--risk-line); }
 
     /* === Skeleton loader === */
     .skeleton { padding: 18px; }
@@ -779,6 +830,12 @@
       return `<span class="planner-pill">${escapeHtml(p)}</span>`;
     }
 
+    function verifPill(row) {
+      const v = row.verification_status || '';
+      const label = v || '—';
+      return `<span class="verif-pill" data-state="${escapeHtml(v)}">${escapeHtml(label)}</span>`;
+    }
+
     /* ---------- Filtering / sorting ---------- */
     function getActiveFilters() {
       const list = [];
@@ -928,7 +985,7 @@
           <td class="place">${escapeHtml(placeOf(r))}</td>
           <td>${escapeHtml(r.destination_scale)}</td>
           <td>${escapeHtml(r.source_layer)}</td>
-          <td>${escapeHtml(r.verification_status)}</td>
+          <td>${verifPill(r)}</td>
           <td>${plannerPill(r)}</td>
           <td class="id">${escapeHtml(r.destination_master_id)}</td>
         </tr>
@@ -964,7 +1021,7 @@
               <div class="meta-cell"><div class="k">Scale</div><div class="v">${escapeHtml(r.destination_scale || '—')}</div></div>
               <div class="meta-cell"><div class="k">Region</div><div class="v">${escapeHtml(r.macro_region || '—')}</div></div>
               <div class="meta-cell"><div class="k">Type</div><div class="v">${escapeHtml(r.location_type || '—')}</div></div>
-              <div class="meta-cell"><div class="k">Verification</div><div class="v">${escapeHtml(r.verification_status || '—')}</div></div>
+              <div class="meta-cell"><div class="k">Verification</div><div class="v">${verifPill(r)}</div></div>
             </div>
             <div class="card-chips">${vibes}${trip}${caution}</div>
             <div style="margin-top: 8px;">${plannerPill(r)}</div>
