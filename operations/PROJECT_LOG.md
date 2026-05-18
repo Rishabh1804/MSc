@@ -31,6 +31,172 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-17 — DES-001 three-topic push complete (Topics 4 + 5 + 6 closed; grade report v3 next)
+
+Type: learning / assignment / milestone / governance
+
+Summary:
+
+Closes the ratified three-topic push (Topics 4 → 5 → 6) in a single working window across two days. Six PRs merged (Topic 4 PR A #13 + PR B #14; Topic 5 PR A #15 + PR B #16; Topic 6 PR A #17 + PR B #18). The DES-001 12-topic curriculum is now half-closed (6 / 12 topics done; 6 / 12 still in stub state at `Fitts' law`, `Button states`, `Typography`, `Color theory`, `Web design / grid layout`, `Design systems`).
+
+The push established the **canonical design hierarchy** as a workspace constant:
+
+```
+Topic 5 — HCD (umbrella; ISO 9241-210 + W3C triad)
+   ├─ Topic 4 — Design thinking (the loop, when problem isn't well-framed)
+   ├─ Topic 3 — UX design (the criteria + journey)
+   ├─ Topic 2 — UI design (the components)
+   └─ Topic 6 — Gestalt (the perceptual constraint layer underneath visual treatment)
+```
+
+Three audit-shapes are now reusable workspace patterns (Lab 04 design-thinking loop, Lab 05 HCD audit, Lab 06 Gestalt audit). Lyra + Aurelius graded reviews on PR B for each topic confirmed each lab's discipline.
+
+Three labs' worth of v1.2 work is now inherited by the v1.2 implementation PR (Lab 04 Loop 1 batch-promote-confirm + Lab 05 6-item HCD list led by Sponsor Reviewer recruitment + Lab 06 6-item Gestalt list with 5 v1.1.x + 1 v1.2). The v1.1.x polish PR has its own scope (Lab 06's 5 v1.1.x visual-treatment fixes that close 6 findings).
+
+Files changed (cumulative across the six PRs; see per-topic entries below for details):
+
+- Three deep-reading docs: `design/foundations/topic-04-design-thinking.md`, `topic-05-hcd.md`, `topic-06-gestalt.md`
+- Three lab outputs: `topic-04-design-thinking-loop.md`, `topic-05-hcd-audit.md`, `topic-06-gestalt-audit.md`
+- Six lecture + reading-pack + quiz × 3 + lab-brief files per topic across `curriculum/courses/des-001-design-foundations/`
+- Three Lab submissions in `submissions/`
+- Master-browser checklist sections §23..§31 (9 new sections across the three topics)
+- `docs/design-foundations-app/data.js` — three topics promoted from stub to full done modules (12 modules total; 6 done; Cipher-verified zero errors)
+- All tracking files updated per topic (competency-map, weekly-plan, learning-log, submission, viva)
+- Operations governance catch-up this PR: SKILL_MAP, CAPABILITIES, PROJECT_LOG (this entry + 3 per-topic entries), NEXT_ACTIONS, TRANSFER_LOG
+
+Evidence produced:
+
+- Six PRs merged cleanly into main with consistent stacked-PR shape (PR A reading branch → PR B lab branch cut from PR A)
+- 12 DES-001 dashboard modules; 6 done with full notes; 6 in stub state with consistent shape
+- Three workspace-grade audit-shape templates ready for re-use
+- Eleven reusable capabilities now at maturity 4 (six pre-existing from Topics 2 + 3 + Browser v1.1 ship; five added by Topics 4 + 5 + 6)
+- Lab 05's anticipated-violations list refuted *and* confirmed where the audit found counter-evidence vs alignment-evidence
+- Lab 06's anticipated-violations list confirmed at five-of-six rate (one softened from Violation to Trade-off) — falsifiability the deep-reading docs earned by writing the anticipations down up-front
+- Cross-topic validation: Lab 06 confirms Topic 2's four-depth trust signal spec is intact at 3/4 depths and that the findings are *implementation* failures rather than *specification* failures
+
+Next action:
+
+Write **grade-report v3** at `feedback/DES-001-grade-report-v3.md` — cumulative DES-001 grade after Topics 1–6 (HCD compliance from Topic 5 + Gestalt compliance from Topic 6 + scope-incompleteness adjustment scaled down from −6 toward 0 as 6/12 topics now closed). After v3 lands, **STOP** per the ratified three-topic push goal.
+
+## 2026-05-17 — DES-001 Topic 6 closed (Gestalt principles + Lab 06 + master-browser checklist §29..§31)
+
+Type: learning / assignment / capability
+
+Summary:
+
+Closed DES-001 Topic 6 — Gestalt principles. Two PRs land the topic: PR A (#17) produces the deep-reading evidence (`design/foundations/topic-06-gestalt.md`, 15 sections) + the lecture, reading pack (4 required sources: Wertheimer/Koffka/Köhler via secondary, IxDF, NN/g, Smashing + 5 extension), quiz with worked answers, lab brief, eight viva questions + worked answers, and the data.js promotion (status `done`, 5 sources, full notes). PR B (#18) executes Lab 06 — a Gestalt audit of v1.1 (`design/foundations/topic-06-gestalt-audit.md`, Audit 1) across six regions × six principles (36 cells: 22 Pass + 5 Trade-off + 7 Violation + 4 N/A) + four conflict adjudications (zero left unresolved) + density-vs-grouping audit + 6-item prioritised v1.1.x / v1.2 fix list — and appends master-browser checklist §29 (three Gestalt gates) + §30 (three anti-patterns) + §31 (canonical pointer).
+
+Key insight: Gestalt sits *underneath* Topic 2 as the perceptual constraint layer. A design can satisfy Topic 2 (correct components) and Topic 3 (correct acceptance criteria) and still violate Gestalt (wrong perceived grouping). Lab 06 confirms this by surfacing F-GES-1 + F-GES-2: the trust badge is correctly elevated per Topic 2 §6.2 four-depth spec, but the *verification text* duplicated inside the card meta-grid + table column at equivalent visual weight to non-trust fields partially undoes the badge's elevation via similarity-collapse. Single visual-treatment fix closes both occurrences.
+
+The perceptual-constraint vs aesthetic-rule distinction is the topic's most operationally important discipline. Style-reading: "use whitespace generously" is unfalsifiable. Constraint-reading: every visual choice defends itself against what the visual system *will* do — falsifiable per region.
+
+Files changed:
+
+- `design/foundations/topic-06-gestalt.md` (new — 15-section deep-reading doc)
+- `design/foundations/topic-06-gestalt-audit.md` (new — Audit 1; six regions × six principles + conflict adjudication + density-vs-grouping + prioritised fix list)
+- `curriculum/courses/des-001-design-foundations/lectures/lecture-06-gestalt-principles.md` (new)
+- `curriculum/courses/des-001-design-foundations/readings/topic-06-gestalt-principles-reading-pack.md` (new)
+- `curriculum/courses/des-001-design-foundations/quizzes/quiz-06-gestalt-principles.md` + `-answer-key.md` + `-answers.md` (new — ten worked answers)
+- `curriculum/courses/des-001-design-foundations/labs/lab-06-gestalt-audit.md` (new — six-step brief)
+- `curriculum/courses/des-001-design-foundations/viva/DES-001-viva-questions.md` + `-answers.md` (Topic 6 questions + answers appended)
+- `curriculum/courses/des-001-design-foundations/submissions/lab-06-gestalt-audit-results.md` (new — formal Lab 06 submission)
+- `design/checklists/master-browser-design-checklist.md` (§29 + §30 + §31 appended)
+- `docs/design-foundations-app/data.js` (Gestalt principles flipped to `done`; five sources; full notes object attached; Cipher-verified)
+- All tracking files updated (competency-map, weekly-plan, learning-log, DES-001-submission)
+
+Evidence produced:
+
+- Six audited regions × six principles = 36-cell perceptual matrix
+- 6 findings (F-GES-1..6) + 1 meta-finding (F-GES-7)
+- 4 cross-principle conflicts adjudicated (zero unresolved)
+- 6-item prioritised fix list (5 v1.1.x + 1 v1.2)
+- Three Gestalt anti-patterns for data-review tools (silent density collapse, decorative motion, too many similarity signals)
+- Three reusable CodeMike capabilities (Gestalt audit template; violation taxonomy diagnostic vocabulary; density-vs-grouping audit pattern)
+- Canonical hierarchy extension (Gestalt as perceptual constraint layer underneath Topic 2)
+- Cross-audit validation of Topic 2's four-depth trust signal
+
+Next action:
+
+End-of-three-topic-push closure (this PR): governance catch-up complete; write grade-report v3 next.
+
+## 2026-05-17 — DES-001 Topic 5 closed (HCD + Lab 05 + master-browser checklist §26..§28)
+
+Type: learning / assignment / capability
+
+Summary:
+
+Closed DES-001 Topic 5 — Human-centred design. Two PRs land the topic: PR A (#15) produces the deep-reading evidence (`design/foundations/topic-05-hcd.md`, 16 sections) + lecture, reading pack (4 required sources: ISO 9241-210, IDEO Field Guide HCD chapters, Don Norman HCD essays, W3C accessibility/usability/inclusion + 6 extension), quiz with worked answers, lab brief, eight viva questions + worked answers, and the data.js promotion. PR B (#16) executes Lab 05 — a full HCD audit of v1.1 + Lab 04 Loop 1 against ISO 9241-210's four activities + six principles + the W3C triad (`design/foundations/topic-05-hcd-audit.md`, Audit 1) — and appends master-browser checklist §26 (four HCD gates) + §27 (four anti-patterns) + §28 (canonical pointer).
+
+Verdict: v1.1 is *HCD-substantial but incomplete*. Six principles graded 2 Pass + 3 Partial + 1 Fail (Principle 2: Users involved throughout — the workspace has no real users yet). W3C triad: Usability Pass, Accessibility Partial, Inclusion Fail. Seven findings; six-item prioritised v1.2 HCD list led by Sponsor Reviewer recruitment.
+
+Key insight: HCD is the **umbrella** over Topics 2 / 3 / 4 in the canonical hierarchy. HCD doesn't produce *new artifacts*; it provides the *audit-shape* (every artifact maps to at least one of the four ISO activities). Norman's *HCD Considered Harmful?* critique is addressed by doing the context-of-use activity at the **systems** level (not just the individual user level) — and Audit 1 surfaces that systems-level context-of-use is exactly the gap v1.1 needs to close in v1.2 (F-CTX-1).
+
+Files changed:
+
+- `design/foundations/topic-05-hcd.md` (new — 16-section deep-reading doc)
+- `design/foundations/topic-05-hcd-audit.md` (new — Audit 1)
+- `curriculum/courses/des-001-design-foundations/lectures/lecture-05-human-centered-design.md` (new)
+- `curriculum/courses/des-001-design-foundations/readings/topic-05-human-centered-design-reading-pack.md` (new)
+- `curriculum/courses/des-001-design-foundations/quizzes/quiz-05-human-centered-design.md` + `-answer-key.md` + `-answers.md` (new)
+- `curriculum/courses/des-001-design-foundations/labs/lab-05-hcd-audit.md` (new)
+- `curriculum/courses/des-001-design-foundations/viva/DES-001-viva-questions.md` + `-answers.md` (Topic 5 Q+A appended)
+- `curriculum/courses/des-001-design-foundations/submissions/lab-05-hcd-audit-results.md` (new)
+- `design/checklists/master-browser-design-checklist.md` (§26 + §27 + §28 appended)
+- `docs/design-foundations-app/data.js` (Topic 5 flipped to `done`)
+- All tracking files updated
+
+Evidence produced:
+
+- Audit Steps 1–4: per-activity evidence with three-persona context-of-use table + systems-level context-of-use table + documented requirements table + design solutions table + evaluation evidence table
+- Audit Step 5: 2 Pass + 3 Partial + 1 Fail across the six ISO principles
+- Audit Step 6: W3C triad audit (1 Pass + 1 Partial + 1 Fail)
+- 7 findings (4 High + 2 Medium + 1 lower) + 6-item prioritised v1.2 HCD list ordered by leverage
+- Four HCD anti-patterns for single-person workspaces
+- Honest naming of limitations as the workspace discipline (Topic 5's most important pattern)
+
+Next action:
+
+Start Topic 6 (Gestalt principles) — final topic in the ratified three-topic push.
+
+## 2026-05-17 — DES-001 Topic 4 closed (Design thinking + Lab 04 + master-browser checklist §23..§25)
+
+Type: learning / assignment / capability
+
+Summary:
+
+Closed DES-001 Topic 4 — Design thinking. Two PRs land the topic: PR A (#13) produces the deep-reading evidence (`design/foundations/topic-04-design-thinking.md`) + lecture, reading pack (4 required sources: Stanford d.school Bootleg, IBM Design Thinking, Tim Brown HBR + *Change by Design*, NN/g "Design Thinking 101" + 5 extension including Norman's *Design Thinking: A Useful Myth* critique), quiz with worked answers, lab brief, eight viva questions + worked answers, and the data.js promotion. PR B (#14) executes Lab 04 — Loop 1 on the batch-promote-confirm modal (`design/foundations/topic-04-design-thinking-loop.md`) with eight steps (Pick → Empathize → Define → Ideate ≥3 candidates → Three-constraint triage → Prototype-spec → Test-spec with falsification criteria → Decision; Candidate B chosen via comparative reasoning vs A/C/D) — and appends master-browser checklist §23 (four design-thinking gates) + §24 (five anti-patterns) + §25 (canonical loop-output pointer).
+
+Key insight: design thinking is the *iteration mechanism* inside HCD's lifecycle, not a substitute for it. The Topic 4 / Topic 3 routing rule (well-framed → Topic 3 criteria directly; not well-framed → Topic 4 loop first) is the operational discipline.
+
+Three reusable capabilities extracted: the 8-step loop template, the three-constraint triage frame, the problem-framing decision tree (Topic 4 first vs Topic 3 first).
+
+Files changed:
+
+- `design/foundations/topic-04-design-thinking.md` (new — deep-reading doc)
+- `design/foundations/topic-04-design-thinking-loop.md` (new — Loop 1 worked example)
+- `curriculum/courses/des-001-design-foundations/lectures/lecture-04-design-thinking.md` (new)
+- `curriculum/courses/des-001-design-foundations/readings/topic-04-design-thinking-reading-pack.md` (new)
+- `curriculum/courses/des-001-design-foundations/quizzes/quiz-04-design-thinking.md` + `-answer-key.md` + `-answers.md` (new)
+- `curriculum/courses/des-001-design-foundations/labs/lab-04-design-thinking-loop.md` (new)
+- `curriculum/courses/des-001-design-foundations/viva/DES-001-viva-questions.md` + `-answers.md` (Topic 4 Q+A appended)
+- `curriculum/courses/des-001-design-foundations/submissions/lab-04-design-thinking-loop-results.md` (new)
+- `design/checklists/master-browser-design-checklist.md` (§23 + §24 + §25 appended)
+- `docs/design-foundations-app/data.js` (Topic 4 flipped to `done`)
+- All tracking files updated
+
+Evidence produced:
+
+- Loop 1: full 8-step worked example for batch-promote-confirm modal
+- Three-persona synthesis (first-time / power / accessibility-need) as the solo-workspace Empathize translation
+- Four candidates with three-constraint triage and comparative selection (B chosen)
+- Topic 4 / Topic 3 routing decision tree
+- Five design-thinking anti-patterns (skipping Ideate, single-pass design thinking, empathy-by-introspection, workshop theatre, triage by taste) with sourced mitigations
+- Three reusable design-thinking capabilities
+
+Next action:
+
+Start Topic 5 (HCD) — second of the three topics in the ratified push.
+
 ## 2026-05-17 — v1.1 polish follow-up: walk-through script committed, four polish items behaviourally tested, governance freshness restored
 
 Type: review-followup / governance
