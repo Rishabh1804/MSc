@@ -31,6 +31,63 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-18 — Master enrichment strategy v1 + Pages-render verification (P3/P5 from resume-handoff)
+
+Type: governance / capability / design
+
+Summary:
+
+Workspace resume cycle after the v1.2.2 close + STOP state. Tackled two queue items: priority 3 (verify GitHub Pages render at canonical URLs) and priority 5 (design master enrichment strategy before scoring). The strategy doc is the substantive deliverable; the Pages verification surfaced one small follow-up (F-ARC-1).
+
+Pages verification (priority 3 — moved `todo` → `doing`)
+
+- Canonical `destination-master-browser.html` confirmed live at v1.2 via static HTML fetch — eyebrow reads v1.2 ✓, trust banner + header + stats banner present in markup.
+- Archive `destination-master-browser-v1.0.html` serves 200 ✓ but title reads "Destinations Master v2 Browser" with no visible v1.0 / archive label — surfaces **F-ARC-1** (new priority 16): users hitting the archive URL cannot tell they are not on the canonical.
+- Limitation named honestly: static-HTML fetch cannot execute JS, so it cannot confirm the client-side dataset fetch actually populates records. Live browser-verify still needed; static check is structural only. WebFetch saw "Loading…" and "Couldn't load the master dataset" strings in markup which are likely hidden state-toggle DOM, but a browser run confirms.
+
+Strategy doc (priority 5 — moved `todo` → `done`)
+
+- Created `datasets/reference/destination_master_enrichment_strategy.md` (~540 lines).
+- **Architecture decision**: separate enriched layer (`destinations_master_v2_enriched.csv`); master CSV stays the immutable structural-reference layer; the existing `family_suitability` / `access_complexity` / `best_season_hint` columns in master are explicitly reclassified as **frozen seed-lineage** (informational, not authoritative). Read order: enriched-authoritative → master-lineage-fallback → unknown. Matches `destination_database_v2_strategy.md` layered model.
+- **Scope chosen** (per user direction): full plan — dimensions + heuristic derivation formulas + per-row assignment workflow. CCU (Kolkata) + IXR (Ranchi) named as v1 concrete origins; extensible to BLR/DEL/BOM/MAA without schema redesign.
+- **Enrichment field catalogue**: origin-fit per-origin (value + basis + confidence); suitability decomposed into infant (numeric 0–100 score + band) / family / senior / couple bands; travel-fatigue decomposed by drivers; planning-complexity decomposed by drivers; medical-access confidence with pediatric subset; season/weather decomposed (monsoon / heat / winter-road / altitude cautions). Each enriched row carries `enrichment_method`, `enrichment_version`, `enrichment_pass_date`, `source_confidence`.
+- **Heuristic formulas with asymmetric-cost biasing** (Topic 4 §3 carry-over): every formula biases conservative; floor rules prevent infant_suitability_score from passing manual review when key cautions stack. Default after heuristic pass is `enriched_unverified` with `source_confidence = low` and `planner_use_status = needs_verification`.
+- **Three-batch manual-review discipline**: O (origin) ≤30 rows/session, S (suitability) ≤25, M (medical) ≤20. Anchor-pattern reviewer notes mandatory (WAS / NOW / REASON / SOURCE — never blank) — borrowed from Lyra's grade-only anchor pattern (PRs #20–24). No row reaches `planner_ready` without explicit promotion step (out of v1 scope).
+- **Three-phase rollout**: E1 (script — minutes wall-clock) → E2 (3 manual review sessions, week-cadence — hours per cycle) → E3 (per-row source-verified promotion, demand-driven — hours per row). v1 closes at E2; E3 is deferred to actual Planner need.
+- **Six honest limitations named** as remaining blockers from `planner_ready`: live travel facts, per-fact source verification, real-user evaluation of enrichment quality (Lab 05 F-PRIN-1 applies here too), multi-origin coverage, accessibility-specific enrichment (F-W3C-1 v2.x), multi-language enrichment (v2.x).
+- **Audit-shape rules for data-layer PRs** added (§15) — distribution-diff reports on every formula bump; before/after comparisons; no silent overrides; heuristic-vs-lineage disagreement treated as a signal not a problem. Mirrors the v1.2.1/v1.2.2 mobile-viewport + contrast-verdict rules extension.
+
+Queue updates
+
+- Priority 3: `todo` → `doing` (structurally verified; browser-verify still pending; F-ARC-1 split off as new priority 16)
+- Priority 5: `todo` → **done**
+- Priority 6 (scoring v1): updated reason — now blocked on E1 + at least one E2 batch
+- New priority 15: build E1 enrichment script + validator + manual-review queues + catchment lookup
+- New priority 16: F-ARC-1 (archive v1.0 page lacks version banner)
+- "Next Design Step" block at bottom: updated from "create the strategy" to "implement E1"
+
+Files changed
+
+- `datasets/reference/destination_master_enrichment_strategy.md` (new; ~540 lines)
+- `operations/NEXT_ACTIONS.md` (P3 status + P5 done + P6 reason + new P15/P16 + Next Design Step updated)
+- `operations/PROJECT_LOG.md` (this entry)
+
+Evidence produced
+
+- Strategy doc serves as the spec for the E1 script PR + the E2 review sessions; reviewable as a standalone design artifact against the v2 database strategy, the master schema, the tag dictionary, and the existing seed-only enrichment plan
+- Pages-verification static check (priority 3 partial closure) — canonical v1.2 live; archive label gap captured as F-ARC-1
+
+Honest limitations (named per HCD discipline)
+
+- Static-HTML fetch is structurally informative but cannot confirm JS-loaded dataset actually populates; live browser-verify still owed for priority 3
+- Heuristic formulas in §10 are first-pass and have not been evaluated against any real planner's judgement — the Sponsor Reviewer cycle (priority 9) should test them once a reviewer is recruited
+- Origin catchment tables (§4.4) are workspace-judgement, not verified flight/train data; the v1 enrichment script will materialise them in `origin_catchment_v1.yaml` so future verification work has a single editable source
+- Medical-access heuristic (§8) is named as the weakest in v1; any row with `infant_suitability_score < 50` MUST pass manual review batch M before its score is treated as decision-grade
+
+Next action
+
+End-of-PR closure: Lyra + Aurelius graded reviews on this PR. Merge. Then priority 15 (E1 enrichment script) is the natural next ship — implementing the strategy this doc specifies. Workspace remains in STOP per the ratified three-topic-push goal; DES-001 Topics 7–12 (priority 14) stays parked.
+
 ## 2026-05-18 — Browser v1.2.2 sort-indicator contrast fix (F-MOB-6; continuation of v1.2.1 cycle)
 
 Type: review-followup / governance / failure-log
