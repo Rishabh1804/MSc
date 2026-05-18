@@ -331,3 +331,49 @@ Five after-screenshots cover all six v1.1.x fixes. The audit doc now has empiric
 ### Walk-through regression check
 
 The existing 19-gate Playwright walk-through (`v1.1-walkthrough/walkthrough.js`) was re-run against the polished build: **19/19 pass, zero console errors**. The visual-treatment changes introduced zero behavioural regressions.
+
+---
+
+## Audit Addendum 2 (v1.2.1 mobile-fixes PR, 2026-05-18)
+
+Mobile-only findings surfaced by user-shipped screenshots after v1.2 deployed. Three new findings; one is an **audit blind-spot acknowledgement** (R6 drawer), two are **mobile-specific environment findings** that the introspective audit couldn't surface.
+
+### F-MOB-3 — Drawer Workflow section has the same F-GES-1 / F-GES-2 problem (audit blind-spot)
+
+**Region**: Drawer body's "Workflow" section — `<dl>` rendering of fields including Verification, Promotion, Planner use.
+
+**The miss**: Audit 1 graded R6 (drawer) Similarity as **Pass** by examining the drawer-trust banner at the top. The audit did not examine the *body* section's row-styled list, which renders the *same data field* (`verification_status`) as plain text alongside other workflow fields. The same similarity-collapse pattern that produced F-GES-1 (card meta-grid) and F-GES-2 (table column) is present at a fifth depth — the drawer Workflow row.
+
+**Why the audit missed it**: the per-region per-principle matrix asks "does this region honour the principle?" — but a region with *multiple sub-regions* (drawer = trust-banner + body-sections + Workflow-dl) needs the matrix at sub-region granularity. The R6 row treated the drawer as one perceptual unit; in practice the user's eye reads each section independently.
+
+**Fix shipped in v1.2.1**: the drawer's Workflow row now uses `verifPill(r)` instead of `escapeHtml(r.verification_status)`. Same pattern, same component, single-line change at `renderRecord()` (HTML line 1305).
+
+**Audit-shape upgrade**: future Audit 2 (post-Sponsor-Reviewer) should add a step that catches sub-region similarity-collapse. Provisional rule: *if a data field appears in more than one sub-region of the same region, the primary-signal must be applied consistently at every appearance, OR a named compensating signal must explain why one appearance is plain text*.
+
+### F-MOB-1 — Unicode `↕` glyph (U+2195) doesn't render in Android font stack
+
+**Region**: Sortable column headers in the table — Lab 06 Fix #4 introduced ` ↕` as a CSS `::after` content to signal interactivity in the unsorted state.
+
+**Finding**: On the user's Android device the `↕` character rendered as a colon-like substitute (likely U+003A or a font-fallback tofu approximation). The interactivity signal was lost on that environment. The `▲` and `▼` for ascending/descending sort still rendered correctly.
+
+**Root cause**: Unicode arrows in the 2190–21FF block have inconsistent mobile-font coverage. ▲ (U+25B2) and ▼ (U+25BC) are in the geometric-shapes block (25B0–25FF) which is much better-supported.
+
+**Fix shipped in v1.2.1**: replaced the `content: " ↕"` CSS with a `background-image` using an inline SVG data-URL (two stacked triangles). SVG is font-stack-independent — renders identically on every browser + device. The hover state gets a darker SVG.
+
+**Why introspection missed this**: Lab 06 audit + Lyra PR #20 review evaluated the polish at desktop resolution where the macOS/Linux font stack covers U+2195. The mobile gap was invisible without a real mobile device — exactly the kind of finding that justifies the Lab 05 Sponsor Reviewer recruitment path (the user himself caught this by testing on his phone; an HCD-substantial workspace would have caught it pre-merge with a mobile-walkthrough cycle).
+
+### F-MOB-4 — Caution-chip divider broke when chip-row wrapped
+
+**Region**: Card-chips row — Lab 06 Fix #6 introduced a `::before` divider before the first `.warn` chip.
+
+**Finding**: The original implementation used `position: absolute; left: -8px` which assumed the warn chip would be on the same flex row as the good chips. On mobile narrow viewports, the flex-wrap put the warn chip on its own line; the absolute-positioned divider rendered in empty space at the left margin of the wrapped row — invisible.
+
+**Fix shipped in v1.2.1**: replaced the absolute-positioned `::before` with an inline `border-left` + `padding-left` on the warn chip itself. This works whether the chip is inline with its neighbours (visible left-border as a separator) or wrapped to its own row (slightly indented = still a category signal via the border + colour). The divider now follows the chip regardless of layout state.
+
+### Audit-shape lessons (governance)
+
+Both F-MOB-1 and F-MOB-4 share a root cause: **the introspective audit + walkthrough only verified at one viewport + one font stack**. Lab 05 inclusion-lens F-W3C-1 (Inclusion Fail; mobile not tested as primary use case) already named the gap; v1.2.1 confirms it cost real findings.
+
+Provisional rule for future polish PRs: **every visual-treatment change with a CSS-content-character OR a position:absolute layout choice gets a mobile-viewport screenshot before merge**. The screenshot doesn't have to be a full walkthrough — just one mobile-viewport capture of the affected region. The polish PR's `capture-fixes.js` should grow a mobile variant.
+
+This addendum closes the F-MOB-3 audit blind-spot, F-MOB-1 mobile-font issue, and F-MOB-4 wrap-layout issue. F-MOB-2 (table doesn't fit narrow viewport; multi-select awkward on mobile) is structural and stays queued for v2.x per Lab 05 inclusion-lens.

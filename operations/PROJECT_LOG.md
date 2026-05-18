@@ -31,6 +31,47 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-18 — Browser v1.2.1 mobile-fixes micro-PR (3 mobile-only findings closed + 2 governance entries)
+
+Type: review-followup / governance / failure-log
+
+Summary:
+
+Real-device mobile screenshots from Rishabh after the v1.2 deploy surfaced three findings that the introspective audit + the Lyra/Aurelius reviews + the desktop walkthrough missed. This micro-PR closes all three at code level and adds two governance entries (FAILURE_LOG + Audit Addendum) so the workspace's audit-shape catches the same class of bug in future cycles.
+
+Findings closed
+
+- **F-MOB-1** — CSS `content: " ↕"` (U+2195) failed to render on Android (showed as colon-substitute). Replaced with inline-SVG `background-image` data-URL on `th[data-sort][aria-sort="none"]`. Font-stack-independent; renders identically everywhere.
+- **F-MOB-3** — Drawer Workflow section's Verification row was rendering as plain text (same similarity-collapse pattern as F-GES-1/F-GES-2 at a fifth depth Audit 1 didn't examine). Now uses `verifPill(r)` for consistency with cards + table.
+- **F-MOB-4** — Caution-chip divider (Lab 06 Fix #6) used `position: absolute; left: -8px` which broke when chips wrapped to a new row on mobile (divider rendered in empty space at the wrapped row's left margin). Replaced with inline `border-left` + `padding-left` on the warn chip itself — works whether inline or wrapped.
+
+Plus: eyebrow label bumped `v1.1` → `v1.2` (stale label, neither v1.1.x polish PR nor v1.2 PR updated it).
+
+Governance entries
+
+- **operations/FAILURE_LOG.md** — two new entries: (1) "Unicode glyphs in CSS `content` shipped without mobile font-fallback verification" with reusable warning to use SVG `background-image` instead of CSS content-characters; (2) "Audit-region with multiple sub-regions audited as one perceptual unit" — names the R6 drawer blind-spot pattern and provides the sub-region-granularity rule.
+- **design/foundations/topic-06-gestalt-audit.md** Audit Addendum 2 — explicit blind-spot acknowledgement for F-MOB-3; root-cause analysis for F-MOB-1 (introspective audit-at-one-viewport) + F-MOB-4 (assumed-layout CSS); provisional rule for future polish PRs (mobile-viewport screenshot before merge when CSS-content-character or position:absolute is in scope).
+
+Evidence
+
+- `curriculum/courses/des-001-design-foundations/verification/v1.2.1-mobile/` — Playwright mobile-viewport capture script + 3 screenshots (table headers / cards-caution / drawer-workflow) at 360x740 (Android narrow viewport). First mobile-viewport capture cycle in the workspace.
+- v1.1 walkthrough: **19/19 pass** on polished build (zero regression)
+- v1.2 walkthrough: **10/10 pass** on polished build (zero regression)
+- Zero console errors / pageerrors / requestfailed across both walkthroughs
+
+Files changed
+
+- `docs/destination-master-browser.html` — eyebrow label v1.1→v1.2; sortable-header SVG; drawer Workflow verifPill; caution-chip divider rework
+- `design/foundations/topic-06-gestalt-audit.md` — Audit Addendum 2 (mobile findings + audit-shape upgrade rules)
+- `operations/FAILURE_LOG.md` — 2 new failure entries
+- `operations/NEXT_ACTIONS.md` — F-MOB-2 (priority 12: structural table-on-mobile fix, v2.x scope) + F-MOB-5 (priority 13: mobile-viewport capture script extension); old priority 12 (DES-001 Topics 7-12) renumbered to 14
+- `operations/PROJECT_LOG.md` — this entry
+- `curriculum/.../v1.2.1-mobile/` (new) — capture-mobile-fixes.js + 3 mobile-viewport screenshots
+
+Next action
+
+End-of-PR closure: Lyra + Aurelius graded reviews on this PR. Merge. The workspace's mobile-discipline is now structurally addressed (FAILURE_LOG pattern + audit-shape rule + mobile-capture script template) — future visual-treatment PRs should run the mobile-viewport capture before merging.
+
 ## 2026-05-18 — Browser v1.2 batch-promote-confirm modal shipped (Lab 04 Loop 1 → real implementation; U-CONF-1..4 verified)
 
 Type: transfer / capability / implementation
