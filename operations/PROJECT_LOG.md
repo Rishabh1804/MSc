@@ -31,6 +31,40 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-18 — Sponsor Reviewer recruitment framework + U-CONF-1..4 acceptance criteria landed
+
+Type: governance / capability / review-followup
+
+Summary:
+
+Closes the recruitment-infrastructure side of NEXT_ACTIONS priority 9 (Sponsor Reviewer for v1.2) and the Lab 05 F-REQ-1 finding (Medium severity: U-CONF-1..4 in prose but not landed in the canonical acceptance-criteria sheet). Without a real reviewer to evaluate v1.1, Lab 05's Principle 2 Fail (Users involved throughout) and Lab 06's Fix #5b (search-vs-select grammar unification) stay open indefinitely. This PR builds the framework so the recruitment can happen quickly when authorised.
+
+Files changed
+
+- `design/foundations/sponsor-reviewer-brief.md` (new) — eight-section recruitment + onboarding brief covering: why the role exists, who the reviewer should be (required + preferred profile), the 3-hour session shape (orient 30min / Task A find-promotion-candidates 45min / Task B find-caution-records 45min / structured debrief 60min with 8 questions), feedback format (annotated screenshot bundle + debrief responses + confidence table), how feedback feeds into v1.2 closures (per-finding closure map), recruitment process (4 sources including self-as-Sponsor fallback), honest limitations (one reviewer ≠ full inclusion closure; self-as-Sponsor partial only; brief itself is single-person work).
+- `design/foundations/ux-acceptance-criteria.md` — U-CONF-1..4 landed as v1.2 UX gates closing Lab 05 F-REQ-1; traceability table updated; criterion count updated from "14 total" to "18 total (13 v1.1 gates + 1 v1.1.x deferred + 4 v1.2 from Lab 04)".
+- `operations/PROJECT_LOG.md` — this entry
+- `operations/NEXT_ACTIONS.md` — priority 9 status flipped from `todo` to `doing` with the framework landed
+
+Evidence produced
+
+- Sponsor Reviewer brief — operationally ready: Rishabh can forward the §6 recruitment ask and run a session against the §3 task spec
+- Four v1.2 acceptance criteria (U-CONF-1..4) formally landed in the canonical sheet with traceability + Lab 04 Loop 1 closure citation
+- Lab 05 F-REQ-1 closure path executed (was Medium severity; now closed)
+- Three honest limitations named per HCD discipline (one reviewer ≠ full inclusion; self-as-Sponsor fallback partial only; brief itself is single-person work)
+
+Closure mapping
+
+- Lab 05 F-PRIN-1 (High; Principle 2: Users involved throughout) → closes on first Sponsor Reviewer session
+- Lab 05 F-EVAL-1 (High; human-grade evaluation absent) → closes on first session
+- Lab 05 F-W3C-1 (High; Inclusion lens Fail) → 1 reviewer per sub-dimension; full closure is v2.x
+- Lab 06 Fix #5b (search-vs-select grammar unification) → adjudicated by debrief Q2 answer
+- Lab 05 F-REQ-1 (Medium; U-CONF criteria not landed) → **closed in this PR**
+
+Next action
+
+End-of-PR closure: Lyra + Aurelius graded reviews on this PR. Merge. Then Rishabh decides recruitment source. First reviewer session unblocks Audit 1.5 cycle (named here for the first time as the real-user evaluation grade running between Audit 1 introspective + Audit 2 post-v1.2-closure).
+
 ## 2026-05-17 — DES-001 three-topic push complete (Topics 4 + 5 + 6 closed; grade report v3 next)
 
 Type: learning / assignment / milestone / governance
