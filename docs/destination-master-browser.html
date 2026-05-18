@@ -242,14 +242,21 @@
     }
     table.records thead th[aria-sort="ascending"]::after { content: " ▲"; color: var(--accent); }
     table.records thead th[aria-sort="descending"]::after { content: " ▼"; color: var(--accent); }
-    /* Lab 06 F-GES-3: distinguish sortable headers from non-sortable by
-       showing a faint ↕ glyph in the unsorted state — interactivity signal
-       is now visible without hovering. */
-    table.records thead th[data-sort][aria-sort="none"]::after {
-      content: " ↕"; color: var(--line); font-weight: 400;
+    /* Lab 06 F-GES-3 + v1.2.1 F-MOB-1 fix: distinguish sortable headers from
+       non-sortable by showing a faint up/down chevron in the unsorted state.
+       v1.2.1: switched from Unicode ↕ (U+2195) to an inline SVG background
+       because U+2195 doesn't render in all mobile font stacks (rendered as a
+       colon-substitute on Android — see operations/FAILURE_LOG.md). */
+    table.records thead th[data-sort][aria-sort="none"] {
+      padding-right: 22px;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='12' viewBox='0 0 8 12'><path d='M4 2L1 5h6L4 2zM4 10L1 7h6L4 10z' fill='%23e2e8f0'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 6px center;
     }
     table.records thead th[data-sort]:hover { color: var(--ink); }
-    table.records thead th[data-sort]:hover[aria-sort="none"]::after { color: var(--muted); }
+    table.records thead th[data-sort]:hover[aria-sort="none"] {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='12' viewBox='0 0 8 12'><path d='M4 2L1 5h6L4 2zM4 10L1 7h6L4 10z' fill='%2364748b'/></svg>");
+    }
     table.records tbody tr {
       cursor: pointer; transition: background-color .12s ease-out;
     }
@@ -328,10 +335,17 @@
        the first warn chip makes the proximity-vs-similarity adjudication
        explicit (similarity wins for category; the divider lets proximity
        stop fighting it). */
-    .card-chips .chip.warn:first-of-type { margin-left: 8px; position: relative; }
-    .card-chips .chip.warn:first-of-type::before {
-      content: ""; position: absolute; left: -8px; top: 10%; bottom: 10%;
-      border-left: 1px solid var(--warn-line);
+    /* v1.2.1 F-MOB-4 fix: replaced the absolute-positioned ::before divider
+       (which broke when chips wrapped on mobile — divider rendered in empty
+       space to the left of the wrapped row) with an inline left-border on
+       the chip itself. This works whether the chip is on the same row as
+       its neighbours (visible separator) or wrapped to its own row (slightly
+       indented = still a category signal). */
+    .card-chips .chip.warn:first-of-type {
+      margin-left: 6px;
+      padding-left: 10px;
+      border-left-width: 2px;
+      border-left-color: var(--warn);
     }
 
     /* === Verification pill (Lab 06 F-GES-1 + F-GES-2) === */
@@ -588,7 +602,7 @@
 
   <header class="app-header">
     <div class="wrap">
-      <span class="eyebrow">CodeMike · Destination Master Browser · v1.1</span>
+      <span class="eyebrow">CodeMike · Destination Master Browser · v1.2</span>
       <h1>Destination Master Browser</h1>
       <p class="subtitle">QA review interface for the <code>destinations_master_v2</code> reference layer (359 rows). Browse, narrow, compare, inspect, recover — with trust state visible at every depth.</p>
     </div>
@@ -1295,7 +1309,7 @@
         <div class="drawer-section">
           <h3>Workflow</h3>
           <dl>
-            <div class="row"><dt>Verification</dt><dd>${escapeHtml(r.verification_status || '—')}</dd></div>
+            <div class="row"><dt>Verification</dt><dd>${r.verification_status ? verifPill(r) : '—'}</dd></div>
             <div class="row"><dt>Promotion</dt><dd>${escapeHtml(r.promotion_status || '—')}</dd></div>
             <div class="row"><dt>Planner use</dt><dd>${escapeHtml(r.planner_use_status || '—')}</dd></div>
           </dl>
