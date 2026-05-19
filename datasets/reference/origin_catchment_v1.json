@@ -1,0 +1,85 @@
+{
+  "schema_version": "v1.0",
+  "format_note": "JSON in v1 because the workspace data scripts are pure-stdlib; YAML possible in a later version once a dependency is justified. Structure equivalent: per-origin primary/secondary macro_region lists plus state-level overrides where the macro_region grain is too coarse.",
+  "origins": {
+    "CCU": {
+      "iata": "CCU",
+      "city": "Kolkata",
+      "rationale": "Primary east-India hub with broad domestic + near-international direct reach. North India + Central India are reachable in a single domestic leg (moderate), so they sit in secondary catchment.",
+      "primary_macro_regions": [
+        "East India",
+        "North East India"
+      ],
+      "secondary_macro_regions": [
+        "North India",
+        "Central India",
+        "Near India",
+        "Island India"
+      ],
+      "weak_macro_regions": [
+        "West India",
+        "South India",
+        "Southeast Asia",
+        "Middle East",
+        "Indian Ocean",
+        "Central Asia",
+        "Caucasus",
+        "West Asia"
+      ],
+      "state_overrides_strong": [],
+      "state_overrides_secondary": [
+        "Sikkim",
+        "Bhutan"
+      ],
+      "domestic_far_macro_regions": []
+    },
+    "IXR": {
+      "iata": "IXR",
+      "city": "Ranchi",
+      "rationale": "Smaller Jharkhand hub. East India + Central India reachable practically; broader domestic reachable via one connecting leg (secondary); international mostly multi-leg via CCU/DEL (weak).",
+      "primary_macro_regions": [
+        "East India",
+        "Central India"
+      ],
+      "secondary_macro_regions": [
+        "North India",
+        "North East India",
+        "Near India"
+      ],
+      "weak_macro_regions": [
+        "West India",
+        "South India",
+        "Island India",
+        "Southeast Asia",
+        "Middle East",
+        "Indian Ocean",
+        "Central Asia",
+        "Caucasus",
+        "West Asia"
+      ],
+      "state_overrides_strong": [
+        "Jharkhand",
+        "West Bengal",
+        "Odisha"
+      ],
+      "state_overrides_secondary": [],
+      "domestic_far_macro_regions": []
+    }
+  },
+  "ilp_states": [
+    "Arunachal Pradesh",
+    "Mizoram",
+    "Nagaland",
+    "Manipur",
+    "Sikkim",
+    "Lakshadweep",
+    "Ladakh"
+  ],
+  "near_india_countries": [
+    "Nepal",
+    "Bhutan",
+    "Sri Lanka",
+    "Bangladesh",
+    "Myanmar"
+  ]
+}

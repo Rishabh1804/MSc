@@ -31,6 +31,216 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-18 — Policy transition: no-assumption + live-data rule adopted (§19 of strategy doc)
+
+Type: governance / decision / policy
+
+Summary:
+
+Rishabh ratified a workspace-wide rule change while reviewing §18 of the enrichment strategy doc. The rule:
+
+> No workspace-judgement values in enrichment. Every field is either source-backed or `unknown`. When source data is unavailable for a row, the field is `unknown` and the row is flagged `manual_research_needed`. Live = refresh on query (per §19.4). v1 stays free-tier-only.
+
+Grounded in the Big Data Analytics + HPC course module backbone — this is the principles-of-big-data discipline applied to the destination-enrichment workstream (store, refine, categorise, analyse).
+
+Scope decision
+
+- **Forward-only**, per Rishabh's "Option A" choice. v1.0 enrichment artifacts (the heuristic CSV, queues, reports, strategy doc §§0–17) are **retained as the heuristic baseline** — not deleted, not rolled back, not relabelled inside files. They have ongoing value as a diff target ("what does workspace-judgement get wrong vs source-backed data?") and as a manual-research-priority signal (rows the heuristic was least confident about are likely candidates for source-research in v2).
+- Strategy doc §19 added as the policy-transition record (~140 lines); §18 v1.1 recommendations marked superseded (§18.8); §17 References renumbered to §20.
+- v1.0 enrichment script preserved unchanged; will be renamed `destination_master_enrichment_v0_heuristic.py` in the next PR per §19.2.
+
+Free-tier source ladder (§19.3)
+
+- Tier 1 preferred: government / official / authoritative APIs (MoHFW, IMD, MEA, Indian Railways, state tourism portals, UNESCO, RBI)
+- Tier 2 accepted: reputable open datasets (OpenFlights, OpenStreetMap, OurAirports, World Bank, GADM, Natural Earth)
+- Tier 3 accepted: reputable scraped sources with provenance
+- Tier 4 accepted: workspace-curated synthesis of Tier 1–3 with citations per derived value
+- Rejected: workspace judgement, opinionated heuristics, regional stereotypes — the entire shape of v1.0 enrichment
+
+Paid sources out of scope for v1 (free-tier-only). Aviation APIs (Aviationstack, FlightAware, OAG), paid climate APIs, paid permit data — out. Rate-limits of chosen sources become a binding architectural constraint.
+
+Unknown discipline (§19.5)
+
+- Ship rows with `unknown` where source data is missing. Don't skip rows; don't fabricate values. Each unknown field carries a basis prose explaining what source was checked and what was missing. Row-level `manual_research_needed` flag aggregates any-field-unknown.
+- Downstream consumers (Planner UI) must distinguish `known` (source-cited) vs `unknown_pending_research` vs not-applicable.
+
+Open architecture question — surfaced for resolution before v2 strategy doc lands
+
+- **Option (b) — two-tier**: stable-derived (route distance, hospital POIs, baseline climatology) refreshed on batch cadence; live-volatile (current flight, weather, permits) fetched per Planner query.
+- **Option (c) — all-live**: no persistent enriched layer; every Planner query re-fetches and re-derives every field.
+- Free-tier rate limits make (c) extremely hard to sustain. Decision pending; blocks P20 (v2 strategy doc).
+
+Queue restructure (§19.8)
+
+- P15 (E1 v1.0): stays **done**; retained as heuristic baseline; no rollback
+- P17 (E2 manual-review sessions): **on hold** pending v2; queues retained as research-priority signals
+- P18 (E1 v1.1 calibration spec changes): **superseded**; v1.1 recommendations moot under no-assumption
+- New P19: source registry + free-tier ETL layer (OpenFlights, OSM Overpass, IMD/ECMWF, MEA scrapes)
+- New P20: v2 no-assumption enrichment strategy doc (new file, supersedes §§0–17 of v1 strategy)
+- New P21: v2 source-backed enrichment service (preserves v1.0 as v0 heuristic baseline)
+
+Honest limitations of the policy itself (§19.9)
+
+- Free-tier coverage gaps: live visa rules, current park closures, current permits genuinely lack free-tier sources for India → those fields will be `unknown_pending_research` for most rows in v2. That's the rule working as designed.
+- Rate-limit ceilings: free-tier APIs cap at 50–1000 requests/day. If Planner gains real usage, paid-tier upgrade is a budget question.
+- Source-availability bias: well-studied destinations (metros, UNESCO sites) will have rich source data; remote destinations will have heavy unknown density. Bias is real; consumers must see it.
+- No-assumption ≠ no-judgement: choosing which sources to trust, how to combine them, what thresholds count as "medical access" are still judgement calls. The rule reduces hidden judgement (heuristics) to visible judgement (source-tier + threshold definitions).
+
+Files changed
+
+- `datasets/reference/destination_master_enrichment_strategy.md` (added §19 ~140 lines + §18.8 supersession note + §17 → §20 renumber)
+- `operations/NEXT_ACTIONS.md` (P17 on hold; P18 superseded; new P19/P20/P21; Next Design Step updated)
+- `operations/PROJECT_LOG.md` (this entry)
+
+Evidence produced
+
+- §19 of the strategy doc is the durable policy record; all future enrichment work references it. The CodeMike Improve-loop step is explicit: v1.0 cycle ran, surfaced calibration findings (§18), prompted policy revision (§19), workspace pivots forward. This is the postgraduate research-methodology pattern at workspace scale.
+
+Resolved decision — §19.6 architecture (Option b ratified 2026-05-18)
+
+- Rishabh chose **Option (b) two-tier** over (c) all-live and (d) cached-with-TTL after the trade-off analysis at decision time.
+- Two layers: stable-derived (route distance, hospital POIs, baseline climatology, altitude profile) refreshed on batch cadence; live-volatile (current flight, current weather, current permits, current park closure) fetched per Planner query, never cached.
+- Rate-limit math: ~4 live API calls / query × 250 queries/day = 1000 free-tier ceiling. Sustainable for single-user workspace + early Planner usage. Paid-tier upgrade is a future budget question.
+- Honours "live = refresh on query" for the fields that genuinely change daily; caches only where caching aligns with the field's actual update rate in the world.
+- Decision recorded in strategy doc §19.6 (with the rejected alternatives preserved for audit).
+
+P20 (v2 strategy doc) is now **unblocked**. P19 (source registry + free-tier ETL) scope updated to reflect the two-tier split (stable + live as separate concerns).
+
+Next action
+
+End-of-PR closure: Lyra + Aurelius + Cipher graded reviews on PR #26 (now four commits across the cycle: strategy v1 + Pages verification + E1 v1.0 heuristic baseline + policy transition + §19.6 resolution). Merge. Then P20 (v2 strategy doc) is the next ship. Workspace remains in STOP per the ratified three-topic-push goal; DES-001 Topics 7–12 (priority 14) stays parked.
+
+## 2026-05-18 — E1 enrichment pass shipped (P15 → done) + strategy doc §18 amendments
+
+Type: implementation / capability / experiment / governance
+
+Summary:
+
+Closes NEXT_ACTIONS priority 15: the E1 enrichment script + validator + JSON catchment lookup land alongside their generated outputs (enriched CSV, three manual-review queue CSVs, two evidence reports). Strategy doc gets a §18 v1 implementation amendments section captured from running the spec against real data (not edits made silently to the spec — explicit calibration findings).
+
+Code
+
+- `src/codemike/data/destination_master_enrichment_v1.py` (~640 lines, stdlib-only per existing data-script discipline) — deterministic 10-step pipeline implementing strategy doc §10.1 (with two Step 1 sub-steps added per §18.1 to derive `access_complexity` and caution tags from populated fields, since master had caution_tags effectively blank — 3 tags total in 359 rows). Per-row pipeline: derive access → derive cautions → origin_fit (CCU + IXR) → travel_fatigue (band + drivers) → medical_access (with pediatric subset) → planning_complexity → season + weather cautions → suitability (infant 0-100 score + 4 bands) → defaults → manual-review queue assignment.
+- `src/codemike/data/destination_master_enrichment_validation.py` (~280 lines) — structural validator: required columns; controlled-value violations per column; band-vs-score consistency for infant suitability; pediatric ≤ medical confidence ordering; heuristic-default-state checks (heuristic_v1 rows must default to enriched_unverified / needs_verification / source_confidence=low); permit-hint-when-driver-fires consistency; derived-field non-empty check; row-count + join-with-master.
+
+Data + lookup
+
+- `datasets/reference/origin_catchment_v1.json` — CCU + IXR catchment tables. Format changed from the YAML target in the strategy doc to JSON because the workspace's data scripts are pure-stdlib (no YAML dependency). Structure equivalent: per-origin primary / secondary / weak macro_region lists + state-level overrides. The catchment tuning is named explicitly in strategy doc §18.2: first-pass JSON placed only East India + North East India in CCU primary and Queue O exploded to 95 rows of "unknown" origin fit. Aligned with the existing seed-only `destination_enrichment.py` precedent (North India + Central India as CCU secondary). After tuning: **Queue O = 0** ✓.
+
+Outputs (committed as evidence)
+
+- `datasets/reference/destinations_master_v2_enriched.csv` — 359 enriched rows, 39 columns per strategy doc §3 catalogue. Every row at `verification_status=enriched_unverified`, `planner_use_status=needs_verification`, `source_confidence=low`. No row crosses to `planner_ready` in v1 (per spec §11.3).
+- `reports/evidence/destination-master-v2-enrichment-report.md` — pipeline status table; distributions for origin_fit (CCU + IXR), fatigue, planning, medical, pediatric, all four suitability bands, infant-score (min/max/mean); queue sizes; honest limitations.
+- `reports/evidence/destination-master-v2-enrichment-validation-report.md` — readiness=`enriched_structurally_valid_not_planner_ready`; 0 missing columns; 0 duplicate IDs; 0 controlled-value violations; 0 band/score mismatches; 0 pediatric>medical; 0 permit-hint gaps; 0 derived-field blanks. Distributions repeated for sanity comparison against the enrichment report.
+- `reports/evidence/destination-master-v2-enrichment-manual-review-queues/{O,S,M}.csv` — three CSVs ready for E2 sessions; each row has destination_master_id + canonical_name + country + state + reason.
+
+Calibration findings — strategy doc §18 amendments
+
+Spec ran end-to-end against real data; four real findings worth surfacing rather than silently tweaking:
+
+1. **§18.1 — input-data sparseness**: caution_tags (3 total) + context_tags (17 total) + access_complexity (134 of 359 rows) were strategy-doc inputs that were sparse in the master. Script adds Step 1a / Step 1b to derive these from populated fields (location_type / state_or_area / macro_region / destination_scale / vibes). Output column `derived_caution_tags` is written alongside spec fields so downstream consumers can audit the inferred cautions.
+2. **§18.2 — catchment tuning**: Queue O went 95 → 0 after the JSON catchment widened to include North India + Central India in CCU secondary catchment. Lookup-table change, not a spec change.
+3. **§18.3 — Queue S = 155**: dominant trigger is "all four suitability bands identical" (99 of 155). Because suitability-context-tags are nearly empty, the §5.3 band-bumping rules rarely fire, so bands flatten to `medium` for most rows — exactly the flattening signal §5.4 catches. **v1.1 recommendation** (not applied in this PR): drop the flattening trigger; add derived friendliness signals.
+4. **§18.4 — Queue M = 257**: 145 infant_score<50 hits + 45 international (medical=unknown by design) + 67 domestic-region/resort/island (medical=unknown because §8.2 has no `region` / `resort_zone` branch). **v1.1 recommendations**: (a) add region/resort_zone branch returning medium; (b) split M into M-critical (urgent, slow cap) + M-standard (bulk, fast cap).
+
+Plus §18.5 (fatigue band thresholds skew very_high vs high — recalibration target) and §18.7 (reproducibility: deterministic outputs modulo pass_date).
+
+Queue updates
+
+- Priority 15 (E1 script): `todo` → **done**
+- Priority 16 (F-ARC-1): unchanged (still todo)
+- New priority 17: E2 manual-review sessions O / S / M (Rishabh / Reviewer; on hold pending priority 18 decision)
+- New priority 18: E1 v1.1 calibration spec changes (recommended to land before E2 starts — would reshape E2 workload from ~20 sittings to ~5–7)
+- "Next Design Step" block bottom-of-file: updated from "implement E1" to "decide on priority 18 before priority 17"
+
+Files changed
+
+- `datasets/reference/origin_catchment_v1.json` (new)
+- `src/codemike/data/destination_master_enrichment_v1.py` (new)
+- `src/codemike/data/destination_master_enrichment_validation.py` (new)
+- `datasets/reference/destination_master_enrichment_strategy.md` (added §18 amendments section)
+- `datasets/reference/destinations_master_v2_enriched.csv` (new — script output)
+- `reports/evidence/destination-master-v2-enrichment-report.md` (new — script output)
+- `reports/evidence/destination-master-v2-enrichment-validation-report.md` (new — validator output)
+- `reports/evidence/destination-master-v2-enrichment-manual-review-queues/{O,S,M}.csv` (new — script outputs)
+- `operations/NEXT_ACTIONS.md` (P15 done; new P17/P18; Next Design Step updated)
+- `operations/PROJECT_LOG.md` (this entry)
+
+Evidence produced
+
+- 359 enriched rows pass structural validation (`enriched_structurally_valid_not_planner_ready`)
+- Pipeline is deterministic: re-running produces byte-identical CSV (modulo `enrichment_pass_date`) per strategy doc §10.2 reproducibility requirement
+- Four calibration findings documented in strategy doc §18 from running the spec against real data — this is the "experiment → evidence → improvement cycle" the CodeMike operating loop is supposed to produce
+
+Honest limitations (named per HCD discipline)
+
+- The v1.0 spec produces queues 6× and 13× over the per-session caps for S and M; the spec stands but the caps cannot be honoured without either splitting the batches or refining the triggers (priority 18)
+- The medical-access heuristic was already named §8.3 as the weakest formula in v1; running it confirmed the spec gap for `region`-scale destinations (67 domestic rows fell to `unknown` when `medium` is the more honest default)
+- Origin catchment tables are workspace judgement, not verified flight/train data
+- Real-user evaluation of enrichment quality is owed: Lab 05 F-PRIN-1 (Principle 2: Users involved throughout) applies; the Sponsor Reviewer cycle (priority 9) should test enriched-layer outputs against a real planner's judgement before this is treated as decision-grade
+- No row crosses to `planner_ready` in this pass; promotion is the separate E3 step (out of v1 scope)
+
+Next action
+
+End-of-PR closure: Lyra + Aurelius + Cipher graded reviews on this PR. Merge. Then **decide on priority 18 before starting priority 17** — the calibration changes would materially reshape the E2 workload. Workspace remains in STOP per the ratified three-topic-push goal; DES-001 Topics 7–12 (priority 14) stays parked.
+
+## 2026-05-18 — Master enrichment strategy v1 + Pages-render verification (P3/P5 from resume-handoff)
+
+Type: governance / capability / design
+
+Summary:
+
+Workspace resume cycle after the v1.2.2 close + STOP state. Tackled two queue items: priority 3 (verify GitHub Pages render at canonical URLs) and priority 5 (design master enrichment strategy before scoring). The strategy doc is the substantive deliverable; the Pages verification surfaced one small follow-up (F-ARC-1).
+
+Pages verification (priority 3 — moved `todo` → `doing`)
+
+- Canonical `destination-master-browser.html` confirmed live at v1.2 via static HTML fetch — eyebrow reads v1.2 ✓, trust banner + header + stats banner present in markup.
+- Archive `destination-master-browser-v1.0.html` serves 200 ✓ but title reads "Destinations Master v2 Browser" with no visible v1.0 / archive label — surfaces **F-ARC-1** (new priority 16): users hitting the archive URL cannot tell they are not on the canonical.
+- Limitation named honestly: static-HTML fetch cannot execute JS, so it cannot confirm the client-side dataset fetch actually populates records. Live browser-verify still needed; static check is structural only. WebFetch saw "Loading…" and "Couldn't load the master dataset" strings in markup which are likely hidden state-toggle DOM, but a browser run confirms.
+
+Strategy doc (priority 5 — moved `todo` → `done`)
+
+- Created `datasets/reference/destination_master_enrichment_strategy.md` (~540 lines).
+- **Architecture decision**: separate enriched layer (`destinations_master_v2_enriched.csv`); master CSV stays the immutable structural-reference layer; the existing `family_suitability` / `access_complexity` / `best_season_hint` columns in master are explicitly reclassified as **frozen seed-lineage** (informational, not authoritative). Read order: enriched-authoritative → master-lineage-fallback → unknown. Matches `destination_database_v2_strategy.md` layered model.
+- **Scope chosen** (per user direction): full plan — dimensions + heuristic derivation formulas + per-row assignment workflow. CCU (Kolkata) + IXR (Ranchi) named as v1 concrete origins; extensible to BLR/DEL/BOM/MAA without schema redesign.
+- **Enrichment field catalogue**: origin-fit per-origin (value + basis + confidence); suitability decomposed into infant (numeric 0–100 score + band) / family / senior / couple bands; travel-fatigue decomposed by drivers; planning-complexity decomposed by drivers; medical-access confidence with pediatric subset; season/weather decomposed (monsoon / heat / winter-road / altitude cautions). Each enriched row carries `enrichment_method`, `enrichment_version`, `enrichment_pass_date`, `source_confidence`.
+- **Heuristic formulas with asymmetric-cost biasing** (Topic 4 §3 carry-over): every formula biases conservative; floor rules prevent infant_suitability_score from passing manual review when key cautions stack. Default after heuristic pass is `enriched_unverified` with `source_confidence = low` and `planner_use_status = needs_verification`.
+- **Three-batch manual-review discipline**: O (origin) ≤30 rows/session, S (suitability) ≤25, M (medical) ≤20. Anchor-pattern reviewer notes mandatory (WAS / NOW / REASON / SOURCE — never blank) — borrowed from Lyra's grade-only anchor pattern (PRs #20–24). No row reaches `planner_ready` without explicit promotion step (out of v1 scope).
+- **Three-phase rollout**: E1 (script — minutes wall-clock) → E2 (3 manual review sessions, week-cadence — hours per cycle) → E3 (per-row source-verified promotion, demand-driven — hours per row). v1 closes at E2; E3 is deferred to actual Planner need.
+- **Six honest limitations named** as remaining blockers from `planner_ready`: live travel facts, per-fact source verification, real-user evaluation of enrichment quality (Lab 05 F-PRIN-1 applies here too), multi-origin coverage, accessibility-specific enrichment (F-W3C-1 v2.x), multi-language enrichment (v2.x).
+- **Audit-shape rules for data-layer PRs** added (§15) — distribution-diff reports on every formula bump; before/after comparisons; no silent overrides; heuristic-vs-lineage disagreement treated as a signal not a problem. Mirrors the v1.2.1/v1.2.2 mobile-viewport + contrast-verdict rules extension.
+
+Queue updates
+
+- Priority 3: `todo` → `doing` (structurally verified; browser-verify still pending; F-ARC-1 split off as new priority 16)
+- Priority 5: `todo` → **done**
+- Priority 6 (scoring v1): updated reason — now blocked on E1 + at least one E2 batch
+- New priority 15: build E1 enrichment script + validator + manual-review queues + catchment lookup
+- New priority 16: F-ARC-1 (archive v1.0 page lacks version banner)
+- "Next Design Step" block at bottom: updated from "create the strategy" to "implement E1"
+
+Files changed
+
+- `datasets/reference/destination_master_enrichment_strategy.md` (new; ~540 lines)
+- `operations/NEXT_ACTIONS.md` (P3 status + P5 done + P6 reason + new P15/P16 + Next Design Step updated)
+- `operations/PROJECT_LOG.md` (this entry)
+
+Evidence produced
+
+- Strategy doc serves as the spec for the E1 script PR + the E2 review sessions; reviewable as a standalone design artifact against the v2 database strategy, the master schema, the tag dictionary, and the existing seed-only enrichment plan
+- Pages-verification static check (priority 3 partial closure) — canonical v1.2 live; archive label gap captured as F-ARC-1
+
+Honest limitations (named per HCD discipline)
+
+- Static-HTML fetch is structurally informative but cannot confirm JS-loaded dataset actually populates; live browser-verify still owed for priority 3
+- Heuristic formulas in §10 are first-pass and have not been evaluated against any real planner's judgement — the Sponsor Reviewer cycle (priority 9) should test them once a reviewer is recruited
+- Origin catchment tables (§4.4) are workspace-judgement, not verified flight/train data; the v1 enrichment script will materialise them in `origin_catchment_v1.yaml` so future verification work has a single editable source
+- Medical-access heuristic (§8) is named as the weakest in v1; any row with `infant_suitability_score < 50` MUST pass manual review batch M before its score is treated as decision-grade
+
+Next action
+
+End-of-PR closure: Lyra + Aurelius graded reviews on this PR. Merge. Then priority 15 (E1 enrichment script) is the natural next ship — implementing the strategy this doc specifies. Workspace remains in STOP per the ratified three-topic-push goal; DES-001 Topics 7–12 (priority 14) stays parked.
+
 ## 2026-05-18 — Browser v1.2.2 sort-indicator contrast fix (F-MOB-6; continuation of v1.2.1 cycle)
 
 Type: review-followup / governance / failure-log

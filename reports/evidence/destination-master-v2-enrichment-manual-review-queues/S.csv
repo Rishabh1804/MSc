@@ -1,0 +1,156 @@
+destination_master_id,canonical_name,country,state_or_area,reason
+DST2-000002,Agra,India,Uttar Pradesh,all four suitability bands identical (heuristic flattening risk)
+DST2-000004,Udaipur,India,Rajasthan,all four suitability bands identical (heuristic flattening risk)
+DST2-000005,Jodhpur,India,Rajasthan,all four suitability bands identical (heuristic flattening risk)
+DST2-000006,Jaisalmer,India,Rajasthan,infant_score=45 at low_medium/medium boundary
+DST2-000009,Amritsar,India,Punjab,all four suitability bands identical (heuristic flattening risk)
+DST2-000011,Shimla,India,Himachal Pradesh,infant_score=45 at low_medium/medium boundary
+DST2-000012,Manali,India,Himachal Pradesh,infant_score=45 at low_medium/medium boundary
+DST2-000013,Dharamshala,India,Himachal Pradesh,infant_score=45 at low_medium/medium boundary
+DST2-000014,Dalhousie,India,Himachal Pradesh,infant_score=45 at low_medium/medium boundary
+DST2-000020,Mussoorie,India,Uttarakhand,infant_score=45 at low_medium/medium boundary
+DST2-000021,Nainital,India,Uttarakhand,infant_score=45 at low_medium/medium boundary
+DST2-000024,Lucknow,India,Uttar Pradesh,all four suitability bands identical (heuristic flattening risk)
+DST2-000025,Bhopal,India,Madhya Pradesh,all four suitability bands identical (heuristic flattening risk)
+DST2-000027,Khajuraho,India,Madhya Pradesh,infant_score=45 at low_medium/medium boundary
+DST2-000029,Pachmarhi,India,Madhya Pradesh,infant_score=45 at low_medium/medium boundary
+DST2-000034,Lonavala,India,Maharashtra,all four suitability bands identical (heuristic flattening risk)
+DST2-000035,Mahabaleshwar,India,Maharashtra,infant_score=45 at low_medium/medium boundary
+DST2-000037,Aurangabad,India,Maharashtra,infant_score=45 at low_medium/medium boundary
+DST2-000038,Goa,India,Goa,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000040,Ahmedabad,India,Gujarat,all four suitability bands identical (heuristic flattening risk)
+DST2-000041,Kutch,India,Gujarat,infant_score=45 at low_medium/medium boundary
+DST2-000046,Coorg,India,Karnataka,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000047,Chikmagalur,India,Karnataka,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000049,Gokarna,India,Karnataka,infant_score=45 at low_medium/medium boundary
+DST2-000052,Pondicherry,India,Puducherry,all four suitability bands identical (heuristic flattening risk)
+DST2-000053,Mahabalipuram,India,Tamil Nadu,all four suitability bands identical (heuristic flattening risk)
+DST2-000055,Kodaikanal,India,Tamil Nadu,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000056,Ooty,India,Tamil Nadu,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000059,Munnar,India,Kerala,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000060,Alleppey,India,Kerala,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000061,Kumarakom,India,Kerala,infant_score=50 at low_medium/medium boundary
+DST2-000063,Varkala,India,Kerala,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000066,Araku Valley,India,Andhra Pradesh,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000069,Konark,India,Odisha,infant_score=45 at low_medium/medium boundary
+DST2-000071,Darjeeling,India,West Bengal,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000072,Kalimpong,India,West Bengal,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000075,Pelling,India,Sikkim,infant_score=45 at low_medium/medium boundary
+DST2-000078,Shillong,India,Meghalaya,all four suitability bands identical (heuristic flattening risk)
+DST2-000079,Cherrapunji,India,Meghalaya,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000083,Imphal,India,Manipur,infant_score=45 at low_medium/medium boundary
+DST2-000085,Agartala,India,Tripura,all four suitability bands identical (heuristic flattening risk)
+DST2-000090,Kathmandu,Nepal,Nepal,all four suitability bands identical (heuristic flattening risk)
+DST2-000091,Pokhara,Nepal,Nepal,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000092,Chitwan,Nepal,Nepal,infant_score=45 at low_medium/medium boundary
+DST2-000093,Thimphu,Bhutan,Bhutan,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000094,Paro,Bhutan,Bhutan,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000095,Colombo,Sri Lanka,Sri Lanka,all four suitability bands identical (heuristic flattening risk)
+DST2-000096,Kandy,Sri Lanka,Sri Lanka,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000097,Galle,Sri Lanka,Sri Lanka,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000099,Maldives Resort Islands,Maldives,Maldives,infant_score=45 at low_medium/medium boundary
+DST2-000100,Maafushi,Maldives,Maldives,infant_score=45 at low_medium/medium boundary
+DST2-000101,Mauritius,Mauritius,Mauritius,infant_score=45 at low_medium/medium boundary
+DST2-000103,Dubai,United Arab Emirates,UAE,all four suitability bands identical (heuristic flattening risk)
+DST2-000104,Abu Dhabi,United Arab Emirates,UAE,all four suitability bands identical (heuristic flattening risk)
+DST2-000105,Ras Al Khaimah,United Arab Emirates,UAE,infant_score=45 at low_medium/medium boundary
+DST2-000106,Doha,Qatar,Qatar,all four suitability bands identical (heuristic flattening risk)
+DST2-000107,Muscat,Oman,Oman,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000108,Salalah,Oman,Oman,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000109,Bangkok,Thailand,Thailand,all four suitability bands identical (heuristic flattening risk)
+DST2-000110,Phuket,Thailand,Thailand,all four suitability bands identical (heuristic flattening risk)
+DST2-000111,Krabi,Thailand,Thailand,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000112,Koh Samui,Thailand,Thailand,infant_score=45 at low_medium/medium boundary
+DST2-000113,Chiang Mai,Thailand,Thailand,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000114,Singapore,Singapore,Singapore,all four suitability bands identical (heuristic flattening risk)
+DST2-000115,Sentosa,Singapore,Singapore,all four suitability bands identical (heuristic flattening risk)
+DST2-000116,Kuala Lumpur,Malaysia,Malaysia,all four suitability bands identical (heuristic flattening risk)
+DST2-000117,Langkawi,Malaysia,Malaysia,infant_score=45 at low_medium/medium boundary
+DST2-000118,Penang,Malaysia,Malaysia,infant_score=45 at low_medium/medium boundary
+DST2-000119,Bali,Indonesia,Indonesia,infant_score=45 at low_medium/medium boundary
+DST2-000120,Ubud,Indonesia,Indonesia,infant_score=55 at low_medium/medium boundary
+DST2-000121,Hanoi,Vietnam,Vietnam,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000122,Ho Chi Minh City,Vietnam,Vietnam,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000123,Da Nang,Vietnam,Vietnam,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000124,Hoi An,Vietnam,Vietnam,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000125,Nha Trang,Vietnam,Vietnam,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000126,Siem Reap,Cambodia,Cambodia,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000127,Phnom Penh,Cambodia,Cambodia,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000129,Baku,Azerbaijan,Azerbaijan,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000130,Tbilisi,Georgia,Georgia,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000131,Yerevan,Armenia,Armenia,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000132,Almaty,Kazakhstan,Kazakhstan,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000133,Tashkent,Uzbekistan,Uzbekistan,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000134,Samarkand,Uzbekistan,Uzbekistan,infant_score=55 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000136,Bikaner,India,Rajasthan,all four suitability bands identical (heuristic flattening risk)
+DST2-000142,Alwar,India,Rajasthan,all four suitability bands identical (heuristic flattening risk)
+DST2-000149,Sawai Madhopur,India,Rajasthan,all four suitability bands identical (heuristic flattening risk)
+DST2-000159,Noida,India,Uttar Pradesh,all four suitability bands identical (heuristic flattening risk)
+DST2-000160,Kanpur,India,Uttar Pradesh,all four suitability bands identical (heuristic flattening risk)
+DST2-000161,Moradabad,India,Uttar Pradesh,all four suitability bands identical (heuristic flattening risk)
+DST2-000162,Aligarh,India,Uttar Pradesh,all four suitability bands identical (heuristic flattening risk)
+DST2-000163,Bareilly,India,Uttar Pradesh,all four suitability bands identical (heuristic flattening risk)
+DST2-000164,Meerut,India,Uttar Pradesh,all four suitability bands identical (heuristic flattening risk)
+DST2-000165,Dehradun,India,Uttarakhand,all four suitability bands identical (heuristic flattening risk)
+DST2-000200,Patiala,India,Punjab,all four suitability bands identical (heuristic flattening risk)
+DST2-000201,Ludhiana,India,Punjab,all four suitability bands identical (heuristic flattening risk)
+DST2-000206,Gurugram,India,Haryana,all four suitability bands identical (heuristic flattening risk)
+DST2-000207,Panchkula,India,Haryana,all four suitability bands identical (heuristic flattening risk)
+DST2-000208,Indore,India,Madhya Pradesh,all four suitability bands identical (heuristic flattening risk)
+DST2-000215,Jabalpur,India,Madhya Pradesh,all four suitability bands identical (heuristic flattening risk)
+DST2-000217,Gwalior,India,Madhya Pradesh,all four suitability bands identical (heuristic flattening risk)
+DST2-000219,Raipur,India,Chhattisgarh,all four suitability bands identical (heuristic flattening risk)
+DST2-000220,Jagdalpur,India,Chhattisgarh,all four suitability bands identical (heuristic flattening risk)
+DST2-000223,Bilaspur,India,Chhattisgarh,all four suitability bands identical (heuristic flattening risk)
+DST2-000233,Kolhapur,India,Maharashtra,all four suitability bands identical (heuristic flattening risk)
+DST2-000241,Vadodara,India,Gujarat,all four suitability bands identical (heuristic flattening risk)
+DST2-000243,Surat,India,Gujarat,all four suitability bands identical (heuristic flattening risk)
+DST2-000244,Junagadh,India,Gujarat,all four suitability bands identical (heuristic flattening risk)
+DST2-000245,Panaji,India,Goa,all four suitability bands identical (heuristic flattening risk)
+DST2-000249,Hampi-Badami-Aihole-Pattadakal Circuit,India,Karnataka,infant_score=45 at low_medium/medium boundary
+DST2-000256,Sakleshpur,India,Karnataka,infant_score=45 at low_medium/medium boundary
+DST2-000257,Udupi,India,Karnataka,infant_score=45 at low_medium/medium boundary
+DST2-000259,Dandeli,India,Karnataka,infant_score=45 at low_medium/medium boundary
+DST2-000262,Nagarjuna Sagar,India,Telangana/Andhra Pradesh,infant_score=45 at low_medium/medium boundary
+DST2-000263,Papikondalu,India,Andhra Pradesh,infant_score=45 at low_medium/medium boundary
+DST2-000267,Gandikota,India,Andhra Pradesh,infant_score=45 at low_medium/medium boundary
+DST2-000268,Horsley Hills,India,Andhra Pradesh,infant_score=45 at low_medium/medium boundary
+DST2-000269,Yelagiri,India,Tamil Nadu,infant_score=45 at low_medium/medium boundary
+DST2-000270,Yercaud,India,Tamil Nadu,infant_score=45 at low_medium/medium boundary
+DST2-000271,Coonoor,India,Tamil Nadu,infant_score=45 at low_medium/medium boundary
+DST2-000272,Valparai,India,Tamil Nadu,infant_score=45 at low_medium/medium boundary
+DST2-000274,Chettinad,India,Tamil Nadu,infant_score=45 at low_medium/medium boundary
+DST2-000275,Kanyakumari,India,Tamil Nadu,infant_score=45 at low_medium/medium boundary
+DST2-000279,Wayanad,India,Kerala,infant_score=45 at low_medium/medium boundary
+DST2-000280,Bekal,India,Kerala,infant_score=45 at low_medium/medium boundary
+DST2-000285,Poovar,India,Kerala,infant_score=45 at low_medium/medium boundary
+DST2-000287,Marari,India,Kerala,infant_score=45 at low_medium/medium boundary
+DST2-000288,Fort Kochi,India,Kerala,infant_score=45 at low_medium/medium boundary
+DST2-000289,Shantiniketan,India,West Bengal,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000290,Digha,India,West Bengal,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000291,Mandarmani,India,West Bengal,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000292,Tajpur,India,West Bengal,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000293,Dooars,India,West Bengal,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000296,Mirik,India,West Bengal,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000297,Lava,India,West Bengal,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000298,Lolegaon,India,West Bengal,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000299,Bishnupur,India,West Bengal,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000300,Mukutmanipur,India,West Bengal,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000302,Chilika Lake,India,Odisha,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000303,Gopalpur,India,Odisha,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000305,Daringbadi,India,Odisha,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000310,Netarhat,India,Jharkhand,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000314,Patratu Valley,India,Jharkhand,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000316,Ghatshila,India,Jharkhand,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000317,Parasnath,India,Jharkhand,infant_score=45 at low_medium/medium boundary
+DST2-000318,McCluskieganj,India,Jharkhand,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000321,Rajgir,India,Bihar,infant_score=50 at low_medium/medium boundary; all four suitability bands identical (heuristic flattening risk)
+DST2-000327,Sivasagar,India,Assam,infant_score=45 at low_medium/medium boundary
+DST2-000330,Haflong,India,Assam,infant_score=45 at low_medium/medium boundary
+DST2-000332,Umiam Lake,India,Meghalaya,infant_score=45 at low_medium/medium boundary
+DST2-000333,Dawki,India,Meghalaya,infant_score=45 at low_medium/medium boundary
+DST2-000335,Mawsynram,India,Meghalaya,infant_score=45 at low_medium/medium boundary
+DST2-000336,Laitlum,India,Meghalaya,infant_score=45 at low_medium/medium boundary
+DST2-000337,Jowai,India,Meghalaya,infant_score=45 at low_medium/medium boundary
+DST2-000338,Mawphlang,India,Meghalaya,infant_score=45 at low_medium/medium boundary
+DST2-000347,Dzukou Valley,India,Nagaland/Manipur,infant_score=45 at low_medium/medium boundary

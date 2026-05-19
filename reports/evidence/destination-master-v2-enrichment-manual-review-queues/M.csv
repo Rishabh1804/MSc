@@ -1,0 +1,258 @@
+destination_master_id,canonical_name,country,state_or_area,reason
+DST2-000006,Jaisalmer,India,Rajasthan,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000007,Pushkar,India,Rajasthan,infant_score=35 requires medical-access verification before treating as decision-grade
+DST2-000008,Ranthambore,India,Rajasthan,infant_score=15 requires medical-access verification before treating as decision-grade
+DST2-000011,Shimla,India,Himachal Pradesh,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000012,Manali,India,Himachal Pradesh,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000013,Dharamshala,India,Himachal Pradesh,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000014,Dalhousie,India,Himachal Pradesh,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000015,Leh,India,Ladakh,infant_score=25 requires medical-access verification before treating as decision-grade
+DST2-000016,Srinagar,India,Jammu and Kashmir,infant_score=30 requires medical-access verification before treating as decision-grade
+DST2-000017,Gulmarg,India,Jammu and Kashmir,infant_score=30 requires medical-access verification before treating as decision-grade
+DST2-000018,Rishikesh,India,Uttarakhand,infant_score=35 requires medical-access verification before treating as decision-grade
+DST2-000020,Mussoorie,India,Uttarakhand,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000021,Nainital,India,Uttarakhand,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000022,Jim Corbett,India,Uttarakhand,infant_score=15 requires medical-access verification before treating as decision-grade
+DST2-000026,Sanchi,India,Madhya Pradesh,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000027,Khajuraho,India,Madhya Pradesh,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000028,Orchha,India,Madhya Pradesh,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000029,Pachmarhi,India,Madhya Pradesh,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000030,Kanha,India,Madhya Pradesh,infant_score=0 requires medical-access verification before treating as decision-grade
+DST2-000031,Bandhavgarh,India,Madhya Pradesh,infant_score=0 requires medical-access verification before treating as decision-grade
+DST2-000035,Mahabaleshwar,India,Maharashtra,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000037,Aurangabad,India,Maharashtra,heuristic insufficient; manual review required
+DST2-000038,Goa,India,Goa,heuristic insufficient; manual review required
+DST2-000039,Diu,India,Daman and Diu,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000041,Kutch,India,Gujarat,heuristic insufficient; manual review required
+DST2-000042,Gir,India,Gujarat,infant_score=15 requires medical-access verification before treating as decision-grade
+DST2-000043,Dwarka,India,Gujarat,infant_score=35 requires medical-access verification before treating as decision-grade
+DST2-000046,Coorg,India,Karnataka,heuristic insufficient; manual review required
+DST2-000047,Chikmagalur,India,Karnataka,heuristic insufficient; manual review required
+DST2-000048,Hampi,India,Karnataka,infant_score=25 requires medical-access verification before treating as decision-grade
+DST2-000049,Gokarna,India,Karnataka,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000057,Rameswaram,India,Tamil Nadu,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000060,Alleppey,India,Kerala,heuristic insufficient; manual review required
+DST2-000061,Kumarakom,India,Kerala,heuristic insufficient; manual review required
+DST2-000062,Thekkady,India,Kerala,heuristic insufficient; manual review required
+DST2-000064,Kovalam,India,Kerala,heuristic insufficient; manual review required
+DST2-000066,Araku Valley,India,Andhra Pradesh,heuristic insufficient; manual review required
+DST2-000069,Konark,India,Odisha,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000073,Sundarbans,India,West Bengal,heuristic insufficient; manual review required
+DST2-000075,Pelling,India,Sikkim,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000077,Kaziranga,India,Assam,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000079,Cherrapunji,India,Meghalaya,heuristic insufficient; manual review required
+DST2-000080,Tawang,India,Arunachal Pradesh,infant_score=25 requires medical-access verification before treating as decision-grade
+DST2-000081,Ziro Valley,India,Arunachal Pradesh,infant_score=15 requires medical-access verification before treating as decision-grade
+DST2-000083,Imphal,India,Manipur,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000086,Port Blair,India,Andaman and Nicobar,heuristic insufficient; manual review required
+DST2-000087,Havelock Island,India,Andaman and Nicobar,heuristic insufficient; manual review required
+DST2-000088,Neil Island,India,Andaman and Nicobar,heuristic insufficient; manual review required
+DST2-000089,Lakshadweep,India,Lakshadweep,heuristic insufficient; manual review required
+DST2-000090,Kathmandu,Nepal,Nepal,international destination (Nepal); medical access depends on local context; manual review
+DST2-000091,Pokhara,Nepal,Nepal,international destination (Nepal); medical access depends on local context; manual review
+DST2-000092,Chitwan,Nepal,Nepal,international destination (Nepal); medical access depends on local context; manual review
+DST2-000093,Thimphu,Bhutan,Bhutan,international destination (Bhutan); medical access depends on local context; manual review
+DST2-000094,Paro,Bhutan,Bhutan,international destination (Bhutan); medical access depends on local context; manual review
+DST2-000095,Colombo,Sri Lanka,Sri Lanka,international destination (Sri Lanka); medical access depends on local context; manual review
+DST2-000096,Kandy,Sri Lanka,Sri Lanka,international destination (Sri Lanka); medical access depends on local context; manual review
+DST2-000097,Galle,Sri Lanka,Sri Lanka,international destination (Sri Lanka); medical access depends on local context; manual review
+DST2-000098,Bentota,Sri Lanka,Sri Lanka,international destination (Sri Lanka); medical access depends on local context; manual review
+DST2-000099,Maldives Resort Islands,Maldives,Maldives,international destination (Maldives); medical access depends on local context; manual review
+DST2-000100,Maafushi,Maldives,Maldives,international destination (Maldives); medical access depends on local context; manual review
+DST2-000101,Mauritius,Mauritius,Mauritius,international destination (Mauritius); medical access depends on local context; manual review
+DST2-000102,Seychelles,Seychelles,Seychelles,international destination (Seychelles); medical access depends on local context; manual review
+DST2-000103,Dubai,United Arab Emirates,UAE,international destination (United Arab Emirates); medical access depends on local context; manual review
+DST2-000104,Abu Dhabi,United Arab Emirates,UAE,international destination (United Arab Emirates); medical access depends on local context; manual review
+DST2-000105,Ras Al Khaimah,United Arab Emirates,UAE,international destination (United Arab Emirates); medical access depends on local context; manual review
+DST2-000106,Doha,Qatar,Qatar,international destination (Qatar); medical access depends on local context; manual review
+DST2-000107,Muscat,Oman,Oman,international destination (Oman); medical access depends on local context; manual review
+DST2-000108,Salalah,Oman,Oman,international destination (Oman); medical access depends on local context; manual review
+DST2-000109,Bangkok,Thailand,Thailand,international destination (Thailand); medical access depends on local context; manual review
+DST2-000110,Phuket,Thailand,Thailand,international destination (Thailand); medical access depends on local context; manual review
+DST2-000111,Krabi,Thailand,Thailand,international destination (Thailand); medical access depends on local context; manual review
+DST2-000112,Koh Samui,Thailand,Thailand,international destination (Thailand); medical access depends on local context; manual review
+DST2-000113,Chiang Mai,Thailand,Thailand,international destination (Thailand); medical access depends on local context; manual review
+DST2-000114,Singapore,Singapore,Singapore,international destination (Singapore); medical access depends on local context; manual review
+DST2-000115,Sentosa,Singapore,Singapore,international destination (Singapore); medical access depends on local context; manual review
+DST2-000116,Kuala Lumpur,Malaysia,Malaysia,international destination (Malaysia); medical access depends on local context; manual review
+DST2-000117,Langkawi,Malaysia,Malaysia,international destination (Malaysia); medical access depends on local context; manual review
+DST2-000118,Penang,Malaysia,Malaysia,international destination (Malaysia); medical access depends on local context; manual review
+DST2-000119,Bali,Indonesia,Indonesia,international destination (Indonesia); medical access depends on local context; manual review
+DST2-000120,Ubud,Indonesia,Indonesia,international destination (Indonesia); medical access depends on local context; manual review
+DST2-000121,Hanoi,Vietnam,Vietnam,international destination (Vietnam); medical access depends on local context; manual review
+DST2-000122,Ho Chi Minh City,Vietnam,Vietnam,international destination (Vietnam); medical access depends on local context; manual review
+DST2-000123,Da Nang,Vietnam,Vietnam,international destination (Vietnam); medical access depends on local context; manual review
+DST2-000124,Hoi An,Vietnam,Vietnam,international destination (Vietnam); medical access depends on local context; manual review
+DST2-000125,Nha Trang,Vietnam,Vietnam,international destination (Vietnam); medical access depends on local context; manual review
+DST2-000126,Siem Reap,Cambodia,Cambodia,international destination (Cambodia); medical access depends on local context; manual review
+DST2-000127,Phnom Penh,Cambodia,Cambodia,international destination (Cambodia); medical access depends on local context; manual review
+DST2-000128,Luang Prabang,Laos,Laos,international destination (Laos); medical access depends on local context; manual review
+DST2-000129,Baku,Azerbaijan,Azerbaijan,international destination (Azerbaijan); medical access depends on local context; manual review
+DST2-000130,Tbilisi,Georgia,Georgia,international destination (Georgia); medical access depends on local context; manual review
+DST2-000131,Yerevan,Armenia,Armenia,international destination (Armenia); medical access depends on local context; manual review
+DST2-000132,Almaty,Kazakhstan,Kazakhstan,international destination (Kazakhstan); medical access depends on local context; manual review
+DST2-000133,Tashkent,Uzbekistan,Uzbekistan,international destination (Uzbekistan); medical access depends on local context; manual review
+DST2-000134,Samarkand,Uzbekistan,Uzbekistan,international destination (Uzbekistan); medical access depends on local context; manual review
+DST2-000135,Neemrana,India,Rajasthan,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000137,Mount Abu,India,Rajasthan,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000138,Chittorgarh,India,Rajasthan,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000139,Kumbhalgarh,India,Rajasthan,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000140,Bundi,India,Rajasthan,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000141,Sariska,India,Rajasthan,infant_score=10 requires medical-access verification before treating as decision-grade
+DST2-000144,Nawalgarh,India,Rajasthan,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000145,Mandawa,India,Rajasthan,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000146,Deeg,India,Rajasthan,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000147,Bharatpur,India,Rajasthan,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000148,Shekhawati Region,India,Rajasthan,heuristic insufficient; manual review required
+DST2-000151,Vrindavan,India,Uttar Pradesh,infant_score=35 requires medical-access verification before treating as decision-grade
+DST2-000154,Chitrakoot,India,Uttar Pradesh/MP,heuristic insufficient; manual review required
+DST2-000155,Sarnath,India,Uttar Pradesh,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000156,Kushinagar,India,Uttar Pradesh,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000157,Dudhwa,India,Uttar Pradesh,infant_score=10 requires medical-access verification before treating as decision-grade
+DST2-000158,Fatehpur Sikri,India,Uttar Pradesh,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000166,Auli,India,Uttarakhand,heuristic insufficient; manual review required
+DST2-000167,Chopta,India,Uttarakhand,heuristic insufficient; manual review required
+DST2-000168,Lansdowne,India,Uttarakhand,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000169,Ranikhet,India,Uttarakhand,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000170,Kausani,India,Uttarakhand,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000171,Mukteshwar,India,Uttarakhand,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000172,Binsar,India,Uttarakhand,heuristic insufficient; manual review required
+DST2-000173,Almora,India,Uttarakhand,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000174,Valley of Flowers,India,Uttarakhand,infant_score=10 requires medical-access verification before treating as decision-grade
+DST2-000175,Kedarnath,India,Uttarakhand,heuristic insufficient; manual review required
+DST2-000176,Badrinath,India,Uttarakhand,infant_score=35 requires medical-access verification before treating as decision-grade
+DST2-000177,Yamunotri,India,Uttarakhand,heuristic insufficient; manual review required
+DST2-000178,Gangotri,India,Uttarakhand,heuristic insufficient; manual review required
+DST2-000179,Tehri,India,Uttarakhand,heuristic insufficient; manual review required
+DST2-000180,Kasol,India,Himachal Pradesh,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000181,Tirthan Valley,India,Himachal Pradesh,heuristic insufficient; manual review required
+DST2-000182,Spiti Valley,India,Himachal Pradesh,heuristic insufficient; manual review required
+DST2-000183,Kinnaur,India,Himachal Pradesh,heuristic insufficient; manual review required
+DST2-000184,Kasauli,India,Himachal Pradesh,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000185,Chail,India,Himachal Pradesh,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000186,Bir Billing,India,Himachal Pradesh,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000187,Palampur,India,Himachal Pradesh,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000188,Kangra,India,Himachal Pradesh,heuristic insufficient; manual review required
+DST2-000189,Mandi,India,Himachal Pradesh,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000190,Narkanda,India,Himachal Pradesh,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000191,McLeod Ganj,India,Himachal Pradesh,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000192,Patnitop,India,Jammu and Kashmir,infant_score=15 requires medical-access verification before treating as decision-grade
+DST2-000193,Sonamarg,India,Jammu and Kashmir,infant_score=15 requires medical-access verification before treating as decision-grade
+DST2-000194,Pahalgam,India,Jammu and Kashmir,infant_score=15 requires medical-access verification before treating as decision-grade
+DST2-000195,Yusmarg,India,Jammu and Kashmir,infant_score=5 requires medical-access verification before treating as decision-grade
+DST2-000196,Doodhpathri,India,Jammu and Kashmir,infant_score=5 requires medical-access verification before treating as decision-grade
+DST2-000197,Kargil,India,Ladakh,infant_score=25 requires medical-access verification before treating as decision-grade
+DST2-000198,Nubra Valley,India,Ladakh,infant_score=5 requires medical-access verification before treating as decision-grade
+DST2-000199,Pangong Tso,India,Ladakh,infant_score=5 requires medical-access verification before treating as decision-grade
+DST2-000202,Anandpur Sahib,India,Punjab,infant_score=35 requires medical-access verification before treating as decision-grade
+DST2-000204,Sultanpur Bird Sanctuary,India,Haryana,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000205,Morni Hills,India,Haryana,heuristic insufficient; manual review required
+DST2-000210,Maheshwar,India,Madhya Pradesh,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000211,Mandu,India,Madhya Pradesh,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000212,Omkareshwar,India,Madhya Pradesh,infant_score=35 requires medical-access verification before treating as decision-grade
+DST2-000213,Satpura,India,Madhya Pradesh,infant_score=10 requires medical-access verification before treating as decision-grade
+DST2-000214,Pench,India,Madhya Pradesh,infant_score=10 requires medical-access verification before treating as decision-grade
+DST2-000216,Bhedaghat,India,Madhya Pradesh,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000218,Shivpuri,India,Madhya Pradesh,heuristic insufficient; manual review required
+DST2-000221,Chitrakote Falls,India,Chhattisgarh,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000222,Kanger Valley,India,Chhattisgarh,infant_score=10 requires medical-access verification before treating as decision-grade
+DST2-000224,Mainpat,India,Chhattisgarh,heuristic insufficient; manual review required
+DST2-000225,Alibaug,India,Maharashtra,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000226,Matheran,India,Maharashtra,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000227,Igatpuri,India,Maharashtra,heuristic insufficient; manual review required
+DST2-000228,Bhandardara,India,Maharashtra,heuristic insufficient; manual review required
+DST2-000229,Tadoba,India,Maharashtra,infant_score=10 requires medical-access verification before treating as decision-grade
+DST2-000230,Tarkarli,India,Maharashtra,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000231,Ganpatipule,India,Maharashtra,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000232,Ratnagiri,India,Maharashtra,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000234,Shirdi,India,Maharashtra,infant_score=35 requires medical-access verification before treating as decision-grade
+DST2-000235,Ajanta Caves,India,Maharashtra,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000236,Ellora Caves,India,Maharashtra,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000237,Statue of Unity,India,Gujarat,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000238,Saputara,India,Gujarat,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000239,Somnath,India,Gujarat,infant_score=35 requires medical-access verification before treating as decision-grade
+DST2-000240,Porbandar,India,Gujarat,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000242,Champaner-Pavagadh,India,Gujarat,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000246,North Goa Beaches,India,Goa,heuristic insufficient; manual review required
+DST2-000247,South Goa Beaches,India,Goa,heuristic insufficient; manual review required
+DST2-000248,Old Goa,India,Goa,infant_score=15 requires medical-access verification before treating as decision-grade
+DST2-000249,Hampi-Badami-Aihole-Pattadakal Circuit,India,Karnataka,heuristic insufficient; manual review required
+DST2-000250,Badami,India,Karnataka,infant_score=25 requires medical-access verification before treating as decision-grade
+DST2-000251,Pattadakal,India,Karnataka,infant_score=25 requires medical-access verification before treating as decision-grade
+DST2-000252,Aihole,India,Karnataka,infant_score=25 requires medical-access verification before treating as decision-grade
+DST2-000253,Bandipur,India,Karnataka,infant_score=15 requires medical-access verification before treating as decision-grade
+DST2-000254,Nagarhole,India,Karnataka,infant_score=15 requires medical-access verification before treating as decision-grade
+DST2-000255,Kabini,India,Karnataka,infant_score=15 requires medical-access verification before treating as decision-grade
+DST2-000256,Sakleshpur,India,Karnataka,heuristic insufficient; manual review required
+DST2-000257,Udupi,India,Karnataka,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000258,Murudeshwar,India,Karnataka,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000259,Dandeli,India,Karnataka,heuristic insufficient; manual review required
+DST2-000262,Nagarjuna Sagar,India,Telangana/Andhra Pradesh,heuristic insufficient; manual review required
+DST2-000263,Papikondalu,India,Andhra Pradesh,heuristic insufficient; manual review required
+DST2-000264,Lepakshi,India,Andhra Pradesh,infant_score=25 requires medical-access verification before treating as decision-grade
+DST2-000267,Gandikota,India,Andhra Pradesh,heuristic insufficient; manual review required
+DST2-000268,Horsley Hills,India,Andhra Pradesh,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000269,Yelagiri,India,Tamil Nadu,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000270,Yercaud,India,Tamil Nadu,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000271,Coonoor,India,Tamil Nadu,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000272,Valparai,India,Tamil Nadu,heuristic insufficient; manual review required
+DST2-000274,Chettinad,India,Tamil Nadu,heuristic insufficient; manual review required
+DST2-000275,Kanyakumari,India,Tamil Nadu,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000278,Rameswaram-Dhanushkodi Circuit,India,Tamil Nadu,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000279,Wayanad,India,Kerala,heuristic insufficient; manual review required
+DST2-000280,Bekal,India,Kerala,heuristic insufficient; manual review required
+DST2-000283,Guruvayur,India,Kerala,infant_score=40 requires medical-access verification before treating as decision-grade
+DST2-000285,Poovar,India,Kerala,heuristic insufficient; manual review required
+DST2-000286,Athirappilly,India,Kerala,infant_score=25 requires medical-access verification before treating as decision-grade
+DST2-000287,Marari,India,Kerala,heuristic insufficient; manual review required
+DST2-000288,Fort Kochi,India,Kerala,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000293,Dooars,India,West Bengal,heuristic insufficient; manual review required
+DST2-000294,Jaldapara,India,West Bengal,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000295,Gorumara,India,West Bengal,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000300,Mukutmanipur,India,West Bengal,heuristic insufficient; manual review required
+DST2-000301,Simlipal,India,Odisha,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000302,Chilika Lake,India,Odisha,heuristic insufficient; manual review required
+DST2-000304,Satkosia,India,Odisha,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000305,Daringbadi,India,Odisha,heuristic insufficient; manual review required
+DST2-000307,Raghurajpur,India,Odisha,infant_score=30 requires medical-access verification before treating as decision-grade
+DST2-000308,Bhitarkanika,India,Odisha,heuristic insufficient; manual review required
+DST2-000310,Netarhat,India,Jharkhand,heuristic insufficient; manual review required
+DST2-000311,Betla,India,Jharkhand,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000314,Patratu Valley,India,Jharkhand,heuristic insufficient; manual review required
+DST2-000317,Parasnath,India,Jharkhand,heuristic insufficient; manual review required
+DST2-000322,Nalanda,India,Bihar,infant_score=30 requires medical-access verification before treating as decision-grade
+DST2-000323,Vaishali,India,Bihar,infant_score=30 requires medical-access verification before treating as decision-grade
+DST2-000324,Valmiki Tiger Reserve,India,Bihar,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000325,Kaziranga Add-on Majuli,India,Assam,heuristic insufficient; manual review required
+DST2-000326,Majuli,India,Assam,heuristic insufficient; manual review required
+DST2-000327,Sivasagar,India,Assam,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000330,Haflong,India,Assam,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000331,Manas,India,Assam,infant_score=15 requires medical-access verification before treating as decision-grade
+DST2-000332,Umiam Lake,India,Meghalaya,heuristic insufficient; manual review required
+DST2-000333,Dawki,India,Meghalaya,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000334,Mawlynnong,India,Meghalaya,infant_score=25 requires medical-access verification before treating as decision-grade
+DST2-000335,Mawsynram,India,Meghalaya,heuristic insufficient; manual review required
+DST2-000336,Laitlum,India,Meghalaya,heuristic insufficient; manual review required
+DST2-000337,Jowai,India,Meghalaya,infant_score=45 requires medical-access verification before treating as decision-grade
+DST2-000338,Mawphlang,India,Meghalaya,heuristic insufficient; manual review required
+DST2-000339,Bomdila,India,Arunachal Pradesh,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000340,Dirang,India,Arunachal Pradesh,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000341,Mechuka,India,Arunachal Pradesh,infant_score=10 requires medical-access verification before treating as decision-grade
+DST2-000342,Pasighat,India,Arunachal Pradesh,infant_score=35 requires medical-access verification before treating as decision-grade
+DST2-000343,Itanagar,India,Arunachal Pradesh,infant_score=35 requires medical-access verification before treating as decision-grade
+DST2-000344,Loktak Lake,India,Manipur,infant_score=10 requires medical-access verification before treating as decision-grade
+DST2-000345,Ukhrul,India,Manipur,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000346,Mokokchung,India,Nagaland,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000347,Dzukou Valley,India,Nagaland/Manipur,heuristic insufficient; manual review required
+DST2-000348,Phek,India,Nagaland,infant_score=10 requires medical-access verification before treating as decision-grade
+DST2-000349,Champhai,India,Mizoram,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000350,Lunglei,India,Mizoram,infant_score=20 requires medical-access verification before treating as decision-grade
+DST2-000351,Reiek,India,Mizoram,infant_score=10 requires medical-access verification before treating as decision-grade
+DST2-000352,Unakoti,India,Tripura,infant_score=25 requires medical-access verification before treating as decision-grade
+DST2-000353,Neermahal,India,Tripura,infant_score=25 requires medical-access verification before treating as decision-grade
+DST2-000354,Ujjayanta Palace,India,Tripura,infant_score=25 requires medical-access verification before treating as decision-grade
+DST2-000355,Neil Island Expanded,India,Andaman and Nicobar,heuristic insufficient; manual review required
+DST2-000356,Baratang,India,Andaman and Nicobar,heuristic insufficient; manual review required
+DST2-000357,Ross Island,India,Andaman and Nicobar,infant_score=25 requires medical-access verification before treating as decision-grade
+DST2-000358,Diglipur,India,Andaman and Nicobar,heuristic insufficient; manual review required
+DST2-000359,Minicoy,India,Lakshadweep,heuristic insufficient; manual review required
