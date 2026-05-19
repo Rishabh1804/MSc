@@ -1,8 +1,10 @@
 # Sponsor Reviewer Brief — Destination Master Browser
 
-Status: v1 of the Sponsor Reviewer recruitment + onboarding framework. Created 2026-05-18 to close NEXT_ACTIONS priority 9 (recruitment infrastructure) and unblock Lab 05 F-PRIN-1 / F-EVAL-1 / Lab 06 Fix #5b once a real reviewer is recruited.
+Status: **v2** of the Sponsor Reviewer recruitment + onboarding framework. v1 created 2026-05-18 to close NEXT_ACTIONS priority 9 (recruitment infrastructure) and unblock Lab 05 F-PRIN-1 / F-EVAL-1 / Lab 06 Fix #5b. v2 (this revision) adds **source-citation completeness** and **unknown-field discipline** as first-class evaluation criteria — added in the governance-debt PR following the §19 policy adoption (no-assumption + live-data rule). The Sponsor Reviewer session is now also the human-grade evaluation gate for the v2 source-backed enrichment service when it ships (P21).
 
 Owner: CodeMike (workspace) — coordinated with Rishabh.
+
+v2 revision history: §9 added; §3 Part 2 + §4 unchanged; §5 closure-path table extended with two new rows; §3 Part 3 debrief Q-list unchanged (the new criteria are evaluated *across* the existing tasks, not via new tasks).
 
 ---
 
@@ -121,6 +123,8 @@ Specific closure paths:
 | **Lab 06 Fix #5b** (search-vs-select grammar unification) | Debrief Q2 answer adjudicates: if reviewers expect live-update, do it; if reviewers expect commit-on-change, leave it; if reviewers don't notice, leave it (no behaviour change). |
 | **Lab 04 Loop 1 U-CONF-1..4** (now landed in `ux-acceptance-criteria.md`) | When the v1.2 batch-promote feature lands, the Sponsor Reviewer evaluates the confirm-modal anatomy against the four criteria. |
 | **Audit 2 trigger** (NEXT_ACTIONS priority 11) | Post-v1.2 Sponsor Reviewer session re-tests against the same eight debrief questions; differences vs Audit 1.5 are the audit's findings. |
+| **§9 source-citation completeness criterion** (v2, added 2026-05-18 — for v2 source-backed builds, P21) | When P21 ships, the Sponsor Reviewer evaluates the per-field source-citation surface — can they trace any visible enriched value to its source, source-tier, and fetch date in ≤2 interactions? Pass = yes; partial = yes for stable-derived, not live-volatile (or vice versa); fail = source provenance is not surface-visible. |
+| **§9 unknown-field discipline criterion** (v2, added 2026-05-18 — for v2 source-backed builds, P21) | When P21 ships, the Sponsor Reviewer evaluates the unknown-discipline surface — does the tool clearly distinguish `known` (source-cited) from `unknown_pending_research` from "not applicable"? Pass = three states visibly distinct; partial = two of three states distinguished; fail = unknowns presented as blanks / defaults / dashes indistinguishable from "not applicable". |
 
 Each feedback item gets classified per the Topic 3 framework: **user need** (→ adds to backlog with GOV.UK form), **user request** (→ rewritten to a need, then evaluated), or **solution-shape** (→ rejected unless it sharpens a need).
 
@@ -151,8 +155,62 @@ These limitations are *named* per the HCD discipline. The brief is HCD-substanti
 
 ## 8. Status
 
-- **v1 of this brief**: landed 2026-05-18 in this PR
+- **v1 of this brief**: landed 2026-05-18 in PR #26
+- **v2 of this brief**: landed 2026-05-19 in the governance-debt PR (this revision) — §9 source-citation + unknown-field discipline criteria added
 - **First recruitment ask**: pending Rishabh's decision on source (network / hire / self-as-Sponsor)
 - **First reviewer session**: scheduled after recruitment lands
 - **Audit 1.5 closure cycle**: after the first session — produces a new feedback file, updates the v1.2 backlog, and re-grades the Lab 05 + Lab 06 findings
 - **Audit 2 trigger**: after v1.2 ships, re-run the same session to verify closures
+- **Audit 3 trigger** (v2 addition): after P21 ships — full cycle definition lives in §9.4 (criteria + closure paths + skill-row promotion gates)
+
+## 9. v2 evaluation criteria — source-citation completeness + unknown-field discipline
+
+Added 2026-05-19 in the governance-debt PR following workspace adoption of the no-assumption + live-data + free-tier-only policy (strategy doc §19) and two-tier architecture decision (§19.6). The criteria are *forward-looking*: they apply to the v2 source-backed builds (P21) and cannot be meaningfully scored against the v1.0 heuristic baseline (which by design does not carry per-field source citations). For v1.x sessions before P21 ships, §9 is a *pre-recorded* part of the brief that the reviewer can read for context; for post-P21 sessions, §9 becomes a required evaluation surface alongside §3's tasks.
+
+### 9.1 Why these criteria are first-class
+
+The §19 policy revision moved the workspace from "every enriched field is heuristic-derived" to "every enriched field is either source-backed (with citation) or `unknown_pending_research`". That is a category change in what a reviewer needs to evaluate — not just *whether the field looks right*, but *whether the field tells the truth about its own provenance*. A field that looks right but cannot be traced to its source is not v2-ready, regardless of how plausible the value seems. A field that says "unknown" honestly is more trustworthy than a field that looks specific but lacks citation. The Sponsor Reviewer's fresh-eye is the right instrument for this evaluation because the workspace's own judgement on its own data is the kind of judgement the §19 policy explicitly distrusts.
+
+### 9.2 Source-citation completeness — evaluation surface
+
+The reviewer evaluates: **for any visible enriched field, can I trace this value to its source (source name + source tier + fetch date) in ≤2 interactions from where I see it?**
+
+- **Pass** — every visible field on the card / table / drawer has a source affordance (icon / inline citation / drawer-section) that reveals source + tier + fetch date in one click (or one expand). Tier-stable and tier-live fields both satisfy this.
+- **Partial** — only some fields satisfy the trace test. Common partial: stable-derived layer fields cite sources cleanly; live-volatile fields show the value but not the "fetched at" timestamp.
+- **Fail** — at least one visible field has no traceable source surface, OR the surface exists but reveals only the source *name* and not the tier / fetch date.
+
+Reviewer instruction (added to Part 2 of the session for P21+ tools):
+> *"Pick three enriched fields from any record — **including at least one tier-stable field (e.g. route distance, baseline climatology, altitude) and at least one tier-live field (e.g. current flight, current weather, current permit)**. For each, find the source citation. If you can't, tell us where you looked first and what you expected to find."*
+
+The tier-stable + tier-live requirement is deliberate: §19.6's two-tier architecture means the source-citation surface has *two* failure modes (stable-derived layer cites cleanly but live-volatile doesn't carry `fetched_at`, or vice versa). A reviewer left to sample purely by visual salience would tend to pick the easy-to-cite fields and miss the harder layer. The three picked fields + their source-trace verdicts feed Audit 3.
+
+### 9.3 Unknown-field discipline — evaluation surface
+
+The reviewer evaluates: **does the tool visibly distinguish three states — `known` (source-cited), `unknown_pending_research` (source checked, value missing, manual research needed), and not-applicable (this field does not apply to this destination type)?**
+
+- **Pass** — all three states have distinct visual treatments (e.g. value text vs `Unknown — research pending` chip with research-status link vs `—` or `n/a` dimmed). No confusion between the three.
+- **Partial** — two of three states are distinct; the third collapses into one of the other two (commonly: `unknown_pending_research` collapses into not-applicable, both rendered as blanks).
+- **Fail** — unknowns and not-applicables both render as blank / dash / default — the reviewer cannot tell from the surface whether the field was checked-and-missing or never-applicable. This silently violates the §19.5 unknown-discipline rule even when the underlying data is correct.
+
+Reviewer instruction (added to Part 2 of the session for P21+ tools):
+> *"Find a record that has at least one field you can tell is 'unknown'. Tell us whether you can also tell — without opening the source dataset — whether the field was checked-and-missing or doesn't apply to this destination type."*
+
+The reviewer's answer adjudicates the unknown-discipline verdict.
+
+### 9.4 Audit 3 — when v2 ships (P21)
+
+After P21 ships, the Sponsor Reviewer session repeats Parts 1–3 from §3 with §9's §9.2 + §9.3 evaluation surfaces added to Part 2. The session output becomes Audit 3 (parallel to Audit 1.5 + Audit 2). Audit 3's findings feed:
+
+- Final closure of Lab 05 F-PRIN-1 / F-EVAL-1 for the v2 build (separate from the v1.1 closure already credited)
+- Promotion decision on the calibration-cycle capability (currently maturity 2; second worked example via P20 + P21 promotes to maturity 3 — see `operations/CAPABILITIES.md`)
+- Big Data Analytics + Data Engineering skill rows promotion from level 2 to level 3 in `operations/SKILL_MAP.md`
+
+### 9.5 Honest limitations of the v2 criteria
+
+Three to name (HCD discipline — name limitations explicitly):
+
+1. **The criteria don't apply pre-P21.** v1.0 heuristic baseline cannot pass §9.2 because the v1.0 design explicitly does not carry per-field source citations. Running §9.2 against v1.0 would always return *fail* by construction; that's a category-mismatch, not a finding. Use §9 *only* for v2 source-backed surfaces.
+2. **§9.2 evaluates the *tool*, not the *source registry*.** A tool can satisfy §9.2 (every field traceable) while its underlying source registry contains errors. Source-registry correctness is a separate audit, owned by the data-engineering workstream (not the Sponsor Reviewer).
+3. **§9.3 evaluates the *surface*, not the *honesty of the underlying classification*.** The tool can render three distinct states correctly while incorrectly classifying which field falls into which state. Classification correctness is again the data-engineering workstream's audit, not the reviewer's.
+
+These limitations are *named* per the §19.9 honest-limitations discipline.

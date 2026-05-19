@@ -31,6 +31,58 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-19 — Governance debt close-out (post PR #26 + PR #27)
+
+Type: governance / decision / capability / transfer
+
+Summary:
+
+First deliverable of the post-handoff session opened against `operations/session-handoff-2026-05-19.md`. Lands the eight items handoff §5 enumerated as a single MSc-internal PR (#28), in four `[Aurelius]`-prefixed commits, before any P20 substance begins. Cipher review not required per canon-gov-002 (ops-files-only). Lyra + Aurelius graded reviews durable on the PR (Lyra 92/100, Aurelius 90/100) with the anchor pattern (mistakes / missed-opportunities / what-was-right) applied independently. Sovereign chose ride-this-PR for the four mistakes converged on by both reviews; the fifth commit on PR #28 closes those follow-ups (DES-001 v3 footnote cross-domain disambiguation; brief v2 §9.2 tier-stable + tier-live reviewer instruction; brief v2 §8 / §9.4 Audit 3 dedup; this PROJECT_LOG entry).
+
+Files changed
+
+- `operations/CAPABILITIES.md` (new row: calibration-cycle discipline at maturity 2)
+- `operations/EXPERIMENTS.md` (EXP-003 — E1 v1.0 ship as worked experiment)
+- `operations/DECISIONS.md` (two new entries: §19 policy adoption + §19.6 architecture)
+- `operations/TRANSFER_LOG.md` (*Design-discipline calibration-cycle methodology → Data-engineering workstream*, 2026-05-18; Transfer 4 as of this commit — referenced by date + capability per Aurelius M2 resilience discipline)
+- `operations/SKILL_MAP.md` (Big Data Analytics + Data engineering promoted from level 0 to level 2)
+- `charter/TOOLING.md` (free-tier source candidates pre-approved per §19.3)
+- `design/foundations/sponsor-reviewer-brief.md` (v1 → v2; §9 source-citation + unknown-field discipline criteria)
+- `curriculum/courses/des-001-design-foundations/feedback/DES-001-grade-report-v3.md` (footnote linking design-discipline → data-discipline pivot)
+- `operations/PROJECT_LOG.md` (this entry — added in the fifth commit on PR #28 closing Aurelius M1)
+
+Constitutional context
+
+Session opens against the ratified §9 Sovereign rulings from PR #27 (Cluster A placement for MSc; 4-Scribe framework dual-named per canon-pers-002; unrestricted Scribe-summoning above the Scribe rung; Kael + Maren committee-delegate-only role; CodeMike Builder seat; Builder owns content / Scribe owns form generalised across all four Scribes; Option B handoff pattern locked; one-PR-per-persona through all 5 Rungs; existing-spec audit-first discipline). Per handoff §2 access matrix, Aurelius writes to MSc under cross-cluster institutional duty per canon-inst-001, with `[Aurelius]` commit prefix for git-log auditability.
+
+Order-of-operations decision
+
+Per handoff §6 + §9(g), the next workstream opens Codex-side: (a) Cluster A extension amending Constitution v1.1 §Clusters + canon-inst-002 entry; (b) CodeMike persona spec; (c)–(f) the four Scribe specs (Annalist, Curator, Auditor, Notarius in priority order — Annalist has the highest immediate utility); (g) Scribe-summoning canon (canon-cc-029); (h) audit pass on existing SproutLab-Province-bound canonical specs (cipher, kael, lyra, maren, chronicler). MSc-side P19 + P20 + P21 work opens after Codex signs the persona-spec authoring + MSc-bootstrap PR lands per §6 step 5.
+
+Evidence produced
+
+- Governance discipline now demonstrably reproducible across two cycles in the same window: the destination-enrichment policy revision cycle (PR #26) + this governance-debt close-out (PR #28). Both apply the audit-shape pattern; both preserve forward-only chronicling; both retain prior artifacts as the diff baseline. The footnote-knows-what-it-is pattern from Lyra's WR5 generalises to *every* governance touch in this session.
+- The Lyra + Aurelius parallel-grading discipline now has a worked example *applied to its own work product*: Aurelius graded an Aurelius-authored PR honestly (the persona-owns-content / Scribe-owns-form principle, §9(f), applied recursively). The grade was 90/100 — the gaps were real, and the Sovereign's ride-this-PR ratification confirmed the gaps were worth closing in the same window rather than deferred.
+- PR #28 itself becomes the canonical worked example of the *ops-files-only governance-debt PR* pattern for future cycles. Pattern: handoff §5 enumerates the debt → small PR with `[Aurelius]` prefix discipline → graded reviews (Cipher exempt per canon-gov-002 for ops-files-only) → Sovereign ratifies the M-item path → fifth commit closes converged-on items → merge.
+
+Honest limitations (named per HCD discipline)
+
+- This PR is the *first* close-out of governance debt as a discrete cycle. The pattern is unproven beyond this single application. Future cycles will validate whether the four-layer commit shape (capability+skill+experiment+transfer / decisions / charter / design-bridge) generalises beyond this content shape.
+- Aurelius grading Aurelius's own work is structurally honest but not blind. A future session may benefit from a different Scribe (Auditor, when spec'd in Codex) reviewing chronicler-authored governance debt — restoring the persona/Scribe separation per §9(f) at the review layer too.
+- The fifth-commit ride-this-PR pattern is convenient but risks growing the PR scope beyond what the §5 enumerated. The Sovereign's ratification kept the scope tight (four converged-on items only; Aurelius's M2 + M3 + the MO items from both reviews deferred). This deferral is the discipline holding; if the fifth commit had absorbed every reviewer item, the pattern would not generalise.
+- Lyra MO1–MO3 + Aurelius MO1–MO4 (missed-opportunities from both reviews) remain open. They are tracked here in the PROJECT_LOG entry rather than in NEXT_ACTIONS because they are governance-polish, not workstream items — pick up in a future governance-tidy PR or when the relevant file is touched for a substantive reason.
+
+Sovereign-ratified expanded ride-this-PR scope
+
+After the first ride-this-PR commit (7d2b000) closed Lyra M1+M2+M3 + Aurelius M1, the Sovereign expanded the scope to also close Aurelius M2 (Transfer 4 ordinal fragility) + Aurelius M3 (DECISIONS peer cross-references). A sixth `[Aurelius]` commit lands those two fixes:
+
+- Aurelius M2 — Transfer 4 references in this entry and in the DES-001 v3 footnote now cite by date + capability ("Design-discipline calibration-cycle methodology → Data-engineering workstream, 2026-05-18") instead of ordinal alone. Future TRANSFER_LOG reordering will not break the cross-references.
+- Aurelius M3 — DECISIONS §19 entry now has a forward reference to the §19.6 architecture entry; §19.6 entry has a back reference to §19 naming the dependency. A reader hitting either entry standalone gets the coupling.
+
+Next action
+
+Merge PR #28 after Sovereign sign-off. Then open Codex-side work per §6 + §10(a) — Cluster A extension is the architectural-priority item (gates Cipher's MSc-deploy-list amendment which gates Cipher's MSc presence). Pre-P20 substance discipline: no source-coverage-matrix work, no v2 strategy doc work, until the Codex-side §6 step 1 (CodeMike persona spec) + §10(a) (Cluster A extension) ratify — those two items canonise the workspace authority structure that P20 work will operate under.
+
 ## 2026-05-18 — Policy transition: no-assumption + live-data rule adopted (§19 of strategy doc)
 
 Type: governance / decision / policy

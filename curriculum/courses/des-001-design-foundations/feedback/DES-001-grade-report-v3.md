@@ -218,3 +218,27 @@ The ratified goal has been satisfied:
 - [x] **STOP**
 
 End of report.
+
+---
+
+## Footnote — design-discipline → data-discipline pivot (added 2026-05-19, governance-debt PR)
+
+Added in the post-PR #26 governance-debt PR for audit-trail completeness. The footnote is *informational* — it does not change the v3 grade, does not reopen Topics 1–6, does not pre-grade Topics 7–12. It records that the cross-topic audit-shape discipline assembled in DES-001 (Topics 4 + 5 + 6) has crossed into the workspace's data-engineering workstream as the calibration-cycle methodology, and that the crossing is itself a workspace governance event worth naming here so a future reader of this grade report can follow the pivot rather than re-discover it.
+
+**The crossing.** DES-001 Topics 4 + 5 + 6 produced an audit-shape: Steps 1–N skeleton (artifact + framework selection → per-dimension matrix → conflict / gap analysis → findings + leverage-ranked prioritised list → checklist appendix), demonstrated against UI artifacts (Lab 04 batch-promote-confirm; Lab 05 HCD audit of Browser v1.1; Lab 06 Gestalt audit of v1.1). The destination-enrichment workstream ran the same skeleton against a data artifact 2026-05-18: strategy doc v1 spec → E1 v1.0 ship → §18 calibration findings as durable text → §19 + §19.6 policy revision. The four-commit cycle is the first **cross-domain (design → data)** worked example of the audit-shape — UI-domain audits and data-domain policy cycles ran the same discipline. (Note: the audit-shape was already *cross-discipline within design* across Topics 4 → 5 → 6 — UI components → UX lifecycle → perceptual layer; this footnote claims only the *out-of-domain* crossing, not the within-domain crossing which the closed topics already demonstrated.)
+
+**Where it's recorded.**
+
+- `operations/CAPABILITIES.md` — new row "Calibration-cycle discipline (spec → ship → calibration → policy revision)" at maturity 2
+- `operations/EXPERIMENTS.md` — EXP-003 (E1 v1.0 ship as a worked experiment with calibration findings)
+- `operations/DECISIONS.md` — two entries (2026-05-18 §19 policy adoption + §19.6 architecture)
+- `operations/TRANSFER_LOG.md` — *Design-discipline calibration-cycle methodology → Data-engineering workstream* (Transfer 4 as of 2026-05-18; cross-reference by date + capability to survive future TRANSFER_LOG reordering, not by ordinal alone)
+- `operations/SKILL_MAP.md` — Big Data Analytics + Data Engineering promoted from level 0 to level 2
+- `datasets/reference/destination_master_enrichment_strategy.md` — §18 + §19 + §19.6 (the durable text of the cycle itself)
+- `design/foundations/sponsor-reviewer-brief.md` v2 — §9 source-citation + unknown-field discipline criteria added so the Sponsor Reviewer cycle evaluates the v2 source-backed enriched layer (P21) once it ships
+
+**Why it belongs in *this* report.** DES-001's stated goal is design discipline that becomes reusable capability for real projects (per `CLAUDE.md` workspace principles + the Topic 3 user-need triage). The clearest evidence that the discipline is *reusable* — not just well-graded — is its application to a domain DES-001 did not specify (data engineering). The grade report would be incomplete without naming where the closed-topic discipline already paid forward, while remaining honest that it has paid forward only once and that promotion to *reusable across multiple domains* requires further worked examples (P20 + P21 are the planned next two).
+
+**What it does *not* claim.** The footnote does not credit DES-001 for the destination-enrichment ship itself — that is the data-engineering workstream's deliverable, graded separately. It does not retroactively raise the v3 grade. It does not adjust the scope-incompleteness penalty (Topics 7–12 remain scaffolded; the −3 stands). It does not pre-promote the calibration-cycle capability to maturity 3 — that promotion waits for the second worked example (P20). It is a *navigation aid* for the audit trail, not a grade modifier.
+
+The next grade report (v4 — expected after Topic 9 or Topic 12 per the existing schedule) may revisit this footnote if the calibration-cycle methodology accumulates further worked examples and warrants its own subscore line in the rubric.

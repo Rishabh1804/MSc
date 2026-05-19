@@ -190,3 +190,53 @@ All six fixes shipped in the v1.1.x polish PR. Visual-treatment-only — zero be
 1. Mark `NEXT_ACTIONS.md` priority 10 status `done` after this PR merges
 2. Sponsor Reviewer recruitment (priority 9) — first session can now test the modal anatomy against U-CONF-1..4 with a real reviewer
 3. Audit 2 trigger (priority 11) — re-audit v1.2 against Lab 06's six findings + Lab 05's prioritised list once a real Sponsor Reviewer session has happened
+
+### Transfer 4 — Design-discipline calibration-cycle methodology → Data-engineering workstream
+
+**Date:** 2026-05-18
+
+**Source capability:** The cross-topic *audit-shape* discipline accumulated through DES-001 Topics 4 / 5 / 6 (CAPABILITIES rows at maturity 4), generalised one rung higher as the calibration-cycle pattern: spec → ship → calibration → policy revision, with artifacts at each step and the prior step's output retained as the diff baseline.
+
+Specifically:
+- Audit-shape as a workspace standard (cross-topic) — the Steps 1–N skeleton (artifact + framework → per-dimension matrix → findings + leverage-ranked list)
+- Gestalt audit template + HCD audit template — both running the same *cycle* on a real artifact and surfacing durable findings rather than silent tweaks
+- HCD self-audit gate (four cells) — name what would falsify the design, not just what the design is
+- User-need vs request vs solution-shape triage — distinguishing category-level problems from parameter problems
+
+**Target project:** The MSc destination-enrichment data-engineering workstream — first time the workspace runs the calibration cycle on a *data* artifact rather than a UI artifact. Promotes Big Data Analytics + Data Engineering from scaffolded (level 0) to active-development (level 2) per `operations/SKILL_MAP.md`.
+
+**Problem solved:** Before this transfer the data-engineering workstream had no shipped methodology for *how* the workspace would convert "a strategy doc that ran end-to-end against real data" into "a policy revision that supersedes the strategy doc" without silently rewriting history or rolling back the v1 artifact. The design-discipline audit-cycle answered the question: ship the spec, capture the calibration findings as durable text alongside the original, revise the policy when category signals warrant a category rethink, preserve the prior artifact as the heuristic baseline. The pattern is the bridge.
+
+**Artifact transferred:**
+- `datasets/reference/destination_master_enrichment_strategy.md` — §18 calibration findings section added 2026-05-18 (with the original §§0–17 preserved unchanged); §19 policy transition added (~140 lines); §19.6 architecture resolution added
+- `src/codemike/data/destination_master_enrichment_v1.py` — preserved as the v0 heuristic baseline, will be renamed `destination_master_enrichment_v0_heuristic.py` in P21
+- `operations/CAPABILITIES.md` — calibration-cycle capability row added at maturity 2 (this PR)
+- `operations/EXPERIMENTS.md` — EXP-003 entry for the E1 v1.0 ship as a worked experiment (this PR)
+- `operations/DECISIONS.md` — two entries (§19 policy + §19.6 architecture) (this PR)
+- `operations/SKILL_MAP.md` — Big Data Analytics + Data Engineering promoted from level 0 to level 2 (this PR)
+- `charter/TOOLING.md` — free-tier source candidates pre-approved (this PR)
+
+**Evidence:**
+- Four-commit destination-enrichment cycle on the same branch: strategy v1 (P5) → E1 v1.0 ship (P15) → §18 calibration findings → §19 + §19.6 policy revision (PR #26)
+- E1 v1.0 validator clean (`enriched_structurally_valid_not_planner_ready`); 359 rows; three manual-review queues; deterministic re-run confirmed
+- Calibration findings are durable text in §18, not silent edits to §§0–17 — the audit-trail is preserved
+- v1.0 artifacts retained per §19.2; not deleted, not rolled back
+- Lyra + Aurelius graded reviews on PR #26 (93/100 + 91/100); both reviews durable on the PR
+
+**Outcome:**
+- The data-engineering workstream now has a shipped methodology, not just a target outcome. P20 (v2 strategy doc) inherits the pattern: it supersedes v1's §§0–17 with no-assumption + live-data + two-tier architecture (§19 + §19.6), it does so as a new document (`destination_master_enrichment_strategy_v2.md`), and v1 stays on file as the heuristic baseline. Future enrichment cycles can follow the same pattern.
+- Big Data Analytics + Data Engineering skill rows in SKILL_MAP move from level 0 (Not started) to level 2 (Example reproduced) — the v1.0 cycle is the reproduced example.
+- The CodeMike operating loop's *Improve* step has its first worked example outside the UI domain — the loop is now demonstrably cross-domain.
+- The audit-shape-as-workspace-standard capability now has cross-domain evidence (UI audits + data-engineering policy cycle running the same skeleton).
+
+**Limitations:**
+- Single worked example. The capability sits at maturity 2 (prototype evidence) because the cycle has run once. P20 (v2 strategy doc) is the planned second worked example; success there promotes the capability to maturity 3 (reusable pattern).
+- The transfer is *into* an MSc-internal workstream, not *out to* another project (Codex, SproutLab, future Planner). Cross-Province transfer is queued for after P21 ships — at that point the v2 source-backed pipeline becomes a candidate for Planner's enrichment service.
+- The transfer pre-dates the §6 persona-spec formalization workstream (handoff §6 / §10) — calibration-cycle pattern was authored in the informal-persona era. Forward versions of this capability should reference the formal CodeMike + Aurelius specs once they land in Codex.
+- Source-cited derivation is the *goal* of v2; v0 heuristic baseline does not satisfy the no-assumption rule and is named explicitly as the rejected pattern per §19.2.
+
+**Next action:**
+1. Land this governance-debt PR before P20 substance begins (handoff §5)
+2. Open P20 work on a fresh branch — v2 strategy doc + per-field tier assignments + source coverage matrix (handoff §4.2) as the prerequisite
+3. After P20 ships, evaluate the capability for promotion to maturity 3 (reusable pattern); second worked example unblocks the promotion
+4. After P21 ships, evaluate cross-Province transfer candidacy (Planner's enrichment service)
