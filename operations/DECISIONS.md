@@ -180,7 +180,11 @@ Related files:
 - `operations/NEXT_ACTIONS.md` (P17 on hold; P18 superseded; new P19/P20/P21)
 - `operations/PROJECT_LOG.md` (2026-05-18 — Policy transition entry)
 - `operations/EXPERIMENTS.md` (EXP-003 — the worked experiment that produced the calibration findings)
-- `charter/TOOLING.md` (free-tier source candidates pre-approved by this PR)
+- `charter/TOOLING.md` (free-tier source candidates pre-approved per §19.3 — see *Free-tier source candidates* section dated 2026-05-18, which is the implementation of this entry's tier ladder)
+
+See also:
+
+- *2026-05-18 — Two-tier enrichment architecture (Option b) — stable-derived + live-volatile* (the architectural resolution of §19.6; the entry below this one). The two decisions are tightly coupled: this entry adopts the no-assumption + live-data + free-tier-only policy; the §19.6 entry is the architectural answer to *how to honour live-data freshness given free-tier rate-limit constraints*. Read both together.
 
 ## 2026-05-18 — Two-tier enrichment architecture (Option b) — stable-derived + live-volatile
 
@@ -209,3 +213,7 @@ Related files:
 - `datasets/reference/destination_master_enrichment_strategy.md` (§19.6 — rejected alternatives preserved for audit trail)
 - `operations/NEXT_ACTIONS.md` (P19 / P20 / P21 scope updated)
 - `operations/PROJECT_LOG.md` (2026-05-18 — Policy transition entry, §19.6 resolution section)
+
+Depends on:
+
+- *2026-05-18 — Adopt no-assumption + live-data + free-tier-only policy for enrichment (§19)* (the entry above this one). Option (b) is **conditional on §19's free-tier rate-limit constraint** — under a paid-tier regime, Option (c) all-live would become viable and the two-tier split would be a different trade. This architecture decision only makes sense given §19's policy. Read §19 first if approaching this entry standalone.

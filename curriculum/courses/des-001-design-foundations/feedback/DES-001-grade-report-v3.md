@@ -232,7 +232,7 @@ Added in the post-PR #26 governance-debt PR for audit-trail completeness. The fo
 - `operations/CAPABILITIES.md` — new row "Calibration-cycle discipline (spec → ship → calibration → policy revision)" at maturity 2
 - `operations/EXPERIMENTS.md` — EXP-003 (E1 v1.0 ship as a worked experiment with calibration findings)
 - `operations/DECISIONS.md` — two entries (2026-05-18 §19 policy adoption + §19.6 architecture)
-- `operations/TRANSFER_LOG.md` — Transfer 4 (design-discipline calibration-cycle methodology → data-engineering workstream)
+- `operations/TRANSFER_LOG.md` — *Design-discipline calibration-cycle methodology → Data-engineering workstream* (Transfer 4 as of 2026-05-18; cross-reference by date + capability to survive future TRANSFER_LOG reordering, not by ordinal alone)
 - `operations/SKILL_MAP.md` — Big Data Analytics + Data Engineering promoted from level 0 to level 2
 - `datasets/reference/destination_master_enrichment_strategy.md` — §18 + §19 + §19.6 (the durable text of the cycle itself)
 - `design/foundations/sponsor-reviewer-brief.md` v2 — §9 source-citation + unknown-field discipline criteria added so the Sponsor Reviewer cycle evaluates the v2 source-backed enriched layer (P21) once it ships

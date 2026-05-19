@@ -44,7 +44,7 @@ Files changed
 - `operations/CAPABILITIES.md` (new row: calibration-cycle discipline at maturity 2)
 - `operations/EXPERIMENTS.md` (EXP-003 — E1 v1.0 ship as worked experiment)
 - `operations/DECISIONS.md` (two new entries: §19 policy adoption + §19.6 architecture)
-- `operations/TRANSFER_LOG.md` (Transfer 4 — design-discipline → data-engineering)
+- `operations/TRANSFER_LOG.md` (*Design-discipline calibration-cycle methodology → Data-engineering workstream*, 2026-05-18; Transfer 4 as of this commit — referenced by date + capability per Aurelius M2 resilience discipline)
 - `operations/SKILL_MAP.md` (Big Data Analytics + Data engineering promoted from level 0 to level 2)
 - `charter/TOOLING.md` (free-tier source candidates pre-approved per §19.3)
 - `design/foundations/sponsor-reviewer-brief.md` (v1 → v2; §9 source-citation + unknown-field discipline criteria)
@@ -70,7 +70,14 @@ Honest limitations (named per HCD discipline)
 - This PR is the *first* close-out of governance debt as a discrete cycle. The pattern is unproven beyond this single application. Future cycles will validate whether the four-layer commit shape (capability+skill+experiment+transfer / decisions / charter / design-bridge) generalises beyond this content shape.
 - Aurelius grading Aurelius's own work is structurally honest but not blind. A future session may benefit from a different Scribe (Auditor, when spec'd in Codex) reviewing chronicler-authored governance debt — restoring the persona/Scribe separation per §9(f) at the review layer too.
 - The fifth-commit ride-this-PR pattern is convenient but risks growing the PR scope beyond what the §5 enumerated. The Sovereign's ratification kept the scope tight (four converged-on items only; Aurelius's M2 + M3 + the MO items from both reviews deferred). This deferral is the discipline holding; if the fifth commit had absorbed every reviewer item, the pattern would not generalise.
-- Aurelius M2 (Transfer 4 ordinal cross-reference fragility), M3 (DECISIONS peer cross-references), and the MO items from both reviews remain open. They are tracked here in the PROJECT_LOG entry rather than in NEXT_ACTIONS because they are governance-polish, not workstream items — pick up in a future governance-tidy PR.
+- Lyra MO1–MO3 + Aurelius MO1–MO4 (missed-opportunities from both reviews) remain open. They are tracked here in the PROJECT_LOG entry rather than in NEXT_ACTIONS because they are governance-polish, not workstream items — pick up in a future governance-tidy PR or when the relevant file is touched for a substantive reason.
+
+Sovereign-ratified expanded ride-this-PR scope
+
+After the first ride-this-PR commit (7d2b000) closed Lyra M1+M2+M3 + Aurelius M1, the Sovereign expanded the scope to also close Aurelius M2 (Transfer 4 ordinal fragility) + Aurelius M3 (DECISIONS peer cross-references). A sixth `[Aurelius]` commit lands those two fixes:
+
+- Aurelius M2 — Transfer 4 references in this entry and in the DES-001 v3 footnote now cite by date + capability ("Design-discipline calibration-cycle methodology → Data-engineering workstream, 2026-05-18") instead of ordinal alone. Future TRANSFER_LOG reordering will not break the cross-references.
+- Aurelius M3 — DECISIONS §19 entry now has a forward reference to the §19.6 architecture entry; §19.6 entry has a back reference to §19 naming the dependency. A reader hitting either entry standalone gets the coupling.
 
 Next action
 
