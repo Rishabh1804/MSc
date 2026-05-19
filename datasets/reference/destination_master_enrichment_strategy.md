@@ -939,16 +939,52 @@ The Planner UI / downstream consumer must distinguish:
 
 Every enriched-layer row carries a row-level `manual_research_needed` boolean equal to "any field is unknown_pending_research".
 
-### 19.6 Open architecture question — refresh granularity
+### 19.6 Architecture decision — refresh granularity (resolved 2026-05-18)
 
-"Live, refresh on query" can be implemented two ways, with substantial cost / scaling differences:
+"Live, refresh on query" is implemented as **Option (b) — two-tier**, decided by Rishabh on 2026-05-18 after the trade-off analysis below.
 
-- **Option (b) — two-tier**: stable-derived fields (route distance, hospital POI distances, baseline climatology) live in a persistent **derived layer** refreshed on a batch cadence (e.g., monthly, or on-demand). Live-volatile fields (current flight availability, current weather, current permit/visa rules, current park closure status) are fetched **per Planner query**, never cached. Each Planner query joins the two layers.
-- **Option (c) — all-live**: no persistent enriched layer. Every Planner query re-fetches and re-derives every field, every time. No cache, no batch. Strict interpretation of "live is live".
+**Two layers**:
 
-**Free-tier rate limits make (c) extremely hard to sustain** — most free aviation / climate APIs cap at 50–1000 requests/day, and a single Planner query against the 359-row master would burn 1000+ API calls. Option (b) keeps the rate-limited live fields scoped to "fields the user is currently looking at" rather than "every row, every time".
+1. **Stable-derived layer** (`destinations_master_v2_derived.csv` — name placeholder; the v2 strategy doc finalises): route distance from each named origin, nearest hospital distance, baseline climatology (multi-year monthly means), altitude profile, OSM POI density. Refreshed on a **batch cadence** (initial target: monthly; on-demand re-runs supported when an upstream source has a known update event). Persisted; readable in sub-millisecond.
+2. **Live-volatile layer** — fetched per Planner query, never cached: current flight availability, current weather window, current permit/visa status, current park closure / wildlife-reserve booking-window status. Each fetch carries a `fetched_at` timestamp and a `source_id` citation.
 
-**This decision is pending and blocks the v2 strategy spec.** Recorded here so the v2 strategy document opens with this resolved.
+**Planner query flow**:
+
+```text
+Planner query (search / filter / Drawer-open / Promote-confirm)
+   |
+   v
+Read row's stable-derived fields from cached layer    (sub-ms)
+   |
+   v
+For each live-volatile field needed:
+   - Hit the source API / scraped endpoint            (rate-limited)
+   - On success: populate; tag with fetched_at + source_id
+   - On rate-limit / 5xx: unknown_pending_research + reason
+   |
+   v
+Join stable + live; return enriched row.
+```
+
+**Rate-limit math (free-tier, decided thresholds)**:
+
+- Each Planner query consumes ~4 live API calls (one per live-volatile field).
+- 1000 calls/day free-tier ceiling ≈ 250 Planner queries/day before any field starts returning rate-limit-induced `unknown_pending_research`.
+- Stable layer refresh is a separate batch budget (one run / month per upstream source).
+- This is sustainable for a single-user workspace + early Planner usage. Paid-tier upgrade becomes a budget question once Planner crosses ~200 queries/day sustained.
+
+**Why this honours "live is live, refresh on query"**:
+
+- Live-volatile fields — the fields a real traveller would never want stale (flight availability, current weather, current permit rules) — are fetched per query, never cached.
+- Stable-derived fields — fields where "freshness" is measured in months not minutes (route distance from CCU to a destination doesn't change daily; hospital locations don't move daily) — are refreshed on a cadence that matches their actual refresh-rate-in-the-world.
+- Caching only happens for fields where caching aligns with the underlying truth. There is **no** TTL-cache on live-volatile fields. The (d) cached-with-TTL option was rejected.
+
+**Rejected alternatives** (preserved for audit):
+
+- **(c) All-live** — every query re-fetches every field. Rejected: ~8 calls × ~25 rows × ~5 queries/day = 1000+ calls per moderate session, blowing free-tier ceilings within the first day of any real usage. Most fields would return `unknown_pending_research` from rate-limit kick-in by mid-day. Operationally unusable.
+- **(d) Cached-with-short-TTL** — every field cached for 15–60 min. Rejected: violates the rule's letter ("refresh on query" → no TTL on the live fields).
+
+This decision **unblocks P20** (v2 no-assumption strategy doc). P20 opens with this resolved.
 
 ### 19.7 What v1.0 stays useful for
 

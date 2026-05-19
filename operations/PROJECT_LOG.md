@@ -96,13 +96,19 @@ Evidence produced
 
 - §19 of the strategy doc is the durable policy record; all future enrichment work references it. The CodeMike Improve-loop step is explicit: v1.0 cycle ran, surfaced calibration findings (§18), prompted policy revision (§19), workspace pivots forward. This is the postgraduate research-methodology pattern at workspace scale.
 
-Pending decision
+Resolved decision — §19.6 architecture (Option b ratified 2026-05-18)
 
-- §19.6 architecture: Option (b) two-tier vs Option (c) all-live. Blocks P20 (v2 strategy doc); P20 blocks P19 scope + P21 implementation. Surfacing this back to Rishabh as the next decision.
+- Rishabh chose **Option (b) two-tier** over (c) all-live and (d) cached-with-TTL after the trade-off analysis at decision time.
+- Two layers: stable-derived (route distance, hospital POIs, baseline climatology, altitude profile) refreshed on batch cadence; live-volatile (current flight, current weather, current permits, current park closure) fetched per Planner query, never cached.
+- Rate-limit math: ~4 live API calls / query × 250 queries/day = 1000 free-tier ceiling. Sustainable for single-user workspace + early Planner usage. Paid-tier upgrade is a future budget question.
+- Honours "live = refresh on query" for the fields that genuinely change daily; caches only where caching aligns with the field's actual update rate in the world.
+- Decision recorded in strategy doc §19.6 (with the rejected alternatives preserved for audit).
+
+P20 (v2 strategy doc) is now **unblocked**. P19 (source registry + free-tier ETL) scope updated to reflect the two-tier split (stable + live as separate concerns).
 
 Next action
 
-End-of-PR closure: Lyra + Aurelius + Cipher graded reviews on PR #26 (which now includes the strategy doc + Pages verification + E1 v1.0 ship + this policy transition across three commits). Merge. Then resolve §19.6 architecture before kicking off P20. Workspace remains in STOP per the ratified three-topic-push goal; DES-001 Topics 7–12 (priority 14) stays parked.
+End-of-PR closure: Lyra + Aurelius + Cipher graded reviews on PR #26 (now four commits across the cycle: strategy v1 + Pages verification + E1 v1.0 heuristic baseline + policy transition + §19.6 resolution). Merge. Then P20 (v2 strategy doc) is the next ship. Workspace remains in STOP per the ratified three-topic-push goal; DES-001 Topics 7–12 (priority 14) stays parked.
 
 ## 2026-05-18 — E1 enrichment pass shipped (P15 → done) + strategy doc §18 amendments
 
