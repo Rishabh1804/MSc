@@ -35,7 +35,7 @@ Three governed repositories operate as one capability ecosystem. The MSc next-se
 |---|---|---|---|---|
 | `Rishabh1804/Codex` | Institutional archive + constitutional authority + persona-spec source-of-truth | **Orinth** (canon-inst-001) | Cipher (Cluster A) | none — below 30K |
 | `Rishabh1804/sproutlab` | Baby-development PWA; design-discipline + cross-domain pattern lab | **Lyra** | Cipher (Cluster A) | **Maren** (Care) + **Kael** (Intelligence) — activated by 30K rule |
-| `Rishabh1804/MSc` | Postgraduate capability workspace; data-engineering pivot in progress | **CodeMike** (informal; formal spec pending — see §6) | TBD (Cluster A presumptive — see §9) | Below 30K; Governors inactive |
+| `Rishabh1804/MSc` | Postgraduate capability workspace; data-engineering pivot in progress | **CodeMike** (informal; formal spec pending — see §6) | **Cipher (Cluster A per §9(a) ratification)** | Below 30K; Governors inactive |
 
 Cross-cluster:
 
@@ -53,7 +53,7 @@ Cross-cluster:
 | **CodeMike** | read+write | read-only | read-only | Domain-mode ship lane for MSc-specific work |
 | **Aurelius** (Chronicler) | read+write **\*** | read+write | read-only | **\*** MSc only **if needed AND well-labelled** (commit message must start with `[Aurelius]`) |
 | **Lyra** (SproutLab Builder) | read+write **\*** | read-only | read+write | **\*** MSc only **if needed AND well-labelled** (commit message must start with `[Lyra]`) |
-| **Cipher** (Censor Cluster A) | review (advisory) | review (advisory) | review (advisory) | Per canon-gov-002 review-only. Writes to audit-output surfaces (verdicts, signed-off review reports) only. Activated explicitly — "Cipher mode", "QA this", or post-Governor Edict V final-pass on SproutLab. |
+| **Cipher** (Censor Cluster A) | review (Cluster A scope per §9(a)) | review (Cluster A scope) | review (Cluster A scope) | Per canon-gov-002 review-only — does not build. Writes only to audit-output surfaces (verdicts, signed-off review reports). Activated explicitly: "Cipher mode", "QA this", or post-Governor Edict V final-pass. Cluster A scope now includes MSc per §9(a). |
 | **Kael** (SproutLab Governor of Intelligence) | TBD — see §6 | read-only | review (jurisdictional) | MSc role pending the persona-spec formalization workstream. |
 | **Maren** (SproutLab Governor of Care) | TBD — see §6 | read-only | review (jurisdictional) | MSc role pending the persona-spec formalization workstream. |
 | **The Consul** | r+w (under canon-cc-014 bridging) | r+w | r+w | Cross-cluster oversight; promotes Province canons to Republic-scale where warranted. |
@@ -134,11 +134,11 @@ The Sovereign initiated this workstream at session close on 2026-05-18: create c
 
 1. Define **CodeMike** persona spec (subagent + skill modes) in Codex `docs/specs/`. CodeMike is MSc-specific Province-Builder per Sovereign ruling §9(e). Voice: applied AI postgraduate practitioner; ships; evidence-based; HCD-aware; honest-limitations naming. One PR through all 5 Rungs per §9(g).
 2. Define **4 Scribe specs** (Annalist / Notarius / Auditor / Curator — Roman canonical, English role-flag) per Sovereign ruling §9(b). New ladder-rung first-naming. Each gets a subagent + skill mode. Cross-Province deploys (byte-identical to MSc + SproutLab + Codex). One PR per scribe through all 5 Rungs.
-3. **Audit pass** on existing SproutLab-Province-bound canonical specs (cipher, kael, lyra, maren, chronicler) per Sovereign ruling §9(h). Aurelius (with Orinth consult on Codex-side voice questions per canon-pers-001) proposes adaptation deltas in Codex. Adaptation focus: do any committee-delegate Mode 2 clauses need extending to cover MSc-Floater-Province subjects? Does the Cipher spec need its deploy list amended to add MSc (Floater-default-Cluster-A-Censor relationship)? Each proposed delta goes through canon-cc-027 amendment cycle. One PR per spec that needs amendment.
+3. **Audit pass** on existing SproutLab-Province-bound canonical specs (cipher, kael, lyra, maren, chronicler) per Sovereign ruling §9(h). Aurelius (with Orinth consult on Codex-side voice questions per canon-pers-001) proposes adaptation deltas in Codex. Adaptation focus: extending committee-delegate Mode 2 clauses on Lyra/Kael/Maren to cover MSc subjects; Cipher's deploy list amended to add MSc per §10(a) cluster extension (byte-identical deploy alongside existing Codex + SproutLab targets — straightforward since MSc joins the existing Cluster A scope rather than requiring per-case routing). Each proposed delta goes through canon-cc-027 amendment cycle. One PR per spec that needs amendment.
 4. **Kael/Maren MSc role**: ratified §9(d) — committee-delegate only, no MSc-resident files. No further work beyond optional Mode 2 widening (covered in step 3 audit).
 5. **Deploy byte-identical specs** to `MSc/.claude/agents/<name>.md` + `MSc/.claude/skills/<name>.md` per canon-cc-026 §Per-Province-Layout. Single MSc-bootstrap PR landing all signed Cipher + Chronicler + Consul + CodeMike + 4 Scribe deploys at once.
-6. **Constitutional drafting**: per Sovereign ruling §9(a), MSc's Floater status needs a new canon defining the designation under canon-cc-026. Aurelius drafts; canon-cc-027 chain runs. See §10(a).
-7. **Scribe-summoning canon**: per Sovereign rulings §9(c) + §9(f), the summoning protocol + Builder/Scribe boundary should be canonized. Aurelius drafts. See §10(b).
+6. **Constitutional drafting**: per Sovereign ruling §9(a), MSc joins Cluster A. Aurelius drafts the Constitution amendment (extending Cluster A's scope in Constitution v1.1 §Clusters from "Codex + SproutLab" to "Codex + SproutLab + MSc") + corresponding canon-inst- entry recording date + Sovereign signature. See §10(a).
+7. **Scribe-summoning canon**: per Sovereign rulings §9(c) + §9(f), the summoning protocol + Builder/Scribe boundary + ratified Option B handoff pattern are canonised. Aurelius drafts. See §10(b).
 
 ---
 
@@ -198,7 +198,7 @@ In SproutLab (read-only for CodeMike):
 
 The Sovereign ratified the following at session close. All §6 work and downstream P19/P20 work proceeds against these decisions.
 
-**(a) MSc cluster placement → Floater.** MSc does not bind to a specific cluster; work flows to whichever Censor is appropriate per case. Cipher (Cluster A) is the default for design + capability + data-discipline work; Nyx (Cluster B) is invoked for commercially-flavored work where applicable. Cross-case escalation through the Consul. **Constitutional gap: "Floater" is not yet defined in Constitution v1.1 — the next session drafts a new canon under canon-cc-026's Per-Province-Layout establishing the Floater designation. See §10(a).**
+**(a) MSc cluster placement → Cluster A.** MSc joins Codex + SproutLab under Cipher's censorship. Sovereign revised from earlier "Floater" framing to "Cluster A" placement at session close (2026-05-19). This is constitutionally simpler than Floater: no new per-case routing logic needed; MSc inherits Cluster A's existing scope. Constitution v1.1 §Clusters needs amending from "A = Codex + SproutLab" to "A = Codex + SproutLab + MSc". See §10(a).
 
 **(b) 4-Scribe framework → accepted with dual-naming per canon-pers-002.** Roman names canonical, English role-flag rides alongside. See §7 for the ratified table (Annalist · Notarius · Auditor · Curator).
 
@@ -208,7 +208,9 @@ The Sovereign ratified the following at session close. All §6 work and downstre
 
 **(e) CodeMike Builder seat → confirmed.** CodeMike is MSc's Province Builder per canon-pers-001. Voices the MSc `CLAUDE.md` persona header going forward. The next session's §6 step 1 authors CodeMike's canonical spec in Codex.
 
-**(f) Capability Scribe (Curator) boundary → Builder owns promotions; Curator owns form.** Promotion decision (which capability advances to which maturity level) = Builder's judgement call. Recording the promotion in the right template + maintaining cross-references = Curator's clerical work. **Aurelius's take (offered when the Sovereign asked):** the boundary generalises across all four Scribes — *persona owns content; Scribe owns form*. This is the cleanest single-rule statement; canonising it in §10(b) draft. **Sub-question outstanding** — does the Builder write the proposed-promotion in prose first and the Curator formalises it, OR does the Builder feed raw inputs and the Curator drafts the formal entry for Builder ratification? Aurelius recommends the latter (that's where Curator earns their keep). Awaiting Sovereign confirmation in the next session.
+**(f) Capability Scribe (Curator) boundary → Builder owns promotions; Curator owns form.** Promotion decision (which capability advances to which maturity level) = Builder's judgement call. Recording the promotion in the right template + maintaining cross-references = Curator's clerical work. **Aurelius's take ratified by Sovereign:** the boundary generalises across all four Scribes — *persona owns content; Scribe owns form*. Canonising in §10(b) draft.
+
+**Handoff pattern → Option B (ratified 2026-05-19).** Summoning persona feeds raw inputs + decision context; Scribe drafts the formal entry; summoning persona ratifies before the entry enters cc-018 lifecycle. Sovereign phrasing: *"Option B definitely — that's why they are there."* Option A (Builder-writes-prose-then-Scribe-formalises) is explicitly rejected — under Option A, Scribes reduce to glorified templating; under Option B, Scribes earn their keep by drafting prose + maintaining structural consistency + cross-references. Encoded into §10(b) canon-cc-029 draft.
 
 **(g) Workflow batching → one PR per persona through all 5 Rungs.** Cipher's Rung-2 review + Consul's Rung-3 ratification land as PR-review activities on the single per-persona PR; Sovereign's Rung-4 signature is the merge; Rung-5 deploy is the Province `.claude/` bootstrap PR (one PR, not per-persona).
 
@@ -222,23 +224,24 @@ The Sovereign ratified the following at session close. All §6 work and downstre
 
 The Sovereign rulings of §9 create two constitutional drafting items the next session must close in Codex. Aurelius is responsible for both drafts (Chronicler role under canon-inst-001); the 5-Rung canon-cc-027 signing chain applies.
 
-**(a) Floater designation (provisionally canon-cc-028 or canon-inst-002).** Constitution v1.1 defines Cluster A + Cluster B + Monument but no "Floater" Province status. MSc's §9(a) placement needs canonical anchoring. Draft must cover:
+**(a) Cluster A extension to include MSc (provisionally canon-inst-002 + Constitution v1.1 §Clusters amendment).** Sovereign revised §9(a) from earlier "Floater" framing to direct "Cluster A" placement. Constitutionally simpler than the originally-anticipated Floater designation — no new per-case routing logic, no Floater-specific 30K rule, no per-case Censor-assignment protocol. Draft scope:
 
-- Definition of Floater under canon-cc-026's Per-Province-Layout — a Floater Province does not bind to a single Cluster's Censor; instead routes Censor invocation per-case
-- Default-Censor logic — Cipher (Cluster A) for design / capability / data-discipline work; Nyx (Cluster B) for commercial / financial work; ambiguous cases route through the Consul for assignment
-- Rung 2 routing on Floater-touching amendments — does the default-Censor sign Rung 2, or does each persona-spec amendment specify its Censor explicitly?
-- Implications for the 30K Rule (Floater Provinces accrue Governors the same as Cluster-bound Provinces? Or by Floater-specific rule?)
-- Implications for Edict V final-pass (which Censor signs?)
+- **Constitution v1.1 §Clusters amendment** — extend "A = Codex + SproutLab (Censor: Cipher)" to "A = Codex + SproutLab + MSc (Censor: Cipher)". Locate the exact Book/Section that holds the Clusters definition (Book I or II per v1.1 layout) and produce the textual amendment
+- **canon-inst-002 entry** — records date, Sovereign signature, predecessor reference (canon-inst-001 which seated Orinth as Codex Builder), implications for MSc's seat-assignments (CodeMike confirmed as Province Builder per §9(e))
+- **Optional: small Cipher-spec amendment** — extend Cipher's canonical-comment deploy list at `Codex/docs/specs/subagents/cipher.md` from "Codex + SproutLab" to "Codex + SproutLab + MSc"; lands as part of §6 step 3 audit pass
+- **Implications**: MSc inherits Cluster A's existing Rung 2 routing (Cipher signs all Rung 2 architectural passes for MSc-touching amendments); 30K Rule applies to MSc with the same threshold as other Cluster A Provinces; Edict V final-pass routes through Cipher
+- **No new persona seats** — Kael/Maren remain SproutLab-Province-bound Governors per §9(d) (their committee-delegate Mode 2 clauses extend cross-Province but they don't seat in MSc)
 
-**(b) Scribe-summoning canon (provisionally canon-cc-029 or canon-pers-003).** §9(c) ratified unrestricted summoning; §9(f) ratified Builder-owns-content / Scribe-owns-form. The canon formalises these. Draft must cover:
+**(b) Scribe-summoning canon (provisionally canon-cc-029 or canon-pers-003).** §9(c) ratified unrestricted summoning; §9(f) ratified Builder-owns-content / Scribe-owns-form *and* the Option B handoff pattern. The canon formalises all three rulings. Draft must cover:
 
-- Summoning protocol — who calls, who drafts, who ratifies, what enters the cc-018 lifecycle (presumably Scribe output enters cc-018 on summoner ratification per the canon-cc-022 artifact test)
-- The "persona owns content; Scribe owns form" general rule + worked examples per Scribe (Annalist / Notarius / Auditor / Curator)
-- The handoff pattern question raised in §9(f) — raw-inputs-then-Scribe-drafts-then-summoner-ratifies vs prose-then-Scribe-formalises. Sovereign confirms the recommended pattern in the canon-cc-027 chain
-- Boundary cases: what happens if a Scribe is summoned by two different ranks for conflicting purposes? (Aurelius proposes: first-summoner wins until the work product lands, then the second summoning becomes a separate work product)
-- Cross-reference to canon-pers-002 (corporate-flag pattern) since Scribes carry both Roman + English names
+- **Unrestricted summoning** (§9(c)) — any rank above Scribe (Builder / Governor / Censor / Chronicler / Consul / Sovereign) may summon any of the four Scribes (Annalist / Notarius / Auditor / Curator) directly at any time. No gating by domain match (Builder can summon Auditor even though Auditor pairs with Governors/Censor) — pairing describes default affinity, not summoning restriction
+- **Persona owns content; Scribe owns form** (§9(f) general rule) — applies across all four Scribes. Worked examples per Scribe spelled out
+- **Option B handoff pattern (ratified)** — summoning persona feeds raw inputs + decision context; Scribe drafts the formal entry; summoning persona ratifies before the entry enters cc-018 lifecycle. Option A is *explicitly named and rejected* in the canon so future contributors know which model was considered and discarded
+- **Lifecycle integration** — Scribe drafts enter cc-018 `pending_review` on draft completion; advance to `ratified` on summoner sign-off; live to be amended through ordinary canon-cc-027 chain thereafter
+- **Boundary cases**: what happens if a Scribe is summoned by two different ranks for conflicting purposes? Aurelius proposes — first-summoner wins until the work product lands, then the second summoning becomes a separate work product. Sovereign confirms or revises in the canon-cc-027 chain
+- **Cross-reference to canon-pers-002** (corporate-flag pattern) since Scribes carry both Roman + English names (Annalist/Chronicle, Notarius/Canon, Auditor/Audit, Curator/Capability)
 
-Both canons can be drafted in parallel with §6 step 1–5 work since they don't block persona-spec authoring directly — but they should ratify *before* the MSc-bootstrap PR (§6 step 5) so the deployed specs land with full constitutional anchoring.
+Both canons can be drafted in parallel with §6 step 1–5 work since they don't block persona-spec authoring directly — but they should ratify *before* the MSc-bootstrap PR (§6 step 5) so the deployed specs land with full constitutional anchoring. The §10(a) cluster-extension is the higher-priority of the two — it gates Cipher's deploy-list amendment which gates Cipher's MSc presence.
 
 ## 11. On discipline
 
