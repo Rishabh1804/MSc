@@ -114,7 +114,7 @@ Land these as the **first commit(s) of the next session** in a small MSc-interna
 - `operations/SKILL_MAP.md` — promote Big Data Analytics + Data Engineering from scaffolded to active development
 - `charter/TOOLING.md` — pre-approve free-tier source candidates (OpenFlights, OurAirports, OSM Overpass, IMD CDS, ECMWF reanalysis-free-tier, government-portal-scrape with provenance)
 - `design/foundations/sponsor-reviewer-brief.md` v2 — add source-citation completeness + unknown-field discipline evaluation criteria
-- `feedback/DES-001-grade-report-v3.md` — footnote linking design-discipline → data-discipline pivot
+- `curriculum/courses/des-001-design-foundations/feedback/DES-001-grade-report-v3.md` — footnote linking design-discipline → data-discipline pivot (path corrected from earlier draft; the workspace's only `feedback/` directory lives under the DES-001 module, not at repo root)
 
 Aurelius can also write to Codex during this session if any of the above promotes a Province pattern to Republic canon (e.g., the calibration-cycle discipline arguably belongs in canon scope).
 
