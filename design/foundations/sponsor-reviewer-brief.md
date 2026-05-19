@@ -161,7 +161,7 @@ These limitations are *named* per the HCD discipline. The brief is HCD-substanti
 - **First reviewer session**: scheduled after recruitment lands
 - **Audit 1.5 closure cycle**: after the first session — produces a new feedback file, updates the v1.2 backlog, and re-grades the Lab 05 + Lab 06 findings
 - **Audit 2 trigger**: after v1.2 ships, re-run the same session to verify closures
-- **Audit 3 trigger** (v2 addition): after P21 ships, re-run the session against the v2 source-backed enriched layer using the §9 source-citation + unknown-field criteria
+- **Audit 3 trigger** (v2 addition): after P21 ships — full cycle definition lives in §9.4 (criteria + closure paths + skill-row promotion gates)
 
 ## 9. v2 evaluation criteria — source-citation completeness + unknown-field discipline
 
@@ -180,9 +180,9 @@ The reviewer evaluates: **for any visible enriched field, can I trace this value
 - **Fail** — at least one visible field has no traceable source surface, OR the surface exists but reveals only the source *name* and not the tier / fetch date.
 
 Reviewer instruction (added to Part 2 of the session for P21+ tools):
-> *"Pick three enriched fields at random from any record. For each, find the source citation. If you can't, tell us where you looked first and what you expected to find."*
+> *"Pick three enriched fields from any record — **including at least one tier-stable field (e.g. route distance, baseline climatology, altitude) and at least one tier-live field (e.g. current flight, current weather, current permit)**. For each, find the source citation. If you can't, tell us where you looked first and what you expected to find."*
 
-The three picked fields + their source-trace verdicts feed Audit 3.
+The tier-stable + tier-live requirement is deliberate: §19.6's two-tier architecture means the source-citation surface has *two* failure modes (stable-derived layer cites cleanly but live-volatile doesn't carry `fetched_at`, or vice versa). A reviewer left to sample purely by visual salience would tend to pick the easy-to-cite fields and miss the harder layer. The three picked fields + their source-trace verdicts feed Audit 3.
 
 ### 9.3 Unknown-field discipline — evaluation surface
 
