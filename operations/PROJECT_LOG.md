@@ -31,6 +31,79 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-05-18 — Policy transition: no-assumption + live-data rule adopted (§19 of strategy doc)
+
+Type: governance / decision / policy
+
+Summary:
+
+Rishabh ratified a workspace-wide rule change while reviewing §18 of the enrichment strategy doc. The rule:
+
+> No workspace-judgement values in enrichment. Every field is either source-backed or `unknown`. When source data is unavailable for a row, the field is `unknown` and the row is flagged `manual_research_needed`. Live = refresh on query (per §19.4). v1 stays free-tier-only.
+
+Grounded in the Big Data Analytics + HPC course module backbone — this is the principles-of-big-data discipline applied to the destination-enrichment workstream (store, refine, categorise, analyse).
+
+Scope decision
+
+- **Forward-only**, per Rishabh's "Option A" choice. v1.0 enrichment artifacts (the heuristic CSV, queues, reports, strategy doc §§0–17) are **retained as the heuristic baseline** — not deleted, not rolled back, not relabelled inside files. They have ongoing value as a diff target ("what does workspace-judgement get wrong vs source-backed data?") and as a manual-research-priority signal (rows the heuristic was least confident about are likely candidates for source-research in v2).
+- Strategy doc §19 added as the policy-transition record (~140 lines); §18 v1.1 recommendations marked superseded (§18.8); §17 References renumbered to §20.
+- v1.0 enrichment script preserved unchanged; will be renamed `destination_master_enrichment_v0_heuristic.py` in the next PR per §19.2.
+
+Free-tier source ladder (§19.3)
+
+- Tier 1 preferred: government / official / authoritative APIs (MoHFW, IMD, MEA, Indian Railways, state tourism portals, UNESCO, RBI)
+- Tier 2 accepted: reputable open datasets (OpenFlights, OpenStreetMap, OurAirports, World Bank, GADM, Natural Earth)
+- Tier 3 accepted: reputable scraped sources with provenance
+- Tier 4 accepted: workspace-curated synthesis of Tier 1–3 with citations per derived value
+- Rejected: workspace judgement, opinionated heuristics, regional stereotypes — the entire shape of v1.0 enrichment
+
+Paid sources out of scope for v1 (free-tier-only). Aviation APIs (Aviationstack, FlightAware, OAG), paid climate APIs, paid permit data — out. Rate-limits of chosen sources become a binding architectural constraint.
+
+Unknown discipline (§19.5)
+
+- Ship rows with `unknown` where source data is missing. Don't skip rows; don't fabricate values. Each unknown field carries a basis prose explaining what source was checked and what was missing. Row-level `manual_research_needed` flag aggregates any-field-unknown.
+- Downstream consumers (Planner UI) must distinguish `known` (source-cited) vs `unknown_pending_research` vs not-applicable.
+
+Open architecture question — surfaced for resolution before v2 strategy doc lands
+
+- **Option (b) — two-tier**: stable-derived (route distance, hospital POIs, baseline climatology) refreshed on batch cadence; live-volatile (current flight, weather, permits) fetched per Planner query.
+- **Option (c) — all-live**: no persistent enriched layer; every Planner query re-fetches and re-derives every field.
+- Free-tier rate limits make (c) extremely hard to sustain. Decision pending; blocks P20 (v2 strategy doc).
+
+Queue restructure (§19.8)
+
+- P15 (E1 v1.0): stays **done**; retained as heuristic baseline; no rollback
+- P17 (E2 manual-review sessions): **on hold** pending v2; queues retained as research-priority signals
+- P18 (E1 v1.1 calibration spec changes): **superseded**; v1.1 recommendations moot under no-assumption
+- New P19: source registry + free-tier ETL layer (OpenFlights, OSM Overpass, IMD/ECMWF, MEA scrapes)
+- New P20: v2 no-assumption enrichment strategy doc (new file, supersedes §§0–17 of v1 strategy)
+- New P21: v2 source-backed enrichment service (preserves v1.0 as v0 heuristic baseline)
+
+Honest limitations of the policy itself (§19.9)
+
+- Free-tier coverage gaps: live visa rules, current park closures, current permits genuinely lack free-tier sources for India → those fields will be `unknown_pending_research` for most rows in v2. That's the rule working as designed.
+- Rate-limit ceilings: free-tier APIs cap at 50–1000 requests/day. If Planner gains real usage, paid-tier upgrade is a budget question.
+- Source-availability bias: well-studied destinations (metros, UNESCO sites) will have rich source data; remote destinations will have heavy unknown density. Bias is real; consumers must see it.
+- No-assumption ≠ no-judgement: choosing which sources to trust, how to combine them, what thresholds count as "medical access" are still judgement calls. The rule reduces hidden judgement (heuristics) to visible judgement (source-tier + threshold definitions).
+
+Files changed
+
+- `datasets/reference/destination_master_enrichment_strategy.md` (added §19 ~140 lines + §18.8 supersession note + §17 → §20 renumber)
+- `operations/NEXT_ACTIONS.md` (P17 on hold; P18 superseded; new P19/P20/P21; Next Design Step updated)
+- `operations/PROJECT_LOG.md` (this entry)
+
+Evidence produced
+
+- §19 of the strategy doc is the durable policy record; all future enrichment work references it. The CodeMike Improve-loop step is explicit: v1.0 cycle ran, surfaced calibration findings (§18), prompted policy revision (§19), workspace pivots forward. This is the postgraduate research-methodology pattern at workspace scale.
+
+Pending decision
+
+- §19.6 architecture: Option (b) two-tier vs Option (c) all-live. Blocks P20 (v2 strategy doc); P20 blocks P19 scope + P21 implementation. Surfacing this back to Rishabh as the next decision.
+
+Next action
+
+End-of-PR closure: Lyra + Aurelius + Cipher graded reviews on PR #26 (which now includes the strategy doc + Pages verification + E1 v1.0 ship + this policy transition across three commits). Merge. Then resolve §19.6 architecture before kicking off P20. Workspace remains in STOP per the ratified three-topic-push goal; DES-001 Topics 7–12 (priority 14) stays parked.
+
 ## 2026-05-18 — E1 enrichment pass shipped (P15 → done) + strategy doc §18 amendments
 
 Type: implementation / capability / experiment / governance

@@ -864,9 +864,121 @@ Observed E1 distribution: `low: 89`, `medium: 233`, `high: 3`, `very_high: 34`. 
 
 The script (`src/codemike/data/destination_master_enrichment_v1.py`) and the catchment JSON (`datasets/reference/origin_catchment_v1.json`) together produce a byte-identical enriched CSV across runs, modulo the `enrichment_pass_date` column which moves with calendar date. This satisfies the strategy doc §10.2 reproducibility requirement.
 
+### 18.8 Supersession notice (added 2026-05-18 alongside §19)
+
+All v1.1 recommendations enumerated in §§18.3 / 18.4 / 18.5 (drop "all four bands identical" S trigger; add region/resort_zone medical branch; split M into critical/standard; rebalance fatigue thresholds) are **superseded** by the §19 policy change. They were valid calibration moves under the heuristic regime; under no-assumption + live-data they are moot. §18 is preserved unedited as the historical record of the heuristic cycle — it is not the path forward.
+
 ---
 
-## 17. References
+## 19. Policy transition — no-assumption + live-data rule
+
+Added 2026-05-18, after the E1 v1.0 first-run review surfaced the §18 calibration findings. Rishabh's directive in response (paraphrased): *"this is a big data + HPC course; we will be taking in live data wherever needed. No assumptions going forward. We have data for everything; we just need to store, refine, categorise, analyse — principles of big data."*
+
+This section captures the rule, its scope, what it means for the enrichment workstream, and the queue restructure that follows.
+
+### 19.1 The rule
+
+> **No workspace-judgement values in enrichment. Every field is either source-backed or `unknown`. When a value is needed and no source data is available for that row, the field is `unknown` and the row is flagged `manual_research_needed = true`. The Planner UI / downstream consumer surfaces both states honestly.**
+
+Operationally, this means:
+
+- **No** static lookup tables encoding regional stereotypes (e.g., the `SEASON_DEFAULTS_BY_REGION` map in the v1.0 script).
+- **No** "destination-scale as proxy for medical access" formulas.
+- **No** catchment tables built from workspace judgement.
+- **No** caution-tag derivation from location_type keyword matching.
+- **No** infant-suitability composition from stacked heuristic adjustments.
+- **No** band-bumping rules gated on near-empty `context_tags`.
+
+Every enriched value must be derived from external source data with provenance recorded — or it is `unknown`.
+
+### 19.2 Scope — forward-only
+
+**Retroactive scope rejected; forward-only scope adopted.**
+
+- v1.0 enrichment artifacts (`destinations_master_v2_enriched.csv`, the three manual-review queues, the report, the validation report) are **retained as the heuristic baseline**. They are not deleted, not rolled back, not relabelled inside the file (the `enrichment_method = heuristic_v1` column already names them honestly).
+- The v1.0 script (`src/codemike/data/destination_master_enrichment_v1.py`) is **preserved unchanged** in the codebase. It is **not the source of truth** going forward.
+- The strategy doc §§0–17 are preserved as written. §18 is preserved as the calibration findings of the v1.0 cycle. §19 (this section) supersedes §§0–17 as the active spec going forward, and §20 will be the v2 enrichment strategy (a separate document referenced from here).
+- v1.0 stays useful as a **diff baseline**: when v2 ships, "what does workspace-judgement get wrong vs source-backed data?" is an experiment evidence item — exactly the kind of *Improve* loop output CodeMike's operating loop is built to produce.
+
+### 19.3 Source tier policy (v1, free-tier-only)
+
+For v1 of the no-assumption enrichment (referred to elsewhere in this doc as v2 of the *enrichment*, but v1 of the *no-assumption-discipline*), the source ladder is:
+
+| Tier | Source class | v1 acceptability |
+|---|---|---:|
+| Tier 1 | Government / official / authoritative APIs (MoHFW, IMD, MEA, Indian Railways, state tourism portals, UNESCO, RBI) | preferred |
+| Tier 2 | Reputable open datasets (OpenFlights, OpenStreetMap, OurAirports, World Bank, GADM, Natural Earth) | accepted |
+| Tier 3 | Reputable scraped sources with provenance (UNESCO World Heritage list, IUCN, tourism boards) | accepted |
+| Tier 4 | Workspace-curated synthesis of Tier 1–3 sources | accepted, with source citations per derived value |
+| (rejected) | Workspace judgement, opinionated heuristics, regional stereotypes, generated-tag lookup tables | **rejected** |
+
+**Paid sources are out of scope for v1.** Aviation APIs (Aviationstack, FlightAware, OAG, Skyscanner), paid climate APIs, paid permit data — all out. Free-tier rate-limits of the chosen sources become the binding constraint on system architecture (see §19.6 open question).
+
+### 19.4 Live-data refresh discipline
+
+Rishabh's directive: *"Live is live, refresh on query."*
+
+The intent is no stale data: values used in a Planner decision should reflect what the source said now, not what it said last week. Operationally this has architectural consequences (§19.6) but the policy intent is unambiguous: **enriched values are not a static CSV that ages**.
+
+### 19.5 Unknown discipline
+
+When source data is unavailable for a specific row × field combination, the rule is **ship-with-unknown-flag, not skip-the-row**:
+
+```text
+field_value = "unknown"
+field_source = "no_source_available"
+field_manual_research_needed = true
+field_basis = "<short prose explaining what source was checked and what was missing>"
+```
+
+The Planner UI / downstream consumer must distinguish:
+
+- `known` (value present + source cited)
+- `unknown_pending_research` (no source; flagged for human follow-up)
+- not-applicable (field is structurally not relevant to this row, e.g., altitude_caution for a sea-level destination)
+
+Every enriched-layer row carries a row-level `manual_research_needed` boolean equal to "any field is unknown_pending_research".
+
+### 19.6 Open architecture question — refresh granularity
+
+"Live, refresh on query" can be implemented two ways, with substantial cost / scaling differences:
+
+- **Option (b) — two-tier**: stable-derived fields (route distance, hospital POI distances, baseline climatology) live in a persistent **derived layer** refreshed on a batch cadence (e.g., monthly, or on-demand). Live-volatile fields (current flight availability, current weather, current permit/visa rules, current park closure status) are fetched **per Planner query**, never cached. Each Planner query joins the two layers.
+- **Option (c) — all-live**: no persistent enriched layer. Every Planner query re-fetches and re-derives every field, every time. No cache, no batch. Strict interpretation of "live is live".
+
+**Free-tier rate limits make (c) extremely hard to sustain** — most free aviation / climate APIs cap at 50–1000 requests/day, and a single Planner query against the 359-row master would burn 1000+ API calls. Option (b) keeps the rate-limited live fields scoped to "fields the user is currently looking at" rather than "every row, every time".
+
+**This decision is pending and blocks the v2 strategy spec.** Recorded here so the v2 strategy document opens with this resolved.
+
+### 19.7 What v1.0 stays useful for
+
+- **Heuristic baseline / diff target** — when v2 ships, we can compute per-field disagreement rates between heuristic and source-backed values. That disagreement distribution is the evidence that "no assumptions" was the right call.
+- **Manual-research priority queue** — the v1.0 queues (O / S / M) are still meaningful as *which rows the heuristic was least confident about*; those rows are likely candidates for manual research where source data is sparse.
+- **Postgraduate evidence** — the v1.0 cycle (spec → ship → calibration findings → policy revision) is itself a Research Methods / Big Data Analytics worked example. Captured.
+
+### 19.8 Queue restructure
+
+| Previous priority | New status | Replacement |
+|---|---|---|
+| P15 (E1 v1.0 script) | stays **done** | retained as heuristic baseline; no rollback |
+| P18 (E1 v1.1 calibration spec changes) | **superseded** | replaced by no-assumption v2 workstream |
+| P17 (E2 manual-review sessions) | **on hold** | re-evaluated after v2 lands; the manual-review batches may still be valid as research-priority queues |
+| (new) P19 | source registry | build `datasets/reference/destination_sources_v1.csv` + ETL layer for free-tier sources |
+| (new) P20 | v2 no-assumption strategy doc | new document at `datasets/reference/destination_master_enrichment_strategy_v2.md` — supersedes §§0–17 of this doc |
+| (new) P21 | v2 enrichment service | source-backed pipeline implementing v2 strategy; rename of the v1.0 script preserved as `destination_master_enrichment_v0_heuristic.py` |
+
+### 19.9 Honest limitations of the policy itself
+
+Surfaced for the audit-trail (Cipher discipline):
+
+- **Free-tier coverage gaps**: some dimensions (live visa rules, current park closures, current permit availability) genuinely don't have free-tier sources for India. Under the rule those fields will be `unknown_pending_research` for most rows in v2 — that's the rule working as designed, not a failure.
+- **Rate-limit ceiling**: free-tier APIs cap throughput. If Planner gains real usage, paid-tier upgrade becomes a budget question (per `charter/BUDGET.md`).
+- **Source-availability bias**: well-studied destinations (major cities, UNESCO sites, large parks) will have rich source data; remote / niche destinations will have heavy `unknown` density. The enriched layer will reflect that bias honestly — but the bias is real, and downstream consumers should know.
+- **No-assumption is not the same as no-judgement**: choosing *which* sources to trust, *how* to combine them (e.g., monthly-mean temperature vs daily-extreme), and *what threshold* counts as "medical access" are still judgement calls. The rule reduces hidden judgement (heuristics) to visible judgement (source-tier picks + threshold definitions). Judgement-free enrichment is impossible; well-cited judgement is the goal.
+
+---
+
+## 20. References
 
 - `datasets/reference/destinations_master_v2_schema.md` — master schema; storage-shape decision in §2 above carries it forward
 - `datasets/reference/destination_database_v2_strategy.md` — layered model that this strategy executes
