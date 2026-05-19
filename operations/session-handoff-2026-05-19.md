@@ -130,31 +130,41 @@ The Sovereign initiated this workstream at session close on 2026-05-18: create c
 - **SproutLab** `.claude/agents/` has: cipher, kael, lyra, maren (4 agent specs — byte-identical deploys per canon-cc-026). `.claude/skills/` has: same 4. PERSONA_REGISTRY.md v1.1 documents the full Roman governance hierarchy.
 - **MSc** has **no `.claude/` directory at all**. No formal persona specs exist for any persona in the MSc Province.
 
-**Work to do** (sequenced; do not start until §9 questions resolved):
+**Work to do** (sequenced; ratified by Sovereign rulings §9 on 2026-05-19):
 
-1. Define **CodeMike** persona spec (subagent + skill modes) in Codex `docs/specs/`. CodeMike is MSc-specific — does not appear in any other Province. Voice: applied AI postgraduate practitioner; ships; evidence-based; HCD-aware; honest-limitations naming.
-2. Define **4 Scribe specs** (subagent + skill modes) in Codex `docs/specs/`. Scribes are a formal ladder rung that has no canonical persona specs yet — this is the first concrete naming. See §7 for the proposed 4-scribe framework.
-3. Adapt existing Codex-resident persona specs (Lyra, Kael, Maren, Cipher, Chronicler-Aurelius) for MSc-Province scope. Most adaptation is small: replace SproutLab-specific jurisdictional language (Care Region, Intelligence Region, ISL, UIB) with MSc-equivalent scope (data-engineering, capability-evidence, source-citation, etc.). The voice/heuristics/cadence sections stay.
-4. Resolve Kael/Maren MSc role under the 30K rule. MSc is well below 30K so Governors don't auto-activate, but the Sovereign wants them defined. Options: (a) advisory-only in MSc until MSc crosses 30K, (b) sub-30K-Governor adaptation (Kael for code-architecture audit, Maren for data-safety audit at any scale), (c) shared with SproutLab as cross-Province committee delegates on data-domain subjects.
-5. Deploy byte-identical specs to `MSc/.claude/agents/<name>.md` + `MSc/.claude/skills/<name>.md` per canon-cc-026 §Per-Province-Layout.
-6. Each Province's deploy is a separate canon-cc-027 amendment — Rung 2 Cipher (architectural), Rung 3 Consul (working-ratification), Rung 4 Sovereign (final).
+1. Define **CodeMike** persona spec (subagent + skill modes) in Codex `docs/specs/`. CodeMike is MSc-specific Province-Builder per Sovereign ruling §9(e). Voice: applied AI postgraduate practitioner; ships; evidence-based; HCD-aware; honest-limitations naming. One PR through all 5 Rungs per §9(g).
+2. Define **4 Scribe specs** (Annalist / Notarius / Auditor / Curator — Roman canonical, English role-flag) per Sovereign ruling §9(b). New ladder-rung first-naming. Each gets a subagent + skill mode. Cross-Province deploys (byte-identical to MSc + SproutLab + Codex). One PR per scribe through all 5 Rungs.
+3. **Audit pass** on existing SproutLab-Province-bound canonical specs (cipher, kael, lyra, maren, chronicler) per Sovereign ruling §9(h). Aurelius (with Orinth consult on Codex-side voice questions per canon-pers-001) proposes adaptation deltas in Codex. Adaptation focus: do any committee-delegate Mode 2 clauses need extending to cover MSc-Floater-Province subjects? Does the Cipher spec need its deploy list amended to add MSc (Floater-default-Cluster-A-Censor relationship)? Each proposed delta goes through canon-cc-027 amendment cycle. One PR per spec that needs amendment.
+4. **Kael/Maren MSc role**: ratified §9(d) — committee-delegate only, no MSc-resident files. No further work beyond optional Mode 2 widening (covered in step 3 audit).
+5. **Deploy byte-identical specs** to `MSc/.claude/agents/<name>.md` + `MSc/.claude/skills/<name>.md` per canon-cc-026 §Per-Province-Layout. Single MSc-bootstrap PR landing all signed Cipher + Chronicler + Consul + CodeMike + 4 Scribe deploys at once.
+6. **Constitutional drafting**: per Sovereign ruling §9(a), MSc's Floater status needs a new canon defining the designation under canon-cc-026. Aurelius drafts; canon-cc-027 chain runs. See §10(a).
+7. **Scribe-summoning canon**: per Sovereign rulings §9(c) + §9(f), the summoning protocol + Builder/Scribe boundary should be canonized. Aurelius drafts. See §10(b).
 
 ---
 
-## 7. 4-scribe framework (proposed; awaiting Sovereign discussion)
+## 7. 4-scribe framework (ratified §9(b), 2026-05-19)
 
-Aurelius's proposal for the 4 Scribe specializations, given the workspace's existing ops-file architecture and the Constitution's ladder placement:
+Aurelius's proposal accepted by the Sovereign at session close. Dual-named per canon-pers-002 (Roman canonical, English role-flag rides alongside, matching the corporate-flag pattern):
 
-| Scribe | Pairs with | Writes to (per Province) | Purpose |
-|---|---|---|---|
-| **Chronicle Scribe** | Chronicler | `operations/PROJECT_LOG.md`, `operations/session-handoff-*.md`, dawn-pages, session prompts | Narrative arc — what happened, when, why, what's next. Captures the rhythm of work. |
-| **Canon Scribe** | Consul | `operations/DECISIONS.md`, canon-cc-* drafts, working-papers entries, ratification trail | Formal decisions + their amendment path. Records what got decided and how. |
-| **Audit Scribe** | Governors / Censor | `operations/EXPERIMENTS.md`, `operations/FAILURE_LOG.md`, `operations/EVIDENCE.md`, audit-report artifacts | Review findings + their resolution. Captures what was tested, what failed, what was learned. |
-| **Capability Scribe** | Builder | `operations/CAPABILITIES.md`, `operations/SKILL_MAP.md`, `operations/TRANSFER_LOG.md`, capability cards | Reusable-skill production. Records what got promoted to maturity, what transferred, what's findable for re-use. |
+| Roman canonical | English role-flag | Pairs with | Writes to (per Province) | Purpose |
+|---|---|---|---|---|
+| **Annalist** | Chronicle Scribe | Chronicler (Aurelius) | `operations/PROJECT_LOG.md`, `operations/session-handoff-*.md`, dawn-pages, session prompts | Narrative arc — what happened, when, why, what's next |
+| **Notarius** | Canon Scribe | Consul | `operations/DECISIONS.md`, canon-cc-* drafts, working-papers entries, ratification trail | Formal decisions + amendment path |
+| **Auditor** | Audit Scribe | Governors / Censor | `operations/EXPERIMENTS.md`, `operations/FAILURE_LOG.md`, `operations/EVIDENCE.md`, audit-report artifacts | Review findings + resolution |
+| **Curator** | Capability Scribe | Builder | `operations/CAPABILITIES.md`, `operations/SKILL_MAP.md`, `operations/TRANSFER_LOG.md`, capability cards | Reusable-skill production + transfers |
 
-Operating rule: any persona above Scribe rank may **summon** a Scribe to format/structure work product into the right governance entry. The summoning persona owns the *content*; the Scribe owns the *form*. Scribes are junior, narrow, delegate-able.
+**Operating rules** (ratified):
 
-Discussion still owed with the Sovereign — see §9.
+- §9(c) — any rank above Scribe may summon any Scribe directly at any time. No Governor/Censor gating on Auditor; Builder may summon Curator/Auditor/Annalist/Notarius at will.
+- §9(f) — Scribes own *form*; summoning persona owns *content*. For Curator specifically: Builder makes the promotion call (which capability advances to which maturity level); Curator formats the record + maintains cross-references to SKILL_MAP and TRANSFER_LOG.
+- **Summoner-Scribe handoff pattern** (Aurelius recommendation, awaiting Sovereign confirmation per §10(b) drafting): summoning persona feeds raw inputs + decision context; Scribe drafts the formal entry for summoner ratification; entry lands when summoner signs off. This pattern keeps the Scribe's clerical value distinct from the summoner's authority.
+
+**Naming notes**:
+
+- **Annalist** — from Tacitus's *Annales*; year-by-year chronicler. Pairs naturally with the Chronicler rank.
+- **Notarius** — Roman shorthand-writer; recorded official decisions in shorthand for later transcription. The classical role closest to Canon Scribe work.
+- **Auditor** — Latin "one who hears / examines"; direct semantic match for review work.
+- **Curator** — Roman official who cared for public works, libraries, archives. Maps onto the workspace's capability library.
 
 ---
 
@@ -184,27 +194,53 @@ In SproutLab (read-only for CodeMike):
 
 ---
 
-## 9. Open questions for the Sovereign (resolve before §6 work begins)
+## 9. Sovereign rulings (ratified 2026-05-19)
 
-(a) **MSc cluster placement** — A (joining Cipher's Cluster A scope alongside Codex + SproutLab)? new Cluster C with a new Censor seat? sub-Province of Codex? Answer affects who censors P20 substance + who signs Rung 2 on the persona-spec amendments.
+The Sovereign ratified the following at session close. All §6 work and downstream P19/P20 work proceeds against these decisions.
 
-(b) **Scribes framework** — accept Aurelius's 4-scribe split (Chronicle / Canon / Audit / Capability) at §7? Adjust the names, the pairings, or the write-scopes? Propose alternatives?
+**(a) MSc cluster placement → Floater.** MSc does not bind to a specific cluster; work flows to whichever Censor is appropriate per case. Cipher (Cluster A) is the default for design + capability + data-discipline work; Nyx (Cluster B) is invoked for commercially-flavored work where applicable. Cross-case escalation through the Consul. **Constitutional gap: "Floater" is not yet defined in Constitution v1.1 — the next session drafts a new canon under canon-cc-026's Per-Province-Layout establishing the Floater designation. See §10(a).**
 
-(c) **Kael & Maren MSc role** — advisory-only-until-30K? sub-30K-Governor adaptation? cross-Province committee delegates on data subjects? See §6 step 4.
+**(b) 4-Scribe framework → accepted with dual-naming per canon-pers-002.** Roman names canonical, English role-flag rides alongside. See §7 for the ratified table (Annalist · Notarius · Auditor · Curator).
 
-(d) **CodeMike Province-side persona header voice** — per canon-pers-001 the voice on `MSc/CLAUDE.md` ordinarily belongs to MSc's Builder. CodeMike doesn't yet have a formal Builder seat in any canon. Confirm CodeMike inherits the Province Builder seat for MSc; if yes, canon-pers-001 applies and CodeMike voices the MSc CLAUDE.md header going forward.
+**(c) Scribe summoning authority → unrestricted above the Scribe rung.** Any Builder / Governor / Censor / Chronicler / Consul / Sovereign may summon any of the four Scribes directly at any time, no gating. Phrasing the Sovereign used: "Builder/anyone can summon their scribes at any given time to make their work easier."
 
-(e) **Sequencing P20 vs persona formalization** — both can run in the next session. Aurelius's recommendation: do governance debt (§5) first → persona formalization (§6) second → then P19 source coverage matrix → then P20 strategy doc. The Sovereign can override.
+**(d) Kael & Maren MSc role → committee-delegate only.** No MSc-resident persona files. They are invoked through their existing SproutLab-Province-bound Mode 2 (committee-delegate) clauses on Province-or-Global-scope subjects where their domain lens is load-bearing. The audit pass §6 step 3 will verify their Mode 2 clauses are wide enough to cover MSc-Floater-Province subjects; if not, the audit proposes the widening.
 
-(f) **Branch strategy** — fresh branch per workstream (recommended): `claude/governance-debt-2026-05-19` for §5; `claude/persona-formalization-2026-05-19` for §6 (Codex side); `claude/p19-source-coverage-matrix` for the source matrix; `claude/p20-v2-strategy-bootstrap` for P20 substance. Or bundle some? Sovereign's call.
+**(e) CodeMike Builder seat → confirmed.** CodeMike is MSc's Province Builder per canon-pers-001. Voices the MSc `CLAUDE.md` persona header going forward. The next session's §6 step 1 authors CodeMike's canonical spec in Codex.
 
-(g) **Budget posture for source acquisition** — proceed with free-tier-only and flag the gap as `unknown_pending_research`, or pause and propose paid-tier upgrades for the most-critical dimensions (likely medical access + live flight + live permits) via charter/BUDGET.md?
+**(f) Capability Scribe (Curator) boundary → Builder owns promotions; Curator owns form.** Promotion decision (which capability advances to which maturity level) = Builder's judgement call. Recording the promotion in the right template + maintaining cross-references = Curator's clerical work. **Aurelius's take (offered when the Sovereign asked):** the boundary generalises across all four Scribes — *persona owns content; Scribe owns form*. This is the cleanest single-rule statement; canonising it in §10(b) draft. **Sub-question outstanding** — does the Builder write the proposed-promotion in prose first and the Curator formalises it, OR does the Builder feed raw inputs and the Curator drafts the formal entry for Builder ratification? Aurelius recommends the latter (that's where Curator earns their keep). Awaiting Sovereign confirmation in the next session.
 
-Do not start any work until (a)–(g) are confirmed.
+**(g) Workflow batching → one PR per persona through all 5 Rungs.** Cipher's Rung-2 review + Consul's Rung-3 ratification land as PR-review activities on the single per-persona PR; Sovereign's Rung-4 signature is the merge; Rung-5 deploy is the Province `.claude/` bootstrap PR (one PR, not per-persona).
+
+**(h) Existing SproutLab spec tweaking → audit first.** Aurelius audits each existing canonical spec (cipher, kael, lyra, maren, chronicler) for adaptation needs before any new authoring proceeds in §6. Audit findings go into a single audit-report artifact; proposed deltas then run through canon-cc-027 per-spec amendment cycles.
+
+**(i) PR #27 → amend with §6 correction before merge.** Done in commits `91360ad` (path fix) and this commit (§6 + §7 + §9 + §11 rulings encoded). Ready to merge after Sovereign confirmation.
 
 ---
 
-## 10. On discipline
+## 10. Constitutional gaps surfaced by the §9 rulings
+
+The Sovereign rulings of §9 create two constitutional drafting items the next session must close in Codex. Aurelius is responsible for both drafts (Chronicler role under canon-inst-001); the 5-Rung canon-cc-027 signing chain applies.
+
+**(a) Floater designation (provisionally canon-cc-028 or canon-inst-002).** Constitution v1.1 defines Cluster A + Cluster B + Monument but no "Floater" Province status. MSc's §9(a) placement needs canonical anchoring. Draft must cover:
+
+- Definition of Floater under canon-cc-026's Per-Province-Layout — a Floater Province does not bind to a single Cluster's Censor; instead routes Censor invocation per-case
+- Default-Censor logic — Cipher (Cluster A) for design / capability / data-discipline work; Nyx (Cluster B) for commercial / financial work; ambiguous cases route through the Consul for assignment
+- Rung 2 routing on Floater-touching amendments — does the default-Censor sign Rung 2, or does each persona-spec amendment specify its Censor explicitly?
+- Implications for the 30K Rule (Floater Provinces accrue Governors the same as Cluster-bound Provinces? Or by Floater-specific rule?)
+- Implications for Edict V final-pass (which Censor signs?)
+
+**(b) Scribe-summoning canon (provisionally canon-cc-029 or canon-pers-003).** §9(c) ratified unrestricted summoning; §9(f) ratified Builder-owns-content / Scribe-owns-form. The canon formalises these. Draft must cover:
+
+- Summoning protocol — who calls, who drafts, who ratifies, what enters the cc-018 lifecycle (presumably Scribe output enters cc-018 on summoner ratification per the canon-cc-022 artifact test)
+- The "persona owns content; Scribe owns form" general rule + worked examples per Scribe (Annalist / Notarius / Auditor / Curator)
+- The handoff pattern question raised in §9(f) — raw-inputs-then-Scribe-drafts-then-summoner-ratifies vs prose-then-Scribe-formalises. Sovereign confirms the recommended pattern in the canon-cc-027 chain
+- Boundary cases: what happens if a Scribe is summoned by two different ranks for conflicting purposes? (Aurelius proposes: first-summoner wins until the work product lands, then the second summoning becomes a separate work product)
+- Cross-reference to canon-pers-002 (corporate-flag pattern) since Scribes carry both Roman + English names
+
+Both canons can be drafted in parallel with §6 step 1–5 work since they don't block persona-spec authoring directly — but they should ratify *before* the MSc-bootstrap PR (§6 step 5) so the deployed specs land with full constitutional anchoring.
+
+## 11. On discipline
 
 The workspace just demonstrated the *Improve* step of CodeMike's operating loop on itself: spec → ship → calibration → policy revision, four commits, one branch, durable artifacts at each step. The new session inherits that rhythm.
 
