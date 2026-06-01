@@ -31,6 +31,31 @@ Evidence produced:
 Next action:
 ```
 
+## 2026-06-01 — P20: v2 no-assumption enrichment strategy doc
+
+Type: capability / decision
+
+Summary:
+
+Closed NEXT_ACTIONS priority 20. Authored `datasets/reference/destination_master_enrichment_strategy_v2.md` — the executable spec that operationalises the v1 §19 no-assumption + live-data policy. Supersedes v1 §§0–17; v1 §18 (calibration findings) and §19 (policy charter) stay binding. The doc finalises the §4 two-tier architecture (stable-derived CSV + per-query live-volatile fetch, never cached), restricts §5 source assignments to the `charter/TOOLING.md` pre-approved free-tier set, and gives a §7 per-field catalogue: every atomic field carries a source_id, a layer (stable/live), a derivation rule with attributed thresholds, and an explicit `unknown_pending_research` fallback. §8 codifies the three-state model (known / unknown_pending_research / not_applicable); §10 extends v1 §9 provenance to per-field source_id + fetched_at.
+
+One flagged design change for review (§6): composite judgement bands (infant/family/senior/couple suitability, travel-fatigue band, planning-complexity band) are moved **out** of enrichment to the scoring/derived-view layer (P6), because v1 §19.1 explicitly bans stacked-heuristic composites inside enrichment. v2 enrichment therefore stores only atomic source-backed facts; composition becomes a single visible, version-pinned function over cited inputs. This diverges from the graded v1 §3 catalogue, so it is flagged (not silently applied) for Cipher / Aurelius / Rishabh sign-off before P21 implements.
+
+Files changed:
+
+- `datasets/reference/destination_master_enrichment_strategy_v2.md` (new — the P20 deliverable)
+- `datasets/reference/destination_master_enrichment_strategy.md` (§19.2 forward-reference updated to point at the now-landed v2 doc)
+- `operations/NEXT_ACTIONS.md` (P20 → done; P19 → next; 2026-06-01 update note in Next Design Step)
+- `operations/PROJECT_LOG.md` (this entry)
+
+Evidence produced:
+
+- Complete v2 enrichment spec: §7 field catalogue maps all carried v1 §3 fields to pre-approved free-tier sources with derivation + unknown fallbacks; §15 names six concrete honest limitations (free-tier gaps, OSM sparsity, source-availability bias, centroid georeferencing, residual threshold judgement, deferred composition).
+
+Next action:
+
+P19 — build `destination_sources_v1.csv` + `destination_source_coverage_matrix_v1.md` (the source-lock gate for §7). Separately, route the §6 atomic-vs-composite decision to review before P21.
+
 ## 2026-05-19 — Governance debt close-out (post PR #26 + PR #27)
 
 Type: governance / decision / capability / transfer

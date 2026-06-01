@@ -897,7 +897,7 @@ Every enriched value must be derived from external source data with provenance r
 
 - v1.0 enrichment artifacts (`destinations_master_v2_enriched.csv`, the three manual-review queues, the report, the validation report) are **retained as the heuristic baseline**. They are not deleted, not rolled back, not relabelled inside the file (the `enrichment_method = heuristic_v1` column already names them honestly).
 - The v1.0 script (`src/codemike/data/destination_master_enrichment_v1.py`) is **preserved unchanged** in the codebase. It is **not the source of truth** going forward.
-- The strategy doc §§0–17 are preserved as written. §18 is preserved as the calibration findings of the v1.0 cycle. §19 (this section) supersedes §§0–17 as the active spec going forward, and §20 will be the v2 enrichment strategy (a separate document referenced from here).
+- The strategy doc §§0–17 are preserved as written. §18 is preserved as the calibration findings of the v1.0 cycle. §19 (this section) supersedes §§0–17 as the active spec going forward, and the v2 enrichment strategy is a separate document — **landed 2026-06-01 at `destination_master_enrichment_strategy_v2.md`** (NEXT_ACTIONS P20). This §19 block remains the binding charter that the v2 doc executes.
 - v1.0 stays useful as a **diff baseline**: when v2 ships, "what does workspace-judgement get wrong vs source-backed data?" is an experiment evidence item — exactly the kind of *Improve* loop output CodeMike's operating loop is built to produce.
 
 ### 19.3 Source tier policy (v1, free-tier-only)
